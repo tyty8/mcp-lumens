@@ -76,6 +76,7 @@ export function ServersTable({ servers }: Props) {
     col: 'name',
     dir: 'asc',
   })
+  const [expandedRows, setExpandedRows] = useState<Set<string>>(new Set())
 
   const fuse = useMemo(
     () =>
@@ -131,12 +132,35 @@ export function ServersTable({ servers }: Props) {
     }))
   }
 
+  function toggleRow(slug: string) {
+    setExpandedRows(prev => {
+      const next = new Set(prev)
+      next.has(slug) ? next.delete(slug) : next.add(slug)
+      return next
+    })
+  }
+
   function SortIcon({ col }: { col: string }) {
     if (sort.col !== col) return <span className="opacity-25 ml-1">↕</span>
     return (
       <span className="ml-1 text-primary">
         {sort.dir === 'asc' ? '↑' : '↓'}
       </span>
+    )
+  }
+
+  function ChevronIcon({ expanded }: { expanded: boolean }) {
+    return (
+      <svg
+        className={`w-3 h-3 transition-transform duration-150 ${expanded ? 'rotate-90' : ''}`}
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={2.5}
+        aria-hidden="true"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" d="m9 18 6-6-6-6" />
+      </svg>
     )
   }
 
@@ -297,19 +321,33 @@ export function ServersTable({ servers }: Props) {
 
           {/* ── Body ── */}
           <tbody>
-            {rows.map(server => (
+            {rows.map(server => {
+              const isExpanded = expandedRows.has(server.slug)
+              return (
               <tr key={server.slug} className="group border-b border-border/40 last:border-0">
                 {/* Name — sticky left */}
                 <td className="sticky left-0 z-10 bg-card group-hover:bg-muted/50 transition-colors px-4 py-3 align-top border-r border-border/30">
-                  <Link
-                    href={`/servers/${server.slug}`}
-                    className="font-medium text-foreground hover:text-primary transition-colors leading-snug block"
-                  >
-                    {server.name}
-                  </Link>
-                  {server.featured && (
-                    <span className="text-[10px] text-amber-400 font-mono mt-0.5 block">★ destacado</span>
-                  )}
+                  <div className="flex items-start gap-2">
+                    <button
+                      onClick={() => toggleRow(server.slug)}
+                      aria-expanded={isExpanded}
+                      aria-label={isExpanded ? 'Colapsar fila' : 'Expandir fila'}
+                      className="mt-1 shrink-0 text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      <ChevronIcon expanded={isExpanded} />
+                    </button>
+                    <div>
+                      <Link
+                        href={`/servers/${server.slug}`}
+                        className="font-medium text-foreground hover:text-primary transition-colors leading-snug block"
+                      >
+                        {server.name}
+                      </Link>
+                      {server.featured && (
+                        <span className="text-[10px] text-amber-400 font-mono mt-0.5 block">★ destacado</span>
+                      )}
+                    </div>
+                  </div>
                 </td>
 
                 {visible.has('category') && (
@@ -338,8 +376,7 @@ export function ServersTable({ servers }: Props) {
                 {visible.has('description') && (
                   <td className="group-hover:bg-muted/50 transition-colors px-4 py-3 align-top">
                     <p
-                      className="text-xs text-muted-foreground leading-relaxed line-clamp-2 max-w-sm"
-                      title={server.description}
+                      className={`text-xs text-muted-foreground leading-relaxed ${isExpanded ? '' : 'line-clamp-2 max-w-sm'}`}
                     >
                       {server.description}
                     </p>
@@ -349,7 +386,7 @@ export function ServersTable({ servers }: Props) {
                 {visible.has('tags') && (
                   <td className="group-hover:bg-muted/50 transition-colors px-4 py-3 align-top">
                     <div className="flex flex-wrap gap-1">
-                      {server.tags.slice(0, 4).map(tag => (
+                      {(isExpanded ? server.tags : server.tags.slice(0, 4)).map(tag => (
                         <span
                           key={tag}
                           className="text-[10px] font-mono text-muted-foreground bg-muted px-1.5 py-0.5 rounded"
@@ -357,7 +394,7 @@ export function ServersTable({ servers }: Props) {
                           #{tag}
                         </span>
                       ))}
-                      {server.tags.length > 4 && (
+                      {!isExpanded && server.tags.length > 4 && (
                         <span className="text-[10px] font-mono text-muted-foreground/50">
                           +{server.tags.length - 4}
                         </span>
@@ -402,7 +439,7 @@ export function ServersTable({ servers }: Props) {
                   </td>
                 )}
               </tr>
-            ))}
+            )})}
 
             {rows.length === 0 && (
               <tr>
