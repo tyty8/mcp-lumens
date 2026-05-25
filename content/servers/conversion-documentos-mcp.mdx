@@ -1,0 +1,54 @@
+---
+name: Conversión de Documentos MCP
+slug: conversion-documentos-mcp
+description: Herramienta MarkItDown de Microsoft que convierte muchos formatos de archivo (PDF, Word, Excel, imágenes) a Markdown para que los modelos de IA puedan procesarlos.
+category: productivity
+tags: [pdf, word, conversion, documentos, markdown]
+official: false
+github: https://github.com/microsoft/markitdown
+---
+
+## Descripción general
+
+El servidor Conversión de Documentos MCP implementa MarkItDown, la herramienta open source de Microsoft diseñada para convertir documentos de prácticamente cualquier formato al formato Markdown que los modelos de lenguaje pueden procesar, analizar y resumir de forma óptima. La barrera habitual para que un asistente de IA trabaje con documentos empresariales es que muchos de ellos están en formatos binarios —PDF, DOCX de Word, XLSX de Excel, presentaciones PowerPoint— que los modelos no pueden leer directamente. MarkItDown resuelve este problema convirtiéndolos a texto estructurado de manera automática.
+
+La amplitud de formatos soportados es uno de los puntos fuertes del servidor. Además de los formatos de Microsoft Office más comunes (DOCX, XLSX, PPTX), MarkItDown procesa archivos PDF con capacidad de extracción de texto y OCR básico, imágenes JPG/PNG con reconocimiento de texto integrado, archivos HTML, XML, CSV, JSON e incluso archivos de audio con transcripción. Esto significa que prácticamente cualquier documento empresarial que llegue a la empresa en cualquier formato puede ser procesado y analizado por el asistente de IA.
+
+Para los negocios que reciben grandes volúmenes de documentación en distintos formatos —informes de proveedores en PDF, contratos en Word, presupuestos en Excel, formularios escaneados en imagen— este servidor es la pieza que permite que el asistente de IA trabaje con toda esa documentación de manera fluida. La conversión se produce localmente en el servidor sin enviar los documentos a servicios externos, lo que es fundamental para la confidencialidad de contratos, datos financieros y otra información empresarial sensible.
+
+## Casos de uso para negocios
+
+- **Análisis de contratos y documentos legales:** Conversión de contratos en PDF o Word al formato Markdown para que el asistente pueda analizarlos, resumir sus puntos clave, identificar cláusulas importantes y responder preguntas específicas sobre su contenido.
+- **Procesamiento de facturas y albaranes:** Extracción de los datos de facturas de proveedor recibidas en PDF —número, fecha, importe, líneas de detalle— para registrarlos automáticamente en el sistema de gestión sin introducción manual.
+- **Revisión de informes y memorias:** Conversión de memorias anuales, informes de auditoría o estudios de mercado en PDF para que el asistente pueda resumirlos, extraer los datos financieros clave o responder preguntas sobre su contenido sin necesidad de leerlos íntegramente.
+- **Procesamiento de formularios escaneados:** OCR sobre formularios físicos escaneados (pedidos de clientes, fichas de datos, solicitudes) para extraer la información estructurada y registrarla en el sistema de gestión correspondiente.
+- **Análisis de hojas de cálculo de proveedores:** Conversión de listas de precios, catálogos de producto o informes de stock enviados por proveedores en Excel para que el asistente pueda analizarlos y extraer la información relevante.
+- **Digitalización de documentación histórica:** Conversión de archivos de documentación antigua escaneada a texto procesable para facilitar la búsqueda y el acceso a información histórica de la empresa que estaba solo disponible en papel.
+
+## Configuración básica
+
+MarkItDown es de código abierto y se puede instalar directamente con pip o ejecutar como servidor MCP:
+
+```bash
+pip install markitdown
+```
+
+Para usarlo como servidor MCP, configúralo en tu cliente:
+
+```json
+{
+  "mcpServers": {
+    "markitdown": {
+      "command": "python",
+      "args": ["-m", "markitdown_mcp"],
+      "env": {
+        "MARKITDOWN_ENABLE_OCR": "true",
+        "MARKITDOWN_OCR_LANGUAGE": "spa",
+        "MARKITDOWN_MAX_FILE_SIZE_MB": "50"
+      }
+    }
+  }
+}
+```
+
+Para activar el OCR en documentos escaneados o imágenes, asegúrate de tener instalado Tesseract OCR en el sistema con el paquete de idioma español (`tesseract-ocr-spa`). Sin Tesseract, el servidor puede igualmente procesar documentos con texto electrónico como DOCX, XLSX y PDFs con texto seleccionable. No se requiere ninguna API key externa ya que todo el procesamiento es local.

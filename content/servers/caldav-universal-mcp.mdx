@@ -1,0 +1,55 @@
+---
+name: CalDAV Universal MCP
+slug: caldav-universal-mcp
+description: Integración universal CalDAV compatible con Google Calendar, Nextcloud, iCloud, Yandex y cualquier servidor CalDAV, con soporte para eventos recurrentes y recordatorios.
+category: communication
+tags: [calendar, caldav, google-calendar, icloud, programacion]
+official: false
+github: https://github.com/madbonez/caldav-mcp
+---
+
+## Descripción general
+
+CalDAV Universal MCP implementa el protocolo estándar CalDAV para proporcionar acceso de lectura y escritura a prácticamente cualquier sistema de calendario existente en el mercado. A diferencia de las integraciones propietarias que solo funcionan con un proveedor específico, este servidor habla el lenguaje universal que comparten Google Calendar, iCloud, Nextcloud, Yandex Calendar, Fastmail, Zimbra y cualquier otro servicio que implemente el estándar CalDAV, lo que lo convierte en la solución más flexible para empresas que no quieren depender de un ecosistema concreto.
+
+El soporte completo para eventos recurrentes es uno de los aspectos más valiosos para negocios tradicionales. Las citas periódicas — revisiones mensuales con clientes, reuniones semanales de equipo, recordatorios anuales de renovaciones de contratos — pueden ser creadas, modificadas y gestionadas en masa por el asistente de IA, con toda la complejidad de los patrones de recurrencia (cada dos semanas excepto festivos, el último viernes de cada mes, etc.) manejada automáticamente.
+
+Los recordatorios y alarmas están completamente soportados, permitiendo al asistente de IA programar notificaciones con la antelación adecuada para cada tipo de evento. Una cita médica puede generar un recordatorio 48 horas antes y otro 2 horas antes; una reunión de negociación importante puede incluir una alarma el día anterior para preparar documentación.
+
+## Casos de uso para negocios
+
+- **Consultorios médicos y dental:** Programación automática de citas con pacientes, gestión de huecos por cancelación y envío de recordatorios, con el calendario accesible desde cualquier dispositivo mediante el estándar CalDAV.
+- **Gimnasios y centros deportivos:** Gestión de clases grupales, citas de entrenamiento personal y reservas de instalaciones con actualización en tiempo real del calendario visible para todos los entrenadores.
+- **Salones de belleza y peluquerías:** Sistema de citas inteligente que optimiza el horario del día minimizando los tiempos muertos entre clientes, con recordatorios automáticos para reducir las ausencias.
+- **Talleres mecánicos y de reparación:** Planificación de citas de entrega y recogida de vehículos coordinada con el tiempo estimado de reparación y la disponibilidad de los mecánicos.
+- **Academias de idiomas y formación:** Programación de clases, sesiones de tutoría y exámenes con gestión automática de conflictos de horario y notificaciones a alumnos y profesores.
+- **Agencias de eventos y catering:** Coordinación del calendario de eventos, ensayos, montaje y desmontaje con visibilidad compartida para todo el equipo involucrado en cada celebración.
+
+## Configuración básica
+
+El servidor se conecta a tu servicio de calendario mediante el protocolo CalDAV estándar:
+
+```bash
+pip install caldav-mcp
+```
+
+O usando npx directamente:
+
+```json
+{
+  "mcpServers": {
+    "caldav": {
+      "command": "npx",
+      "args": ["caldav-mcp"],
+      "env": {
+        "CALDAV_URL": "https://caldav.google.com/",
+        "CALDAV_USERNAME": "tu-email@gmail.com",
+        "CALDAV_PASSWORD": "tu-contrasena-de-aplicacion",
+        "CALDAV_CALENDAR_NAME": "Mi Calendario"
+      }
+    }
+  }
+}
+```
+
+Para Google Calendar, la URL es `https://www.google.com/calendar/dav/`. Para iCloud es `https://caldav.icloud.com/`. Para Nextcloud usa la URL de tu instancia seguida de `/remote.php/dav/`. Asegúrate de usar una contraseña de aplicación en lugar de tu contraseña principal cuando el servicio ofrezca esa opción.

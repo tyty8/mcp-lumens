@@ -1,0 +1,54 @@
+---
+name: Seguimiento de Envíos MCP
+slug: seguimiento-envios-mcp
+description: Seguimiento y gestión de envíos mediante la API de TrackMage para proporcionar a clientes el estado en tiempo real de sus pedidos y entregas.
+category: logistics
+tags: [tracking, envios, pedidos, logistica, tiempo-real]
+official: false
+github: https://github.com/trackmage/trackmage-mcp-server
+---
+
+## Descripción general
+
+El servidor Seguimiento de Envíos MCP se integra con la plataforma TrackMage para ofrecer seguimiento unificado de envíos a través de cientos de transportistas en todo el mundo. En lugar de tener que consultar la web de cada transportista por separado —SEUR, MRW, DHL, FedEx, UPS, la agencia postal del país de destino— el asistente de IA puede consultar el estado actualizado de cualquier envío simplemente proporcionando el número de seguimiento, independientemente de qué operador lo esté transportando.
+
+Para los negocios de ecommerce, el seguimiento de envíos post-compra es uno de los puntos de contacto más frecuentes con los clientes. Las preguntas "¿Dónde está mi pedido?" y "¿Cuándo va a llegar?" representan un volumen enorme de consultas al servicio de atención al cliente que consumen tiempo y recursos de manera completamente innecesaria si el negocio tuviese un acceso fluido a la información de seguimiento. Con este servidor, el asistente puede responder a estas consultas instantáneamente, proporcionar el estado exacto del paquete con el último evento registrado por el transportista y dar una estimación de entrega actualizada.
+
+TrackMage también ofrece una capa de análisis sobre los datos de seguimiento que resulta muy valiosa para optimizar la operativa logística. El asistente puede identificar patrones como qué transportistas tienen mayores tasas de retraso en determinadas rutas o épocas del año, qué porcentaje de envíos requieren un segundo intento de entrega, o cuántos paquetes se pierden o dañan por transportista. Esta información basada en datos reales del negocio es mucho más útil que las métricas generales del sector para tomar decisiones sobre con qué operadores trabajar y en qué condiciones.
+
+## Casos de uso para negocios
+
+- **Servicio de atención al cliente de ecommerce:** Consulta instantánea del estado de cualquier pedido durante una llamada o conversación con un cliente, sin necesidad de ir a la web del transportista y buscar el número de seguimiento manualmente.
+- **Equipos de operaciones logísticas:** Monitoreo diario del estado de todos los envíos activos, con identificación automática de los paquetes con más de 48 horas sin actualización de tracking que podrían indicar pérdida o retraso grave.
+- **Gestores de marketplace y dropshipping:** Seguimiento de los envíos directos de proveedor a cliente final, donde el negocio necesita conocer el estado de la entrega aunque no intervenga físicamente en el proceso.
+- **Empresas con logística de entrada frecuente:** Seguimiento de pedidos de compra a proveedores nacionales e internacionales, con alertas cuando un envío entrante se retrasa respecto a la fecha esperada de recepción en almacén.
+- **Análisis de rendimiento de transportistas:** Generación de informes mensuales comparativos del rendimiento de cada transportista —tasa de entrega a tiempo, incidencias, intentos de entrega— para apoyar las negociaciones de contrato anuales.
+- **Comunicación proactiva con clientes:** Identificación automática de pedidos con retrasos significativos para contactar proactivamente al cliente y ofrecer soluciones antes de que el cliente tenga que reclamar.
+
+## Configuración básica
+
+Crea una cuenta en TrackMage y obtén tu clave de API desde el panel de configuración:
+
+```bash
+npx @trackmage/trackmage-mcp-server
+```
+
+Configura las credenciales en tu cliente MCP:
+
+```json
+{
+  "mcpServers": {
+    "trackmage": {
+      "command": "npx",
+      "args": ["@trackmage/trackmage-mcp-server"],
+      "env": {
+        "TRACKMAGE_API_KEY": "tu-api-key",
+        "TRACKMAGE_WORKSPACE_ID": "tu-workspace-id",
+        "DEFAULT_LANGUAGE": "es"
+      }
+    }
+  }
+}
+```
+
+El workspace ID se encuentra en la URL de tu panel de TrackMage. Una vez configurado, puedes pedir al asistente el estado de un envío con su número de tracking y el servidor identificará automáticamente el transportista y consultará el estado actualizado. Para volúmenes altos de seguimiento, TrackMage ofrece planes con mayor número de consultas API incluidas.

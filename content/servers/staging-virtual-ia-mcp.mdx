@@ -1,0 +1,46 @@
+---
+name: Staging Virtual IA MCP
+slug: staging-virtual-ia-mcp
+description: Herramienta de staging virtual impulsada por IA que transforma habitaciones vacías en renders 3D amueblados, embellece planos de planta y genera descripciones de propiedades.
+category: real-estate
+tags: [staging, inmobiliaria, ia, renders, descripciones]
+official: false
+github: https://github.com/LarryWalkerDEV/mcp-immostage
+---
+
+## Descripción general
+
+Staging Virtual IA MCP transforma la manera en que las agencias inmobiliarias presentan sus propiedades en el mercado. Mediante inteligencia artificial avanzada, este servidor MCP convierte fotografías de habitaciones vacías o con mobiliario antiguo en renders 3D de alta calidad con decoración moderna y atractiva, eliminando la necesidad de contratar empresas de home staging físico, que pueden costar miles de euros por propiedad.
+
+La herramienta no se limita al amueblado virtual de habitaciones: también embellece y mejora la presentación de los planos de planta para que sean más comprensibles y atractivos para los compradores potenciales, y genera automáticamente descripciones de propiedades en el estilo y formato deseado por la agencia. Esta triple capacidad convierte el servidor MCP en un asistente completo para la comercialización de inmuebles, ahorrando horas de trabajo en la preparación de cada nuevo anuncio.
+
+Para agencias inmobiliarias que manejan un volumen elevado de propiedades, el ahorro de tiempo y dinero es sustancial. Una propiedad bien presentada con staging virtual atractivo puede recibir hasta tres veces más contactos de compradores interesados y venderse en menos tiempo, lo que se traduce directamente en más comisiones y mayor rotación de la cartera de inmuebles en menor tiempo.
+
+## Casos de uso para negocios
+
+- **Agencias inmobiliarias de venta:** Transformar fotografías de pisos vacíos o sin amueblar en renders atractivos con decoración moderna para publicar anuncios mucho más impactantes en los portales inmobiliarios.
+- **Promotoras inmobiliarias:** Visualizar el aspecto final de las viviendas sobre plano antes de que estén construidas, facilitando la venta en planta mediante renders realistas de los diferentes tipos de acabado disponibles.
+- **Gestores de propiedades de alquiler:** Presentar las viviendas de alquiler con staging virtual atractivo para reducir los períodos de vacancia y atraer inquilinos de mayor perfil.
+- **Agentes inmobiliarios independientes:** Competir con las grandes agencias ofreciendo fotografías y descripciones de calidad profesional sin necesidad de contratar fotógrafos y redactores especializados.
+- **Tasadores y peritos inmobiliarios:** Generar descripciones técnicas estandarizadas de propiedades a partir de los datos básicos del inmueble para incluir en los informes de valoración.
+- **Plataformas de inversión inmobiliaria:** Presentar los activos inmobiliarios en sus catálogos con renders de alta calidad que muestren el potencial real de cada propiedad a los inversores interesados.
+
+## Configuración básica
+
+Para utilizar Staging Virtual IA MCP necesitas una cuenta en Immostage y tu clave de API. Regístrate en la plataforma para obtener tus credenciales y acceder a los créditos de generación de imágenes incluidos en cada plan.
+
+```json
+{
+  "mcpServers": {
+    "immostage": {
+      "command": "npx",
+      "args": ["-y", "mcp-immostage"],
+      "env": {
+        "IMMOSTAGE_API_KEY": "tu_api_key"
+      }
+    }
+  }
+}
+```
+
+Una vez configurado, puedes enviar fotografías de habitaciones vacías para generar renders amueblados, mejorar planos de planta y crear descripciones profesionales de propiedades con una simple instrucción en lenguaje natural.

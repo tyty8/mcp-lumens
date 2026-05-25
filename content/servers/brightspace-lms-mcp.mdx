@@ -1,0 +1,49 @@
+---
+name: Brightspace LMS MCP
+slug: brightspace-lms-mcp
+description: Servidor MCP para el LMS D2L Brightspace que permite consultar calificaciones, fechas de entrega, tareas, anuncios, temarios, listas de alumnos y contenido de cursos.
+category: education
+tags: [brightspace, lms, educacion, cursos, calificaciones]
+official: false
+github: https://github.com/RohanMuppa/brightspace-mcp-server
+---
+
+## Descripción general
+
+Brightspace LMS MCP conecta tu asistente de IA con D2L Brightspace, uno de los sistemas de gestión del aprendizaje (LMS) más utilizados en instituciones educativas de nivel superior, formación profesional y empresas con programas de e-learning. A través de este servidor MCP, profesores, coordinadores académicos y gestores de formación pueden consultar y gestionar todos los elementos de sus cursos — calificaciones, tareas, temarios, anuncios, listas de alumnos y contenidos — mediante comandos en lenguaje natural.
+
+D2L Brightspace es especialmente popular en el ámbito de la formación profesional continua y el e-learning corporativo, sectores donde la gestión eficiente del aprendizaje a distancia es crucial para el éxito de los programas formativos. La integración con IA permite a los responsables de formación obtener una visión rápida del progreso de los participantes, identificar alumnos con dificultades que necesitan apoyo adicional y gestionar la comunicación con los grupos de aprendizaje de forma más ágil.
+
+Para centros de formación profesional, academias de idiomas con programas online, escuelas de negocios y departamentos de RRHH con programas de formación interna, este servidor MCP supone una reducción significativa del tiempo dedicado a tareas administrativas del LMS, liberando tiempo para el diseño instruccional y la mejora de los contenidos formativos.
+
+## Casos de uso para negocios
+
+- **Docentes universitarios:** Consultar rápidamente el estado de entrega de tareas de todos los alumnos de un curso, identificar quiénes no han entregado y acceder al listado de calificaciones pendientes de introducir.
+- **Coordinadores de formación corporativa:** Supervisar el progreso de los empleados matriculados en programas de formación online, identificando qué módulos presentan mayor tasa de abandono o menor rendimiento.
+- **Centros de formación profesional:** Gestionar múltiples cursos simultáneamente — temarios, materiales, calificaciones y comunicaciones con los alumnos — desde un único punto de acceso en lenguaje natural.
+- **Responsables de RRHH con programas de onboarding:** Verificar el progreso de los nuevos empleados en los cursos de incorporación obligatorios y enviar recordatorios a quienes estén atrasados en el programa.
+- **Tutores de e-learning:** Acceder al historial de actividad y calificaciones de cada alumno de forma inmediata para preparar las sesiones de tutoría personalizada con información actualizada.
+- **Directores académicos de escuelas online:** Obtener informes consolidados del rendimiento académico de todos los cursos activos con una consulta simple para tomar decisiones de gestión basadas en datos reales.
+
+## Configuración básica
+
+Para usar Brightspace LMS MCP necesitas credenciales de API de D2L Brightspace. Contacta con el administrador de tu institución para obtener el `CLIENT_ID`, `CLIENT_SECRET` y la URL base de tu instancia de Brightspace.
+
+```json
+{
+  "mcpServers": {
+    "brightspace": {
+      "command": "npx",
+      "args": ["-y", "brightspace-mcp-server"],
+      "env": {
+        "BRIGHTSPACE_URL": "https://tu-institucion.brightspace.com",
+        "CLIENT_ID": "tu_client_id",
+        "CLIENT_SECRET": "tu_client_secret",
+        "REFRESH_TOKEN": "tu_refresh_token"
+      }
+    }
+  }
+}
+```
+
+Una vez configurado, puedes consultar el estado de todos los cursos activos, acceder a las calificaciones de los alumnos, revisar las tareas pendientes de calificar y obtener las fechas de entrega próximas con preguntas directas en lenguaje natural.

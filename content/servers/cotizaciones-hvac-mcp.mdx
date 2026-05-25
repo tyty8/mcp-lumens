@@ -1,0 +1,56 @@
+---
+name: Cotizaciones HVAC MCP
+slug: cotizaciones-hvac-mcp
+description: Gestión de solicitudes de oferta de equipos HVAC para contratistas — envía RFQs a distribuidores, rastrea respuestas y compara precios de equipamiento de climatización.
+category: productivity
+tags: [hvac, climatizacion, cotizaciones, contratistas, equipos]
+official: false
+github: https://github.com/MarceauSolutions/hvac-quotes-mcp
+---
+
+## Descripción general
+
+El servidor Cotizaciones HVAC MCP está diseñado específicamente para las empresas instaladoras y contratistas del sector de climatización, calefacción y ventilación. La compra de equipos HVAC para una instalación requiere habitualmente solicitar presupuesto a varios distribuidores o fabricantes para los equipos especificados por el ingeniero o proyectista, una tarea que consume horas de trabajo administrativo y que frecuentemente genera errores por la dificultad de comparar ofertas recibidas en distintos formatos y momentos del tiempo.
+
+El servidor automatiza el proceso de envío de solicitudes de oferta (RFQ) a los distribuidores de equipos HVAC habituales del contratista. A partir de la lista de materiales de un proyecto —ya sea introducida manualmente o extraída de un documento de proyecto— el asistente puede generar y enviar RFQs estructuradas a todos los proveedores del catálogo, especificando exactamente los modelos, referencias, cantidades y plazos de entrega requeridos. Cuando llegan las respuestas, el servidor las centraliza y permite comparar las ofertas en una tabla normalizada.
+
+La comparación de precios entre distribuidores es donde el servidor aporta más valor económico. En el sector HVAC, los precios de los equipos pueden variar significativamente entre distribuidores según su nivel de descuento con el fabricante, el volumen de compra y los acuerdos comerciales específicos. Tener una visión clara y simultánea de todas las ofertas recibidas, con los precios ajustados por iguales condiciones de plazo y garantía, permite al contratista negociar con mayor información y adjudicar la compra al distribuidor que ofrece la mejor relación precio-plazo-servicio para cada proyecto.
+
+## Casos de uso para negocios
+
+- **Instaladoras de climatización residencial:** Solicitud rápida de precios de equipos para viviendas unifamiliares y pequeñas comunidades, comparando las ofertas de distribuidores locales para máxima rentabilidad en proyectos de pequeño formato.
+- **Contratistas de grandes proyectos hoteleros y de oficinas:** Gestión de RFQs para paquetes completos de equipos HVAC de alta potencia, con seguimiento del estado de cada oferta y recordatorios automáticos a distribuidores que no han respondido en plazo.
+- **Empresas de mantenimiento de instalaciones:** Cotización rápida de equipos de reposición y recambios críticos cuando falla un equipo en una instalación de cliente, minimizando el tiempo de espera hasta la reparación.
+- **Departamentos de compras de facility management:** Comparación sistemática de precios de equipos estándar (fancoils, splits, VRV) para proyectos de reforma o ampliación de instalaciones de un parque de edificios de clientes.
+- **Ingeniería y proyectos:** Obtención de precios preliminares de equipos en fase de proyecto para elaborar presupuestos de instalación más precisos antes de presentar la oferta al cliente final.
+- **Análisis de rentabilidad por proyecto:** Seguimiento del coste real de equipos adquiridos vs. el coste presupuestado en la oferta al cliente, para identificar desviaciones y mejorar la precisión de los presupuestos futuros.
+
+## Configuración básica
+
+Configura el servidor con el catálogo de distribuidores de tu empresa y las plantillas de solicitud de oferta:
+
+```bash
+npx @marceausolutions/hvac-quotes-mcp
+```
+
+Añade la configuración en tu cliente MCP:
+
+```json
+{
+  "mcpServers": {
+    "hvac-quotes": {
+      "command": "npx",
+      "args": ["@marceausolutions/hvac-quotes-mcp"],
+      "env": {
+        "HVAC_API_KEY": "tu-api-key",
+        "COMPANY_NAME": "Nombre de Tu Empresa Instaladora",
+        "COMPANY_EMAIL": "compras@tu-empresa.es",
+        "DEFAULT_CURRENCY": "EUR",
+        "DEFAULT_DELIVERY_DAYS": "14"
+      }
+    }
+  }
+}
+```
+
+Durante la configuración inicial, introduce los contactos y condiciones de cada distribuidor habitual en el panel de administración del servidor. Puedes importar tu lista de distribuidores desde un fichero CSV con los campos nombre, email de contacto, teléfono y condiciones de pago habituales para agilizar el proceso de alta inicial.

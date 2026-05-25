@@ -1,0 +1,47 @@
+---
+name: Facebook Ads MCP
+slug: facebook-ads-mcp
+description: Acceso programático a los datos y funciones de gestión de Facebook Ads para crear, monitorear y optimizar campañas de publicidad en Meta.
+category: marketing
+tags: [facebook-ads, meta, publicidad, redes-sociales, marketing]
+official: false
+github: https://github.com/gomarble-ai/facebook-ads-mcp-server
+---
+
+## Descripción general
+
+Facebook Ads MCP proporciona acceso programático completo a la plataforma de publicidad de Meta, permitiendo a tu asistente de IA gestionar campañas de Facebook Ads con la misma profundidad que lo haría un especialista en publicidad digital. Este servidor conecta directamente con la API de Marketing de Meta para consultar, crear y modificar campañas, conjuntos de anuncios y creatividades sin necesidad de acceder manualmente al Administrador de Anuncios de Facebook.
+
+Para negocios tradicionales como restaurantes, tiendas de ropa, centros de estética o academias locales, Facebook sigue siendo una de las plataformas publicitarias más efectivas para llegar a audiencias locales con alta precisión geográfica y demográfica. Sin embargo, gestionar campañas de forma eficiente requiere un seguimiento constante de métricas, ajustes frecuentes de presupuesto y creatividad, y un conocimiento profundo de las opciones de segmentación disponibles. Este servidor democratiza ese acceso, convirtiendo al asistente de IA en un gestor de publicidad disponible las 24 horas.
+
+El servidor permite realizar análisis de rendimiento detallados, comparar el coste por resultado entre diferentes conjuntos de anuncios, identificar las creatividades que generan mejor retorno y ajustar presupuestos en tiempo real. También facilita la creación de audiencias personalizadas a partir de listas de clientes existentes y la configuración de audiencias similares para captar nuevos clientes con perfiles similares a los mejores compradores actuales del negocio.
+
+## Casos de uso para negocios
+
+- **Restaurantes y bares:** Lanza campañas geolocalidas para promocionar menús especiales, eventos nocturnos o happy hours a residentes en un radio de 5-10 km del establecimiento con segmentación por edad e intereses gastronómicos.
+- **Tiendas de moda y boutiques:** Crea campañas de catálogo dinámico que muestren automáticamente a cada usuario los productos que ha visitado en la web, con retargeting personalizado por categoría e historial de navegación.
+- **Centros de estética y spa:** Segmenta campañas por género, edad y ubicación para promocionar tratamientos específicos en temporadas clave como San Valentín, Navidad o el inicio del verano.
+- **Academias y centros de formación:** Diseña campañas de captación de estudiantes para periodos de matrícula, con audiencias segmentadas por intereses educativos y nivel de estudios completado.
+- **Concesionarios y autoescuelas:** Utiliza audiencias de intención de compra para impactar a personas que están investigando vehículos o trámites relacionados con la conducción en la zona de influencia del negocio.
+- **Clínicas y servicios de salud:** Crea campañas de concienciación sobre servicios preventivos con segmentación precisa por demografía, garantizando el cumplimiento de las políticas publicitarias de Meta para contenido sanitario.
+
+## Configuración básica
+
+Necesitas un Token de Acceso de la API de Marketing de Meta con los permisos `ads_management` y `ads_read`. Obtén el token a través de Facebook for Developers:
+
+```json
+{
+  "mcpServers": {
+    "facebook-ads": {
+      "command": "npx",
+      "args": ["-y", "@gomarble/facebook-ads-mcp-server"],
+      "env": {
+        "META_ACCESS_TOKEN": "tu-token-de-acceso",
+        "META_AD_ACCOUNT_ID": "act_123456789"
+      }
+    }
+  }
+}
+```
+
+El ID de la cuenta publicitaria (`act_XXXXXXXXX`) lo encontrarás en la esquina superior izquierda del Administrador de Anuncios de Facebook. Una vez configurado, puedes pedir al asistente que analice el rendimiento de las últimas campañas, ajuste presupuestos o cree un nuevo conjunto de anuncios con los parámetros que especifiques.

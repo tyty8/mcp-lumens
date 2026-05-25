@@ -1,0 +1,57 @@
+---
+name: Extracción de Documentos PDF MCP
+slug: extraccion-documentos-pdf-mcp
+description: Extracción inteligente de datos de PDFs, imágenes, DOCX y PPTX con OCR en 109 idiomas mediante la API de MinerU para digitalizar documentos físicos de cualquier tipo de negocio.
+category: productivity
+tags: [pdf, ocr, extraccion, documentos, digitalizacion]
+official: false
+github: https://github.com/linxule/mineru-mcp
+---
+
+## Descripción general
+
+El servidor Extracción de Documentos PDF MCP implementa MinerU, el motor de extracción de contenido de documentos de alta precisión desarrollado por Shanghai AI Laboratory. MinerU es uno de los sistemas de extracción de documentos más avanzados disponibles como código abierto, con capacidad para extraer texto, tablas, fórmulas y estructuras de documentos complejos como informes científicos, estados financieros, manuales técnicos y formularios empresariales con una fidelidad que supera a muchas soluciones comerciales.
+
+La cobertura OCR en 109 idiomas es especialmente relevante para empresas que trabajan con documentación internacional o con idiomas que tienen sistemas de escritura complejos (árabe, chino, japonés, hebreo). La precisión del OCR de MinerU en documentos bien escaneados es notablemente alta, lo que lo convierte en una solución viable para la digitalización de archivos documentales físicos de empresas que llevan años acumulando papel sin digitalizarlo. Un archivo de contratos, albaranes, correspondencia o fichas de cliente en papel puede ser digitalizado y hacerse buscable mediante este servidor.
+
+La extracción de tablas es otra capacidad diferencial de MinerU. Las tablas en documentos PDF son notoriamente difíciles de extraer correctamente con herramientas básicas: los datos suelen extraerse en el orden incorrecto, sin respetar la estructura de filas y columnas, lo que hace el resultado inútil para procesamiento posterior. MinerU identifica la estructura tabular y extrae los datos respetando las celdas fusionadas, los encabezados de columna y la jerarquía de las filas, devolviendo los datos en formato estructurado listo para importar en una hoja de cálculo o base de datos.
+
+## Casos de uso para negocios
+
+- **Digitalización de archivos de contratos:** Extracción del contenido de contratos físicos escaneados para indexarlos en un sistema de gestión documental, haciéndolos buscables por nombre de parte, fecha, importe o cualquier otro dato clave del contrato.
+- **Procesamiento de facturas de proveedor en papel:** OCR y extracción estructurada de los datos de facturas físicas —número, fecha, emisor, líneas de detalle, totales e impuestos— para importarlos automáticamente al sistema de contabilidad sin introducción manual.
+- **Extracción de datos de informes financieros:** Extracción de las tablas de estados financieros (balance, cuenta de resultados, flujo de caja) de los informes anuales de clientes, proveedores o empresas del sector para análisis comparativo.
+- **Digitalización de fichas de cliente o paciente en papel:** Conversión de expedientes físicos en papel a formato digital estructurado, respetando la organización de los datos en los formularios originales para facilitar su importación al sistema de gestión.
+- **Procesamiento de documentación de importación/exportación:** Extracción de los datos de conocimientos de embarque, facturas comerciales, certificados de origen y listas de empaque en papel para registrarlos en los sistemas de tráfico y aduanas.
+- **Inventario de documentación de maquinaria:** Digitalización de manuales de operación y mantenimiento de maquinaria industrial en papel para hacerlos accesibles al equipo técnico desde el asistente de IA, que puede responder preguntas sobre procedimientos de mantenimiento.
+
+## Configuración básica
+
+MinerU requiere Python 3.9 o superior y una instalación de los modelos de detección de layout:
+
+```bash
+pip install mineru-mcp
+python -m mineru_mcp.download_models
+```
+
+Configura el servidor en tu cliente MCP:
+
+```json
+{
+  "mcpServers": {
+    "mineru-pdf": {
+      "command": "python",
+      "args": ["-m", "mineru_mcp.server"],
+      "env": {
+        "MINERU_API_URL": "https://api.mineru.net",
+        "MINERU_API_KEY": "tu-api-key",
+        "DEFAULT_OCR_LANGUAGE": "es",
+        "EXTRACT_TABLES": "true",
+        "OUTPUT_FORMAT": "markdown"
+      }
+    }
+  }
+}
+```
+
+MinerU puede funcionar en modo local (sin API key, usando los modelos descargados localmente) o mediante la API en la nube de MinerU para mayor velocidad y sin necesidad de GPU local. El modo local es gratuito pero requiere al menos 8GB de RAM y preferiblemente una GPU. Para procesamiento de alto volumen, la API en la nube es más práctica y escalable.

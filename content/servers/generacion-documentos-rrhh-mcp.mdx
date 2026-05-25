@@ -1,0 +1,47 @@
+---
+name: Generación de Documentos RRHH MCP
+slug: generacion-documentos-rrhh-mcp
+description: Genera documentos profesionales en PDF — cartas de oferta, contratos, certificados y reportes — a partir de plantillas reutilizables mediante la API de rendoc.
+category: hr
+tags: [documentos, pdf, contratos, ofertas, plantillas]
+official: false
+github: https://github.com/yoryocoruxo-ai/rendoc-mcp-server
+---
+
+## Descripción general
+
+Generación de Documentos RRHH MCP conecta tu asistente de IA con la API de rendoc para generar documentos profesionales en formato PDF a partir de plantillas reutilizables prediseñadas. El servidor cubre los documentos más habituales en la gestión de recursos humanos: cartas de oferta de trabajo, contratos laborales, certificados de empleo y salario, certificados de finalización de contrato, informes de evaluación del desempeño y cualquier otro documento de RRHH que siga una estructura estandarizada pero que requiera personalizarse con los datos específicos de cada empleado o situación.
+
+La generación manual de documentos de RRHH es una tarea repetitiva que consume tiempo valioso de los equipos de personas y administración. Cada nueva contratación requiere una carta de oferta, un contrato laboral y posiblemente materiales de bienvenida. Cada empleado que solicita un certificado de empleo activo necesita un documento generado y firmado. Cada fin de contrato conlleva la preparación de documentación de baja. En empresas con decenas o cientos de empleados, este volumen de documentación puede suponer horas de trabajo administrativo semanales que este servidor reduce a minutos.
+
+La arquitectura de plantillas reutilizables de rendoc permite diseñar una vez cada tipo de documento con la identidad visual y los textos estándar del negocio, y luego generar tantas copias personalizadas como sean necesarias sin esfuerzo adicional. El asistente de IA puede completar los campos variables de cada plantilla (nombre del empleado, puesto, salario, fecha de inicio, condiciones específicas del acuerdo) con la información proporcionada y generar el PDF final listo para ser firmado digitalmente o impreso.
+
+## Casos de uso para negocios
+
+- **Departamentos de RRHH de empresas medianas:** Automatiza la generación de cartas de oferta para nuevos empleados, contratos laborales estándar y certificados de empleo, reduciendo el tiempo administrativo dedicado a documentación de RRHH y garantizando la consistencia y profesionalidad de todos los documentos emitidos.
+- **Agencias de trabajo temporal (ETTs):** Genera contratos de puesta a disposición y contratos de interinidad de forma masiva, personalizando cada documento con los datos del trabajador, la empresa cliente, el puesto y las condiciones económicas específicas de cada asignación.
+- **Cadenas de hostelería y restauración:** Produce contratos de temporada y fijos discontinuos de forma eficiente durante los periodos de contratación masiva previos al inicio de temporada, con todos los documentos correctamente personalizados y listos para la firma en el mismo día.
+- **Clínicas y grupos médicos:** Genera contratos de médicos residentes, enfermeros y personal auxiliar con las cláusulas específicas del sector sanitario (guardias, disponibilidad, especialidad) y certifica el historial de empleados cuando solicitan certificados para otros empleadores o colegios profesionales.
+- **Academias y centros educativos:** Emite cartas de contratación para profesores colaboradores, certificados de impartición de cursos y documentos de renovación de contratos docentes, manteniendo un registro digital de toda la documentación generada por cada trabajador.
+- **Startups en fase de contratación:** Genera cartas de oferta profesionales con detalle del salario, equity, beneficios y condiciones del puesto, creando una primera impresión de seriedad y organización que contribuye a la aceptación de las ofertas por parte de los candidatos seleccionados.
+
+## Configuración básica
+
+Obtén tu API Key de rendoc registrándote en rendoc.io y configura el servidor con las credenciales y la ubicación de tus plantillas:
+
+```json
+{
+  "mcpServers": {
+    "rendoc": {
+      "command": "npx",
+      "args": ["-y", "@yoryocoruxo/rendoc-mcp-server"],
+      "env": {
+        "RENDOC_API_KEY": "tu-api-key-de-rendoc",
+        "RENDOC_TEMPLATE_DIR": "./templates/hr"
+      }
+    }
+  }
+}
+```
+
+Las plantillas se crean en el panel de rendoc utilizando un editor visual o importando documentos Word existentes. Una vez configuradas las plantillas con sus campos variables marcados, el asistente puede generar cualquier documento de RRHH proporcionando los datos necesarios en lenguaje natural. Los PDFs generados se pueden descargar directamente, enviar por email o almacenar en el repositorio de documentos de la empresa para su gestión centralizada.

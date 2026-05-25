@@ -1,0 +1,46 @@
+---
+name: Redes Sociales Multicanal MCP
+slug: redes-sociales-multicanal-mcp
+description: Programa y gestiona publicaciones en redes sociales en 10 plataformas — Instagram, Facebook, TikTok, X, LinkedIn, YouTube, Threads, Pinterest, Bluesky y Telegram.
+category: marketing
+tags: [redes-sociales, publicaciones, programacion, multicanal, marketing]
+official: false
+github: https://github.com/peturgeorgievv-factory/postfast-mcp
+---
+
+## Descripción general
+
+Redes Sociales Multicanal MCP integra la plataforma PostFast con tu asistente de IA para gestionar la publicación de contenido en 10 redes sociales simultáneamente: Instagram, Facebook, TikTok, X (antes Twitter), LinkedIn, YouTube, Threads, Pinterest, Bluesky y Telegram. Para cualquier negocio con presencia en múltiples plataformas, este servidor elimina la necesidad de acceder manualmente a cada red social para publicar el mismo contenido adaptado a cada formato, consolidando toda la gestión en una única interfaz de lenguaje natural.
+
+La fragmentación de la presencia digital es uno de los mayores retos para los negocios tradicionales que quieren mantener una comunicación activa en redes sociales. Un restaurante puede necesitar publicar en Instagram para mostrar sus platos, en Facebook para conectar con clientes locales de mayor edad, en LinkedIn para comunicar noticias de empresa y en Google para actualizar su perfil de negocio. Gestionar cada canal de forma independiente, adaptando el formato y el tono del mensaje a cada plataforma, requiere un tiempo que pocos propietarios de pequeños negocios tienen disponible.
+
+Este servidor resuelve ese problema permitiendo que el asistente de IA reciba una descripción del contenido que se quiere publicar y se encargue de adaptarlo y programarlo en todas las plataformas relevantes para ese negocio. Además de la programación de contenido, el servidor gestiona el calendario editorial, permite consultar el historial de publicaciones y facilita la coordinación de campañas multicanal con fechas de inicio y fin específicas, garantizando la coherencia del mensaje de marca en todos los canales.
+
+## Casos de uso para negocios
+
+- **Restaurantes y bares:** Publica simultáneamente en Instagram, Facebook y TikTok las fotos y vídeos del plato del día, los eventos especiales y las promociones de fin de semana, adaptando automáticamente el formato y los hashtags a cada plataforma.
+- **Tiendas de moda y retail:** Coordina el lanzamiento de nuevas colecciones en todas las redes sociales de forma simultánea, con mensajes adaptados al tono de cada plataforma y programación en los horarios de mayor audiencia de cada canal.
+- **Hoteles y alojamientos turísticos:** Mantiene activa la presencia en Instagram (contenido visual de las instalaciones), Facebook (promociones y eventos), LinkedIn (noticias corporativas y MICE) y Pinterest (inspiración de viaje y destino), todo desde un único punto de gestión.
+- **Despachos de abogados y consultoras:** Publica artículos de divulgación legal o de gestión empresarial en LinkedIn, Facebook y Threads de forma coordinada, estableciendo al equipo como referente de conocimiento en su especialidad sin duplicar el esfuerzo de publicación.
+- **Academias y formadores:** Distribuye vídeos de clase y testimonios de alumnos en YouTube, Instagram, TikTok y LinkedIn simultáneamente, maximizando el alcance del contenido educativo entre distintas audiencias y grupos de edad.
+- **Franquicias y cadenas de negocio:** Centraliza la comunicación de la marca publicando contenido corporativo coherente en todos los canales desde la sede, mientras las franquicias locales gestionan su propio contenido adaptado a su comunidad.
+
+## Configuración básica
+
+Configura PostFast con tus credenciales de API y conecta las cuentas de redes sociales en el panel de PostFast antes de iniciar el servidor:
+
+```json
+{
+  "mcpServers": {
+    "postfast": {
+      "command": "npx",
+      "args": ["-y", "@postfast/mcp"],
+      "env": {
+        "POSTFAST_API_KEY": "tu-api-key-de-postfast"
+      }
+    }
+  }
+}
+```
+
+Accede a tu cuenta de PostFast en postfast.io, conecta las cuentas de cada red social que quieras gestionar (el proceso de autorización OAuth se realiza individualmente para cada plataforma) y obtén la API Key en la sección de desarrolladores. Una vez configurado, el asistente puede programar publicaciones individuales, crear calendarios editoriales completos o publicar contenido inmediatamente en todas las plataformas conectadas.

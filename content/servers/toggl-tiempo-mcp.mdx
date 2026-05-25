@@ -1,0 +1,56 @@
+---
+name: Toggl Track MCP
+slug: toggl-tiempo-mcp
+description: Integración con Toggl Track para iniciar/detener temporizadores, gestionar registros de tiempo, rastrear tiempo por proyecto y obtener resúmenes diarios.
+category: finance
+tags: [toggl, tiempo, productividad, horas, facturacion]
+official: false
+github: https://github.com/louis030195/toggl-mcp
+---
+
+## Descripción general
+
+Toggl Track MCP integra tu asistente de IA con Toggl Track, la aplicación de seguimiento de tiempo más sencilla y popular entre freelancers, autónomos y pequeños equipos. La filosofía de Toggl es que el registro del tiempo debe ser tan fácil y sin fricción que realmente se haga, y este servidor lleva ese principio un paso más allá: el asistente de IA gestiona los temporizadores de forma automática, detectando cuándo empiezas y terminas tareas sin que tengas que pensar en ello.
+
+La integración conversacional hace que el seguimiento del tiempo sea completamente natural. En lugar de abrir la app de Toggl y navegar para seleccionar proyecto y tarea, simplemente describes al asistente en qué vas a trabajar: "empiezo con la propuesta de la farmacia" o "termino la reunión con el cliente". El asistente gestiona el temporizador, asigna el tiempo al proyecto correcto y mantiene el registro actualizado en Toggl sin ninguna acción adicional por tu parte.
+
+Los resúmenes diarios y semanales generados por el asistente a partir de los datos de Toggl son especialmente útiles para entender cómo se distribuye realmente el tiempo de trabajo. Muchos profesionales se sorprenden al ver cuánto tiempo dedican a tareas administrativas o interrupciones comparado con el trabajo productivo facturable. Con esta visibilidad, es posible tomar decisiones informadas sobre qué delegar, qué automatizar o qué cobrar de forma diferente.
+
+## Casos de uso para negocios
+
+- **Traductores e intérpretes:** Registro preciso del tiempo dedicado a cada encargo, con capacidad de generar informes de tiempo por cliente y tipo de servicio para una facturación exacta y transparente.
+- **Asesores y consultores independientes:** Control del tiempo facturable frente al tiempo de gestión no facturable, con identificación de los clientes más rentables por hora efectiva de trabajo.
+- **Escritores y periodistas freelance:** Seguimiento del tiempo de investigación, redacción y revisión por encargo, facilitando la negociación de tarifas basada en datos reales de tiempo invertido.
+- **Diseñadores y creativos:** Registro del tiempo de ideación, producción y revisiones por proyecto, con visibilidad clara de cuáles son los proyectos que más tiempo consumen en relación a lo que se cobra.
+- **Coaches y formadores:** Control del tiempo de preparación de sesiones y materiales frente al tiempo de sesión directa con clientes, para una valoración correcta del coste real del servicio.
+- **Pequeños equipos de servicios:** Seguimiento del tiempo de todo el equipo por proyecto y cliente, con informes consolidados que permiten analizar la rentabilidad real de cada cuenta.
+
+## Configuración básica
+
+El servidor requiere una cuenta de Toggl Track y tu API key:
+
+```bash
+git clone https://github.com/louis030195/toggl-mcp
+cd toggl-mcp
+npm install
+npm run build
+```
+
+Configura el servidor con tu API key de Toggl:
+
+```json
+{
+  "mcpServers": {
+    "toggl": {
+      "command": "node",
+      "args": ["dist/index.js"],
+      "env": {
+        "TOGGL_API_TOKEN": "tu-api-token-de-toggl",
+        "TOGGL_WORKSPACE_ID": "tu-workspace-id"
+      }
+    }
+  }
+}
+```
+
+Encuentra tu API token de Toggl en la configuración de tu perfil (toggl.com/profile). El Workspace ID aparece en la URL cuando estás en el panel principal de Toggl. Con la cuenta gratuita de Toggl Track tienes acceso a todas las funcionalidades básicas de seguimiento de tiempo; los planes de pago añaden informes avanzados y funciones de equipo.

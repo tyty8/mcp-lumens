@@ -1,0 +1,43 @@
+---
+name: Búsqueda Airbnb MCP
+slug: busqueda-airbnb-mcp
+description: Busca listados de Airbnb y obtén información detallada de alojamientos para planificación de viajes y recomendaciones a clientes.
+category: travel
+tags: [airbnb, alojamiento, viajes, busqueda, hospedaje]
+official: false
+github: https://github.com/openbnb-org/mcp-server-airbnb
+---
+
+## Descripción general
+
+Búsqueda Airbnb MCP permite a agencias de viajes, concierges y asesores turísticos acceder directamente a los listados de Airbnb desde su asistente de IA. Con este servidor MCP, es posible buscar alojamientos según destino, fechas, número de huéspedes y otras preferencias, obteniendo información detallada de cada propiedad sin necesidad de navegar manualmente por la plataforma.
+
+El servidor extrae datos clave de cada listado, incluyendo descripción, fotografías, comodidades disponibles, política de cancelación, precio por noche y valoraciones de huéspedes anteriores. Esto permite a los asesores de viajes ofrecer recomendaciones personalizadas y bien fundamentadas a sus clientes en cuestión de segundos, mejorando significativamente la calidad y velocidad del servicio.
+
+Para hoteles boutique, albergues y posadas que compiten con propiedades de Airbnb en el mismo destino, este servidor también resulta valioso para realizar análisis de competencia, comparar precios de mercado y entender qué comodidades y características valoran más los viajeros en determinadas zonas turísticas.
+
+## Casos de uso para negocios
+
+- **Agencias de viajes:** Buscar y comparar alojamientos en Airbnb para clientes que prefieren apartamentos o casas completas frente a hoteles tradicionales, ofreciendo opciones personalizadas al instante.
+- **Concierges de hotel:** Recomendar alojamientos alternativos en Airbnb para acompañantes o grupos numerosos cuando el hotel no tiene capacidad suficiente.
+- **Organizadores de eventos:** Encontrar casas rurales o villas con capacidad para grupos en destinos específicos para retiros corporativos, despedidas de soltera o reuniones familiares.
+- **Gestores de alquiler vacacional:** Analizar la competencia local en Airbnb para ajustar precios, mejorar descripciones y optimizar la presentación de sus propias propiedades.
+- **Asesores de relocation:** Ayudar a clientes que se trasladan por trabajo a encontrar alojamiento temporal en Airbnb mientras buscan vivienda permanente.
+- **Agencias de lunamiel:** Identificar alojamientos románticos y exclusivos en Airbnb con características especiales como jacuzzi, vistas al mar o ubicaciones privilegiadas.
+
+## Configuración básica
+
+Hostaway Airbnb MCP no requiere credenciales de API propias, ya que accede a información pública de la plataforma. Para instalarlo en Claude Desktop:
+
+```json
+{
+  "mcpServers": {
+    "airbnb": {
+      "command": "npx",
+      "args": ["-y", "@openbnb/mcp-server-airbnb", "--ignore-robots-txt"]
+    }
+  }
+}
+```
+
+Una vez configurado, puedes realizar búsquedas con instrucciones como: "Busca apartamentos en Barcelona para 4 personas del 15 al 20 de agosto con piscina y valoración mínima de 4,5 estrellas".

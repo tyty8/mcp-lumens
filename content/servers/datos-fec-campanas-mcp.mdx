@@ -1,0 +1,46 @@
+---
+name: Datos FEC Financiamiento de Campaña MCP
+slug: datos-fec-campanas-mcp
+description: Consulta datos de financiamiento de campañas de la Comisión Electoral Federal de EE.UU. — busca candidatos, rastrea donaciones, analiza gastos y monitorea actividad de Super PACs.
+category: legal
+tags: [fec, campanas, politica, donaciones, lobbying]
+official: false
+github: https://github.com/sh-patterson/fec-mcp-server
+---
+
+## Descripción general
+
+Datos FEC Financiamiento de Campaña MCP proporciona acceso completo a la base de datos pública de la Comisión Electoral Federal de EE.UU. (FEC), el organismo federal responsable de regular el financiamiento de campañas políticas en Estados Unidos. Este servidor permite buscar candidatos, rastrear donaciones individuales y corporativas, analizar gastos de campaña, monitorizar la actividad de los Comités de Acción Política (PACs) y Super PACs, y realizar investigaciones sobre el flujo de dinero en las campañas electorales americanas.
+
+Para empresas con intereses en el mercado estadounidense, el análisis de los datos de financiamiento de campañas de la FEC puede ser una herramienta valiosa de inteligencia política y de negocio. Conocer qué candidatos están recibiendo apoyo financiero de los principales actores de tu sector, qué empresas de la competencia están realizando donaciones o contribuciones a candidatos con posiciones relevantes para la industria, y cómo están evolucionando los patrones de gasto en campañas relacionadas con regulaciones que afectan a tu sector son informaciones con valor estratégico para la toma de decisiones.
+
+La transparencia del sistema de financiamiento de campañas americano, articulada a través de los informes que los comités deben presentar a la FEC, genera un volumen enorme de datos estructurados que este servidor hace accesibles y consultables de forma eficiente. Consultores de asuntos públicos, departamentos de relaciones institucionales, investigadores y periodistas son los principales usuarios de esta información, que el asistente de IA puede analizar y sintetizar en informes ejecutivos sobre el panorama político y de influencia en sectores específicos.
+
+## Casos de uso para negocios
+
+- **Despachos de abogados y consultoras de asuntos públicos:** Investiga los patrones de financiamiento de candidatos relevantes para los intereses regulatorios de los clientes, identifica los principales donantes sectoriales y elabora informes de contexto político para orientar estrategias de lobbying.
+- **Empresas con operaciones reguladas en EE.UU.:** Monitoriza las contribuciones de los principales competidores a candidatos con posiciones relevantes para la regulación del sector, obteniendo inteligencia sobre el posicionamiento político de los actores clave de la industria.
+- **Periodistas e investigadores:** Rastrea el flujo de financiamiento hacia candidatos o partidos de un estado o ciclo electoral específico, identifica donantes recurrentes de gran volumen y analiza la actividad de Super PACs vinculados a intereses corporativos concretos.
+- **Organizaciones sin ánimo de lucro y think tanks:** Analiza el alineamiento entre las posiciones políticas de candidatos o electos y los patrones de financiamiento que reciben de diferentes sectores de actividad económica para informar investigaciones sobre captura regulatoria o influencia política.
+- **Inversores y fondos de inversión:** Estudia el paisaje político y de influencia de los sectores en los que se plantea invertir, evaluando el riesgo regulatorio a través del análisis de qué posiciones políticas sobre regulación sectorial están siendo financiadas y por quién.
+- **Consultoras de riesgo geopolítico:** Incorpora el análisis de financiamiento de campañas como una capa adicional en los informes de riesgo político para clientes con inversiones o intereses comerciales en EE.UU., enriqueciendo el análisis con datos verificados y de fuente oficial.
+
+## Configuración básica
+
+La API de datos de la FEC es pública y requiere una clave de API gratuita obtenida en api.open.fec.gov:
+
+```json
+{
+  "mcpServers": {
+    "fec-data": {
+      "command": "npx",
+      "args": ["-y", "fec-mcp-server"],
+      "env": {
+        "FEC_API_KEY": "tu-api-key-de-la-fec"
+      }
+    }
+  }
+}
+```
+
+Regístrate en api.data.gov para obtener tu API Key gratuita con acceso a la base de datos de la FEC. Una vez configurado, el asistente puede buscar candidatos por nombre, estado o ciclo electoral, rastrear las donaciones recibidas de un sector industrial específico, analizar los gastos de campaña de un comité determinado y generar informes sobre la actividad de Super PACs en torno a una elección o tema regulatorio concreto.

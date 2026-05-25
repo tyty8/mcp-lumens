@@ -1,0 +1,55 @@
+---
+name: Datos Web Estructurados MCP
+slug: datos-web-estructurados-mcp
+description: APIs de datos estructurados para Google Shopping, Maps, Trends, Vuelos, Amazon, Airbnb, Zillow y Yelp con más de 40 herramientas para inteligencia de mercado y análisis competitivo.
+category: productivity
+tags: [google-shopping, yelp, amazon, datos, market-intelligence]
+official: false
+github: https://github.com/HasData/hasdata-mcp
+---
+
+## Descripción general
+
+El servidor Datos Web Estructurados MCP, desarrollado por HasData, ofrece acceso a más de 40 herramientas para extraer datos estructurados de las principales plataformas de internet en formato limpio y procesable. La amplitud de las fuentes cubiertas es excepcional: Google Shopping, Google Maps, Google Trends, Google Flights, Amazon, Airbnb, Zillow y Yelp son solo algunas de las plataformas accesibles, convirtiendo este servidor en una suite completa de inteligencia de mercado para cualquier tipo de negocio.
+
+HasData actúa como intermediario que gestiona la extracción de datos de estas plataformas de forma fiable y a escala, resolviendo los problemas técnicos de scraping que hacen que los enfoques directos sean frágiles —cambios en el HTML, protecciones anti-bot, limitaciones de velocidad— y devolviendo los datos en formato JSON estructurado y normalizado que el asistente de IA puede procesar directamente. Esto significa que el usuario final obtiene los datos de la fuente sin necesidad de mantener ninguna infraestructura técnica de scraping.
+
+Para los negocios de ecommerce, la combinación de datos de Google Shopping y Amazon en un único servidor es especialmente potente. Pueden monitorear cómo aparecen sus productos en comparación con los competidores en los resultados de shopping, analizar qué otros vendedores compiten en los mismos términos de búsqueda y a qué precios, y entender cómo varían las tendencias de búsqueda de sus categorías de producto a lo largo del tiempo mediante Google Trends. Esta inteligencia combinada permite estrategias de pricing y marketing mucho más informadas.
+
+## Casos de uso para negocios
+
+- **Minoristas de moda y complementos:** Monitoreo en Google Shopping de los precios de los productos más competitivos de su categoría, identificando en tiempo real cuándo un competidor hace una bajada de precio significativa que podría afectar a las ventas propias.
+- **Hostelería y alojamiento:** Análisis de precios de la competencia en Google Hotels y seguimiento de las valoraciones y reseñas de los principales competidores en Google Maps, para identificar sus fortalezas y debilidades percibidas por los clientes.
+- **Agencias de viaje y turismo:** Monitoreo de tarifas aéreas en Google Flights para destinos clave y seguimiento de precios de alquileres vacacionales en Airbnb para los destinos que el negocio comercializa, ofreciendo a los clientes información de precio actualizada.
+- **Sector inmobiliario:** Análisis de los listados de propiedades en Zillow o Google Maps con datos de precios, características y tiempo en mercado para proporcionar valoraciones de mercado más precisas a los clientes compradores y vendedores.
+- **Restaurantes y bares:** Seguimiento de la posición y las valoraciones del negocio en Yelp y Google Maps en comparación con los competidores del barrio, con alertas cuando un competidor recibe una valoración media significativamente superior.
+- **Análisis de tendencias de producto:** Uso de Google Trends para identificar el crecimiento o declive del interés en los productos o servicios del negocio, detectar estacionalidad precisa y comparar con la tendencia de los competidores.
+
+## Configuración básica
+
+Regístrate en HasData para obtener tu clave de API con el volumen de créditos apropiado para tu uso:
+
+```bash
+npx @hasdata/hasdata-mcp
+```
+
+Configura las credenciales en tu cliente MCP:
+
+```json
+{
+  "mcpServers": {
+    "hasdata": {
+      "command": "npx",
+      "args": ["@hasdata/hasdata-mcp"],
+      "env": {
+        "HASDATA_API_KEY": "tu-api-key",
+        "DEFAULT_COUNTRY": "ES",
+        "DEFAULT_LANGUAGE": "es",
+        "DEFAULT_CURRENCY": "EUR"
+      }
+    }
+  }
+}
+```
+
+HasData usa un modelo de créditos donde cada consulta consume un número de créditos variable según la fuente de datos y la complejidad de la extracción. Las consultas a Google Shopping y Google Maps son generalmente las más económicas, mientras que las de Amazon con detalles completos de vendedores consumen más créditos. Revisa la documentación de precios en hasdata.io para planificar el consumo mensual según tu caso de uso.

@@ -34,7 +34,7 @@ export default async function ServerPage({
       {/* Breadcrumb */}
       <nav className="flex items-center gap-2 text-sm text-muted-foreground mb-8 font-mono">
         <Link href="/servers" className="hover:text-foreground transition-colors">
-          Servers
+          Servidores
         </Link>
         <span>&gt;</span>
         <span className="text-foreground">{meta.name}</span>
@@ -46,7 +46,7 @@ export default async function ServerPage({
           <h1 className="text-4xl font-bold text-foreground">{meta.name}</h1>
           {meta.official && (
             <span className="text-sm px-2 py-0.5 rounded bg-green-500/10 text-green-500 border border-green-500/20 font-mono">
-              official
+              oficial
             </span>
           )}
           <span className="text-sm px-2 py-0.5 rounded border border-border text-muted-foreground font-mono">
@@ -65,7 +65,7 @@ export default async function ServerPage({
           {content.trim() ? (
             <MdxContent source={content} />
           ) : (
-            <p className="text-muted-foreground font-mono text-sm">No additional documentation.</p>
+            <p className="text-muted-foreground font-mono text-sm">Sin documentación adicional.</p>
           )}
         </div>
 
@@ -75,7 +75,7 @@ export default async function ServerPage({
           {meta.install && (
             <div>
               <h2 className="text-sm font-semibold text-foreground mb-2 uppercase tracking-wider font-mono">
-                Install
+                Instalar
               </h2>
               <pre className="bg-card border border-border rounded-md p-3 overflow-x-auto font-mono text-sm text-green-400 select-all">
                 <code>{meta.install}</code>
@@ -87,7 +87,7 @@ export default async function ServerPage({
           {meta.tags.length > 0 && (
             <div>
               <h2 className="text-sm font-semibold text-foreground mb-2 uppercase tracking-wider font-mono">
-                Tags
+                Etiquetas
               </h2>
               <div className="flex flex-wrap gap-1.5">
                 {meta.tags.map(tag => (
@@ -106,7 +106,7 @@ export default async function ServerPage({
           {meta.github && (
             <div>
               <h2 className="text-sm font-semibold text-foreground mb-2 uppercase tracking-wider font-mono">
-                Repository
+                Repositorio
               </h2>
               <a
                 href={meta.github}
@@ -122,7 +122,7 @@ export default async function ServerPage({
           {/* Category */}
           <div>
             <h2 className="text-sm font-semibold text-foreground mb-2 uppercase tracking-wider font-mono">
-              Category
+              Categoría
             </h2>
             <Link
               href={`/servers?category=${meta.category}`}
@@ -137,7 +137,7 @@ export default async function ServerPage({
       {/* Back link */}
       <div className="mt-12 pt-8 border-t border-border">
         <Link href="/servers" className="text-primary hover:underline text-sm font-mono text-green-500">
-          &lt;- All Servers
+          &lt;- Todos los Servidores
         </Link>
       </div>
     </div>

@@ -1,0 +1,56 @@
+---
+name: Google Workspace MCP
+slug: google-workspace-mcp
+description: Suite completa de Google Workspace con soporte para Calendar, Drive, Gmail, Docs, Forms, Slides y Sheets — gestiona todo tu entorno de trabajo desde un asistente de IA.
+category: communication
+tags: [google-workspace, gmail, drive, sheets, docs]
+official: false
+github: https://github.com/taylorwilsdon/google_workspace_mcp
+---
+
+## Descripción general
+
+Google Workspace MCP es la integración más completa disponible para empresas que operan en el ecosistema de Google, conectando en un único servidor todas las herramientas del paquete de productividad: Gmail para comunicaciones, Calendar para la agenda, Drive para el almacenamiento, Docs y Slides para documentos, Sheets para hojas de cálculo y Forms para formularios y encuestas. El resultado es un asistente de IA que puede moverse con fluidez por todo el entorno de trabajo de Google, realizando tareas que abarcan múltiples aplicaciones en una sola interacción.
+
+Para un pequeño negocio que ya usa Google Workspace como su infraestructura principal — lo cual incluye a millones de empresas en todo el mundo — este servidor transforma radicalmente la forma de trabajar. En lugar de abrir Gmail, luego Sheets, luego Drive y luego Calendar para completar una tarea compleja, el asistente coordina todas estas herramientas de forma invisible. Un ejemplo práctico: gestionar el proceso de incorporación de un nuevo empleado creando la carpeta en Drive, compartiendo los documentos necesarios, añadiendo las fechas de formación al calendario y enviando el email de bienvenida, todo en una sola instrucción.
+
+La capacidad de trabajar con Google Forms abre posibilidades especialmente interesantes para negocios tradicionales: el asistente puede crear encuestas de satisfacción después de cada servicio, generar formularios de inscripción para eventos o recopilar pedidos de clientes, y luego procesar automáticamente las respuestas recopiladas en una hoja de Sheets.
+
+## Casos de uso para negocios
+
+- **Empresas de formación y academias:** Creación de materiales de curso en Docs y Slides, gestión del calendario de clases, inscripciones mediante Forms y seguimiento del progreso en Sheets, todo coordinado desde el asistente de IA.
+- **Agencias de recursos humanos:** Gestión del proceso de selección con carpetas en Drive para cada candidato, programación de entrevistas en Calendar, envío de comunicaciones por Gmail y seguimiento del proceso en Sheets.
+- **Restaurantes con catering y eventos:** Creación de presupuestos en Docs, coordinación de fechas en Calendar, gestión de menús y costes en Sheets y comunicación con clientes por Gmail desde una interfaz unificada.
+- **Clínicas y centros médicos:** Formularios Forms para el historial inicial de pacientes, documentación clínica en Docs, agenda en Calendar y facturación en Sheets, con Gmail para comunicaciones con pacientes y aseguradoras.
+- **Consultorías y despachos profesionales:** Gestión de proyectos con documentación en Drive, propuestas en Docs, seguimiento en Sheets, reuniones en Calendar y toda la comunicación por Gmail coordinada por el asistente.
+- **Tiendas y negocios de retail:** Control de inventario en Sheets, pedidos a proveedores por Gmail, documentos de recepción en Drive y planificación de turnos en Calendar gestionados de forma integrada.
+
+## Configuración básica
+
+El servidor requiere credenciales OAuth2 de Google con acceso a los servicios de Google Workspace que vayas a usar:
+
+```bash
+git clone https://github.com/taylorwilsdon/google_workspace_mcp
+cd google_workspace_mcp
+pip install -r requirements.txt
+```
+
+Configura el acceso en tu cliente MCP:
+
+```json
+{
+  "mcpServers": {
+    "google-workspace": {
+      "command": "python",
+      "args": ["server.py"],
+      "env": {
+        "GOOGLE_CLIENT_ID": "tu-client-id.apps.googleusercontent.com",
+        "GOOGLE_CLIENT_SECRET": "tu-client-secret",
+        "GOOGLE_CREDENTIALS_PATH": "/ruta/a/credentials.json"
+      }
+    }
+  }
+}
+```
+
+En Google Cloud Console, crea un proyecto, habilita las APIs de Gmail, Calendar, Drive, Docs y Sheets, y descarga el archivo `credentials.json`. La primera ejecución abrirá el navegador para autorizar el acceso a tu cuenta de Google Workspace.

@@ -1,0 +1,55 @@
+---
+name: Teamwork Gestión de Proyectos MCP
+slug: gestion-proyectos-teamwork-mcp
+description: Plataforma de gestión de proyectos y recursos para mantener proyectos de clientes en plazo, gestionar recursos y rastrear rentabilidad por encargo o proyecto.
+category: productivity
+tags: [proyectos, teamwork, recursos, clientes, gestion]
+official: false
+github: https://github.com/teamwork/mcp
+---
+
+## Descripción general
+
+El servidor Teamwork Gestión de Proyectos MCP ofrece integración completa con Teamwork.com, una de las plataformas líderes de gestión de proyectos diseñada específicamente para agencias y empresas que trabajan por proyectos de cliente. A diferencia de las herramientas genéricas de gestión de proyectos, Teamwork está orientada a las necesidades específicas de agencias de marketing, consultoras, estudios de diseño y empresas de desarrollo de software que necesitan gestionar múltiples proyectos de clientes simultáneamente con control preciso del tiempo invertido y la rentabilidad de cada encargo.
+
+La gestión de recursos es una de las funcionalidades más potentes que este servidor pone al alcance conversacional. Saber en tiempo real quién está disponible para asumir nuevo trabajo, quién está al 100% de capacidad y dónde están los cuellos de botella en el equipo es fundamental para planificar correctamente la incorporación de nuevos proyectos sin generar sobrecarga en el equipo. El asistente puede responder a preguntas como "¿Tiene capacidad el equipo de diseño para asumir el nuevo proyecto de Empresa X a partir del próximo lunes?" con información real del planning actual.
+
+El seguimiento de la rentabilidad por proyecto es el tercer pilar diferencial de este servidor. Para cualquier empresa que trabaje por proyectos, conocer en tiempo real el margen de cada encargo —horas invertidas vs. horas presupuestadas, costes externos incurridos vs. provisión— permite tomar decisiones correctivas a tiempo, antes de que un proyecto se convierta en una pérdida. El asistente puede generar alertas automáticas cuando un proyecto supera el 80% de las horas presupuestadas pero solo tiene completado el 50% del trabajo, un indicador claro de que hay un problema que resolver.
+
+## Casos de uso para negocios
+
+- **Agencias de marketing digital:** Gestión conversacional de todos los proyectos de clientes activos — campañas, webs, redes sociales — con vista unificada del estado de las tareas, las fechas de entrega próximas y el consumo de horas por cliente.
+- **Estudios de diseño y arquitectura:** Seguimiento del avance de cada proyecto en sus distintas fases (anteproyecto, proyecto básico, proyecto de ejecución, dirección de obra) con control del tiempo invertido por cada profesional del equipo.
+- **Consultoras de empresa y RRHH:** Gestión del pipeline de proyectos con control de la disponibilidad de los consultores para asignar correctamente el equipo a cada nuevo encargo sin sobrecargar a los profesionales más demandados.
+- **Empresas de desarrollo de software:** Seguimiento de sprints y milestones de proyectos de desarrollo con alertas sobre tareas bloqueadas, bugs críticos sin asignar y fechas de entrega en riesgo.
+- **Directivos y socios de empresa:** Informes ejecutivos semanales sobre el estado del portfolio de proyectos, el nivel de ocupación del equipo y las alertas de rentabilidad, generados en segundos sin necesidad de recopilar la información manualmente.
+- **Account managers y gestores de cliente:** Preparación rápida de actualizaciones de estado para enviar al cliente, con el resumen de las tareas completadas en la semana, las próximas entregas y cualquier riesgo o dependencia que requiera la atención del cliente.
+
+## Configuración básica
+
+Genera un token de API en la configuración de tu cuenta de Teamwork para autenticar el servidor:
+
+```bash
+npx @teamwork/mcp-server
+```
+
+Configura las credenciales en tu cliente MCP:
+
+```json
+{
+  "mcpServers": {
+    "teamwork": {
+      "command": "npx",
+      "args": ["@teamwork/mcp-server"],
+      "env": {
+        "TEAMWORK_API_KEY": "tu-api-key",
+        "TEAMWORK_SITE_URL": "https://tu-empresa.teamwork.com",
+        "DEFAULT_CURRENCY": "EUR",
+        "TIMEZONE": "Europe/Madrid"
+      }
+    }
+  }
+}
+```
+
+El token de API se genera en Teamwork desde Configuración de perfil > Tokens de API. La URL del sitio es la URL personalizada de tu cuenta de Teamwork. Con el plan adecuado, también puedes configurar múltiples empresas en la misma instancia del servidor si tu organización gestiona varias marcas o subsidiarias en Teamwork.

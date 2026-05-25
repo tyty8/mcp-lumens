@@ -1,0 +1,49 @@
+---
+name: Imágenes Médicas DICOM MCP
+slug: imagenes-medicas-dicom-mcp
+description: Integración DICOM para consultar, leer y mover imágenes médicas e informes de sistemas PACS y sistemas compatibles con DICOM en clínicas y centros de radiología.
+category: healthcare
+tags: [dicom, pacs, radiologia, imagenes-medicas, clinica]
+official: false
+github: https://github.com/ChristianHinge/dicom-mcp
+---
+
+## Descripción general
+
+Imágenes Médicas DICOM MCP establece un puente entre los asistentes de IA y los sistemas de archivado y comunicación de imágenes médicas (PACS) que utilizan el estándar DICOM (Digital Imaging and Communications in Medicine). Este servidor permite consultar, acceder y transferir imágenes médicas — radiografías, tomografías, resonancias magnéticas, ecografías — y sus informes asociados directamente desde un asistente de IA, respetando los protocolos de seguridad y privacidad del entorno sanitario.
+
+El estándar DICOM es el protocolo universal de la imagenología médica, utilizado por todos los fabricantes de equipos de diagnóstico por imagen y por todos los sistemas PACS del mercado. Su compatibilidad garantiza que este servidor MCP puede integrarse con el equipamiento existente en cualquier clínica o centro de radiología sin necesidad de inversiones adicionales en hardware o de migrar a nuevos sistemas de almacenamiento de imágenes.
+
+Para centros de radiología independientes, clínicas multidisciplinares y hospitales que trabajan con múltiples sistemas de imagen, la posibilidad de acceder y transferir estudios DICOM mediante lenguaje natural agiliza enormemente los flujos de trabajo de los radiólogos y médicos que necesitan consultar imágenes de forma rápida durante la práctica clínica diaria.
+
+## Casos de uso para negocios
+
+- **Centros de radiología:** Consultar y recuperar estudios DICOM específicos de pacientes desde el sistema PACS con una simple instrucción en lenguaje natural, sin necesidad de navegar por la interfaz del visor de imágenes.
+- **Clínicas multidisciplinares:** Compartir imágenes médicas entre los diferentes especialistas del centro de forma ágil, transfiriendo los estudios relevantes desde el PACS del servicio de radiología al visor del especialista solicitante.
+- **Médicos de cabecera con acceso a PACS:** Acceder a las imágenes diagnósticas de sus pacientes almacenadas en el centro de radiología de referencia para consultarlas durante la visita sin necesidad de solicitar copias físicas.
+- **Centros de telemedicina:** Recuperar imágenes DICOM almacenadas en sistemas remotos para incorporarlas a las teleconsultas con especialistas, facilitando el diagnóstico a distancia sin desplazamientos del paciente.
+- **Gestores de historiales clínicos:** Localizar y organizar los estudios de imagen de un paciente dispersos entre diferentes fechas y modalidades diagnósticas para construir un historial de imagen completo y cronológico.
+- **Clínicas veterinarias avanzadas:** Integrar el servidor con los sistemas de imagen veterinaria compatibles con DICOM para gestionar las radiografías y ecografías de los animales de la misma forma que en la medicina humana.
+
+## Configuración básica
+
+Para usar Imágenes Médicas DICOM MCP necesitas acceso a un servidor PACS compatible con DICOM en tu red. Configura los parámetros de conexión de tu sistema PACS (host, puerto, AE Title) para establecer la comunicación.
+
+```json
+{
+  "mcpServers": {
+    "dicom": {
+      "command": "npx",
+      "args": ["-y", "dicom-mcp"],
+      "env": {
+        "DICOM_HOST": "tu_servidor_pacs",
+        "DICOM_PORT": "11112",
+        "DICOM_AE_TITLE": "tu_ae_title",
+        "DICOM_CALLING_AE": "MCP_CLIENT"
+      }
+    }
+  }
+}
+```
+
+Una vez configurado, puedes buscar estudios DICOM de pacientes por nombre, fecha o modalidad de imagen, consultar informes asociados y transferir estudios entre nodos DICOM de tu red con comandos en lenguaje natural.

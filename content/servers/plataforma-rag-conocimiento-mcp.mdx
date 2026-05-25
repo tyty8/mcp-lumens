@@ -1,0 +1,55 @@
+---
+name: Plataforma RAG de Conocimiento MCP
+slug: plataforma-rag-conocimiento-mcp
+description: Plataforma RAG de producción que combina búsqueda vectorial y por grafo para crear bases de conocimiento consultables a partir de documentos, políticas y materiales de formación.
+category: education
+tags: [rag, conocimiento, documentos, busqueda, ia]
+official: false
+github: https://github.com/apecloud/ApeRAG
+---
+
+## Descripción general
+
+Plataforma RAG de Conocimiento MCP implementa una infraestructura de Retrieval-Augmented Generation (RAG) de nivel productivo que combina búsqueda vectorial semántica y búsqueda por grafo de conocimiento para crear bases de conocimiento consultables de alta precisión. A diferencia de los sistemas RAG simples que solo realizan búsqueda vectorial, la combinación con grafos de conocimiento permite capturar relaciones entre conceptos y proporcionar respuestas más contextualizadas y precisas cuando se consultan documentos complejos.
+
+Para instituciones educativas, centros de formación y empresas con extensos repositorios de documentación interna, esta plataforma transforma cualquier colección de documentos — manuales de procedimiento, políticas internas, materiales didácticos, normativas, actas de reuniones, informes técnicos — en una base de conocimiento consultable mediante lenguaje natural. El resultado es que cualquier empleado o alumno puede encontrar la información exacta que necesita en segundos, sin necesidad de saber en qué documento está ni en qué sección buscarlo.
+
+La arquitectura de producción de ApeRAG incluye procesamiento de documentos en múltiples formatos (PDF, Word, Excel, HTML, Markdown), gestión de versiones de los documentos indexados, control de acceso por usuario o grupo y monitorización de las consultas realizadas para mejorar continuamente la cobertura de la base de conocimiento. Esto la convierte en una solución empresarial robusta y no solo en una herramienta de prototipado.
+
+## Casos de uso para negocios
+
+- **Centros de formación empresarial:** Indexar todos los materiales de formación, manuales de procedimiento y políticas de la empresa para que los alumnos y empleados puedan consultar cualquier información con preguntas en lenguaje natural.
+- **Escuelas de negocios con biblioteca digital:** Crear una base de conocimiento consultable a partir de los casos de estudio, artículos académicos y materiales del programa para que los alumnos accedan al conocimiento de forma más eficiente.
+- **Franquicias y cadenas de negocio:** Indexar todos los manuales operativos, recetas, procedimientos de servicio y políticas de la marca para que los responsables de cada local puedan consultar cualquier norma de la cadena al instante.
+- **Despachos de abogados y consultoras:** Crear bases de conocimiento consultables a partir de los informes anteriores, memorandos legales y documentación de casos para aprovechar el conocimiento acumulado en nuevos proyectos.
+- **Organizaciones sin ánimo de lucro con mucha documentación:** Indexar proyectos anteriores, informes de impacto y documentación de programas para facilitar el acceso al conocimiento institucional acumulado a lo largo de los años.
+- **Hospitales y centros de salud:** Indexar protocolos clínicos, guías de práctica clínica y procedimientos del centro para que el personal sanitario pueda consultar la información correcta en el momento de necesitarla.
+
+## Configuración básica
+
+ApeRAG puede desplegarse localmente con Docker o en la nube. Para una instalación local básica con Docker Compose:
+
+```bash
+git clone https://github.com/apecloud/ApeRAG
+cd ApeRAG
+docker compose up -d
+```
+
+Una vez desplegado, configura el servidor MCP en Claude Desktop apuntando a tu instancia de ApeRAG:
+
+```json
+{
+  "mcpServers": {
+    "aperag": {
+      "command": "npx",
+      "args": ["-y", "aperag-mcp"],
+      "env": {
+        "APERAG_BASE_URL": "http://localhost:8000",
+        "APERAG_API_KEY": "tu_api_key"
+      }
+    }
+  }
+}
+```
+
+Una vez configurado, sube tus documentos a través del panel de ApeRAG, espera a que el sistema los procese e indexe, y comienza a consultar tu base de conocimiento con preguntas en lenguaje natural desde tu asistente de IA.

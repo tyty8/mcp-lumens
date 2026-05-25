@@ -1,0 +1,55 @@
+---
+name: Búsqueda de Negocios Locales MCP
+slug: busqueda-negocios-locales-mcp
+description: Busca millones de negocios locales en todo el mundo con puntuaciones de confianza y rankings, sin necesidad de clave API, para encontrar proveedores y competidores locales.
+category: productivity
+tags: [negocios-locales, busqueda, proveedores, directorio, localizacion]
+official: false
+github: https://github.com/discava/mcp-server
+---
+
+## Descripción general
+
+El servidor Búsqueda de Negocios Locales MCP, desarrollado por Discava, ofrece acceso a una base de datos de millones de negocios locales en todo el mundo sin necesidad de ninguna clave de API, lo que lo convierte en una de las integraciones más accesibles para comenzar a usar inmediatamente. La búsqueda devuelve resultados con puntuaciones de confianza y rankings que permiten evaluar la relevancia y la reputación de cada negocio encontrado, facilitando la selección de los proveedores, socios o competidores más pertinentes.
+
+La inteligencia competitiva local es uno de los casos de uso más directamente valiosos de este servidor. Para cualquier negocio físico —un restaurante, una clínica, una ferretería, un gimnasio— conocer quiénes son sus competidores directos en la zona, cuántos son, cómo están valorados por los clientes y qué servicios ofrecen es información estratégica de primer orden que normalmente requiere horas de búsqueda manual en Google Maps, Yelp o directorios locales. Con este servidor, el asistente puede compilar esta información en segundos.
+
+La búsqueda de proveedores locales es igualmente valiosa para los departamentos de compras y los responsables de operaciones. Encontrar proveedores alternativos de materiales o servicios en la zona geográfica de la empresa, con sus datos de contacto y evaluaciones, facilita la diversificación de la base de proveedores y la negociación de mejores condiciones. Para una constructora que necesita proveedores locales de áridos, o un restaurante que busca pequeños productores de proximidad, este servidor acelera enormemente el proceso de prospección.
+
+## Casos de uso para negocios
+
+- **Análisis de competencia local:** Búsqueda de todos los establecimientos del mismo sector en el área de influencia del negocio —radio de 5, 10 o 20 km— con sus valoraciones, para evaluar la saturación del mercado y la posición competitiva propia.
+- **Prospección de nuevos mercados:** Investigación del tejido empresarial de una ciudad o zona donde el negocio está considerando abrir un nuevo establecimiento o expandir su área de servicio, para evaluar la demanda y la competencia existente.
+- **Búsqueda de proveedores de proximidad:** Identificación de proveedores locales de materias primas, servicios o subcontratación para reducir costes de logística y apoyar la economía local como argumento de marketing.
+- **Red de distribuidores o representantes:** Búsqueda de negocios que podrían ser distribuidores o puntos de venta del producto propio en nuevas zonas geográficas, filtrando por categoría de negocio relevante.
+- **Due diligence antes de contratar un proveedor:** Verificación de que un proveedor nuevo tiene presencia verificada en los directorios de negocios y cuenta con valoraciones positivas de otros clientes antes de hacer un primer pedido significativo.
+- **Planificación de rutas de visita comercial:** Identificación de todos los potenciales clientes de un tipo específico de negocio en una ciudad o área, para planificar una jornada eficiente de visitas comerciales presenciales.
+
+## Configuración básica
+
+Este servidor no requiere claves de API y puede instalarse y comenzar a usar inmediatamente:
+
+```bash
+npx @discava/mcp-server
+```
+
+Configura el servidor en tu cliente MCP:
+
+```json
+{
+  "mcpServers": {
+    "discava-local": {
+      "command": "npx",
+      "args": ["@discava/mcp-server"],
+      "env": {
+        "DEFAULT_COUNTRY": "ES",
+        "DEFAULT_LANGUAGE": "es",
+        "DEFAULT_RADIUS_KM": "10",
+        "MAX_RESULTS": "50"
+      }
+    }
+  }
+}
+```
+
+Al no requerir clave de API, la configuración se limita a definir los valores predeterminados para tus búsquedas habituales. Puedes especificar la categoría de negocio a buscar en lenguaje natural ("restaurantes italianos", "talleres mecánicos", "clínicas dentales") y el servidor lo traducirá a los filtros de categoría apropiados en su base de datos.

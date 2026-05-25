@@ -1,0 +1,46 @@
+---
+name: Verificación de Licencias de Alcohol MCP
+slug: verificacion-licencias-alcohol-mcp
+description: Consulta de cumplimiento de licencias de alcohol ABC en California, Texas, Nueva York y Florida — busca por nombre comercial, propietario o número de licencia y verifica estado y vencimiento.
+category: legal
+tags: [licencias, alcohol, cumplimiento, restaurantes, hosteleria]
+official: false
+github: https://github.com/NexusFeed/nexusfeed-mcp
+---
+
+## Descripción general
+
+Verificación de Licencias de Alcohol MCP conecta tu asistente de IA con las bases de datos de los organismos reguladores de alcohol (ABC - Alcoholic Beverage Control) de los cuatro estados con mayor actividad hostelera de EE.UU.: California, Texas, Nueva York y Florida. Este servidor permite verificar el estado y vigencia de licencias de alcohol por nombre comercial del establecimiento, nombre del propietario o número de licencia, proporcionando información actualizada sobre el tipo de licencia, las condiciones de la misma y su fecha de vencimiento.
+
+Para cualquier negocio del sector de la hostelería en Estados Unidos, la licencia de alcohol es uno de los activos operativos más críticos y uno de los riesgos de cumplimiento más severos. Operar sin una licencia válida, con una licencia caducada o violando las condiciones establecidas en la misma puede resultar en multas cuantiosas, suspensión temporal o revocación definitiva de la licencia. La due diligence de licencias de alcohol es también fundamental en procesos de adquisición de restaurantes, bares y hoteles para verificar la situación real de las licencias antes del cierre de la operación.
+
+La verificación de licencias de terceros es igualmente relevante para mayoristas de bebidas alcohólicas, distribuidores y proveedores del sector hostelero que necesiten confirmar que sus clientes tienen las licencias necesarias para recibir y vender alcohol legalmente. En muchos estados, el incumplimiento por parte del distribuidor al vender a un establecimiento sin licencia puede acarrear consecuencias legales para el propio proveedor, haciendo de esta verificación un requisito de cumplimiento crítico en el proceso de alta de nuevos clientes.
+
+## Casos de uso para negocios
+
+- **Restaurantes y bares en EE.UU.:** Verifica el estado de tu propia licencia de alcohol, controla las fechas de vencimiento para iniciar el proceso de renovación con suficiente antelación y mantén un registro actualizado de todas las licencias bajo tu titularidad.
+- **Grupos de restauración y cadenas de hostelería:** Gestiona el seguimiento de las licencias de alcohol de todos los establecimientos del grupo, con alertas de vencimiento próximo y verificación automática del estado de cada licencia en las jurisdicciones estatales correspondientes.
+- **Asesores en compraventa de negocios hosteleros:** Realiza la due diligence de las licencias de alcohol de un restaurante o bar antes del cierre de una operación de compraventa, verificando que la licencia es válida, está al día y no tiene condiciones restrictivas que afecten al valor del negocio.
+- **Distribuidores y mayoristas de bebidas alcohólicas:** Verifica que los establecimientos clientes disponen de licencia de alcohol vigente antes de completar cada pedido, cumpliendo con los requisitos de due diligence del distribuidor y evitando riesgos legales derivados de ventas a establecimientos sin licencia.
+- **Inversores en el sector hostelero:** Comprueba la situación de las licencias de alcohol de los establecimientos en los que se plantea invertir como parte del proceso de due diligence previo a la inversión, identificando posibles problemas de cumplimiento que puedan afectar a la valoración o la viabilidad del negocio.
+- **Abogados y consultores de cumplimiento normativo:** Utiliza el acceso rápido a las bases de datos de los ABC estatales para proporcionar a los clientes hosteleros información actualizada sobre el estado de sus licencias y asesorarles en los procesos de renovación, transferencia o modificación de condiciones.
+
+## Configuración básica
+
+Este servidor accede a las bases de datos públicas de los organismos reguladores de alcohol estatales y no requiere credenciales de pago para búsquedas básicas:
+
+```json
+{
+  "mcpServers": {
+    "nexusfeed": {
+      "command": "npx",
+      "args": ["-y", "@nexusfeed/mcp"],
+      "env": {
+        "NEXUSFEED_API_KEY": "tu-api-key-de-nexusfeed"
+      }
+    }
+  }
+}
+```
+
+Una vez configurado, puedes pedir al asistente que verifique una licencia de alcohol específica proporcionando el nombre del establecimiento y el estado, el nombre del propietario o el número de licencia. El servidor devuelve el tipo de licencia, las condiciones vigentes, el estado actual (activa, suspendida, caducada) y la fecha de vencimiento próxima para que puedas gestionar el cumplimiento de forma proactiva.

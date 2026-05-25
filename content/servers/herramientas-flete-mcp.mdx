@@ -1,0 +1,54 @@
+---
+name: Herramientas de Flete Internacional MCP
+slug: herramientas-flete-mcp
+description: 17 herramientas de cálculo y referencia para transporte de mercancías — mercancías peligrosas ADR, códigos HS, calculadoras LDM/CBM/peso cobrable, estimación de aranceles y códigos UN/LOCODE.
+category: logistics
+tags: [flete, adr, hs-codes, aduanas, logistica-internacional]
+official: false
+github: https://github.com/SoapyRED/freightutils-mcp
+---
+
+## Descripción general
+
+Las Herramientas de Flete Internacional MCP reúnen 17 utilidades especializadas en un solo servidor para cubrir los aspectos técnicos más complejos del transporte internacional de mercancías. Desarrollado por profesionales del sector logístico, este servidor se convierte en un asistente técnico indispensable para los departamentos de tráfico, comercio exterior y operaciones de cualquier empresa importadora, exportadora o agencia de transporte que trabaje con envíos internacionales.
+
+El módulo de mercancías peligrosas ADR es uno de los más valorados por los profesionales del sector. El Acuerdo Europeo sobre Transporte Internacional de Mercancías Peligrosas por Carretera (ADR) es una normativa compleja con cientos de clasificaciones, restricciones de embalaje y etiquetado, y requisitos de documentación que varían según la clase de peligro y el tipo de envase. El asistente puede consultar la clasificación ADR de cualquier sustancia, verificar si un envío cumple con los límites de cantidad permitida por excepción, o generar la lista de comprobación documental para un envío de clase específica.
+
+Las calculadoras de peso y volumen —LDM (metros lineales de carga), CBM (metros cúbicos) y peso cobrable (el mayor entre peso real y peso volumétrico)— son herramientas que los agentes de carga usan decenas de veces al día para presupuestar envíos. Tener estas calculadoras integradas en el asistente de IA acelera enormemente la preparación de ofertas y la verificación de facturas de transportistas. Complementadas con la estimación de aranceles por código HS y la base de datos de códigos UN/LOCODE para más de 100.000 puertos y aeropuertos del mundo, el servidor ofrece una suite completa para la operativa diaria de comercio exterior.
+
+## Casos de uso para negocios
+
+- **Agencias de transporte y freight forwarders:** Cálculo instantáneo de peso cobrable para presupuestar envíos a cualquier destino, comparando el coste según distintos modos de transporte (aéreo, marítimo, terrestre) con las tarifas negociadas.
+- **Empresas químicas y farmacéuticas:** Verificación de la clasificación ADR de los productos antes de cada envío, asegurando que el embalaje, el etiquetado y la documentación cumplen con la normativa vigente para evitar rechazos en frontera.
+- **Departamentos de comercio exterior:** Consulta rápida de códigos HS (Harmonized System) para clasificar correctamente las mercancías en las declaraciones aduaneras y calcular los aranceles de importación en el país de destino.
+- **Importadores y exportadores con envíos frecuentes:** Estimación preliminar del coste arancelario total de un pedido de compra antes de confirmarlo, para verificar que el margen commercial sigue siendo viable una vez incluidos todos los costes de importación.
+- **Operadores logísticos con clientes industriales:** Identificación precisa de puertos y terminales mediante códigos UN/LOCODE para preparar instrucciones de envío y documentación de embarque sin errores de denominación o localización.
+- **Equipos de compras internacionales:** Comparación rápida del coste logístico total de proveedores en distintos países, incluyendo flete, seguros y aranceles estimados, para tomar decisiones de sourcing informadas.
+
+## Configuración básica
+
+Instala el servidor de herramientas de flete directamente mediante npx:
+
+```bash
+npx @soapyred/freightutils-mcp
+```
+
+Configura el servidor en tu cliente MCP (no requiere API key externa para la mayoría de funcionalidades):
+
+```json
+{
+  "mcpServers": {
+    "freightutils": {
+      "command": "npx",
+      "args": ["@soapyred/freightutils-mcp"],
+      "env": {
+        "DEFAULT_CURRENCY": "EUR",
+        "DEFAULT_WEIGHT_UNIT": "kg",
+        "DEFAULT_DIMENSION_UNIT": "cm"
+      }
+    }
+  }
+}
+```
+
+Las 17 herramientas están disponibles inmediatamente sin necesidad de claves API externas, ya que utilizan bases de datos locales para las clasificaciones ADR, códigos HS y UN/LOCODE. Para la estimación de aranceles en tiempo real con tarifas actualizadas, puedes configurar opciones de integración con bases de datos arancelarias online mediante variables de entorno adicionales documentadas en el repositorio.

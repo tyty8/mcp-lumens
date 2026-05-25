@@ -1,0 +1,55 @@
+---
+name: Dropshipping AliExpress/Shopify MCP
+slug: dropshipping-aliexpress-shopify-mcp
+description: Automatiza la importación de productos de AliExpress/Alibaba a Shopify o Wix mediante DSers — importación masiva, edición de variantes, reglas de precios y publicación en múltiples tiendas.
+category: retail
+tags: [dropshipping, aliexpress, shopify, productos, ecommerce]
+official: false
+github: https://github.com/lofder/dsers-mcp-product
+---
+
+## Descripción general
+
+El Dropshipping AliExpress/Shopify MCP automatiza uno de los procesos más tediosos del comercio electrónico sin stock propio: la importación y gestión de productos de proveedores chinos hacia las tiendas online. Mediante la integración con DSers, la plataforma oficial de dropshipping de AliExpress, este servidor conecta tu asistente de IA con el flujo completo de importación de producto, desde la búsqueda del artículo en AliExpress o Alibaba hasta su publicación optimizada en Shopify o Wix.
+
+Para los emprendedores y pequeñas empresas que operan bajo el modelo de dropshipping, este servidor elimina horas de trabajo manual cada semana. En lugar de copiar y pegar títulos, descripciones, imágenes y variantes de producto uno a uno, el asistente puede importar lotes completos de artículos, aplicar reglas de precios automáticas (por ejemplo, multiplicar el precio del proveedor por 2,5 y redondear al .99 más cercano), traducir y adaptar las descripciones al mercado español y publicar simultáneamente en varias tiendas.
+
+La gestión de variantes es otro punto crítico que este servidor simplifica enormemente. Los productos de AliExpress suelen venir con decenas de combinaciones de color, talla y material, muchas de las cuales no son relevantes para el mercado europeo o generan confusión en el cliente. El asistente puede filtrar, renombrar y reorganizar variantes de forma conversacional, asegurando que solo las opciones relevantes lleguen al escaparate de la tienda online, con nombres y descripciones adaptados culturalmente al comprador español.
+
+## Casos de uso para negocios
+
+- **Tiendas de dropshipping generalistas:** Importación masiva de productos de temporada (decoración navideña, artículos de jardín en primavera, material escolar en septiembre) con reglas de precios y márgenes predefinidos.
+- **Boutiques de moda online:** Selección y publicación de colecciones completas de ropa y complementos, con filtrado automático de variantes de talla para adaptar al mercado europeo (eliminando tallas asiáticas sin equivalencia).
+- **Tiendas de electrónica y gadgets:** Monitoreo de cambios de precio en proveedores de AliExpress para ajustar automáticamente los precios de venta y mantener el margen objetivo.
+- **Emprendedores con múltiples nichos:** Gestión de dos o tres tiendas Shopify paralelas desde un solo asistente, aplicando estrategias de precio y descripción diferenciadas según el público de cada tienda.
+- **Negocios que prueban nuevos productos:** Importación rápida de artículos de tendencia detectados en redes sociales para testear su demanda sin inversión en stock físico.
+- **Agencias de ecommerce:** Gestión del catálogo de varios clientes simultaneamente, con flujos de aprobación conversacional antes de publicar nuevos productos.
+
+## Configuración básica
+
+Instala el servidor y conéctalo con tu cuenta de DSers vinculada a AliExpress:
+
+```bash
+npx @lofder/dsers-mcp-product
+```
+
+Añade la configuración en tu cliente MCP con las credenciales de DSers:
+
+```json
+{
+  "mcpServers": {
+    "dsers-dropshipping": {
+      "command": "npx",
+      "args": ["@lofder/dsers-mcp-product"],
+      "env": {
+        "DSERS_API_KEY": "tu-api-key-de-dsers",
+        "DSERS_API_SECRET": "tu-api-secret",
+        "SHOPIFY_STORE_URL": "tu-tienda.myshopify.com",
+        "SHOPIFY_ACCESS_TOKEN": "tu-access-token-shopify"
+      }
+    }
+  }
+}
+```
+
+Obtén las credenciales de DSers desde el panel de configuración de tu cuenta en app.dsers.com. El access token de Shopify se genera en Configuración > Aplicaciones y canales de ventas > Desarrollar aplicaciones de tu panel de administración de Shopify.

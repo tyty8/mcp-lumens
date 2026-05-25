@@ -1,0 +1,58 @@
+---
+name: WhatsApp Plantillas MCP
+slug: whatsapp-plantillas-mcp
+description: Gestión de plantillas de la API de WhatsApp Business a través de Meta Cloud API, soportando los 12 tipos de plantillas incluyendo texto, imagen, video, carrusel y cupones.
+category: communication
+tags: [whatsapp, plantillas, meta, mensajeria, marketing]
+official: false
+github: https://github.com/nakulben/whatsapp-mcp
+---
+
+## Descripción general
+
+WhatsApp Plantillas MCP se especializa en la gestión del sistema de plantillas de mensaje de WhatsApp Business, que es el mecanismo oficial que Meta exige para enviar mensajes proactivos a clientes (es decir, mensajes iniciados por la empresa, no en respuesta a una conversación activa). Con soporte para los 12 tipos de plantillas oficiales, este servidor permite a los negocios crear, gestionar y enviar comunicaciones enriquecidas que van mucho más allá del simple texto.
+
+Las plantillas con imagen y video son especialmente poderosas para negocios visuales: una tienda de moda puede enviar un mensaje de "nueva colección" con fotos del producto directamente en WhatsApp; un restaurante puede compartir el menú del día con una fotografía apetitosa; una inmobiliaria puede enviar una vista previa del piso con las fotos más atractivas. Los carruseles permiten mostrar varios productos o propiedades en un mismo mensaje que el receptor puede navegar deslizando, y los cupones añaden un código de descuento redimible directamente desde la aplicación.
+
+La gestión a través del asistente de IA simplifica enormemente el proceso de crear y aprobar plantillas nuevas, que normalmente requiere acceder al Business Manager de Meta y esperar la revisión manual. El servidor automatiza la creación, el envío para revisión y el seguimiento del estado de aprobación, avisando cuando las plantillas están listas para usar o si han sido rechazadas y por qué motivo.
+
+## Casos de uso para negocios
+
+- **Tiendas de moda y complementos:** Campañas de nueva colección con plantillas de carrusel que muestran varios artículos, incluyendo precio, descripción y enlace de compra para cada producto.
+- **Restaurantes y bares:** Comunicación de menús especiales de temporada, ofertas del día o eventos gastronómicos con plantilla de imagen que muestra el plato o la propuesta del evento.
+- **Clínicas de estética y belleza:** Plantillas de recordatorio de cita con el nombre del servicio, la hora y las instrucciones previas, enviadas automáticamente 24 horas antes de cada tratamiento.
+- **Agencias de viajes y turismo:** Confirmación de reservas con plantillas enriquecidas que incluyen los detalles del viaje, los documentos necesarios y un botón de llamada a acción para añadir al calendario.
+- **Comercios con programas de fidelidad:** Cupones de descuento enviados por WhatsApp en el cumpleaños del cliente o al alcanzar un umbral de compras, con código de canje y fecha de caducidad.
+- **Concesionarios y talleres de coches:** Avisos de mantenimiento periódico con plantilla personalizada que incluye la matrícula del vehículo, el tipo de revisión recomendada y un enlace de reserva de cita.
+
+## Configuración básica
+
+Instala el servidor y configura el acceso a Meta Cloud API:
+
+```bash
+git clone https://github.com/nakulben/whatsapp-mcp
+cd whatsapp-mcp
+npm install
+npm run build
+```
+
+Añade la configuración en tu cliente MCP:
+
+```json
+{
+  "mcpServers": {
+    "whatsapp-plantillas": {
+      "command": "node",
+      "args": ["dist/index.js"],
+      "env": {
+        "META_ACCESS_TOKEN": "tu-token-de-acceso-permanente",
+        "META_PHONE_NUMBER_ID": "tu-phone-number-id",
+        "META_WABA_ID": "tu-whatsapp-business-account-id",
+        "META_API_VERSION": "v18.0"
+      }
+    }
+  }
+}
+```
+
+Accede al Meta Business Manager (business.facebook.com) y al portal de desarrolladores (developers.facebook.com) para obtener el token de acceso y los identificadores de cuenta. Recuerda que todas las plantillas de mensajes proactivos deben ser aprobadas por Meta antes de poder usarse en producción, un proceso que habitualmente tarda entre 24 y 48 horas.

@@ -1,7 +1,7 @@
 ---
-name: GitHub MCP Server
+name: Servidor MCP de GitHub
 slug: github-mcp
-description: Connect AI clients directly to GitHub repositories to read code, manage issues and pull requests, create branches, and push files — all through natural language.
+description: Conecta clientes de IA directamente a repositorios de GitHub para leer código, gestionar issues y pull requests, crear ramas y enviar archivos, todo mediante lenguaje natural.
 category: developer-tools
 tags: [github, git, pull-requests, issues, code-review]
 official: true
@@ -10,15 +10,15 @@ github: https://github.com/modelcontextprotocol/servers/tree/main/src/github
 featured: true
 ---
 
-## Overview
+## Descripción general
 
-The GitHub MCP Server gives AI clients full programmatic access to GitHub through the Model Context Protocol. With it, your AI assistant can read repository contents, inspect commit history, list and create issues, review and open pull requests, create branches, and push file changes — all without leaving your conversation.
+El Servidor MCP de GitHub proporciona a los clientes de IA acceso programático completo a GitHub a través del Model Context Protocol. Con él, su asistente de IA puede leer el contenido de repositorios, inspeccionar el historial de commits, listar y crear issues, revisar y abrir pull requests, crear ramas y enviar cambios de archivos, todo sin salir de la conversación.
 
-This server is ideal for code review workflows where you want an AI to examine a pull request, summarize changes, suggest improvements, and post review comments directly on GitHub. It is also useful for project management tasks: triaging issues, labeling bugs, or drafting release notes from recent commits.
+Este servidor es ideal para flujos de trabajo de revisión de código donde se desea que una IA examine un pull request, resuma los cambios, sugiera mejoras y publique comentarios de revisión directamente en GitHub. También es útil para tareas de gestión de proyectos: clasificar issues, etiquetar bugs o redactar notas de versión a partir de commits recientes.
 
-## Configuration
+## Configuración
 
-The server requires a GitHub Personal Access Token with appropriate scopes. Set the `GITHUB_PERSONAL_ACCESS_TOKEN` environment variable before starting the server. For read-only use, the `repo:read` scope is sufficient; for creating PRs, pushing files, and commenting, you need the full `repo` scope.
+El servidor requiere un Token de Acceso Personal de GitHub con los alcances apropiados. Establezca la variable de entorno `GITHUB_PERSONAL_ACCESS_TOKEN` antes de iniciar el servidor. Para uso de solo lectura, el alcance `repo:read` es suficiente; para crear PRs, enviar archivos y comentar, necesita el alcance completo `repo`.
 
 ```json
 {
@@ -34,11 +34,11 @@ The server requires a GitHub Personal Access Token with appropriate scopes. Set 
 }
 ```
 
-## Key Capabilities
+## Capacidades principales
 
-- Read file contents and directory trees from any accessible repository
-- List, create, update, and close issues with labels and assignees
-- List, review, merge, and create pull requests
-- Create and delete branches
-- Push single or multiple file changes with commit messages
-- Search code across repositories using GitHub's search API
+- Leer contenido de archivos y árboles de directorios de cualquier repositorio accesible
+- Listar, crear, actualizar y cerrar issues con etiquetas y asignados
+- Listar, revisar, fusionar y crear pull requests
+- Crear y eliminar ramas
+- Enviar cambios de uno o múltiples archivos con mensajes de commit
+- Buscar código en repositorios usando la API de búsqueda de GitHub

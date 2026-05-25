@@ -1,7 +1,7 @@
 ---
-name: Everything MCP Server
+name: Servidor MCP Everything
 slug: everything-mcp
-description: A reference implementation that demonstrates every MCP feature — tools, resources, prompts, and sampling — making it the ideal server for testing clients and learning the protocol.
+description: Una implementación de referencia que demuestra todas las funcionalidades de MCP — herramientas, recursos, prompts y muestreo — convirtiéndolo en el servidor ideal para probar clientes y aprender el protocolo.
 category: developer-tools
 tags: [testing, demo, reference, all-features]
 official: true
@@ -10,15 +10,15 @@ github: https://github.com/modelcontextprotocol/servers/tree/main/src/everything
 featured: false
 ---
 
-## Overview
+## Descripción general
 
-The Everything MCP Server is not a production tool — it is a comprehensive reference implementation designed to exercise every capability in the MCP specification. If you are building an MCP client or evaluating a host application, this server lets you verify that tools, resources, prompts, and sampling all work correctly without needing to set up real external services.
+El Servidor MCP Everything no es una herramienta de producción: es una implementación de referencia completa diseñada para ejercitar cada capacidad de la especificación MCP. Si está construyendo un cliente MCP o evaluando una aplicación host, este servidor le permite verificar que las herramientas, recursos, prompts y el muestreo funcionan correctamente sin necesidad de configurar servicios externos reales.
 
-The server ships with a wide variety of example tools (echo, arithmetic, file-like resources, slow operations for testing timeouts), diverse resource types (text, binary, URIs with templates), and pre-built prompts. Running this server against your client gives you immediate visibility into which MCP features are supported and how edge cases are handled.
+El servidor incluye una amplia variedad de herramientas de ejemplo (echo, aritmética, recursos similares a archivos, operaciones lentas para probar tiempos de espera), tipos de recursos diversos (texto, binario, URIs con plantillas) y prompts prediseñados. Ejecutar este servidor contra su cliente le brinda visibilidad inmediata sobre qué funcionalidades de MCP son compatibles y cómo se gestionan los casos límite.
 
-## Configuration
+## Configuración
 
-No API keys or external dependencies are required. Start the server and point your MCP client at it.
+No se requieren claves de API ni dependencias externas. Inicie el servidor y apunte su cliente MCP hacia él.
 
 ```json
 {
@@ -31,11 +31,11 @@ No API keys or external dependencies are required. Start the server and point yo
 }
 ```
 
-## Key Capabilities
+## Capacidades principales
 
-- Example tools covering synchronous, asynchronous, and long-running operations
-- Multiple resource types: static text, binary data, and URI-templated resources
-- Pre-built prompt templates demonstrating the prompts MCP feature
-- Sampling support for testing client-side LLM invocation
-- Intentional error cases for testing client error handling
-- Useful as a smoke test when upgrading MCP client libraries
+- Herramientas de ejemplo que cubren operaciones síncronas, asíncronas y de larga duración
+- Múltiples tipos de recursos: texto estático, datos binarios y recursos con plantillas URI
+- Plantillas de prompts prediseñadas que demuestran la funcionalidad de prompts de MCP
+- Soporte de muestreo para probar la invocación de LLM en el lado del cliente
+- Casos de error intencionales para probar el manejo de errores del cliente
+- Útil como prueba de humo al actualizar bibliotecas de cliente MCP

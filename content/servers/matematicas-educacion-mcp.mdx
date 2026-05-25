@@ -1,0 +1,51 @@
+---
+name: Matemáticas y Educación MCP
+slug: matematicas-educacion-mcp
+description: Servidor MCP educativo para operaciones matemáticas, estadísticas y visualización con espacios de trabajo persistentes para soporte de tutoría y formación del personal.
+category: education
+tags: [matematicas, estadistica, educacion, tutoria, formacion]
+official: false
+github: https://github.com/clouatre-labs/math-mcp-learning-server
+---
+
+## Descripción general
+
+Matemáticas y Educación MCP es un servidor de apoyo educativo que proporciona capacidades matemáticas y estadísticas avanzadas directamente desde el asistente de IA. El servidor mantiene espacios de trabajo persistentes que permiten desarrollar problemas matemáticos paso a paso, realizando operaciones que van desde aritmética básica hasta estadística descriptiva e inferencial, álgebra lineal y cálculo, con la posibilidad de generar visualizaciones gráficas para ilustrar los conceptos trabajados.
+
+La característica distintiva de este servidor es su orientación pedagógica: no se limita a proporcionar resultados, sino que puede mostrar el proceso de resolución paso a paso, explicando el razonamiento matemático detrás de cada operación. Esta capacidad lo convierte en una herramienta de apoyo a la tutoría muy eficaz, tanto para la formación de alumnos en centros educativos como para la capacitación de personal en empresas que necesitan manejar datos cuantitativos en su trabajo diario.
+
+Para negocios tradicionales que trabajan con datos numéricos — desde análisis de ventas hasta control de calidad, pasando por gestión de inventarios o planificación financiera — este servidor también resulta valioso como herramienta de apoyo para el personal que necesita realizar cálculos o análisis estadísticos sin tener formación específica en estas áreas.
+
+## Casos de uso para negocios
+
+- **Academias y centros de tutorías:** Apoyar a los tutores en la resolución y explicación de problemas matemáticos complejos para alumnos de secundaria y bachillerato, con desarrollo paso a paso y visualizaciones gráficas.
+- **Empresas de formación profesional:** Capacitar al personal en el manejo de estadísticas básicas para la interpretación de informes de ventas, producción o calidad con ejemplos prácticos adaptados al sector del negocio.
+- **Centros de educación para adultos:** Ofrecer apoyo matemático a adultos que retoman sus estudios o necesitan actualizar sus conocimientos para acceder a nuevas oportunidades laborales.
+- **Departamentos de control de calidad industrial:** Apoyar a los técnicos en la aplicación de métodos estadísticos de control de calidad (SPC, Six Sigma básico) con herramientas de cálculo accesibles.
+- **Escuelas de negocios y MBA:** Proporcionar a los alumnos apoyo en los módulos de estadística, finanzas cuantitativas y análisis de datos con resolución de problemas interactiva y paso a paso.
+- **Franquicias y cadenas de negocio:** Formar a los responsables de tienda en el análisis básico de datos de ventas e inventario mediante ejercicios prácticos con sus propios números reales.
+
+## Configuración básica
+
+Matemáticas y Educación MCP no requiere credenciales externas, ya que todas las operaciones se ejecutan localmente. Para instalarlo:
+
+```bash
+git clone https://github.com/clouatre-labs/math-mcp-learning-server
+cd math-mcp-learning-server
+npm install && npm run build
+```
+
+Añade el servidor a tu configuración de Claude Desktop:
+
+```json
+{
+  "mcpServers": {
+    "math-education": {
+      "command": "node",
+      "args": ["/ruta/a/math-mcp-learning-server/build/index.js"]
+    }
+  }
+}
+```
+
+Una vez activo, puedes realizar cálculos matemáticos y estadísticos con explicación paso a paso, generar gráficas de funciones y distribuciones, y mantener un espacio de trabajo persistente para desarrollar problemas complejos en múltiples pasos.

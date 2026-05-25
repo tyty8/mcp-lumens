@@ -1,0 +1,47 @@
+---
+name: Meta Ads Automatización MCP
+slug: meta-ads-automatizacion-mcp
+description: Automatización de Meta Ads confiada por más de 10,000 negocios — analiza rendimiento, prueba creatividades, optimiza el gasto y escala resultados en Facebook e Instagram.
+category: marketing
+tags: [meta-ads, facebook, instagram, automatizacion, roas]
+official: false
+github: https://github.com/pipeboard-co/meta-ads-mcp
+---
+
+## Descripción general
+
+Meta Ads Automatización MCP es una solución de nivel profesional para gestionar publicidad en Facebook e Instagram, utilizada ya por más de 10,000 negocios que confían en esta herramienta para optimizar su inversión publicitaria en el ecosistema de Meta. A diferencia de otras integraciones básicas, este servidor está diseñado específicamente para la automatización avanzada: análisis profundo de rendimiento, pruebas A/B de creatividades, optimización continua del presupuesto y escalado sistemático de las campañas que están generando resultados.
+
+El servidor se conecta con la API de Marketing de Meta para proporcionar una visión completa del embudo publicitario: desde las métricas de alcance e impresiones hasta los datos de conversión, coste por adquisición y retorno del gasto publicitario (ROAS). Para un negocio tradicional que invierte en publicidad digital, conocer con precisión qué campaña, qué audiencia y qué creatividad está generando los mejores resultados es fundamental para no desperdiciar el presupuesto publicitario.
+
+Una de las capacidades más valoradas de este servidor es la automatización de las pruebas de creatividades. El asistente de IA puede analizar simultáneamente el rendimiento de múltiples versiones de un mismo anuncio, identificar cuál está obteniendo mayor engagement y menor coste por resultado, y recomendar o ejecutar directamente los ajustes necesarios para pausar las creatividades de bajo rendimiento y potenciar las ganadoras. Esta capacidad de optimización continua, que normalmente requiere horas de análisis manual, se convierte en una tarea de minutos.
+
+## Casos de uso para negocios
+
+- **Tiendas de moda y accesorios:** Prueba automáticamente múltiples versiones de creatividades de producto (fotografía de estudio vs. lifestyle, diferentes modelos de copy) y escala el presupuesto hacia los anuncios que generan mayor ROAS por línea de producto.
+- **Restaurantes con servicio de delivery:** Analiza el rendimiento por franja horaria y día de la semana, optimizando automáticamente las pujas para concentrar el gasto en los momentos de mayor propensión a pedir comida a domicilio.
+- **Academias y centros de formación online:** Gestiona embudos publicitarios completos desde la captación con vídeos de presentación hasta el retargeting con testimonios, optimizando el coste por lead cualificado y matrícula.
+- **Clínicas de estética y bienestar:** Escala las campañas de mayor conversión durante temporadas pico (antes del verano, Navidades) y pausa o reduce inversión en periodos de menor demanda, todo ello de forma automatizada.
+- **Concesionarios de vehículos:** Monitoriza el coste por lead de formulario de contacto y prueba de conducción, comparando el rendimiento entre diferentes modelos y segmentos de audiencia para optimizar el presupuesto mensual.
+- **Inmobiliarias y promotoras:** Realiza pruebas de audiencias (por edad, ubicación, comportamientos de compra) para identificar el perfil de comprador más eficiente en coste para cada tipo de propiedad.
+
+## Configuración básica
+
+Configura el servidor con tu Token de Acceso de Meta y el ID de tu cuenta publicitaria:
+
+```json
+{
+  "mcpServers": {
+    "meta-ads": {
+      "command": "npx",
+      "args": ["-y", "@pipeboard/meta-ads-mcp"],
+      "env": {
+        "META_ACCESS_TOKEN": "tu-token-de-acceso-permanente",
+        "META_AD_ACCOUNT_ID": "act_123456789"
+      }
+    }
+  }
+}
+```
+
+Para obtener un token de acceso de larga duración, accede a Meta for Developers, crea una aplicación de tipo Business y genera el token con los permisos `ads_management`, `ads_read` y `business_management`. El ID de cuenta publicitaria lo encontrarás en el panel del Administrador de Anuncios de Meta. Una vez conectado, el asistente puede realizar auditorías completas de campañas, detectar oportunidades de optimización y ejecutar cambios directamente.

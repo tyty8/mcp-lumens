@@ -1,0 +1,57 @@
+---
+name: Infobip Comunicación MCP
+slug: infobip-comunicacion-mcp
+description: Plataforma oficial de comunicación en la nube de Infobip para enviar y recibir SMS, mensajes RCS, WhatsApp y Viber, con automatización de flujos de comunicación.
+category: communication
+tags: [sms, whatsapp, viber, rcs, notificaciones]
+official: false
+github: https://github.com/infobip/mcp
+---
+
+## Descripción general
+
+Infobip Comunicación MCP es el servidor oficial desarrollado por Infobip, una de las principales plataformas de comunicaciones en la nube a nivel mundial. A diferencia de soluciones que se limitan a un único canal, este servidor unifica el acceso a SMS, mensajes RCS (el sucesor enriquecido del SMS), WhatsApp Business y Viber, permitiendo a las empresas elegir el canal más adecuado para cada comunicación o implementar estrategias omnicanal sofisticadas sin gestionar múltiples proveedores.
+
+La cobertura global de Infobip es uno de sus puntos fuertes: con presencia en más de 190 países y conexiones directas con operadores de telefonía, garantiza tasas de entrega muy superiores a las plataformas de mensajería independientes. Para negocios con clientes internacionales — hoteles que reciben turistas de todo el mundo, empresas exportadoras o tiendas online con envíos internacionales — esta cobertura es fundamental para garantizar que las comunicaciones lleguen a su destino.
+
+El soporte para RCS es especialmente interesante de cara al futuro: este protocolo de mensajería permite enviar mensajes enriquecidos con imágenes, botones interactivos y confirmaciones de lectura directamente al SMS del teléfono del cliente, sin necesidad de que este tenga instalada ninguna aplicación. A medida que los operadores adoptan RCS de forma masiva, los negocios que ya lo están integrando tendrán ventaja competitiva en sus comunicaciones con clientes.
+
+## Casos de uso para negocios
+
+- **Hoteles y alojamientos:** Confirmación de reservas por SMS con código de confirmación, recordatorio de check-in con instrucciones de acceso y mensaje de bienvenida en el idioma del huésped al llegar.
+- **Clínicas y hospitales:** Recordatorios de cita por SMS para pacientes que no usan smartphones con WhatsApp, con confirmación por respuesta de texto simple (S/N) que actualiza automáticamente el sistema de agenda.
+- **Empresas de logística y mensajería:** Notificaciones de estado de envío en tiempo real por SMS, con tracking number y enlace de seguimiento para cada paquete en tránsito.
+- **Bancos y entidades financieras:** Alertas de transacciones, códigos de verificación de doble factor y recordatorios de pago por el canal más adecuado según las preferencias del cliente.
+- **Comercios minoristas con clientes mayores:** Comunicación por SMS para segmentos de clientes que no usan WhatsApp, con promociones, avisos de llegada de producto y recordatorios de pago.
+- **Administraciones y servicios públicos:** Notificaciones masivas a ciudadanos sobre trámites, plazos y comunicaciones oficiales por SMS garantizando cobertura total independientemente del smartphone del destinatario.
+
+## Configuración básica
+
+El servidor oficial de Infobip requiere una cuenta y API key de Infobip:
+
+```bash
+git clone https://github.com/infobip/mcp
+cd mcp
+npm install
+npm run build
+```
+
+Configura el acceso con tus credenciales de Infobip:
+
+```json
+{
+  "mcpServers": {
+    "infobip": {
+      "command": "node",
+      "args": ["dist/index.js"],
+      "env": {
+        "INFOBIP_API_KEY": "tu-api-key-de-infobip",
+        "INFOBIP_BASE_URL": "tu-subdominio.api.infobip.com",
+        "INFOBIP_SENDER_NAME": "NombreDeNegocio"
+      }
+    }
+  }
+}
+```
+
+Crea una cuenta gratuita en infobip.com para obtener tu API key y la URL base de tu cuenta. La cuenta de prueba incluye créditos para enviar mensajes de test. Para usar WhatsApp Business a través de Infobip, deberás completar el proceso de verificación de empresa en Meta y configurar el número de teléfono en el panel de Infobip.

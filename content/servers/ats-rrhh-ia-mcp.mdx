@@ -1,0 +1,47 @@
+---
+name: ATS de RRHH con IA MCP
+slug: ats-rrhh-ia-mcp
+description: Sistema de seguimiento de candidatos (ATS) potenciado por IA con 21 herramientas que cubren empleos, candidatos, entrevistas, ofertas, notas y analíticas para el proceso completo de contratación.
+category: hr
+tags: [ats, rrhh, reclutamiento, candidatos, entrevistas]
+official: false
+github: https://github.com/XJTLUmedia/AI-HR-Management-Toolkit
+---
+
+## Descripción general
+
+ATS de RRHH con IA MCP integra un sistema de seguimiento de candidatos (ATS) potenciado por inteligencia artificial directamente en tu asistente de IA, proporcionando 21 herramientas especializadas que cubren el proceso completo de contratación: publicación de ofertas de empleo, gestión de candidatos, programación y seguimiento de entrevistas, generación de ofertas económicas, registro de notas y observaciones, y analíticas del proceso de selección. Para cualquier empresa que contrate de forma regular, este servidor convierte al asistente de IA en un verdadero director de reclutamiento disponible en todo momento.
+
+El proceso de selección y contratación es una de las tareas que más tiempo consumen en los departamentos de RRHH de las pequeñas y medianas empresas. Sin un ATS dedicado, la gestión de candidatos se hace a través de hojas de cálculo, emails desordenados y notas dispersas, lo que lleva inevitablemente a la pérdida de candidatos cualificados, la duplicidad de entrevistas y la falta de consistencia en los criterios de evaluación. Este servidor proporciona la estructura de un ATS profesional con la flexibilidad de la inteligencia artificial, adaptable a los procesos específicos de cualquier tipo de negocio.
+
+Las capacidades analíticas del servidor son especialmente valiosas para identificar cuellos de botella en el proceso de selección: qué fuentes de candidatos son más productivas, cuánto tiempo lleva cubrir cada tipo de puesto, en qué fase se pierden más candidatos cualificados y cuál es la tasa de aceptación de las ofertas económicas realizadas. Con estos datos, el asistente de IA puede proponer mejoras concretas al proceso de reclutamiento que reduzcan el tiempo de cobertura de vacantes y mejoren la calidad de las contrataciones.
+
+## Casos de uso para negocios
+
+- **Restaurantes y grupos de hostelería:** Gestiona el proceso de contratación de cocineros, camareros y personal de sala con un ATS adaptado a la alta rotación del sector, con seguimiento de candidatos por puesto y local, y automatización de la programación de entrevistas.
+- **Clínicas y centros de salud:** Administra la selección de médicos, enfermeros y personal auxiliar con criterios de evaluación específicos para cada especialidad, seguimiento del estado de las licencias y titulaciones requeridas, y registro de las referencias profesionales verificadas.
+- **Cadenas de retail y comercio:** Gestiona campañas de contratación masiva para períodos de alta demanda (Navidades, rebajas) con la capacidad de procesar cientos de candidaturas de forma organizada y seguir el estado de cada candidato en el proceso de selección.
+- **Despachos y firmas profesionales:** Lleva el seguimiento de los candidatos a posiciones junior y senior, documentando las evaluaciones técnicas, las entrevistas por competencias y los criterios de decisión para garantizar un proceso de selección objetivo y consistente.
+- **Constructoras y empresas de servicios técnicos:** Gestiona la contratación de perfiles técnicos especializados (electricistas, fontaneros, técnicos de mantenimiento) con seguimiento de las certificaciones y habilitaciones profesionales requeridas para cada puesto.
+- **Academias y centros educativos:** Administra la selección de docentes y personal de apoyo, con evaluación de titulaciones, experiencia pedagógica y referencias del sector educativo, manteniendo un banco de candidatos cualificados para cubrir bajas y sustituciones con rapidez.
+
+## Configuración básica
+
+Configura el ATS con las credenciales de tu cuenta y las variables de entorno necesarias:
+
+```json
+{
+  "mcpServers": {
+    "ai-hr-ats": {
+      "command": "npx",
+      "args": ["-y", "@xjtlumedia/ai-hr-management-toolkit"],
+      "env": {
+        "HR_API_KEY": "tu-api-key",
+        "HR_ORGANIZATION_ID": "tu-organization-id"
+      }
+    }
+  }
+}
+```
+
+Una vez configurado, el asistente puede crear nuevas ofertas de empleo con los requisitos que especifiques, registrar candidatos en el sistema, programar entrevistas, documentar el resultado de cada evaluación y generar informes del estado del proceso de selección para cada vacante abierta.

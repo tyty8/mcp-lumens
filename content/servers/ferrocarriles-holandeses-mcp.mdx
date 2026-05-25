@@ -1,0 +1,46 @@
+---
+name: Ferrocarriles Holandeses NS MCP
+slug: ferrocarriles-holandeses-mcp
+description: Información de viaje, horarios y actualizaciones en tiempo real de los Ferrocarriles Holandeses (NS) para planificación de desplazamientos en los Países Bajos.
+category: travel
+tags: [trenes, holanda, ns, horarios, transporte]
+official: false
+github: https://github.com/r-huijts/ns-mcp-server
+---
+
+## Descripción general
+
+Ferrocarriles Holandeses NS MCP integra la información oficial de Nederlandse Spoorwegen (NS) — la empresa ferroviaria nacional de los Países Bajos — directamente en tu asistente de IA. Los Países Bajos cuentan con una de las redes ferroviarias más densas y eficientes de Europa, y este servidor MCP permite consultar horarios, rutas, precios y actualizaciones en tiempo real para planificar cualquier desplazamiento por el territorio holandés.
+
+La red ferroviaria de los NS conecta prácticamente todas las ciudades y pueblos de los Países Bajos con servicios frecuentes y puntuales, siendo el medio de transporte preferido tanto por turistas como por residentes para moverse entre Ámsterdam, Rotterdam, La Haya, Utrecht, Eindhoven y el resto del país. Para agencias de viajes y operadores turísticos que trabajan con destinos en los Países Bajos, este servidor MCP es una herramienta indispensable para construir itinerarios logísticamente coherentes.
+
+Además de la información de viajeros, el servidor incluye datos sobre los diferentes tipos de billetes disponibles, opciones de tarjetas de descuento y servicios especiales como los trenes internacionales Thalys e Intercity Direct que conectan los Países Bajos con Bélgica, Alemania y Francia, ampliando su utilidad para itinerarios europeos más amplios.
+
+## Casos de uso para negocios
+
+- **Agencias de viajes especializadas en Europa:** Planificar desplazamientos en tren por los Países Bajos para clientes que visitan Ámsterdam, La Haya, Delft o los campos de tulipanes con horarios y conexiones verificadas.
+- **Empresas con empleados desplazados en Holanda:** Gestionar los desplazamientos diarios en tren de trabajadores expatriados, consultando horarios y posibles incidencias en tiempo real.
+- **Hoteles en ciudades holandesas:** Proporcionar información de transporte ferroviario a los huéspedes internacionales que necesitan desplazarse entre ciudades durante su estancia.
+- **Organizadores de viajes de grupo a los Países Bajos:** Coordinar los desplazamientos en tren de grupos de viajeros entre diferentes ciudades, optimizando los horarios para aprovechar al máximo cada jornada.
+- **Receptivos y DMC holandeses:** Incorporar información ferroviaria precisa en las propuestas de itinerarios para grupos de agencias internacionales interesadas en el destino Países Bajos.
+- **Agencias especializadas en rutas europeas en tren:** Integrar los servicios de NS en itinerarios intermodales que combinan trenes holandeses con servicios ferroviarios de países vecinos.
+
+## Configuración básica
+
+Para utilizar Ferrocarriles Holandeses NS MCP, necesitas registrarte en el portal de desarrolladores de NS en `apiportal.ns.nl` para obtener tu clave de API. El registro es gratuito y proporciona acceso a los datos de viajes y horarios en tiempo real.
+
+```json
+{
+  "mcpServers": {
+    "ns-trains": {
+      "command": "npx",
+      "args": ["-y", "ns-mcp-server"],
+      "env": {
+        "NS_API_KEY": "tu_api_key"
+      }
+    }
+  }
+}
+```
+
+Con el servidor activo, puedes planificar rutas entre estaciones holandesas, consultar el próximo tren disponible desde cualquier estación y verificar el estado actual del servicio ferroviario en los Países Bajos.

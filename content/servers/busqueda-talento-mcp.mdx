@@ -1,0 +1,46 @@
+---
+name: Búsqueda de Talento MCP
+slug: busqueda-talento-mcp
+description: Motor de búsqueda de personas diseñado para reducir el tiempo dedicado al descubrimiento de talento y acelerar la identificación de candidatos cualificados para cualquier organización.
+category: hr
+tags: [talento, reclutamiento, candidatos, headhunting, rrhh]
+official: false
+github: https://github.com/Pearch-ai/mcp_pearch
+---
+
+## Descripción general
+
+Búsqueda de Talento MCP integra la plataforma Pearch AI con tu asistente de IA, proporcionando un motor de búsqueda especializado en el descubrimiento de talento profesional diseñado para reducir drásticamente el tiempo que los equipos de recursos humanos y los reclutadores dedican a la fase de sourcing de candidatos. A diferencia de las plataformas de búsqueda generalista como LinkedIn, Pearch AI está optimizada específicamente para el proceso de identificación y descubrimiento de talento, permitiendo búsquedas más precisas y relevantes para necesidades de contratación específicas.
+
+El descubrimiento de talento es con frecuencia la fase más lenta y costosa del proceso de reclutamiento, especialmente para perfiles técnicos, especializados o de alta dirección donde la oferta de candidatos cualificados es limitada y la competencia entre empresas es alta. Un proceso de sourcing manual que implique búsquedas en múltiples plataformas, revisión de perfiles, verificación de experiencia y primer contacto puede consumir días o semanas de trabajo de un reclutador senior antes de conseguir una lista de candidatos potenciales suficientemente amplia y cualificada.
+
+Este servidor acelera ese proceso permitiendo al asistente de IA actuar como un motor de búsqueda de talento inteligente que puede procesar descripciones de perfiles en lenguaje natural, identificar candidatos que coincidan con las habilidades, experiencia y perfil buscados, y entregar listas de candidatos cualificados en una fracción del tiempo que requeriría el proceso manual. Para empresas con múltiples vacantes abiertas simultáneamente o con necesidades de contratación recurrentes para los mismos tipos de perfil, la eficiencia que proporciona este servidor tiene un impacto directo y medible en los costes de reclutamiento.
+
+## Casos de uso para negocios
+
+- **Clínicas y grupos médicos en expansión:** Acelera la búsqueda de médicos especialistas, enfermeros de UCI o fisioterapeutas en mercados donde la demanda supera a la oferta, identificando candidatos cualificados en menos tiempo y mejorando las tasas de cobertura de vacantes críticas.
+- **Cadenas de restaurantes y grupos de hostelería:** Descubre talento culinario — chefs ejecutivos, jefes de partida, sumilleres — en el mercado local e internacional con búsquedas específicas por tipo de cocina, experiencia en estrellas Michelin o especialización en el tipo de concepto del restaurante.
+- **Despachos de abogados y firmas profesionales:** Identifica abogados con especializaciones concretas, años de experiencia específicos y conocimiento de sectores determinados para posiciones de associate o senior, reduciendo el tiempo de sourcing en procesos de contratación de alta exigencia.
+- **Empresas constructoras y de ingeniería:** Busca ingenieros, arquitectos y técnicos especializados por disciplina, sector de proyecto (residencial, industrial, infraestructuras) y certificaciones profesionales específicas para proyectos con requisitos técnicos muy concretos.
+- **Academias y universidades:** Descubre docentes e investigadores con perfiles académicos específicos por área de conocimiento, publicaciones, experiencia internacional y metodología pedagógica para cubrir posiciones de profesorado o investigación.
+- **Startups y empresas tecnológicas en crecimiento:** Identifica desarrolladores, product managers y perfiles de growth con las habilidades técnicas y la experiencia en startups que se buscan, en un mercado altamente competitivo donde el tiempo de respuesta marca la diferencia entre contratar al mejor candidato o perderlo ante la competencia.
+
+## Configuración básica
+
+Obtén tu API Key en el panel de tu cuenta Pearch AI y configura el servidor:
+
+```json
+{
+  "mcpServers": {
+    "pearch": {
+      "command": "npx",
+      "args": ["-y", "@pearch/mcp-server"],
+      "env": {
+        "PEARCH_API_KEY": "tu-api-key-de-pearch"
+      }
+    }
+  }
+}
+```
+
+Una vez configurado, puedes describir al asistente el perfil de candidato que buscas con el máximo detalle — habilidades técnicas, años de experiencia, sector de procedencia, ubicación geográfica, tipo de empresa anterior — y el motor de búsqueda de Pearch AI identificará los candidatos más relevantes de su base de datos. El asistente puede refinar la búsqueda iterativamente basándose en los resultados iniciales hasta alcanzar una lista de candidatos altamente cualificada para el proceso de selección.

@@ -1,0 +1,47 @@
+---
+name: Encuestas y Feedback de Empleados MCP
+slug: encuestas-empleados-mcp
+description: Plataforma de recopilación de feedback para agentes de IA — crea encuestas desde esquemas JSON, recopila respuestas estructuradas y obtén resultados agregados para encuestas de clima laboral.
+category: hr
+tags: [encuestas, feedback, empleados, clima-laboral, rrhh]
+official: false
+github: https://github.com/sunsiyuan/human-survey
+---
+
+## Descripción general
+
+Encuestas y Feedback de Empleados MCP integra la plataforma Human Survey con tu asistente de IA, proporcionando una solución completa para diseñar, distribuir y analizar encuestas de feedback entre empleados. Este servidor permite crear encuestas a partir de esquemas JSON estructurados, recopilar respuestas de forma organizada y obtener resultados agregados que el asistente de IA puede analizar e interpretar para generar informes de clima laboral, satisfacción del empleado y otros indicadores clave de la gestión de personas en la organización.
+
+La escucha activa de los empleados es un pilar fundamental de una gestión de recursos humanos eficaz, pero muchas pequeñas y medianas empresas no disponen de herramientas o procesos estructurados para recopilar y analizar el feedback de sus equipos de forma sistemática. El resultado es que los problemas de clima laboral, las ineficiencias en los procesos internos o la insatisfacción con condiciones específicas de trabajo permanecen invisibles para la dirección hasta que se manifiestan en forma de rotación, absentismo o conflictos internos que son mucho más costosos de resolver.
+
+Este servidor facilita la creación de encuestas anónimas o identificadas para diferentes propósitos de gestión de personas: encuestas de clima laboral periódicas, evaluaciones 360 grados entre compañeros y responsables, feedback post-incorporación para nuevos empleados, evaluaciones de formación, encuestas de salida para empleados que dejan la empresa y pulsos rápidos de satisfacción para identificar cambios de tendencia en el compromiso del equipo. El asistente de IA puede diseñar la encuesta, distribuirla y luego analizar los resultados para generar conclusiones y recomendaciones accionables.
+
+## Casos de uso para negocios
+
+- **Restaurantes y hostelería con alta rotación:** Implementa encuestas de salida para empleados que dejan la empresa, identificando los motivos de rotación más frecuentes y las áreas de mejora en condiciones laborales, relación con mandos o ambiente de trabajo que pueden reducir la rotación del personal.
+- **Clínicas y centros de salud:** Realiza encuestas de clima laboral periódicas para identificar el nivel de satisfacción y el compromiso del personal sanitario, detectando señales tempranas de burnout o insatisfacción antes de que se traduzcan en bajas o salidas del equipo.
+- **Cadenas de retail y comercio:** Recoge feedback de los empleados de tienda sobre procesos operativos, sistemas de información y condiciones de trabajo, identificando oportunidades de mejora que impacten directamente en la productividad y en la experiencia del cliente.
+- **Academias y centros educativos:** Evalúa la satisfacción del equipo docente con los recursos, el apoyo de la dirección y las condiciones pedagógicas, y recoge feedback sobre los programas formativos recién implementados para identificar áreas de mejora curricular.
+- **Empresas en proceso de cambio organizativo:** Monitoriza el impacto de cambios estructurales, fusiones o nuevas políticas de empresa en el clima laboral del equipo, con encuestas de pulso frecuentes que permiten detectar y gestionar la resistencia al cambio de forma proactiva.
+- **Startups en fase de crecimiento acelerado:** Implementa un programa de feedback continuo para mantener el pulso del compromiso del equipo durante fases de expansión rápida donde el riesgo de pérdida de cultura y alineación organizativa es mayor.
+
+## Configuración básica
+
+Configura el servidor con las credenciales de Human Survey y los parámetros de la organización:
+
+```json
+{
+  "mcpServers": {
+    "human-survey": {
+      "command": "npx",
+      "args": ["-y", "human-survey-mcp"],
+      "env": {
+        "HUMAN_SURVEY_API_KEY": "tu-api-key",
+        "ORGANIZATION_ID": "tu-organization-id"
+      }
+    }
+  }
+}
+```
+
+Una vez configurado, puedes pedir al asistente que diseñe una encuesta de clima laboral con preguntas sobre satisfacción general, relación con el equipo, condiciones de trabajo y expectativas de desarrollo profesional. El servidor genera el esquema JSON de la encuesta, la distribuye a los empleados designados y recoge las respuestas para que el asistente las analice y genere un informe con los resultados agregados y las tendencias principales.

@@ -21,25 +21,25 @@ export default function HomePage() {
               Model Context Protocol
             </p>
             <h1 className="text-5xl font-bold text-foreground leading-tight mb-6 tracking-tight">
-              The MCP Server Directory
+              El Directorio de Servidores MCP
             </h1>
             <p className="text-xl text-muted-foreground mb-10 leading-relaxed">
-              Discover, install, and connect Model Context Protocol servers to any AI client.
-              Extend your AI with real-world tools.
+              Descubre, instala y conecta servidores MCP a cualquier cliente de IA.
+              Amplía tu IA con herramientas del mundo real.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/servers"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-green-500 text-black font-semibold hover:bg-green-400 transition-colors"
               >
-                Browse Servers
+                Explorar Servidores
                 <span aria-hidden="true">-&gt;</span>
               </Link>
               <Link
                 href="/guides"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-border bg-card text-foreground font-semibold hover:border-green-500/50 hover:text-green-500 transition-colors"
               >
-                Read Guides
+                Leer Guías
                 <span aria-hidden="true">-&gt;</span>
               </Link>
             </div>
@@ -55,17 +55,17 @@ export default function HomePage() {
               <span className="text-2xl font-bold font-mono text-green-500">
                 {totalServers > 0 ? `${totalServers}+` : '9+'}
               </span>
-              <span className="ml-2 text-muted-foreground text-sm">Servers</span>
+              <span className="ml-2 text-muted-foreground text-sm">Servidores</span>
             </div>
             <div className="py-6 px-8">
               <span className="text-2xl font-bold font-mono text-green-500">
                 {categories > 0 ? categories : 5}
               </span>
-              <span className="ml-2 text-muted-foreground text-sm">Categories</span>
+              <span className="ml-2 text-muted-foreground text-sm">Categorías</span>
             </div>
             <div className="py-6 px-8">
-              <span className="text-2xl font-bold font-mono text-green-500">Open</span>
-              <span className="ml-2 text-muted-foreground text-sm">Source</span>
+              <span className="text-2xl font-bold font-mono text-green-500">Abierto</span>
+              <span className="ml-2 text-muted-foreground text-sm">Código</span>
             </div>
           </div>
         </div>
@@ -76,12 +76,12 @@ export default function HomePage() {
         <section className="py-16 border-b border-border">
           <div className="max-w-6xl mx-auto px-4">
             <div className="flex items-center justify-between mb-8">
-              <h2 className="text-2xl font-semibold text-foreground">Featured Servers</h2>
+              <h2 className="text-2xl font-semibold text-foreground">Servidores Destacados</h2>
               <Link
                 href="/servers"
                 className="text-sm text-green-500 hover:underline font-mono"
               >
-                View all servers -&gt;
+                Ver todos los servidores -&gt;
               </Link>
             </div>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -93,22 +93,22 @@ export default function HomePage() {
         </section>
       )}
 
-      {/* WHAT IS MCP */}
+      {/* QUÉ ES MCP */}
       <section className="py-16 border-b border-border">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div>
-              <h2 className="text-2xl font-semibold text-foreground mb-4">What is MCP?</h2>
+              <h2 className="text-2xl font-semibold text-foreground mb-4">¿Qué es MCP?</h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                The Model Context Protocol (MCP) is an open standard that lets AI models like
-                Claude connect to external tools and data sources. Instead of being limited to
-                what they were trained on, AI clients can call MCP servers to read files,
-                query databases, browse the web, run code, and much more.
+                El Model Context Protocol (MCP) es un estándar abierto que permite a los modelos de IA como
+                Claude conectarse a herramientas externas y fuentes de datos. En lugar de limitarse a
+                lo que aprendieron durante el entrenamiento, los clientes de IA pueden invocar servidores MCP
+                para leer archivos, consultar bases de datos, navegar por la web, ejecutar código y mucho más.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                MCP servers expose a consistent interface — tools, resources, and prompts —
-                that any compatible AI client can discover and use. Configure once, use
-                everywhere.
+                Los servidores MCP exponen una interfaz coherente — herramientas, recursos y prompts —
+                que cualquier cliente de IA compatible puede descubrir y usar. Configúralo una vez,
+                úsalo en cualquier lugar.
               </p>
             </div>
             <div>
@@ -123,31 +123,31 @@ export default function HomePage() {
       "args": [
         "-y",
         "@modelcontextprotocol/server-filesystem",
-        "/Users/you/Documents"
+        "/Users/tu/Documentos"
       ]
     }
   }
 }`}</code>
               </pre>
               <p className="text-xs text-muted-foreground mt-3 font-mono">
-                Add this to your Claude Desktop config to enable filesystem access.
+                Añade esto a tu configuración de Claude Desktop para habilitar el acceso al sistema de archivos.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* GUIDES PREVIEW */}
+      {/* GUÍAS */}
       {guides.length > 0 && (
         <section className="py-16">
           <div className="max-w-6xl mx-auto px-4">
             <div className="flex items-center justify-between mb-8">
-              <h2 className="text-2xl font-semibold text-foreground">Learn &amp; Build</h2>
+              <h2 className="text-2xl font-semibold text-foreground">Aprende y Construye</h2>
               <Link
                 href="/guides"
                 className="text-sm text-green-500 hover:underline font-mono"
               >
-                All guides -&gt;
+                Todas las guías -&gt;
               </Link>
             </div>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -159,14 +159,14 @@ export default function HomePage() {
         </section>
       )}
 
-      {/* EMPTY STATE for no content yet */}
+      {/* EMPTY STATE */}
       {featuredServers.length === 0 && guides.length === 0 && (
         <section className="py-24">
           <div className="max-w-6xl mx-auto px-4 text-center">
             <p className="text-muted-foreground font-mono text-sm">
-              Content coming soon. Add MDX files to{' '}
-              <code className="text-green-500">content/servers/</code> and{' '}
-              <code className="text-green-500">content/guides/</code> to get started.
+              Contenido próximamente. Añade archivos MDX a{' '}
+              <code className="text-green-500">content/servers/</code> y{' '}
+              <code className="text-green-500">content/guides/</code> para comenzar.
             </p>
           </div>
         </section>

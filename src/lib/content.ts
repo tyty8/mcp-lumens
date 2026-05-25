@@ -8,7 +8,7 @@ export interface ServerMeta {
   name: string
   slug: string
   description: string
-  category: 'developer-tools' | 'databases' | 'productivity' | 'security' | 'ai'
+  category: 'developer-tools' | 'databases' | 'productivity' | 'security' | 'ai' | 'communication' | 'marketing' | 'finance' | 'legal' | 'hr' | 'logistics' | 'real-estate' | 'healthcare' | 'education' | 'retail' | 'travel'
   tags: string[]
   official: boolean
   install?: string
@@ -30,6 +30,17 @@ const VALID_CATEGORIES = new Set([
   'productivity',
   'security',
   'ai',
+  'communication',
+  'marketing',
+  'finance',
+  'legal',
+  'hr',
+  'logistics',
+  'real-estate',
+  'healthcare',
+  'education',
+  'retail',
+  'travel',
 ])
 
 function normalizeCategory(

@@ -1,0 +1,46 @@
+---
+name: Búsqueda de Campings Mundiales MCP
+slug: campings-mundiales-mcp
+description: Busca campings en todo el mundo en Campertunity, verifica disponibilidad y proporciona enlaces de reserva para turismo de naturaleza y turismo de autocaravana.
+category: travel
+tags: [campings, camping, autocaravana, naturaleza, reservas]
+official: false
+github: https://github.com/campertunity/mcp-server
+---
+
+## Descripción general
+
+Búsqueda de Campings Mundiales MCP conecta tu asistente de IA con Campertunity, una plataforma especializada en el alojamiento al aire libre que reúne campings, áreas de autocaravanas, granjas con parcelas y espacios de glamping de todo el mundo. A través de este servidor MCP, agencias de turismo de naturaleza, tiendas de caravanas y autocaravanas, y cualquier negocio del sector outdoor puede buscar opciones de alojamiento en camping, verificar su disponibilidad y facilitar el proceso de reserva a sus clientes.
+
+El turismo en autocaravana y el camping han experimentado un crecimiento sostenido en los últimos años, impulsado por viajeros que buscan mayor libertad, contacto con la naturaleza y alternativas más económicas al alojamiento convencional. Este servidor MCP permite a los negocios del sector outdoor aprovechar esta tendencia ofreciendo un servicio de búsqueda y recomendación de campings personalizado y eficiente directamente desde su canal de atención al cliente.
+
+Campertunity incluye información detallada sobre cada camping: servicios disponibles (electricidad, agua, duchas, wifi, restaurante), tipo de terreno, valoraciones de campistas anteriores, normas del camping y precios por noche. Esta información permite hacer recomendaciones realmente ajustadas a las necesidades de cada tipo de campista, desde el turista con tienda de campaña hasta el caravanista con vehículo de gran tamaño.
+
+## Casos de uso para negocios
+
+- **Tiendas de caravanas y autocaravanas:** Ofrecer a los clientes que compran un vehículo de ocio un servicio de búsqueda de campings compatible con las dimensiones y necesidades de su nueva adquisición.
+- **Agencias de turismo de naturaleza y outdoor:** Incorporar campings y áreas de acampada en los itinerarios de rutas senderistas, cicloturistas o de turismo activo que diseñan para sus clientes.
+- **Empresas de alquiler de autocaravanas:** Ayudar a los clientes que alquilan una autocaravana a planificar su ruta incluyendo paradas verificadas en campings y áreas de servicio con disponibilidad confirmada.
+- **Clubes y asociaciones de autocaravanistas:** Buscar y recomendar campings de calidad para las salidas grupales organizadas por el club, con filtros por tamaño de parcela y servicios disponibles.
+- **Agencias de glamping y turismo rural:** Encontrar opciones de alojamiento al aire libre de alta gama — cabañas, tiendas tipo safari, domo geodésico — para clientes que quieren naturaleza sin renunciar a la comodidad.
+- **Federaciones de ciclismo y senderismo:** Identificar campings a lo largo de las rutas de larga distancia para facilitar a los participantes la planificación del alojamiento durante sus travesías.
+
+## Configuración básica
+
+Para configurar Búsqueda de Campings Mundiales MCP, necesitas una clave de API de Campertunity. Regístrate como partner en `campertunity.com` para obtener acceso a la API y tus credenciales de integración.
+
+```json
+{
+  "mcpServers": {
+    "campertunity": {
+      "command": "npx",
+      "args": ["-y", "@campertunity/mcp-server"],
+      "env": {
+        "CAMPERTUNITY_API_KEY": "tu_api_key"
+      }
+    }
+  }
+}
+```
+
+Una vez configurado, puedes buscar campings por ubicación, fechas, tipo de alojamiento y servicios requeridos, verificar disponibilidad en tiempo real y obtener el enlace directo para que el cliente complete su reserva.

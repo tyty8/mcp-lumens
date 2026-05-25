@@ -12,12 +12,23 @@ interface ServersGridProps {
 type CategoryFilter = 'All' | ServerMeta['category']
 
 const CATEGORY_TABS: { value: CategoryFilter; label: string }[] = [
-  { value: 'All', label: 'All' },
-  { value: 'developer-tools', label: 'Developer Tools' },
-  { value: 'databases', label: 'Databases' },
-  { value: 'productivity', label: 'Productivity' },
-  { value: 'security', label: 'Security' },
-  { value: 'ai', label: 'AI' },
+  { value: 'All', label: 'Todo' },
+  { value: 'communication', label: 'Comunicación' },
+  { value: 'marketing', label: 'Marketing' },
+  { value: 'finance', label: 'Finanzas' },
+  { value: 'legal', label: 'Legal' },
+  { value: 'hr', label: 'RRHH' },
+  { value: 'logistics', label: 'Logística' },
+  { value: 'real-estate', label: 'Inmobiliaria' },
+  { value: 'healthcare', label: 'Salud' },
+  { value: 'education', label: 'Educación' },
+  { value: 'retail', label: 'Comercio' },
+  { value: 'travel', label: 'Viajes' },
+  { value: 'developer-tools', label: 'Desarrollo' },
+  { value: 'databases', label: 'Bases de datos' },
+  { value: 'productivity', label: 'Productividad' },
+  { value: 'security', label: 'Seguridad' },
+  { value: 'ai', label: 'IA' },
 ]
 
 export function ServersGrid({ servers }: ServersGridProps) {
@@ -72,7 +83,7 @@ export function ServersGrid({ servers }: ServersGridProps) {
           </svg>
           <input
             type="search"
-            placeholder="Search servers..."
+            placeholder="Buscar servidores..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             className="w-full rounded-md border border-border bg-card pl-9 pr-4 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/60 transition-colors"
@@ -99,16 +110,16 @@ export function ServersGrid({ servers }: ServersGridProps) {
 
       {/* Results count */}
       <p className="mb-4 text-xs text-muted-foreground font-mono">
-        {filtered.length} {filtered.length === 1 ? 'server' : 'servers'}
-        {activeCategory !== 'All' || query ? ` matching` : ''}
+        {filtered.length} {filtered.length === 1 ? 'servidor' : 'servidores'}
+        {activeCategory !== 'All' || query ? ` encontrados` : ''}
       </p>
 
       {/* Grid */}
       {filtered.length === 0 ? (
         <div className="flex flex-col items-center justify-center py-20 text-center">
-          <p className="font-mono text-muted-foreground text-sm">No servers found</p>
+          <p className="font-mono text-muted-foreground text-sm">No se encontraron servidores</p>
           <p className="font-mono text-muted-foreground/60 text-xs mt-1">
-            Try a different search term or category
+            Prueba con otro término de búsqueda o categoría
           </p>
         </div>
       ) : (

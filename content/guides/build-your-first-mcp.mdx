@@ -1,24 +1,24 @@
 ---
-title: Build Your First MCP Server
+title: Construya su primer servidor MCP
 slug: build-your-first-mcp
-description: "A hands-on guide to building a custom MCP server with the TypeScript SDK from scratch."
+description: "Una guía práctica para construir un servidor MCP personalizado con el SDK de TypeScript desde cero."
 date: 2026-05-10
 tags: [development, typescript, sdk, intermediate]
 ---
 
-## Why Build a Custom Server?
+## ¿Por qué construir un servidor personalizado?
 
-The official MCP servers cover common use cases, but your workflows are unique. A custom server lets you expose any API, internal tool, or data source to your AI client with exactly the interface you need. Once written, the server works with any MCP-compatible client — Claude Desktop, Cursor, or your own agent.
+Los servidores MCP oficiales cubren los casos de uso más comunes, pero sus flujos de trabajo son únicos. Un servidor personalizado le permite exponer cualquier API, herramienta interna o fuente de datos a su cliente de IA con exactamente la interfaz que necesita. Una vez escrito, el servidor funciona con cualquier cliente compatible con MCP: Claude Desktop, Cursor o su propio agente.
 
-## Prerequisites
+## Requisitos previos
 
 - Node.js 18+
-- TypeScript familiarity (basic types, async/await)
-- A terminal and a code editor
+- Familiaridad con TypeScript (tipos básicos, async/await)
+- Una terminal y un editor de código
 
-## Initialize the Project
+## Inicializar el proyecto
 
-Create a new directory and initialize a Node project:
+Cree un nuevo directorio e inicialice un proyecto de Node:
 
 ```bash
 mkdir my-mcp-server
@@ -26,14 +26,14 @@ cd my-mcp-server
 npm init -y
 ```
 
-Install the MCP TypeScript SDK and supporting packages:
+Instale el SDK de TypeScript para MCP y los paquetes de soporte:
 
 ```bash
 npm install @modelcontextprotocol/sdk zod
 npm install -D typescript @types/node ts-node
 ```
 
-Add a `tsconfig.json`:
+Agregue un `tsconfig.json`:
 
 ```json
 {
@@ -49,7 +49,7 @@ Add a `tsconfig.json`:
 }
 ```
 
-Add a build script to `package.json`:
+Agregue un script de compilación a `package.json`:
 
 ```json
 {
@@ -60,22 +60,22 @@ Add a build script to `package.json`:
 }
 ```
 
-## Write the Server
+## Escribir el servidor
 
-Create `src/index.ts`. This example implements a simple calculator server with two tools: `add` and `multiply`.
+Cree `src/index.ts`. Este ejemplo implementa un servidor de calculadora simple con dos herramientas: `add` y `multiply`.
 
 ```ts
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
 
-// Create the server instance
+// Crear la instancia del servidor
 const server = new McpServer({
   name: "calculator",
   version: "1.0.0",
 });
 
-// Register the "add" tool
+// Registrar la herramienta "add"
 server.tool(
   "add",
   "Add two numbers together",
@@ -95,7 +95,7 @@ server.tool(
   }
 );
 
-// Register the "multiply" tool
+// Registrar la herramienta "multiply"
 server.tool(
   "multiply",
   "Multiply two numbers",
@@ -115,33 +115,33 @@ server.tool(
   }
 );
 
-// Start the server over stdio
+// Iniciar el servidor mediante stdio
 const transport = new StdioServerTransport();
 await server.connect(transport);
 ```
 
-## Build and Run
+## Compilar y ejecutar
 
 ```bash
 npm run build
 node dist/index.js
 ```
 
-The server will start and wait for input over stdin. It is ready to be connected to a client.
+El servidor se iniciará y esperará entradas a través de stdin. Está listo para ser conectado a un cliente.
 
-## Test with the MCP Inspector
+## Probar con el Inspector MCP
 
-The MCP Inspector is an interactive browser-based tool for testing servers without a full client setup.
+El Inspector MCP es una herramienta interactiva basada en navegador para probar servidores sin necesidad de una configuración completa de cliente.
 
 ```bash
 npx @modelcontextprotocol/inspector node dist/index.js
 ```
 
-This opens a browser window where you can browse your tools, provide inputs, and call them interactively. Verify that `add` and `multiply` both appear and return correct results before connecting to Claude Desktop.
+Esto abre una ventana del navegador donde puede explorar sus herramientas, proporcionar entradas e invocarlas de forma interactiva. Verifique que tanto `add` como `multiply` aparezcan y devuelvan resultados correctos antes de conectarse a Claude Desktop.
 
-## Connect to Claude Desktop
+## Conectar a Claude Desktop
 
-Add the server to your Claude Desktop config file:
+Agregue el servidor a su archivo de configuración de Claude Desktop:
 
 ```json
 {
@@ -154,14 +154,14 @@ Add the server to your Claude Desktop config file:
 }
 ```
 
-Restart Claude Desktop, then test in a conversation: "What is 347 multiplied by 28?" — Claude should invoke the `multiply` tool and return the answer.
+Reinicie Claude Desktop, luego pruebe en una conversación: "¿Cuánto es 347 multiplicado por 28?" — Claude debería invocar la herramienta `multiply` y devolver la respuesta.
 
-## Deploy and Distribute
+## Desplegar y distribuir
 
-To share your server with others:
+Para compartir su servidor con otros:
 
-1. **Publish to npm.** Run `npm publish` after setting a package name (e.g. `mcp-server-calculator`). Users can then run it with `npx mcp-server-calculator`.
-2. **Add to PATH.** Build the binary, mark it executable (`chmod +x dist/index.js`), add a shebang (`#!/usr/bin/env node`), and link it globally with `npm link`.
-3. **Docker.** Package the server in a Docker image for consistent execution across environments, especially useful for servers with native dependencies.
+1. **Publicar en npm.** Ejecute `npm publish` después de establecer un nombre de paquete (p. ej., `mcp-server-calculator`). Los usuarios podrán ejecutarlo con `npx mcp-server-calculator`.
+2. **Agregar al PATH.** Compile el binario, máquelo como ejecutable (`chmod +x dist/index.js`), agregue un shebang (`#!/usr/bin/env node`) y enlácelo globalmente con `npm link`.
+3. **Docker.** Empaquete el servidor en una imagen Docker para una ejecución consistente en distintos entornos, especialmente útil para servidores con dependencias nativas.
 
-For more advanced patterns — resources, prompts, authentication, streaming — refer to the [MCP TypeScript SDK documentation](https://github.com/modelcontextprotocol/typescript-sdk).
+Para patrones más avanzados — recursos, prompts, autenticación, streaming — consulte la [documentación del SDK de TypeScript para MCP](https://github.com/modelcontextprotocol/typescript-sdk).

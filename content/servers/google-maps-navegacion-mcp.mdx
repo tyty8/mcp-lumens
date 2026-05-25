@@ -1,0 +1,52 @@
+---
+name: Google Maps Navegación MCP
+slug: google-maps-navegacion-mcp
+description: Integración con Google Maps para servicios de localización, cálculo de rutas y detalles de lugares — fundamental para negocios de reparto, servicios a domicilio y hostelería.
+category: productivity
+tags: [google-maps, rutas, localizacion, navegacion, direcciones]
+official: false
+github: https://github.com/modelcontextprotocol/servers
+---
+
+## Descripción general
+
+El servidor Google Maps Navegación MCP proporciona acceso a las APIs de Google Maps Platform desde el asistente de IA, integrando capacidades de localización, cálculo de rutas, búsqueda de lugares y detalles de establecimientos en cualquier flujo de trabajo conversacional. Google Maps es la base de datos geoespacial más completa y actualizada del mundo, y conectarla con el asistente de IA abre posibilidades enormes para cualquier negocio que tenga una dimensión física o geográfica en su operación.
+
+Las capacidades de geocodificación permiten convertir direcciones en coordenadas geográficas y viceversa, una operación fundamental para cualquier sistema de reparto o servicio a domicilio. El cálculo de rutas optimizadas entre múltiples puntos —teniendo en cuenta el tráfico en tiempo real, las restricciones de circulación y las preferencias de modo de transporte— es esencial para los repartidores, técnicos de servicio a domicilio y cualquier empleado que necesite visitar varios clientes o ubicaciones en la misma jornada.
+
+La búsqueda de lugares y el acceso a sus detalles —horarios de apertura, número de teléfono, valoraciones, fotos, reseñas y categoría— es especialmente útil para los negocios del sector hostelero, turístico y servicios que necesitan información actualizada sobre establecimientos de la competencia, posibles socios o proveedores locales. El asistente puede buscar "todas las ferreterías en un radio de 5 km de mi almacén en Sevilla" y obtener la lista con detalles completos, o verificar los horarios de un proveedor antes de planificar una visita.
+
+## Casos de uso para negocios
+
+- **Negocios de reparto y mensajería:** Optimización de la ruta diaria de reparto para múltiples entregas, ordenando los puntos de entrega de forma eficiente y estimando los tiempos de llegada a cada cliente para poder comunicárselos proactivamente.
+- **Servicios técnicos a domicilio:** Asignación del técnico más cercano a cada nueva solicitud de servicio basándose en la localización actual de los técnicos disponibles y el tiempo estimado de desplazamiento.
+- **Restaurantes con servicio a domicilio propio:** Cálculo del tiempo estimado de entrega para cada pedido según la distancia al cliente y el tráfico actual, para comunicar al cliente una estimación realista al confirmar el pedido.
+- **Agencias inmobiliarias:** Análisis de los servicios disponibles en el entorno de una propiedad —transporte público, colegios, supermercados, hospitales— para incluirlo como argumento de venta en las fichas de los inmuebles.
+- **Empresas de instalación y mantenimiento:** Planificación de la jornada de los técnicos de campo, calculando la secuencia óptima de visitas a clientes para minimizar el tiempo de desplazamiento y maximizar las visitas diarias.
+- **Hostelería y turismo:** Búsqueda de restaurantes, hoteles, atracciones y servicios cercanos para proporcionar recomendaciones precisas a los huéspedes o planificar actividades de team building con empleados.
+
+## Configuración básica
+
+Obtén una clave de API de Google Maps Platform desde Google Cloud Console habilitando las APIs necesarias (Maps, Geocoding, Directions, Places):
+
+```bash
+npx @modelcontextprotocol/server-google-maps
+```
+
+Configura las credenciales en tu cliente MCP:
+
+```json
+{
+  "mcpServers": {
+    "google-maps": {
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-google-maps"],
+      "env": {
+        "GOOGLE_MAPS_API_KEY": "tu-api-key-de-google-maps"
+      }
+    }
+  }
+}
+```
+
+En Google Cloud Console, habilita específicamente las APIs: Maps JavaScript API, Geocoding API, Directions API, Distance Matrix API y Places API. Google Maps Platform ofrece un crédito mensual gratuito de 200 USD, suficiente para un volumen moderado de consultas. Configura alertas de gasto para evitar sorpresas en la facturación si el volumen de uso crece significativamente.

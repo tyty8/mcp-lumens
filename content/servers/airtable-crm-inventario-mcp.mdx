@@ -1,0 +1,53 @@
+---
+name: Airtable CRM e Inventario MCP
+slug: airtable-crm-inventario-mcp
+description: Integración completa con Airtable para consultar y actualizar bases de datos sin código — ideal para CRM, gestión de inventario, seguimiento de pedidos y cualquier base de datos visual de negocio.
+category: databases
+tags: [airtable, crm, inventario, sin-codigo, base-datos]
+official: false
+github: https://github.com/domdomegg/airtable-mcp-server
+---
+
+## Descripción general
+
+El servidor Airtable CRM e Inventario MCP conecta tu asistente de IA con Airtable, la plataforma de base de datos visual que ha democratizado la creación de aplicaciones de datos en miles de empresas. Airtable combina la familiaridad de una hoja de cálculo con la potencia de una base de datos relacional, y es ampliamente utilizada por equipos sin conocimientos técnicos para gestionar CRM de clientes, inventarios de productos, seguimiento de pedidos, pipelines de proyectos, calendarios editoriales y decenas de otros casos de uso empresarial.
+
+La integración con Airtable mediante este servidor permite que el asistente de IA lea, filtre, cree y actualice registros en cualquier base de Airtable, extendiendo las capacidades de la plataforma con la inteligencia conversacional del asistente. En lugar de abrir Airtable para comprobar el stock de un producto, actualizar el estado de un pedido o añadir un nuevo cliente al CRM, estas operaciones pueden realizarse en lenguaje natural desde el chat del asistente, ahorrando los clicks y la navegación que se van acumulando a lo largo del día.
+
+Una ventaja particular de este servidor es su compatibilidad con el enfoque "no-code" de Airtable. Los usuarios que ya tienen sus datos en Airtable, incluso los menos técnicos, pueden empezar a usar el asistente de IA con sus datos sin ninguna migración ni integración compleja. El servidor se conecta directamente a las bases que ya existen, entiende su estructura automáticamente y puede operar con sus registros desde el primer momento. Esto reduce enormemente la barrera de adopción de la IA en negocios donde los datos ya están en Airtable pero el equipo aún no aprovecha todo su potencial.
+
+## Casos de uso para negocios
+
+- **Agencias con CRM en Airtable:** Consulta del pipeline de oportunidades, actualización del estado de cada lead tras una llamada y registro de notas de interacción sin salir del asistente de IA durante la gestión del día.
+- **Tiendas y distribuidoras con inventario en Airtable:** Consulta instantánea del stock disponible de cualquier referencia, registro de entradas de mercancía y actualización del inventario tras una venta o ajuste de stock.
+- **Negocios de servicios con gestión de proyectos en Airtable:** Actualización del estado de los proyectos de cliente, asignación de tareas a miembros del equipo y seguimiento de las fechas de entrega desde una conversación con el asistente.
+- **Equipos de marketing con calendarios editoriales en Airtable:** Consulta del calendario de publicaciones, actualización del estado de los contenidos (redactado, revisado, publicado) y planificación de nuevos contenidos directamente desde el asistente.
+- **Gestión de eventos con registro en Airtable:** Registro de nuevos participantes confirmados, consulta de la lista de asistentes y actualización de información de contacto o preferencias alimentarias en bases de Airtable de gestión de eventos.
+- **Control de flotas o activos con inventario en Airtable:** Registro de mantenimientos realizados, actualización del estado operativo de cada vehículo o equipo y consulta del historial de incidencias por unidad.
+
+## Configuración básica
+
+Genera un token de API personal en Airtable desde la configuración de tu cuenta:
+
+```bash
+npx @domdomegg/airtable-mcp-server
+```
+
+Configura las credenciales en tu cliente MCP:
+
+```json
+{
+  "mcpServers": {
+    "airtable": {
+      "command": "npx",
+      "args": ["@domdomegg/airtable-mcp-server"],
+      "env": {
+        "AIRTABLE_API_KEY": "tu-personal-access-token",
+        "AIRTABLE_BASE_ID": "appXXXXXXXXXXXXXX"
+      }
+    }
+  }
+}
+```
+
+El token personal de acceso se genera en airtable.com/create/tokens. Asegúrate de otorgar los scopes `data.records:read` y `data.records:write` si quieres que el asistente pueda tanto leer como modificar registros. El Base ID se encuentra en la URL de tu base de Airtable (el segmento que empieza por `app`). Si tienes varias bases, puedes configurar múltiples instancias del servidor con distintos Base IDs.

@@ -1,0 +1,47 @@
+---
+name: Instagram Gestión Completa MCP
+slug: instagram-gestion-mcp
+description: Gestión integral de Instagram con 57 herramientas para publicar contenido, responder DMs, obtener insights, gestionar hashtags y controlar tokens de acceso.
+category: marketing
+tags: [instagram, redes-sociales, publicaciones, dm, hashtags]
+official: false
+github: https://github.com/mikusnuz/meta-mcp
+---
+
+## Descripción general
+
+Instagram Gestión Completa MCP ofrece un conjunto de 57 herramientas que cubren prácticamente todas las operaciones disponibles en la API de Instagram, permitiendo a tu asistente de IA gestionar de forma integral la presencia de un negocio en esta red social. Desde la publicación de contenido en el feed y stories hasta la gestión de mensajes directos con clientes, pasando por el análisis de métricas de engagement y la investigación de hashtags, este servidor convierte a Instagram en una plataforma completamente gestionable desde el lenguaje natural.
+
+Para un negocio tradicional como una peluquería, un restaurante, una boutique o un estudio de yoga, Instagram es con frecuencia el principal canal de captación de nuevos clientes y de comunicación con la comunidad existente. Sin embargo, mantener una presencia activa y coherente en la plataforma requiere tiempo y constancia que muchos pequeños empresarios no pueden dedicar. Este servidor permite delegar esa gestión al asistente de IA, que puede planificar y publicar contenido, responder a comentarios y mensajes, y analizar qué tipo de publicaciones generan más interacción.
+
+Las capacidades de insights son especialmente valiosas: el servidor puede acceder a métricas detalladas por publicación, como el alcance, las impresiones, los clics en el perfil y las interacciones, así como datos demográficos de los seguidores y estadísticas de la cuenta. Con esta información, el asistente de IA puede identificar los mejores horarios de publicación, los formatos más efectivos (imágenes, carruseles, reels) y los temas que generan mayor engagement entre la audiencia específica de ese negocio.
+
+## Casos de uso para negocios
+
+- **Peluquerías y salones de belleza:** Publica automáticamente fotos de resultados de tratamientos etiquetando los productos utilizados, responde a consultas de precio y disponibilidad en DMs y programa el contenido semanal con antelación.
+- **Restaurantes y cafeterías:** Gestiona la publicación diaria de platos del menú, historias con el ambiente del local y promociones de eventos especiales, manteniendo un feed visualmente coherente sin esfuerzo manual.
+- **Boutiques y tiendas de moda:** Publica nuevas llegadas de temporada, gestiona los DMs de consultas sobre tallas y disponibilidad, y analiza qué productos generan más guardados e interacciones para orientar las compras de stock.
+- **Estudios de yoga, pilates y fitness:** Programa contenido educativo (consejos, tutoriales cortos), gestiona inscripciones de nuevas clases que llegan por DM y monitoriza el crecimiento de seguidores y el alcance de cada publicación.
+- **Hoteles y alojamientos con encanto:** Mantiene activo el perfil con contenido de inspiración, testimonios de huéspedes en stories y respuestas rápidas a consultas de reserva que llegan por mensaje directo.
+- **Artesanos y productores locales:** Gestiona el catálogo de productos mediante publicaciones etiquetadas en Instagram Shopping y responde a pedidos o consultas de disponibilidad que llegan a través de la bandeja de mensajes.
+
+## Configuración básica
+
+Necesitas un Token de Acceso de la API de Instagram con permisos sobre la cuenta de negocio o creador vinculada a una página de Facebook:
+
+```json
+{
+  "mcpServers": {
+    "instagram": {
+      "command": "npx",
+      "args": ["-y", "@mikusnuz/meta-mcp"],
+      "env": {
+        "META_ACCESS_TOKEN": "tu-token-de-acceso",
+        "INSTAGRAM_BUSINESS_ACCOUNT_ID": "tu-instagram-account-id"
+      }
+    }
+  }
+}
+```
+
+Para obtener el ID de la cuenta de negocio de Instagram, accede al perfil en el panel de Meta Business Suite o consulta la configuración de la página de Facebook vinculada. El token de acceso debe generarse con los permisos `instagram_basic`, `instagram_content_publish` y `instagram_manage_messages` para acceder a todas las funcionalidades del servidor.

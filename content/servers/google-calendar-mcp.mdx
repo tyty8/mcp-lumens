@@ -1,0 +1,54 @@
+---
+name: Google Calendar MCP
+slug: google-calendar-mcp
+description: Interfaz con la API de Google Calendar para crear, actualizar y consultar eventos, gestionar calendarios y programar reuniones mediante lenguaje natural.
+category: communication
+tags: [google-calendar, calendar, reuniones, programacion]
+official: false
+github: https://github.com/takumi0706/google-calendar-mcp
+---
+
+## Descripción general
+
+Google Calendar MCP establece una conexión directa entre tu asistente de IA y Google Calendar, el sistema de gestión del tiempo más utilizado por pequeñas y medianas empresas en todo el mundo. A través de la API oficial de Google, el servidor permite realizar cualquier operación de calendario mediante instrucciones en lenguaje natural: "programa una reunión con el proveedor para el próximo martes por la mañana", "muéstrame qué tengo libre esta semana" o "cancela la cita de las 3 del jueves y avisa al cliente".
+
+Para negocios tradicionales, Google Calendar ya es la columna vertebral de la organización diaria. Este servidor potencia esa herramienta existente añadiendo capacidades de automatización inteligente que antes requerían intervención manual. El asistente puede revisar la disponibilidad de varios miembros del equipo simultáneamente, detectar el primer hueco donde todos coincidan y crear el evento con todos los detalles necesarios — ubicación, videollamada, agenda, documentos adjuntos — en segundos.
+
+La integración con Google Meet es especialmente valiosa: el servidor puede crear automáticamente el enlace de videollamada al programar reuniones virtuales con clientes, incluirlo en la invitación y añadir el número de teléfono para quienes prefieran unirse por audio. Para empresas que trabajan con clientes en diferentes ciudades o países, esta automatización elimina el fricción de coordinar reuniones remotas.
+
+## Casos de uso para negocios
+
+- **Inmobiliarias y agencias de alquiler:** Programación automática de visitas a propiedades con clientes, coordinando la disponibilidad del agente, el propietario y el inquilino potencial sin llamadas telefónicas de coordinación.
+- **Talleres y servicios de reparación:** Creación automática de citas de entrega y recogida basadas en el tiempo estimado de reparación, con recordatorios enviados al cliente y al técnico responsable.
+- **Clínicas y centros de salud:** Gestión de la agenda médica con diferentes duraciones para primeras visitas y revisiones, bloqueo automático de tiempos de descanso y coordinación entre varios consultorios.
+- **Agencias de marketing y publicidad:** Planificación y seguimiento de fechas clave de campañas, reuniones de revisión con clientes y deadlines de entrega de materiales en un calendario compartido con todo el equipo.
+- **Restaurantes con servicio de eventos:** Coordinación de reservas de salones privados, catas y cenas especiales con gestión de aforo y coordinación de personal de cocina y sala.
+- **Empresas de transporte y mensajería:** Planificación de rutas y entregas con ventanas horarias comprometidas con clientes, gestionadas en el calendario con alertas para retrasos o cambios de última hora.
+
+## Configuración básica
+
+Instala el servidor y configura el acceso a Google Calendar API:
+
+```bash
+npm install -g @takumi0706/google-calendar-mcp
+```
+
+O añádelo directamente a tu configuración MCP:
+
+```json
+{
+  "mcpServers": {
+    "google-calendar": {
+      "command": "npx",
+      "args": ["-y", "@takumi0706/google-calendar-mcp"],
+      "env": {
+        "GOOGLE_CLIENT_ID": "tu-client-id.apps.googleusercontent.com",
+        "GOOGLE_CLIENT_SECRET": "tu-client-secret",
+        "GOOGLE_REDIRECT_URI": "http://localhost:3000/oauth/callback"
+      }
+    }
+  }
+}
+```
+
+Para obtener las credenciales, accede a Google Cloud Console, crea un proyecto, habilita la API de Google Calendar y genera credenciales OAuth2 de tipo "Aplicación de escritorio". La primera vez que uses el servidor, se abrirá un navegador para autorizar el acceso a tu calendario de Google.

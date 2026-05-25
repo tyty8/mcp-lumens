@@ -1,7 +1,7 @@
 ---
-name: PostgreSQL MCP Server
+name: Servidor MCP de PostgreSQL
 slug: postgres-mcp
-description: Connect AI clients to a PostgreSQL database to run SQL queries, inspect schemas, and analyze data — safely and without custom tooling.
+description: Conecta clientes de IA a una base de datos PostgreSQL para ejecutar consultas SQL, inspeccionar esquemas y analizar datos de forma segura y sin herramientas personalizadas.
 category: databases
 tags: [postgresql, sql, database, queries]
 official: true
@@ -10,15 +10,15 @@ github: https://github.com/modelcontextprotocol/servers/tree/main/src/postgres
 featured: true
 ---
 
-## Overview
+## Descripción general
 
-The PostgreSQL MCP Server connects your AI client to a live Postgres database, enabling natural-language queries, schema exploration, and data analysis without writing raw SQL by hand. Pass your connection string as a command-line argument and the server handles the rest.
+El Servidor MCP de PostgreSQL conecta su cliente de IA a una base de datos Postgres en vivo, permitiendo consultas en lenguaje natural, exploración de esquemas y análisis de datos sin escribir SQL manualmente. Pase su cadena de conexión como argumento de línea de comandos y el servidor se encarga del resto.
 
-By default the server operates in read-only mode, preventing any mutations to your data. This makes it safe to point at a production replica for analysis work. When you need write access — for seeding data or running migrations in development — you can connect with a user that has the required permissions.
+De forma predeterminada, el servidor opera en modo de solo lectura, evitando cualquier mutación de sus datos. Esto hace que sea seguro apuntarlo a una réplica de producción para trabajos de análisis. Cuando necesite acceso de escritura, por ejemplo para inicializar datos o ejecutar migraciones en desarrollo, puede conectarse con un usuario que tenga los permisos necesarios.
 
-## Configuration
+## Configuración
 
-Provide the PostgreSQL connection string as the first argument. Standard `postgresql://` URI format is supported, including user, password, host, port, and database name.
+Proporcione la cadena de conexión de PostgreSQL como primer argumento. Se admite el formato URI estándar `postgresql://`, incluidos usuario, contraseña, host, puerto y nombre de base de datos.
 
 ```json
 {
@@ -35,13 +35,13 @@ Provide the PostgreSQL connection string as the first argument. Standard `postgr
 }
 ```
 
-For production use, prefer a dedicated read-only database role rather than your application's write credentials. This limits the blast radius if the AI ever generates an unexpected query.
+Para uso en producción, prefiera un rol de base de datos de solo lectura dedicado en lugar de las credenciales de escritura de su aplicación. Esto limita el impacto si la IA genera alguna vez una consulta inesperada.
 
-## Key Capabilities
+## Capacidades principales
 
-- Execute SELECT queries and return structured results
-- Inspect table schemas, column types, and constraints
-- List all tables, views, and indexes in the database
-- Describe foreign key relationships
-- Run EXPLAIN on queries to diagnose performance
-- Read-only by default; write access depends on the database role used
+- Ejecutar consultas SELECT y devolver resultados estructurados
+- Inspeccionar esquemas de tablas, tipos de columnas y restricciones
+- Listar todas las tablas, vistas e índices de la base de datos
+- Describir relaciones de clave foránea
+- Ejecutar EXPLAIN en consultas para diagnosticar el rendimiento
+- Solo lectura por defecto; el acceso de escritura depende del rol de base de datos utilizado

@@ -1,7 +1,7 @@
 ---
-name: Puppeteer MCP Server
+name: Servidor MCP de Puppeteer
 slug: puppeteer-mcp
-description: Enables AI clients to control a headless Chromium browser via Puppeteer — navigate pages, take screenshots, fill forms, click elements, and extract content.
+description: "Permite a los clientes de IA controlar un navegador Chromium sin interfaz gráfica mediante Puppeteer: navegar páginas, tomar capturas de pantalla, rellenar formularios, hacer clic en elementos y extraer contenido."
 category: developer-tools
 tags: [browser, automation, puppeteer, web-scraping, screenshots]
 official: true
@@ -10,15 +10,15 @@ github: https://github.com/modelcontextprotocol/servers/tree/main/src/puppeteer
 featured: false
 ---
 
-## Overview
+## Descripción general
 
-The Puppeteer MCP Server gives AI clients full browser automation capabilities through Google's Puppeteer library. The AI can navigate to any URL, interact with page elements, extract structured content, take screenshots, and execute JavaScript — all through natural language instructions. Puppeteer runs a real Chromium instance, so JavaScript-heavy pages and single-page applications work correctly.
+El Servidor MCP de Puppeteer proporciona a los clientes de IA capacidades completas de automatización de navegador a través de la biblioteca Puppeteer de Google. La IA puede navegar a cualquier URL, interactuar con elementos de la página, extraer contenido estructurado, tomar capturas de pantalla y ejecutar JavaScript, todo mediante instrucciones en lenguaje natural. Puppeteer ejecuta una instancia real de Chromium, por lo que las páginas con mucho JavaScript y las aplicaciones de una sola página funcionan correctamente.
 
-Common use cases include automated UI testing (describe what to test in plain English and let the AI drive the browser), web scraping of sites that require interaction, screenshot generation for visual regression checks, and automating repetitive browser-based workflows.
+Los casos de uso comunes incluyen pruebas automatizadas de interfaz de usuario (describa qué probar en inglés simple y deje que la IA controle el navegador), extracción de datos de sitios que requieren interacción, generación de capturas de pantalla para verificaciones de regresión visual, y automatización de flujos de trabajo repetitivos basados en el navegador.
 
-## Configuration
+## Configuración
 
-Puppeteer downloads Chromium on first run. On headless servers, you may need additional system dependencies for Chromium. No API keys are required.
+Puppeteer descarga Chromium en la primera ejecución. En servidores sin interfaz gráfica, es posible que necesite dependencias del sistema adicionales para Chromium. No se requieren claves de API.
 
 ```json
 {
@@ -31,15 +31,15 @@ Puppeteer downloads Chromium on first run. On headless servers, you may need add
 }
 ```
 
-For CI environments or Docker containers, set `PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true` and provide the path to an existing Chrome/Chromium binary via `PUPPETEER_EXECUTABLE_PATH`.
+Para entornos de CI o contenedores Docker, establezca `PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true` y proporcione la ruta a un binario de Chrome/Chromium existente mediante `PUPPETEER_EXECUTABLE_PATH`.
 
-## Key Capabilities
+## Capacidades principales
 
-- Navigate to URLs and wait for page load
-- Take full-page or element-specific screenshots
-- Click elements by CSS selector or visible text
-- Fill and submit forms
-- Extract text content and HTML from the page
-- Execute arbitrary JavaScript in the page context
-- Handle navigation, redirects, and page transitions
-- Access browser cookies and local storage
+- Navegar a URLs y esperar la carga completa de la página
+- Tomar capturas de pantalla de página completa o de elementos específicos
+- Hacer clic en elementos por selector CSS o texto visible
+- Rellenar y enviar formularios
+- Extraer contenido de texto y HTML de la página
+- Ejecutar JavaScript arbitrario en el contexto de la página
+- Gestionar navegación, redirecciones y transiciones de página
+- Acceder a cookies del navegador y almacenamiento local

@@ -1,0 +1,60 @@
+---
+name: Llamadas VoIP MCP
+slug: llamadas-voip-mcp
+description: Realiza llamadas telefónicas mediante VoIP/SIP utilizando la API en tiempo real de OpenAI y captura transcripciones completas de cada conversación.
+category: communication
+tags: [voip, sip, llamadas, transcripcion, atencion-cliente]
+official: false
+github: https://github.com/gerkensm/callcenter.js-mcp
+---
+
+## Descripción general
+
+Llamadas VoIP MCP combina la infraestructura de telefonía VoIP/SIP con la API de voz en tiempo real de OpenAI para crear un sistema de llamadas telefónicas potenciado por inteligencia artificial. A diferencia de las soluciones de llamadas convencionales, este servidor procesa el audio de cada conversación en tiempo real, generando transcripciones precisas y permitiendo que la IA participe activamente en la conversación o la analice mientras ocurre.
+
+El protocolo SIP (Session Initiation Protocol) es el estándar universal de la telefonía empresarial moderna, compatible con la mayoría de las centralitas IP (PBX), sistemas de telefonía en la nube y operadores VoIP. Esto significa que este servidor puede integrarse con la infraestructura telefónica que muchas empresas ya tienen instalada — centralitas Asterisk, 3CX, Cisco o servicios de telefonía en la nube como Vonage o Twilio — sin necesidad de reemplazar el equipo existente.
+
+Las transcripciones automáticas son la característica que más valor aporta a largo plazo para los negocios: cada llamada queda documentada con precisión, incluyendo quién dijo qué y en qué momento. Para empresas que gestionan muchas llamadas de atención al cliente, esto elimina la dependencia de notas manuales, permite revisar cualquier conversación pasada con facilidad y proporciona datos valiosos sobre los temas más frecuentes, las quejas más comunes y la calidad del servicio prestado.
+
+## Casos de uso para negocios
+
+- **Centros de atención al cliente:** Transcripción automática de todas las llamadas de soporte para control de calidad, formación de nuevos agentes y análisis de los motivos de contacto más frecuentes.
+- **Clínicas médicas y de salud:** Registro preciso de las consultas telefónicas de pacientes, incluyendo síntomas descritos, medicación mencionada y acuerdos sobre próximos pasos, todo documentado automáticamente.
+- **Despachos de abogados y notarías:** Grabación y transcripción de conversaciones con clientes para documentar instrucciones recibidas, acuerdos alcanzados y cualquier información relevante para el expediente.
+- **Empresas de ventas y telemarketing:** Análisis de las llamadas más exitosas para identificar patrones y técnicas efectivas, con transcripciones que facilitan el coaching del equipo comercial.
+- **Hoteles y alojamientos:** Registro de todas las solicitudes especiales de los huéspedes recibidas por teléfono, asegurando que ningún detalle se pierda entre el momento de la reserva y la llegada.
+- **Servicios de emergencia y guardia:** Documentación automática de llamadas urgentes con marcas de tiempo precisas, para análisis posterior de tiempos de respuesta y protocolos de atención.
+
+## Configuración básica
+
+El servidor requiere OpenAI API key y acceso a una infraestructura VoIP/SIP:
+
+```bash
+git clone https://github.com/gerkensm/callcenter.js-mcp
+cd callcenter.js-mcp
+npm install
+npm run build
+```
+
+Configura el servidor con tus credenciales:
+
+```json
+{
+  "mcpServers": {
+    "llamadas-voip": {
+      "command": "node",
+      "args": ["dist/index.js"],
+      "env": {
+        "OPENAI_API_KEY": "tu-api-key-de-openai",
+        "SIP_SERVER": "sip.tuproveedor.com",
+        "SIP_USERNAME": "tu-extension-sip",
+        "SIP_PASSWORD": "tu-contrasena-sip",
+        "SIP_DOMAIN": "tuempresa.com",
+        "TRANSCRIPTION_LANGUAGE": "es"
+      }
+    }
+  }
+}
+```
+
+Necesitas acceso a un servidor SIP o cuenta VoIP con un proveedor como Twilio, Vonage, Telnyx o cualquier operador SIP compatible. La API de voz en tiempo real de OpenAI procesa el audio de la llamada para generar transcripciones precisas. Consulta la documentación de tu proveedor VoIP para obtener las credenciales SIP necesarias.

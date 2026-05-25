@@ -1,0 +1,48 @@
+---
+name: Referencias Académicas Mendeley MCP
+slug: referencias-academicas-mendeley-mcp
+description: Servidor MCP para el gestor de referencias Mendeley que permite buscar la biblioteca personal, navegar carpetas, obtener metadatos de documentos y buscar en el catálogo global.
+category: education
+tags: [mendeley, referencias, academico, investigacion, biblioteca]
+official: false
+github: https://github.com/pallaprolus/mendeley-mcp
+---
+
+## Descripción general
+
+Referencias Académicas Mendeley MCP conecta tu asistente de IA con Mendeley, el gestor de referencias académicas y red social para investigadores más utilizado en el ámbito universitario y científico. A través de este servidor MCP, investigadores, académicos y profesionales que trabajan con bibliografía científica pueden buscar en su biblioteca personal de referencias, navegar por las carpetas organizadas por proyecto o tema, obtener metadatos completos de cada documento y buscar en el catálogo global de Mendeley con millones de artículos científicos catalogados.
+
+Mendeley es especialmente popular en departamentos universitarios, centros de investigación y en instituciones que trabajan con revisiones sistemáticas de literatura científica. La integración con IA permite acelerar enormemente el proceso de revisión bibliográfica, uno de los más laboriosos en cualquier proyecto de investigación o redacción de informes técnicos. En lugar de buscar manualmente entre cientos de referencias almacenadas, el investigador puede simplemente preguntar al asistente de IA por los artículos relevantes sobre un tema específico de su biblioteca.
+
+Para negocios que basan parte de su propuesta de valor en la investigación y el conocimiento — consultoras, despachos de abogados con área de investigación legal, empresas farmacéuticas, laboratorios de análisis o centros de I+D corporativos — contar con acceso rápido y eficiente a la bibliografía científica relevante para su sector es una ventaja competitiva significativa.
+
+## Casos de uso para negocios
+
+- **Investigadores académicos:** Buscar rápidamente entre sus referencias almacenadas en Mendeley los artículos relevantes para una sección específica de su investigación sin revisar manualmente toda la biblioteca.
+- **Consultoras de investigación de mercado:** Acceder a estudios y publicaciones científicas almacenadas en Mendeley para fundamentar con referencias académicas los informes entregados a los clientes.
+- **Despachos de abogados especializados:** Buscar en su biblioteca de doctrina y jurisprudencia almacenada en Mendeley las referencias pertinentes para cada caso o informe legal en preparación.
+- **Empresas farmacéuticas y de biotecnología:** Acceder a los estudios clínicos y publicaciones científicas almacenadas en Mendeley para apoyar los informes de seguridad y eficacia de sus productos.
+- **Centros de formación avanzada y MBA:** Ayudar a los profesores a encontrar rápidamente artículos académicos relevantes de su biblioteca para preparar las clases y los materiales del curso.
+- **Redactores de informes técnicos:** Localizar y citar correctamente las fuentes bibliográficas almacenadas en Mendeley para garantizar la calidad académica de los documentos técnicos producidos.
+
+## Configuración básica
+
+Para usar Referencias Académicas Mendeley MCP necesitas una cuenta de Mendeley y credenciales de la API de Mendeley. Regístrate como desarrollador en `dev.mendeley.com` para obtener tu `CLIENT_ID` y `CLIENT_SECRET`.
+
+```json
+{
+  "mcpServers": {
+    "mendeley": {
+      "command": "npx",
+      "args": ["-y", "mendeley-mcp"],
+      "env": {
+        "MENDELEY_CLIENT_ID": "tu_client_id",
+        "MENDELEY_CLIENT_SECRET": "tu_client_secret",
+        "MENDELEY_REDIRECT_URI": "http://localhost:8080/callback"
+      }
+    }
+  }
+}
+```
+
+Una vez configurado, puedes buscar referencias en tu biblioteca de Mendeley por autor, título, año o palabras clave, navegar por tus carpetas de proyectos y buscar en el catálogo global de artículos científicos para encontrar nuevas referencias relevantes.

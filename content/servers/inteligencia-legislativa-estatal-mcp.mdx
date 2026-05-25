@@ -1,0 +1,46 @@
+---
+name: Inteligencia Legislativa Estatal MCP
+slug: inteligencia-legislativa-estatal-mcp
+description: Acceso a transcripciones de audiencias legislativas estatales atribuidas a ponentes, proyectos de ley, votaciones e informes generados por IA de los legislativos de EE.UU.
+category: legal
+tags: [legislacion, estados, audiencias, proyectos-de-ley, gobierno]
+official: false
+github: https://github.com/gavelin-ai/mcp
+---
+
+## Descripción general
+
+Inteligencia Legislativa Estatal MCP integra la plataforma Gavelin AI con tu asistente de IA, proporcionando acceso a transcripciones de audiencias legislativas de los estados de EE.UU. con atribución individual de cada intervención a su ponente, seguimiento de proyectos de ley en tramitación, registros de votaciones y generación automática de informes de inteligencia legislativa. Esta herramienta es fundamental para organizaciones que necesitan monitorizar la actividad legislativa estatal para anticipar cambios regulatorios que puedan afectar a su negocio o sector.
+
+La actividad legislativa en los 50 estados americanos genera un volumen ingente de información difícil de seguir sin herramientas especializadas. Un proyecto de ley que regule el sector de las plataformas de reparto a domicilio en California, una nueva normativa laboral en Nueva York o cambios en las regulaciones de hostelería en Florida pueden tener un impacto directo en las operaciones de empresas con presencia en esos estados. Este servidor permite al asistente de IA monitorizar esa actividad legislativa y alertar sobre los desarrollos más relevantes para cada negocio.
+
+Los informes generados por IA que ofrece este servidor son especialmente valiosos para los departamentos de relaciones gubernamentales, compliance y asuntos legales de empresas medianas y grandes con presencia multiestatal. En lugar de contratar servicios de lobbying o seguimiento legislativo por separado en cada estado, el asistente de IA puede proporcionar una visión consolidada de la actividad legislativa relevante, con análisis del impacto potencial de cada proyecto de ley en las operaciones del negocio.
+
+## Casos de uso para negocios
+
+- **Cadenas de restaurantes y franquicias multiestatal:** Monitoriza proyectos de ley sobre salario mínimo, normativas de seguridad alimentaria, regulación de propinas y requisitos de etiquetado nutricional en todos los estados donde opera la cadena, con alertas tempranas sobre cambios normativos inminentes.
+- **Empresas del sector tecnológico:** Sigue la tramitación de leyes estatales de privacidad de datos, regulación de IA, protección de consumidores digitales y normativas de plataformas en los estados clave para el modelo de negocio.
+- **Asociaciones empresariales y gremios sectoriales:** Genera informes consolidados de actividad legislativa relevante para el sector en todos los estados, facilitando la tarea de los equipos de relaciones institucionales y lobbying.
+- **Despachos de abogados con práctica de derecho regulatorio:** Accede a transcripciones completas de audiencias legislativas para entender el contexto y la intención del legislador detrás de cada proyecto de ley, mejorando la calidad del análisis legal y el asesoramiento a clientes.
+- **Empresas de construcción e inmobiliarias:** Monitoriza proyectos de ley sobre zonificación, regulación de alquileres, incentivos fiscales para promotores y normativas medioambientales aplicables a proyectos de construcción en cada estado.
+- **Compañías aseguradoras y de servicios financieros:** Sigue la tramitación de proyectos de ley que afecten a la regulación del sector en cada estado, anticipando cambios en los requisitos de reservas, cobertura obligatoria o comercialización de productos financieros.
+
+## Configuración básica
+
+Obtén tu API Key de Gavelin AI y configura el servidor en tu cliente MCP:
+
+```json
+{
+  "mcpServers": {
+    "gavelin": {
+      "command": "npx",
+      "args": ["-y", "@gavelin/mcp"],
+      "env": {
+        "GAVELIN_API_KEY": "tu-api-key-de-gavelin"
+      }
+    }
+  }
+}
+```
+
+Una vez configurado, puedes configurar alertas legislativas por estado, sector y tipo de normativa. El asistente puede generar informes semanales de actividad legislativa relevante para tu negocio, buscar el estado actual de proyectos de ley específicos y acceder a las transcripciones completas de las audiencias del comité parlamentario correspondiente, con identificación del ponente para cada intervención.

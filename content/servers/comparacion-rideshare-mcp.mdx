@@ -1,0 +1,51 @@
+---
+name: Comparación Uber vs Lyft MCP
+slug: comparacion-rideshare-mcp
+description: Compara precios de Uber y Lyft para cualquier ruta en tiempo real con información de precios dinámicos y recomendación de la opción más económica.
+category: travel
+tags: [uber, lyft, transporte, precios, taxi]
+official: false
+github: https://github.com/MarceauSolutions/rideshare-comparison-mcp
+---
+
+## Descripción general
+
+Comparación Uber vs Lyft MCP permite comparar en tiempo real los precios de los dos principales servicios de ridesharing en Estados Unidos para cualquier ruta, ofreciendo transparencia de precios y la recomendación automática de la opción más económica en el momento de la consulta. Esta herramienta es especialmente útil para empresas que gestionan desplazamientos de empleados o clientes en ciudades norteamericanas donde Uber y Lyft operan simultáneamente.
+
+Los precios de Uber y Lyft varían dinámicamente en función de la demanda, la hora del día, las condiciones de tráfico y eventos especiales en la zona. Esta variabilidad hace que la opción más barata pueda cambiar radicalmente en cuestión de minutos. Tener acceso a una comparación en tiempo real permite tomar decisiones informadas que, en el caso de empresas con alto volumen de desplazamientos, pueden suponer ahorros significativos en el presupuesto de transporte.
+
+Para el sector del turismo y la hostelería en ciudades de EE.UU., este servidor MCP resulta muy práctico para orientar a clientes internacionales que no están familiarizados con los servicios de ridesharing locales. Poder ofrecer una comparación de precios y tiempos de espera en tiempo real antes de que el cliente decida qué servicio contratar es un valor añadido que mejora la experiencia del viajero y refuerza la imagen de asesoramiento personalizado de la empresa.
+
+## Casos de uso para negocios
+
+- **Hoteles en ciudades de EE.UU.:** Orientar a los huéspedes sobre la opción de transporte más económica para desplazarse al aeropuerto o a los principales puntos de interés de la ciudad en cada momento del día.
+- **Empresas de gestión de viajes corporativos:** Comparar precios de Uber y Lyft para los desplazamientos de empleados en misión de trabajo en ciudades norteamericanas y siempre reservar la opción más económica.
+- **Agencias de viajes especializadas en EE.UU.:** Incluir en los itinerarios de sus clientes estimaciones de coste de transporte local en las ciudades de destino para que puedan presupuestar el viaje con mayor precisión.
+- **Conserjes de hoteles de lujo:** Proporcionar a los huéspedes la recomendación más actualizada sobre qué servicio de rideshare es más conveniente para cada desplazamiento específico en función del precio y el tiempo de espera.
+- **Organizadores de viajes de incentivo en EE.UU.:** Gestionar de forma eficiente los traslados de grupos grandes en ciudades americanas optimizando el coste total del transporte durante el evento.
+- **Centros de información turística:** Ofrecer a los visitantes internacionales orientación práctica sobre cómo moverse en taxi o rideshare dentro de la ciudad con información de precios actualizada.
+
+## Configuración básica
+
+Para configurar Comparación Rideshare MCP, el servidor accede a información pública de precios de Uber y Lyft. Clona el repositorio y sigue las instrucciones de instalación:
+
+```bash
+git clone https://github.com/MarceauSolutions/rideshare-comparison-mcp
+cd rideshare-comparison-mcp
+npm install
+```
+
+Añade el servidor a tu configuración de Claude Desktop:
+
+```json
+{
+  "mcpServers": {
+    "rideshare": {
+      "command": "node",
+      "args": ["/ruta/a/rideshare-comparison-mcp/index.js"]
+    }
+  }
+}
+```
+
+Una vez en funcionamiento, puedes comparar precios para cualquier ruta en ciudades donde operan Uber y Lyft y obtener la recomendación de la opción más conveniente en tiempo real.

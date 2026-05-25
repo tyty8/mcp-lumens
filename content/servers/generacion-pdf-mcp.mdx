@@ -1,0 +1,55 @@
+---
+name: Generación de PDF Profesional MCP
+slug: generacion-pdf-mcp
+description: Genera documentos PDF profesionales — facturas, contratos, informes, certificados — a partir de plantillas reutilizables mediante la API de rendoc con diseño personalizable.
+category: productivity
+tags: [pdf, documentos, facturas, contratos, plantillas]
+official: false
+github: https://github.com/yoryocoruxo-ai/rendoc-mcp-server
+---
+
+## Descripción general
+
+El servidor Generación de PDF Profesional MCP conecta con la plataforma rendoc para generar documentos PDF con diseño profesional a partir de plantillas prediseñadas y datos variables. La capacidad de crear facturas, contratos, presupuestos, informes y certificados con la imagen corporativa de la empresa directamente desde el asistente de IA elimina la necesidad de software de edición dedicado o de manejar herramientas de creación de documentos complejas para cada documento que necesita generarse.
+
+El sistema de plantillas reutilizables es el núcleo del valor que aporta este servidor. En lugar de diseñar cada documento desde cero, el equipo crea una plantilla con el diseño definitivo —logotipo, colores corporativos, fuentes, estructura y textos fijos— y el asistente se encarga de rellenar los datos variables (nombre del cliente, importes, fechas, descripciones de los servicios) para generar el documento final en segundos. Esto garantiza que todos los documentos que salen de la empresa tienen una imagen coherente y profesional, independientemente de quién los genere.
+
+Para los autónomos y pequeñas empresas que envían facturas y presupuestos manualmente usando Word o Excel, este servidor representa un salto cualitativo en la imagen que proyectan ante sus clientes. La diferencia entre un presupuesto generado en un documento de Word básico y uno generado con una plantilla PDF profesional bien diseñada puede ser determinante en la percepción del cliente sobre la seriedad y capacidad del proveedor. Con rendoc, esa imagen profesional está al alcance de cualquier negocio sin necesidad de invertir en diseñadores o software especializado de facturación.
+
+## Casos de uso para negocios
+
+- **Autónomos y freelancers:** Generación instantánea de facturas profesionales al finalizar un servicio o proyecto, con todos los datos legales requeridos y la imagen corporativa personal, simplemente describiendo el servicio al asistente.
+- **Agencias y consultoras:** Creación de presupuestos personalizados para cada cliente potencial con el desglose de los servicios, los plazos de ejecución y las condiciones económicas, generados en minutos a partir de la información de la reunión.
+- **Empresas de formación y consultoría:** Emisión de certificados de asistencia y diplomas de finalización de cursos con firma digital y datos personalizados de cada participante, generados en lote a partir de la lista de alumnos.
+- **Inmobiliarias y gestorías:** Generación de contratos de arrendamiento o compraventa con los datos específicos de cada operación, usando plantillas estándar validadas legalmente que solo requieren personalizar los datos de las partes y del inmueble.
+- **Empresas de mantenimiento y servicios:** Generación automática de informes de visita técnica tras completar un servicio, con los trabajos realizados, los materiales utilizados y las recomendaciones para el cliente, en formato PDF profesional listo para firmar.
+- **Seguros y banca:** Emisión de documentos de póliza, certificados de seguro o resúmenes de contrato para los clientes, personalizados con sus datos y las condiciones específicas de cada producto contratado.
+
+## Configuración básica
+
+Regístrate en rendoc.io y crea tus primeras plantillas de documento desde el editor visual:
+
+```bash
+npx @yoryocoruxo/rendoc-mcp-server
+```
+
+Configura las credenciales en tu cliente MCP:
+
+```json
+{
+  "mcpServers": {
+    "rendoc-pdf": {
+      "command": "npx",
+      "args": ["@yoryocoruxo/rendoc-mcp-server"],
+      "env": {
+        "RENDOC_API_KEY": "tu-api-key",
+        "DEFAULT_TEMPLATE_ID": "id-de-tu-plantilla-factura",
+        "OUTPUT_LANGUAGE": "es",
+        "COMPANY_NAME": "Tu Empresa S.L."
+      }
+    }
+  }
+}
+```
+
+Crea las plantillas en el editor visual de rendoc usando el lenguaje de plantillas basado en variables (como `{{nombre_cliente}}`, `{{importe_total}}`). Cada plantilla tiene un ID único que puedes referenciar desde el asistente. Para generar un documento, simplemente dile al asistente qué plantilla usar y proporciona los datos variables que debe incluir.

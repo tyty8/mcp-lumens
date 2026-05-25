@@ -1,0 +1,65 @@
+---
+name: MySQL en Lenguaje Natural MCP
+slug: mysql-lenguaje-natural-mcp
+description: Integración de base de datos MySQL con controles de acceso configurables e inspección de esquemas para que cualquier negocio consulte sus datos en lenguaje natural sin necesidad de SQL.
+category: databases
+tags: [mysql, base-datos, sql, consultas, lenguaje-natural]
+official: false
+github: https://github.com/benborla/mcp-server-mysql
+---
+
+## Descripción general
+
+El servidor MySQL en Lenguaje Natural MCP es una de las integraciones más transformadoras para los negocios que tienen sus datos críticos almacenados en bases de datos MySQL. MySQL es el gestor de base de datos más utilizado en el mundo, y la mayoría de los sistemas de gestión empresarial —desde los ERP más básicos hasta los POS de hostelería, pasando por las tiendas WooCommerce o los sistemas de reservas hoteleras— almacenan sus datos en MySQL. Este servidor convierte esa base de datos técnica en una fuente de información accesible para cualquier empleado, sin necesidad de saber una sola línea de SQL.
+
+La inspección automática del esquema de base de datos es lo que hace posible este acceso sin configuración compleja. Al conectarse a la base de datos, el servidor analiza automáticamente la estructura de todas las tablas, sus columnas, tipos de datos y relaciones, construyendo un "mapa" del conocimiento que permite al asistente formular las consultas SQL correctas a partir de preguntas en lenguaje natural. El propietario de una tienda puede preguntar "¿Cuáles fueron mis 10 productos más vendidos en mayo?" y el asistente, conociendo la estructura de su base de datos, generará y ejecutará la consulta SQL apropiada y devolverá el resultado en lenguaje natural.
+
+Los controles de acceso configurables son fundamentales para la seguridad. El servidor permite definir con precisión qué tablas puede leer el asistente, si puede modificar datos (INSERT/UPDATE/DELETE) o solo leer (SELECT), y qué columnas pueden ser accedidas. Para la mayoría de los casos de uso empresarial, configurar el servidor en modo de solo lectura es la opción más segura: el asistente puede responder todas las preguntas sobre el negocio sin riesgo de que una consulta mal interpretada modifique datos críticos.
+
+## Casos de uso para negocios
+
+- **Tiendas WooCommerce:** Consultas sobre ventas, clientes y pedidos directamente sobre la base de datos de WordPress/WooCommerce, sin necesidad de instalar plugins de análisis adicionales ni exportar datos a Excel.
+- **Hostelería con sistema POS:** Análisis de ventas por producto, turno, mesa o camarero directamente desde la base de datos del TPV, para revisar el rendimiento diario sin necesidad de que el sistema de caja genere informes específicos.
+- **Clínicas con base de datos de pacientes:** Consultas sobre número de pacientes atendidos por especialidad, disponibilidad de agenda o estadísticas de citas, respetando la confidencialidad mediante controles de acceso estrictos a las tablas con información personal.
+- **Talleres y servicios técnicos:** Consultas sobre el historial de reparaciones de un vehículo o dispositivo, las piezas más frecuentemente usadas o el tiempo medio de resolución por tipo de avería, extraídas directamente de la base de datos del sistema de gestión.
+- **Empresas con ERP a medida:** Acceso conversacional a los datos operativos del ERP interno sin necesidad de programar nuevos informes o contratar al proveedor del software para cada consulta puntual que necesita la dirección.
+- **Comercios con varios puntos de venta:** Comparativa de ventas entre tiendas, análisis del rendimiento por empleado o por turno y detección de anomalías en la facturación, consultando directamente la base de datos central del sistema de caja.
+
+## Configuración básica
+
+Crea un usuario MySQL de solo lectura específico para el servidor MCP y otórgale acceso solo a las tablas necesarias:
+
+```sql
+CREATE USER 'mcp_reader'@'localhost' IDENTIFIED BY 'contrasena-segura';
+GRANT SELECT ON tu_base_datos.* TO 'mcp_reader'@'localhost';
+FLUSH PRIVILEGES;
+```
+
+Instala y configura el servidor:
+
+```bash
+npx @benborla29/mcp-server-mysql
+```
+
+```json
+{
+  "mcpServers": {
+    "mysql": {
+      "command": "npx",
+      "args": ["@benborla29/mcp-server-mysql"],
+      "env": {
+        "MYSQL_HOST": "localhost",
+        "MYSQL_PORT": "3306",
+        "MYSQL_USER": "mcp_reader",
+        "MYSQL_PASSWORD": "contrasena-segura",
+        "MYSQL_DATABASE": "tu_base_datos",
+        "ALLOW_INSERT_OPERATION": "false",
+        "ALLOW_UPDATE_OPERATION": "false",
+        "ALLOW_DELETE_OPERATION": "false"
+      }
+    }
+  }
+}
+```
+
+Mantener las operaciones de escritura desactivadas (`false`) es la configuración recomendada para la mayoría de los casos de uso empresarial donde el objetivo es consultar datos, no modificarlos a través del asistente.

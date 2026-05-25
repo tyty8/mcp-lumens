@@ -1,0 +1,54 @@
+---
+name: Comparación de Precios MCP
+slug: comparacion-precios-mcp
+description: Busca productos por código de barras, ASIN o URL, accede a metadatos detallados de productos y precios de miles de minoristas con historial de precios para inteligencia competitiva.
+category: retail
+tags: [precios, comparacion, competencia, productos, ecommerce]
+official: false
+github: https://github.com/shopsavvy/shopsavvy-mcp-server
+---
+
+## Descripción general
+
+El servidor Comparación de Precios MCP se conecta con la base de datos de ShopSavvy para ofrecer acceso instantáneo a los precios actuales e históricos de millones de productos en miles de tiendas minoristas. La búsqueda por código de barras EAN/UPC, ASIN de Amazon o URL directa del producto permite a cualquier negocio obtener un panorama completo de cómo se está vendiendo un artículo en el mercado y a qué precio, sin necesidad de visitar manualmente decenas de tiendas de la competencia.
+
+Esta inteligencia de precios en tiempo real es fundamental para mantener la competitividad en un entorno donde los consumidores tienen acceso inmediato a comparadores online y ajustan sus decisiones de compra en función del precio. Un minorista que actualiza sus precios con información precisa del mercado puede defender su margen en los productos donde tiene ventaja competitiva y ajustar tácticamente en los artículos más sensibles al precio sin necesidad de contratar un servicio de repricing o dedicar horas a la monitorización manual.
+
+El historial de precios es quizás la funcionalidad más valiosa para la planificación estratégica. Ver cómo han evolucionado los precios de un producto a lo largo del tiempo —incluyendo los descuentos de temporada, las bajadas ante el lanzamiento de nuevos modelos o las subidas por escasez de stock— permite anticipar los movimientos del mercado y tomar decisiones de compra o pricing más inteligentes. Para un negocio que compra mercancía con meses de antelación, este conocimiento del ciclo de precios puede suponer la diferencia entre un margen sano y vender por debajo del coste.
+
+## Casos de uso para negocios
+
+- **Tiendas de electrónica y electrodomésticos:** Monitoreo semanal de los precios de los productos estrella en los principales competidores (Amazon, El Corte Inglés, MediaMarkt) para mantener una posición competitiva sin sacrificar margen innecesariamente.
+- **Comercios de proximidad:** Verificación rápida antes de hacer un pedido a proveedor si el precio de compra ofrecido permite competir con el mercado online, o si es preferible descatalogarlo.
+- **Responsables de compras:** Análisis del historial de precios de proveedores para detectar el mejor momento del año para negociar contratos de suministro o hacer compras en volumen.
+- **Marketplaces y revendedores:** Validación automática del precio de compra de lotes o productos de segunda mano para determinar si existe margen de reventa suficiente antes de adquirir el artículo.
+- **Gestores de catálogo:** Auditoría periódica de toda la gama de productos para identificar referencias donde el negocio está sobrepreciado o, por el contrario, dejando margen sobre la mesa.
+- **Negocios de importación:** Comparación de precios internacionales para identificar oportunidades de arbitraje entre mercados o detectar productos con alta demanda y escasa oferta local.
+
+## Configuración básica
+
+Regístrate en ShopSavvy Developer para obtener tu clave de API e instala el servidor:
+
+```bash
+npx @shopsavvy/shopsavvy-mcp-server
+```
+
+Configura las credenciales en tu cliente MCP:
+
+```json
+{
+  "mcpServers": {
+    "shopsavvy": {
+      "command": "npx",
+      "args": ["@shopsavvy/shopsavvy-mcp-server"],
+      "env": {
+        "SHOPSAVVY_API_KEY": "tu-api-key",
+        "DEFAULT_COUNTRY": "ES",
+        "DEFAULT_CURRENCY": "EUR"
+      }
+    }
+  }
+}
+```
+
+Con el servidor configurado, puedes consultar precios con comandos como "¿Cuál es el precio más bajo del iPhone 16 en España?" o "Muéstrame el historial de precios del último año de este producto" proporcionando el EAN o la URL del artículo. Los datos se devuelven incluyendo nombre del vendedor, precio, disponibilidad y enlace directo a la oferta.

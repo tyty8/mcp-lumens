@@ -1,0 +1,58 @@
+---
+name: Email Unificado MCP
+slug: email-unificado-mcp
+description: Servidor de email unificado que soporta Gmail, Outlook, iCloud e IMAP/SMTP genérico con OAuth2 y almacenamiento cifrado de credenciales.
+category: communication
+tags: [email, gmail, outlook, icloud, oauth]
+official: false
+github: https://github.com/marlinjai/email-mcp
+---
+
+## Descripción general
+
+Email Unificado MCP proporciona una capa de abstracción inteligente sobre los principales proveedores de correo electrónico del mundo, permitiendo a las empresas gestionar todas sus cuentas de correo desde un único punto de acceso para su asistente de IA. La integración con OAuth2 garantiza que las credenciales nunca se almacenen en texto plano, sino cifradas de forma segura, cumpliendo con los estándares de seguridad que exigen sectores como el legal, médico o financiero.
+
+La arquitectura unificada de este servidor es especialmente valiosa para empresas que operan con múltiples proveedores de correo simultáneamente — por ejemplo, una empresa que usa Gmail para el equipo de ventas, Outlook para dirección y cuentas IMAP corporativas para el servicio técnico. El asistente de IA puede acceder a todos estos buzones con una sola configuración, sin necesidad de cambiar entre herramientas o recordar credenciales diferentes para cada cuenta.
+
+El soporte para OAuth2 significa que la autenticación se realiza a través de los sistemas de seguridad oficiales de cada proveedor, lo que elimina la necesidad de crear contraseñas de aplicación o desactivar medidas de seguridad. Para negocios tradicionales que no cuentan con personal técnico especializado, este enfoque simplifica enormemente el proceso de configuración inicial y el mantenimiento continuo.
+
+## Casos de uso para negocios
+
+- **Hoteles y alojamientos turísticos:** Centralización de todas las consultas de reserva que llegan por diferentes cuentas de correo — info@hotel.com, reservas@hotel.com y la cuenta personal del gerente — gestionadas de forma unificada por el asistente de IA.
+- **Bufetes de abogados con múltiples socios:** Cada socio puede tener su cuenta de correo independiente (Gmail, Outlook o IMAP) y el sistema gestiona todas ellas preservando la confidencialidad y separación de asuntos de cada cliente.
+- **Cadenas de tiendas minoristas:** Consolidación de comunicaciones de múltiples sucursales que operan con diferentes proveedores de email bajo una gestión centralizada y automatizada.
+- **Clínicas con varios especialistas:** Cada doctor mantiene su cuenta de correo propia mientras el sistema gestiona de forma coordinada las respuestas a pacientes y referencias entre especialidades.
+- **Agencias de viajes:** Gestión simultánea de correos de proveedores (aerolíneas, hoteles), clientes y cuentas internas del equipo desde una interfaz de IA unificada.
+- **Empresas de construcción y reformas:** Coordinación de comunicaciones entre clientes, subcontratistas y proveedores que usan distintos sistemas de correo, manteniendo trazabilidad de todos los intercambios por proyecto.
+
+## Configuración básica
+
+Clona el repositorio e instala las dependencias:
+
+```bash
+git clone https://github.com/marlinjai/email-mcp
+cd email-mcp
+npm install
+```
+
+Configura las variables de entorno para cada proveedor que vayas a usar:
+
+```json
+{
+  "mcpServers": {
+    "email-unificado": {
+      "command": "node",
+      "args": ["dist/index.js"],
+      "env": {
+        "GMAIL_CLIENT_ID": "tu-client-id-de-google",
+        "GMAIL_CLIENT_SECRET": "tu-client-secret-de-google",
+        "OUTLOOK_CLIENT_ID": "tu-client-id-de-microsoft",
+        "OUTLOOK_CLIENT_SECRET": "tu-client-secret-de-microsoft",
+        "ENCRYPTION_KEY": "clave-cifrado-32-caracteres"
+      }
+    }
+  }
+}
+```
+
+Para obtener las credenciales OAuth2 de Gmail, accede a Google Cloud Console y crea un proyecto con la API de Gmail habilitada. Para Outlook, registra una aplicación en el portal de Azure Active Directory. El servidor guarda los tokens de acceso cifrados localmente para evitar autenticaciones repetidas.

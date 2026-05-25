@@ -1,0 +1,48 @@
+---
+name: Visibilidad de Marca en IA MCP
+slug: visibilidad-ia-marca-mcp
+description: Monitoriza la visibilidad y el sentimiento de tu marca en plataformas de IA como ChatGPT, Perplexity, Claude y Gemini, con detección de competidores.
+category: marketing
+tags: [marca, ia, visibilidad, chatgpt, competidores]
+official: false
+github: https://github.com/sharozdawa/ai-visibility
+---
+
+## Descripción general
+
+Visibilidad de Marca en IA MCP es una herramienta pionera que monitoriza cómo aparece tu negocio en las respuestas de los principales modelos de inteligencia artificial: ChatGPT, Perplexity, Claude, Gemini y otros asistentes conversacionales de uso masivo. En un mundo donde millones de personas ya no buscan en Google sino que preguntan directamente a un asistente de IA cuál es el mejor restaurante de su ciudad, qué abogado les recomendarían o qué hotel elegir para sus vacaciones, la visibilidad en estas plataformas se convierte en un nuevo y crítico factor de competitividad.
+
+Este servidor representa la frontera del marketing digital moderno: el denominado AEO (Answer Engine Optimization) o GEO (Generative Engine Optimization), la disciplina emergente de optimizar la presencia de un negocio para que los modelos de lenguaje lo mencionen como referencia relevante en las respuestas generadas. A diferencia del SEO tradicional, donde puedes consultar directamente en Google Search Console cuántas veces apareces en los resultados, la visibilidad en IA es mucho más difícil de medir sin herramientas especializadas. Este servidor soluciona exactamente ese problema.
+
+Además de monitorizar la presencia de tu propia marca, el servidor detecta la actividad de los competidores directos: con qué frecuencia son mencionados, en qué contextos y con qué sentimiento. Esta inteligencia competitiva sobre el posicionamiento en IA proporciona información valiosa para ajustar la estrategia de contenido, las relaciones públicas digitales y la construcción de autoridad en los canales que alimentan el conocimiento de los modelos de lenguaje sobre tu negocio y sector.
+
+## Casos de uso para negocios
+
+- **Restaurantes y chefs reconocidos:** Comprueba si tu restaurante aparece cuando alguien le pregunta a ChatGPT por los mejores restaurantes de tu ciudad o tipo de cocina, y analiza qué competidores son mencionados con mayor frecuencia para entender las brechas de visibilidad.
+- **Hoteles y alojamientos de referencia:** Monitoriza si tu hotel aparece en las recomendaciones de asistentes de IA para tu destino y categoría, y compara tu presencia con la de los principales competidores para detectar oportunidades de mejora de visibilidad.
+- **Despachos de abogados y especialistas:** Analiza si los asistentes de IA mencionan tu despacho o a tus socios cuando se les pregunta por abogados especializados en tu área de práctica y zona geográfica, un factor cada vez más importante para la captación de clientes premium.
+- **Clínicas y profesionales de la salud:** Verifica si apareces en las recomendaciones de IA para consultas sobre especialidades médicas o dentales en tu zona, y detecta si los modelos tienen información incorrecta o desactualizada sobre tu centro.
+- **Academias y formadores online:** Comprueba si tus cursos o metodología son mencionados cuando alguien pregunta a un asistente de IA sobre formación en tu especialidad, y analiza qué competidores están más presentes en las respuestas generadas.
+- **Marcas de producto y distribuidores:** Monitoriza el sentimiento con que los modelos de IA hablan de tu marca cuando se les pregunta por comparativas de producto, y detecta si existen afirmaciones incorrectas o desactualizadas que necesiten ser corregidas.
+
+## Configuración básica
+
+Configura el servidor con las credenciales de la API de visibilidad de IA:
+
+```json
+{
+  "mcpServers": {
+    "ai-visibility": {
+      "command": "npx",
+      "args": ["-y", "ai-visibility-mcp"],
+      "env": {
+        "AI_VISIBILITY_API_KEY": "tu-api-key",
+        "BRAND_NAME": "Nombre de tu Negocio",
+        "COMPETITORS": "Competidor1,Competidor2,Competidor3"
+      }
+    }
+  }
+}
+```
+
+Configura el nombre de tu marca y hasta tres competidores principales para empezar a recibir informes de visibilidad comparativa. El servidor consulta periódicamente a los diferentes modelos de IA con preguntas relevantes para tu sector y geografía, registrando cuándo y cómo aparece cada marca mencionada en las respuestas generadas.

@@ -24,7 +24,7 @@ export async function generateMetadata({
 function formatDate(dateStr: string): string {
   if (!dateStr) return ''
   try {
-    return new Date(dateStr).toLocaleDateString('en-US', {
+    return new Date(dateStr).toLocaleDateString('es-ES', {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
@@ -47,7 +47,7 @@ export default async function GuidePage({
       {/* Breadcrumb */}
       <nav className="flex items-center gap-2 text-sm text-muted-foreground mb-8 font-mono">
         <Link href="/guides" className="hover:text-foreground transition-colors">
-          Guides
+          Guías
         </Link>
         <span>&gt;</span>
         <span className="text-foreground">{meta.title}</span>
@@ -86,7 +86,7 @@ export default async function GuidePage({
       {/* Back link */}
       <div className="mt-12 pt-8 border-t border-border max-w-2xl">
         <Link href="/guides" className="text-green-500 hover:underline text-sm font-mono">
-          &lt;- All Guides
+          &lt;- Todas las Guías
         </Link>
       </div>
     </div>

@@ -1,0 +1,50 @@
+---
+name: Google Ads MCP
+slug: google-ads-mcp
+description: Acceso programático a los datos y funciones de gestión de Google Ads para administrar campañas de búsqueda, display y shopping desde tu asistente de IA.
+category: marketing
+tags: [google-ads, publicidad, sem, campanas, marketing]
+official: false
+github: https://github.com/gomarble-ai/google-ads-mcp-server
+---
+
+## Descripción general
+
+Google Ads MCP conecta tu asistente de IA directamente con la API de Google Ads, proporcionando acceso completo para gestionar campañas de búsqueda, display, shopping y vídeo sin necesidad de navegar manualmente por el panel de control de Google Ads. Este servidor es especialmente valioso para negocios que dependen del tráfico de búsqueda de intención para captar clientes en el momento exacto en que están buscando sus productos o servicios.
+
+A diferencia de las redes sociales, donde la publicidad interrumpe al usuario, Google Ads captura la intención activa: alguien que busca "fontanero urgente Madrid" o "mejor restaurante italiano Barcelona" está en el proceso de tomar una decisión de compra inmediata. Gestionar estas campañas correctamente, con las palabras clave adecuadas, las pujas óptimas y los textos más persuasivos, puede ser la diferencia entre llenar la agenda del negocio o perder clientes ante la competencia. Este servidor permite al asistente de IA actuar como un gestor SEM experto.
+
+El servidor cubre todas las funcionalidades críticas de Google Ads: análisis de rendimiento por campaña, grupo de anuncios y palabra clave; ajuste de pujas y presupuestos; revisión de términos de búsqueda reales que activaron los anuncios; detección de palabras clave negativas que desperdician presupuesto; y comparativas de rendimiento entre períodos. Esta visión integral permite optimizar el gasto publicitario con criterio y rapidez, maximizando el retorno de la inversión en publicidad.
+
+## Casos de uso para negocios
+
+- **Fontaneros, electricistas y servicios de urgencia:** Gestiona campañas de búsqueda local con pujas agresivas para términos de alta intención como "fontanero 24 horas" o "electricista urgente", ajustando automáticamente el presupuesto según la hora del día y el día de la semana.
+- **Clínicas y especialistas médicos:** Monitoriza el coste por cita conseguida a través de Google Ads y ajusta las pujas por especialidad según la rentabilidad de cada tipo de consulta.
+- **Tiendas con e-commerce:** Gestiona campañas de Google Shopping, optimizando el feed de productos, las pujas por categoría y los grupos de listados para maximizar el ROAS de cada línea de producto.
+- **Academias y centros de formación:** Lanza campañas de búsqueda en periodos de matrícula con palabras clave específicas por tipo de curso y revisa los términos de búsqueda reales para descubrir nuevas oportunidades.
+- **Agencias inmobiliarias:** Crea campañas segmentadas por zona geográfica y tipo de inmueble (alquiler, compra, comercial), con extensiones de ubicación y llamada para maximizar los contactos directos.
+- **Hoteles y alojamientos turísticos:** Administra campañas de búsqueda de marca para combatir la presencia de OTAs como Booking o Expedia en las búsquedas directas del nombre del establecimiento.
+
+## Configuración básica
+
+Necesitas credenciales de la API de Google Ads, incluyendo un token de desarrollador, Client ID, Client Secret y Refresh Token de OAuth 2.0:
+
+```json
+{
+  "mcpServers": {
+    "google-ads": {
+      "command": "npx",
+      "args": ["-y", "@gomarble/google-ads-mcp-server"],
+      "env": {
+        "GOOGLE_ADS_DEVELOPER_TOKEN": "tu-developer-token",
+        "GOOGLE_ADS_CLIENT_ID": "tu-client-id",
+        "GOOGLE_ADS_CLIENT_SECRET": "tu-client-secret",
+        "GOOGLE_ADS_REFRESH_TOKEN": "tu-refresh-token",
+        "GOOGLE_ADS_CUSTOMER_ID": "123-456-7890"
+      }
+    }
+  }
+}
+```
+
+El ID de cliente de Google Ads aparece en la esquina superior derecha del panel de Google Ads en formato `XXX-XXX-XXXX`. Para obtener el token de desarrollador, solicita acceso a la API de Google Ads a través de Google for Developers. Una vez configurado, el asistente puede analizar campañas, identificar palabras clave de bajo rendimiento y proponer ajustes concretos de presupuesto y puja.

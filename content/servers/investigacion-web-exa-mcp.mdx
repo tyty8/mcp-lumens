@@ -1,0 +1,56 @@
+---
+name: Investigación Web en Tiempo Real MCP
+slug: investigacion-web-exa-mcp
+description: Permite a los asistentes de IA usar la API de búsqueda de Exa para obtener información web en tiempo real — precios de competidores, actualizaciones regulatorias e inteligencia de mercado.
+category: productivity
+tags: [busqueda-web, investigacion, exa, tiempo-real, internet]
+official: false
+github: https://github.com/exa-labs/exa-mcp-server
+---
+
+## Descripción general
+
+El servidor Investigación Web en Tiempo Real MCP integra Exa, el motor de búsqueda semántica diseñado específicamente para uso por agentes de IA, en el flujo de trabajo del asistente. A diferencia de los motores de búsqueda convencionales optimizados para el comportamiento humano de navegación, Exa está construido para devolver resultados de alta relevancia semántica que los modelos de lenguaje pueden procesar directamente, con capacidad de extraer el contenido completo de las páginas web más relevantes para cada consulta.
+
+La capacidad de acceder a información web en tiempo real es fundamental para cualquier asistente de IA empresarial, ya que sin ella el asistente solo puede responder con su conocimiento de entrenamiento, que tiene una fecha de corte y no incluye información específica del negocio ni del mercado local. Con Exa conectado, el asistente puede consultar los precios actuales de la competencia, verificar si ha habido cambios regulatorios recientes en el sector, investigar a un cliente potencial antes de una reunión o monitorear las noticias relevantes para el negocio, todo en tiempo real.
+
+La búsqueda semántica de Exa comprende el contexto y la intención de las consultas de forma mucho más sofisticada que una búsqueda por palabras clave. Una consulta como "cambios en la legislación española sobre etiquetado de productos alimentarios en 2025" devolverá los documentos más relevantes sobre ese tema específico, no simplemente páginas que contienen esas palabras. Esta calidad en la recuperación de información es lo que hace que la investigación sea realmente útil para la toma de decisiones empresariales.
+
+## Casos de uso para negocios
+
+- **Inteligencia competitiva:** Monitoreo periódico de las novedades en los sitios web de los principales competidores — nuevos productos lanzados, cambios de precio, nuevas campañas de marketing o aperturas de nuevas ubicaciones.
+- **Seguimiento regulatorio:** Búsqueda de actualizaciones en normativas del sector —legislación laboral, regulación de productos, normativa fiscal o ambiental— para estar al día de los cambios que pueden afectar a la operación del negocio.
+- **Investigación de clientes potenciales:** Recopilación de información pública sobre una empresa o un directivo antes de una reunión de ventas o negociación —facturación aproximada, noticias recientes, proyectos en marcha, socios habituales.
+- **Análisis de tendencias de mercado:** Investigación de tendencias emergentes en el sector para identificar oportunidades de negocio, nuevos segmentos de clientes o tecnologías que podrían afectar al modelo de negocio actual.
+- **Verificación de información:** Comprobación rápida de hechos, datos estadísticos o afirmaciones antes de incluirlos en una propuesta, informe o presentación para un cliente o inversor.
+- **Monitoreo de reputación online:** Búsqueda periódica de menciones de la empresa, la marca o los productos en medios digitales y foros especializados para detectar comentarios negativos o positivos que requieran una respuesta o que puedan aprovecharse como contenido.
+
+## Configuración básica
+
+Regístrate en Exa AI para obtener tu clave de API en dashboard.exa.ai:
+
+```bash
+npx exa-mcp-server
+```
+
+Configura las credenciales en tu cliente MCP:
+
+```json
+{
+  "mcpServers": {
+    "exa-search": {
+      "command": "npx",
+      "args": ["exa-mcp-server"],
+      "env": {
+        "EXA_API_KEY": "tu-api-key-de-exa",
+        "EXA_DEFAULT_NUM_RESULTS": "10",
+        "EXA_SEARCH_TYPE": "neural",
+        "EXA_INCLUDE_DOMAINS": "",
+        "EXA_EXCLUDE_DOMAINS": ""
+      }
+    }
+  }
+}
+```
+
+El plan gratuito de Exa incluye un número limitado de búsquedas mensuales. El tipo de búsqueda `neural` usa la búsqueda semántica avanzada de Exa, mientras que `keyword` es la búsqueda tradicional por palabras clave. Para la mayoría de los casos de uso empresarial, `neural` ofrece mejores resultados. Puedes restringir las búsquedas a dominios específicos usando `EXA_INCLUDE_DOMAINS` para obtener resultados solo de fuentes de confianza predefinidas.

@@ -1,0 +1,47 @@
+---
+name: Sorteos Legales MCP
+slug: sorteos-legales-mcp
+description: Plataforma de gestión de sorteos con 70 herramientas para promociones legalmente conformes en EE.UU. y Canadá, incluyendo gestión de participantes, bases legales y sorteo de ganadores.
+category: marketing
+tags: [sorteos, promociones, concursos, marketing, legal]
+official: false
+github: https://github.com/Sweeppea-Development-Lab/sweeppea-mcp-info
+---
+
+## Descripción general
+
+Sorteos Legales MCP integra la plataforma Sweeppea con tu asistente de IA, proporcionando 70 herramientas para crear y gestionar sorteos y concursos promocionales que cumplen con los requisitos legales de Estados Unidos y Canadá. Organizar un sorteo de marketing puede parecer simple, pero la realidad es que las promociones con premios están sujetas a regulaciones específicas en cada estado o provincia, requieren bases legales correctamente redactadas y deben seguir procedimientos de sorteo auditables para ser legalmente válidas y proteger al negocio de responsabilidades legales.
+
+Para un negocio tradicional como una tienda de moda, un restaurante, una cadena de hoteles o cualquier empresa de consumo que quiera utilizar los sorteos como herramienta de captación de leads, fidelización de clientes o aumento de seguidores en redes sociales, este servidor elimina la complejidad legal y operativa. El asistente de IA puede configurar un sorteo completo con sus bases legales, página de participación, mecanismo de recogida de datos y proceso de selección aleatoria de ganadores, todo ello cumpliendo con las regulaciones aplicables.
+
+Las 70 herramientas del servidor cubren el ciclo completo de un sorteo: creación y configuración de la promoción, publicación de las bases legales requeridas, gestión del registro de participantes, validación de elegibilidad según las reglas del sorteo, selección auditada del ganador o ganadores, notificación automática y documentación del proceso para cumplimiento normativo. Esta cobertura integral convierte al asistente de IA en el gestor completo de cualquier promoción de marketing con premios.
+
+## Casos de uso para negocios
+
+- **Tiendas de moda y retail:** Organiza sorteos de temporada (Navidad, Rebajas, Black Friday) para captar emails de nuevos clientes potenciales, con bases legales correctas y proceso de selección de ganador auditado y documentado.
+- **Restaurantes y grupos de restauración:** Lanza concursos en redes sociales donde los participantes se inscriben con su email para ganar una cena para dos o un menú degustación, generando una base de datos de potenciales clientes cualificados.
+- **Hoteles y alojamientos:** Organiza sorteos de estancias gratuitas o escapadas de fin de semana como herramienta de captación de leads y fidelización, con gestión automatizada de las inscripciones y selección transparente de ganadores.
+- **Academias y centros formativos:** Realiza sorteos de becas parciales o cursos gratuitos entre inscritos en la lista de interesados, generando expectativa y urgencia antes del inicio del período de matrícula.
+- **Marcas de producto y distribuidores:** Organiza concursos de fotografía o vídeo donde los participantes muestran cómo usan el producto, generando contenido generado por usuarios y una base de datos de clientes comprometidos con la marca.
+- **Franquicias y cadenas comerciales:** Centraliza la gestión de múltiples sorteos simultáneos en diferentes localizaciones, con bases legales adaptadas a cada estado o provincia donde opere el negocio.
+
+## Configuración básica
+
+Crea una cuenta en Sweeppea y obtén tus credenciales de API para conectar el servidor:
+
+```json
+{
+  "mcpServers": {
+    "sweeppea": {
+      "command": "npx",
+      "args": ["-y", "@sweeppea/mcp-server"],
+      "env": {
+        "SWEEPPEA_API_KEY": "tu-api-key",
+        "SWEEPPEA_API_SECRET": "tu-api-secret"
+      }
+    }
+  }
+}
+```
+
+Una vez configurado, puedes describir al asistente el sorteo que quieres organizar (nombre, premio, fechas, requisitos de participación, estados donde se aplica) y el servidor se encargará de crear la promoción con todos los elementos legales requeridos. Consulta con un asesor legal local para validar que la configuración cumple con las normativas específicas de tu sector o estados donde opera el negocio.

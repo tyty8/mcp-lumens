@@ -1,0 +1,46 @@
+---
+name: Apollo.io Prospección B2B MCP
+slug: apollo-prospecting-mcp
+description: Inteligencia de ventas B2B con Apollo.io — busca prospectos, enriquece contactos y descubre empresas por industria y tamaño entre más de 275 millones de contactos.
+category: marketing
+tags: [apollo, prospeccion, b2b, ventas, leads]
+official: false
+github: https://github.com/louis030195/apollo-io-mcp
+---
+
+## Descripción general
+
+Apollo.io Prospección B2B MCP integra la mayor base de datos de contactos B2B del mercado directamente con tu asistente de IA, proporcionando acceso a más de 275 millones de contactos profesionales y 60 millones de empresas con datos verificados de email, teléfono, cargo, sector, tamaño de empresa y tecnologías utilizadas. Para cualquier negocio que venda a otras empresas — desde proveedores de hostelería hasta gestorías, empresas de limpieza corporativa, consultoras o distribuidores —, Apollo.io es la herramienta que transforma el proceso de prospección comercial.
+
+El proceso tradicional de búsqueda de nuevos clientes B2B es lento y manual: buscar en LinkedIn, visitar webs corporativas, intentar encontrar el contacto correcto y sus datos de contacto, y repetir ese proceso para cada prospecto. Apollo.io automatiza todo ese proceso, y este servidor lleva esa automatización al nivel siguiente al permitir que el asistente de IA defina el perfil ideal de cliente (ICP), busque empresas y contactos que coincidan con ese perfil, enriquezca la información de los contactos ya existentes en el CRM y prepare listas de prospección listas para la acción comercial.
+
+Para negocios que están iniciando una estrategia de ventas B2B activa o que quieren escalar su proceso comercial, este servidor proporciona los datos necesarios para pasar de la prospección artesanal a un proceso sistemático y escalable. El asistente puede buscar prospectos por industria, tamaño de empresa, ubicación geográfica, tecnologías que utilizan o cualquier combinación de estos filtros, generando listas de contactos cualificados con la información necesaria para iniciar el contacto comercial.
+
+## Casos de uso para negocios
+
+- **Empresas de catering y restauración corporativa:** Busca en Apollo.io directores de operaciones y office managers de empresas de más de 50 empleados en tu ciudad para prospectar contratos de comidas de empresa, eventos corporativos y servicios de catering.
+- **Proveedores de servicios de limpieza y mantenimiento:** Identifica propietarios y gerentes de parques empresariales, centros comerciales, edificios de oficinas y complejos industriales que sean potenciales clientes de servicios de limpieza y facility management.
+- **Consultoras y asesoras de empresa:** Busca directores financieros y gerentes de PYMES por sector de actividad y tamaño de empresa para prospectar servicios de consultoría fiscal, laboral o estratégica.
+- **Distribuidores y mayoristas:** Descubre nuevos clientes potenciales en el canal B2B buscando compradores, responsables de aprovisionamiento y directores de compras en empresas del sector al que distribuyes.
+- **Agencias de marketing y publicidad:** Identifica directores de marketing y CEOs de empresas del tamaño objetivo para prospectar nuevas cuentas, con información sobre las herramientas de marketing que ya utilizan para personalizar el mensaje comercial.
+- **Empresas de software y tecnología B2B:** Encuentra empresas que utilizan tecnologías complementarias o competidoras para construir listas de prospección altamente cualificadas basadas en el stack tecnológico del cliente potencial.
+
+## Configuración básica
+
+Obtén tu API Key en la sección "API" de la configuración de tu cuenta Apollo.io:
+
+```json
+{
+  "mcpServers": {
+    "apollo": {
+      "command": "npx",
+      "args": ["-y", "apollo-io-mcp"],
+      "env": {
+        "APOLLO_API_KEY": "tu-api-key-de-apollo"
+      }
+    }
+  }
+}
+```
+
+Con el plan gratuito de Apollo.io tienes acceso a un número limitado de búsquedas y enriquecimientos mensuales. Los planes de pago amplían esos límites y desbloquean datos de contacto adicionales como números de teléfono móvil. Una vez configurado, el asistente puede buscar prospectos con los criterios que especifiques y entregar una lista de contactos cualificados con nombre, cargo, empresa, email y, cuando esté disponible, teléfono directo.

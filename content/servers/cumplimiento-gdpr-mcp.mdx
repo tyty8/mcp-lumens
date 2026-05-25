@@ -1,0 +1,46 @@
+---
+name: Cumplimiento GDPR y AI Act MCP
+slug: cumplimiento-gdpr-mcp
+description: Verificación de cumplimiento normativo para el Reglamento General de Protección de Datos (GDPR), la Ley de IA de la UE y DORA, con citas a nivel de artículo específico.
+category: legal
+tags: [gdpr, ai-act, dora, cumplimiento, proteccion-datos]
+official: false
+github: https://github.com/buildsyncinc/gibs-mcp
+---
+
+## Descripción general
+
+Cumplimiento GDPR y AI Act MCP integra el sistema GIBS (Global Intelligence and Business Standards) con tu asistente de IA, proporcionando verificaciones de cumplimiento normativo para los tres marcos regulatorios europeos más relevantes para las empresas que operan en la Unión Europea: el Reglamento General de Protección de Datos (GDPR), la Ley de Inteligencia Artificial de la UE (AI Act) y el Reglamento de Resiliencia Operativa Digital (DORA). El servidor proporciona análisis de cumplimiento con citas precisas a nivel de artículo específico, eliminando la ambigüedad en la interpretación de los requisitos normativos.
+
+El GDPR sigue siendo, más de seis años después de su entrada en vigor, uno de los marcos regulatorios que mayor impacto tiene en la operativa cotidiana de cualquier empresa que procese datos personales de ciudadanos europeos. Desde un pequeño restaurante que gestiona reservas online hasta una cadena hotelera con sistema de fidelización de clientes o una clínica médica con historiales de pacientes digitalizados, prácticamente todos los negocios tradicionales modernos procesan datos personales sujetos al GDPR. Conocer con precisión qué artículo aplica a cada situación concreta y cómo cumplirlo es fundamental para evitar sanciones.
+
+El AI Act y DORA añaden nuevas capas de complejidad regulatoria para empresas que utilizan sistemas de inteligencia artificial o que operan en el sector financiero. A medida que más negocios tradicionales adoptan herramientas de IA para la atención al cliente, el análisis de datos o la automatización de procesos, el cumplimiento del AI Act se convierte en una consideración práctica inmediata. Este servidor permite al asistente de IA actuar como un consultor de compliance capaz de orientar sobre los requisitos específicos aplicables a cada caso de uso.
+
+## Casos de uso para negocios
+
+- **Clínicas y centros médicos:** Verifica el cumplimiento del GDPR en el tratamiento de datos de salud de pacientes (categoría especial bajo el artículo 9), los requisitos de base legal para el tratamiento, los plazos de conservación de historiales y los derechos de los pacientes como interesados.
+- **Hoteles y alojamientos con sistema de fidelización:** Analiza el cumplimiento del GDPR en la gestión de datos de huéspedes, los requisitos de consentimiento para comunicaciones comerciales, la política de conservación de datos y los protocolos de respuesta a solicitudes de derechos de los interesados.
+- **Empresas de tecnología y SaaS que adoptan IA:** Evalúa la conformidad de los sistemas de IA utilizados (chatbots de atención al cliente, sistemas de recomendación, análisis predictivo) con el AI Act europeo, identificando la categoría de riesgo del sistema y los requisitos de cumplimiento aplicables.
+- **Entidades financieras y fintech:** Verifica el cumplimiento con los requisitos de DORA en materia de resiliencia operativa digital, gestión de riesgos de terceros proveedores de TIC y planes de continuidad de negocio ante incidentes de ciberseguridad.
+- **Agencias de marketing y publicidad digital:** Analiza el cumplimiento del GDPR en las prácticas de marketing basado en datos: cookies, retargeting, email marketing con base en interés legítimo o consentimiento, y transferencias de datos a plataformas publicitarias fuera de la UE.
+- **Despachos de abogados y consultoras de compliance:** Utiliza el acceso a citas normativas a nivel de artículo para preparar informes de due diligence regulatoria, opiniones legales y diagnósticos de cumplimiento para clientes con mayor precisión y eficiencia.
+
+## Configuración básica
+
+Obtén acceso a la API de GIBS y configura las credenciales en tu cliente MCP:
+
+```json
+{
+  "mcpServers": {
+    "gibs-compliance": {
+      "command": "npx",
+      "args": ["-y", "@buildsyncinc/gibs-mcp"],
+      "env": {
+        "GIBS_API_KEY": "tu-api-key-de-gibs"
+      }
+    }
+  }
+}
+```
+
+Una vez configurado, puedes describir al asistente una situación específica de tu negocio — por ejemplo, "queremos implementar un chatbot de IA para atención al cliente que acceda al historial de compras de los clientes" — y el servidor analizará cuáles son los artículos del GDPR y del AI Act aplicables, qué requisitos específicos deben cumplirse y qué pasos hay que dar para asegurar el cumplimiento antes del despliegue.

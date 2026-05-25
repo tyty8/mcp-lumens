@@ -1,0 +1,58 @@
+---
+name: Microsoft Teams MCP
+slug: microsoft-teams-mcp
+description: Integración con Microsoft Teams para leer, publicar mensajes, mencionar usuarios, listar miembros y gestionar hilos de conversación en canales.
+category: communication
+tags: [teams, microsoft, mensajeria, colaboracion, empresa]
+official: false
+github: https://github.com/InditexTech/mcp-teams-server
+---
+
+## Descripción general
+
+Microsoft Teams MCP integra la plataforma de colaboración empresarial más utilizada en entornos corporativos con tu asistente de IA, permitiéndole participar activamente en los canales y conversaciones de Teams. Para empresas medianas y grandes que ya han adoptado Teams como su hub central de comunicación interna, este servidor añade una capa de automatización inteligente que puede gestionar comunicaciones, distribuir información y coordinar equipos sin necesidad de interrupciones manuales.
+
+La capacidad de mencionar usuarios específicos en los mensajes es esencial para la efectividad de las notificaciones: cuando el asistente de IA detecta un problema que requiere atención de una persona concreta, puede mencionarla directamente en el canal apropiado, asegurándose de que recibe la notificación inmediata en Teams. Esto es mucho más eficaz que enviar un email que puede perderse en la bandeja de entrada, especialmente en situaciones que requieren respuesta rápida.
+
+La gestión de hilos de conversación permite al asistente mantener conversaciones organizadas y contextualizadas dentro de Teams. En lugar de inundar un canal con mensajes sueltos, puede responder dentro del hilo apropiado, mantener la coherencia de las discusiones en curso y archivar o referenciar información relevante de conversaciones anteriores. Para equipos que gestionan múltiples proyectos simultáneamente, esta organización es fundamental para mantener la productividad.
+
+## Casos de uso para negocios
+
+- **Empresas de distribución y logística:** El asistente publica automáticamente en el canal de operaciones las incidencias detectadas en los envíos, mencionando al coordinador responsable de cada ruta para gestión inmediata.
+- **Cadenas de retail con múltiples tiendas:** Distribución de información de precios, promociones y nuevos productos a todos los gerentes de tienda mediante mensajes en el canal general, con confirmación de lectura.
+- **Constructoras y empresas de ingeniería:** Actualizaciones de estado de obra publicadas automáticamente en el canal de cada proyecto, con menciones al responsable cuando se detectan retrasos o incidencias.
+- **Empresas de servicios con equipos de campo:** Asignación de tareas a técnicos mediante mensajes en Teams, con seguimiento del estado y publicación del resultado una vez completado el servicio.
+- **Agencias y consultoras con múltiples clientes:** Gestión de canales por cliente donde el asistente publica resúmenes de actividad, próximos hitos y pendientes de aprobación de forma automatizada.
+- **Hoteles y hostelería con equipos grandes:** Coordinación de cambios de turno, incidencias y solicitudes especiales entre recepción, cocina, mantenimiento y dirección mediante canales específicos en Teams.
+
+## Configuración básica
+
+El servidor desarrollado por Inditex Tech requiere acceso a Microsoft Graph API:
+
+```bash
+git clone https://github.com/InditexTech/mcp-teams-server
+cd mcp-teams-server
+npm install
+npm run build
+```
+
+Configura las credenciales de Azure en tu cliente MCP:
+
+```json
+{
+  "mcpServers": {
+    "microsoft-teams": {
+      "command": "node",
+      "args": ["dist/index.js"],
+      "env": {
+        "AZURE_TENANT_ID": "tu-tenant-id",
+        "AZURE_CLIENT_ID": "tu-client-id",
+        "AZURE_CLIENT_SECRET": "tu-client-secret",
+        "TEAMS_USER_ID": "id-del-usuario-o-bot"
+      }
+    }
+  }
+}
+```
+
+En el portal de Azure (portal.azure.com), registra una aplicación, concede permisos de Microsoft Graph para ChannelMessage.Send, Channel.ReadBasic.All, Team.ReadBasic.All y User.Read. Tu administrador de Microsoft 365 debe aprobar los permisos de aplicación antes de poder usar el servidor en producción.

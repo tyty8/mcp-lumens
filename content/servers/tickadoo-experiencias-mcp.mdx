@@ -1,0 +1,47 @@
+---
+name: Tickadoo Experiencias Mundiales MCP
+slug: tickadoo-experiencias-mcp
+description: Descubre y reserva teatro, espectáculos, eventos, tours y experiencias en más de 700 ciudades de todo el mundo con precios y disponibilidad en tiempo real.
+category: travel
+tags: [teatro, espectaculos, experiencias, eventos, turismo]
+official: false
+github: https://github.com/tickadoo/tickadoo-mcp
+---
+
+## Descripción general
+
+Tickadoo Experiencias Mundiales MCP abre el acceso a un extenso directorio de entretenimiento y cultura en más de 700 ciudades alrededor del mundo. A través de este servidor MCP, agencias de viajes, hoteles y operadores turísticos pueden consultar y reservar entradas para teatro, ópera, conciertos, espectáculos de variedades, tours guiados y experiencias únicas directamente desde su asistente de IA.
+
+La plataforma actualiza precios y disponibilidad en tiempo real, lo que permite ofrecer información precisa a los clientes sin riesgo de encontrar entradas agotadas o precios desactualizados al momento de formalizar la reserva. Esta capacidad es especialmente valiosa para agencias que trabajan con clientes de alto poder adquisitivo que buscan experiencias culturales y de entretenimiento exclusivas durante sus viajes.
+
+Tickadoo integra tanto eventos de taquilla consolidados como experiencias locales auténticas que no siempre aparecen en los grandes portales de venta de entradas. Esto permite a las agencias diferenciarse de la competencia ofreciendo acceso a actividades culturales menos conocidas pero altamente valoradas por los viajeros más exigentes y experimentados.
+
+## Casos de uso para negocios
+
+- **Agencias de viajes culturales:** Incluir entradas para teatro, ópera o espectáculos en los paquetes turísticos sin necesidad de gestionar reservas manuales en múltiples plataformas de ticketing.
+- **Hoteles de lujo y boutique:** Sorprender a los huéspedes ofreciendo acceso a espectáculos exclusivos y eventos especiales en la ciudad como parte de un servicio de concierge premium.
+- **Organizadores de viajes de incentivo:** Planificar veladas culturales para grupos corporativos que viajan por trabajo, combinando cenas de empresa con asistencia a espectáculos locales.
+- **Agencias especializadas en turismo cultural:** Construir itinerarios centrados en la vida cultural y artística de cada destino con disponibilidad y precios verificados en tiempo real.
+- **Guías turísticos y tour leaders:** Complementar sus visitas guiadas diurnas con recomendaciones de espectáculos nocturnos y gestionar las reservas para sus grupos al instante.
+- **Receptivos para turismo de lujo:** Ofrecer experiencias VIP de acceso a eventos exclusivos como parte de paquetes de viaje premium para clientes de alto perfil.
+
+## Configuración básica
+
+Para integrar Tickadoo en tu flujo de trabajo, necesitas registrarte como partner en la plataforma Tickadoo y obtener tus credenciales de API. Solicita acceso a la API de distribución en el sitio oficial de Tickadoo.
+
+```json
+{
+  "mcpServers": {
+    "tickadoo": {
+      "command": "npx",
+      "args": ["-y", "@tickadoo/mcp-server"],
+      "env": {
+        "TICKADOO_API_KEY": "tu_api_key",
+        "TICKADOO_PARTNER_ID": "tu_partner_id"
+      }
+    }
+  }
+}
+```
+
+Una vez activo, puedes buscar espectáculos por ciudad, fecha y categoría, verificar disponibilidad de asientos y completar reservas con confirmación inmediata.

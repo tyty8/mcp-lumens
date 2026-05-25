@@ -1,0 +1,46 @@
+---
+name: Companies House UK MCP
+slug: companies-house-uk-mcp
+description: Datos de Companies House del Reino Unido — búsqueda de empresas, perfiles enriquecidos, estados financieros estructurados de archivos iXBRL, historial de directores y grafos de redes corporativas.
+category: legal
+tags: [uk, empresas, due-diligence, finanzas, directores]
+official: false
+github: https://github.com/vdmeu/registrum-mcp
+---
+
+## Descripción general
+
+Companies House UK MCP proporciona acceso completo y estructurado a los datos del registro mercantil oficial del Reino Unido (Companies House), incluyendo búsqueda de empresas, perfiles corporativos enriquecidos, estados financieros extraídos y estructurados de los archivos iXBRL depositados, historial completo de directores y análisis de grafos de redes corporativas para identificar conexiones entre empresas y personas. Este servidor es fundamental para cualquier proceso de due diligence sobre empresas británicas o contrapartes con presencia en el mercado del Reino Unido.
+
+Companies House es uno de los registros mercantiles más completos y accesibles del mundo, con datos sobre más de cuatro millones de empresas registradas en el Reino Unido. Sin embargo, transformar esos datos brutos —disponibles en formatos técnicos complejos como iXBRL para los estados financieros— en información útil y accionable para una investigación de due diligence o un análisis comercial requiere herramientas especializadas. Este servidor realiza esa transformación, extrayendo los datos clave de los estados financieros y convirtiéndolos en formatos estructurados que el asistente puede analizar directamente.
+
+El análisis de grafos de redes corporativas es especialmente valioso para detectar estructuras empresariales complejas, identificar empresas vinculadas a través de directores comunes, rastrear grupos corporativos y descubrir conexiones no evidentes entre personas jurídicas y físicas. Esta capacidad es crítica en investigaciones de due diligence profunda, evaluación de riesgos de contrapartes y análisis de estructuras de propiedad para operaciones de M&A o de inversión en empresas del mercado británico.
+
+## Casos de uso para negocios
+
+- **Empresas españolas con operaciones en el Reino Unido:** Verifica el estado de registro, la situación financiera y la estructura de directores de socios comerciales, distribuidores o clientes británicos antes de formalizar acuerdos comerciales significativos.
+- **Abogados y asesores en operaciones de M&A:** Accede a los estados financieros históricos, la estructura de capital, el historial de directores y las empresas vinculadas de una compañía objetivo para preparar el informe de due diligence legal y financiero.
+- **Inversores y fondos de capital riesgo:** Analiza la red de conexiones corporativas de los fundadores y equipos gestores de startups británicas, identificando experiencias previas relevantes, empresas anteriores y posibles conflictos de interés.
+- **Proveedores y acreedores comerciales:** Evalúa la salud financiera de clientes o contrapartes en el mercado británico revisando sus últimas cuentas depositadas, identificando señales de alerta en la evolución de la solvencia y la posición de deuda.
+- **Despachos de abogados con litigios comerciales:** Investiga la estructura corporativa del demandado o demandante, identifica otras empresas del mismo grupo que puedan ser parte relevante del proceso y rastrea transferencias de activos entre entidades relacionadas.
+- **Entidades bancarias y aseguradoras con exposición al mercado británico:** Realiza la verificación de contrapartes empresariales como parte del proceso de KYB (Know Your Business), comprobando el registro, la estructura de control y la situación financiera de las empresas clientes.
+
+## Configuración básica
+
+Este servidor accede a la API pública de Companies House, que requiere una clave de API gratuita obtenida a través del portal de desarrolladores:
+
+```json
+{
+  "mcpServers": {
+    "companies-house": {
+      "command": "npx",
+      "args": ["-y", "@vdmeu/registrum-mcp"],
+      "env": {
+        "COMPANIES_HOUSE_API_KEY": "tu-api-key-de-companies-house"
+      }
+    }
+  }
+}
+```
+
+Regístrate en developer.company-information.service.gov.uk para obtener tu API Key gratuita. Una vez configurado, el asistente puede buscar empresas por nombre o número de registro, extraer perfiles completos con datos financieros estructurados, mapear la red de conexiones corporativas de cualquier empresa registrada en el Reino Unido y generar informes de due diligence resumidos en español.

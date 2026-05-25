@@ -1,0 +1,57 @@
+---
+name: Royal Mail y Parcelforce MCP
+slug: royal-mail-mcp
+description: Gestiona el flujo completo de envíos Royal Mail y Parcelforce en el Reino Unido — reserva, etiqueta, rastrea y cancela envíos en 33 servicios nacionales e internacionales.
+category: logistics
+tags: [royal-mail, parcelforce, uk, envios, paquetes]
+official: false
+github: https://github.com/catrinmdonnelly/royalmail-mcp
+---
+
+## Descripción general
+
+El servidor Royal Mail y Parcelforce MCP proporciona acceso completo a los servicios de envío de los dos principales operadores postales del Reino Unido mediante sus APIs oficiales. Con soporte para 33 servicios de envío diferentes —desde el económico Royal Mail 2nd Class hasta el urgente Parcelforce Express 24 y los servicios internacionales Tracked & Signed— este servidor cubre todas las necesidades de envío de cualquier negocio que opere en o hacia el mercado británico.
+
+Para los negocios españoles y europeos que tienen clientes en el Reino Unido o que importan desde proveedores británicos, la integración con Royal Mail y Parcelforce es especialmente relevante en el contexto post-Brexit. El servidor facilita la creación de envíos con la documentación aduanera correcta para los envíos entre la UE y el Reino Unido, que ahora requieren formularios CN22/CN23 y declaraciones de valor aduanero que antes no eran necesarios. Tener este proceso automatizado reduce significativamente los errores de documentación que pueden causar retenciones en aduana y costes adicionales.
+
+La gestión del ciclo completo de un envío —reserva, generación de etiqueta, seguimiento en tiempo real y cancelación si es necesario— desde una interfaz conversacional simplifica enormemente la operativa para negocios que procesan decenas o cientos de envíos hacia el mercado británico cada semana. El asistente puede consultar el estado de todos los paquetes en tránsito de forma simultánea y alertar proactivamente sobre cualquier envío con retraso o incidencia, sin necesidad de comprobar uno a uno en la web de Royal Mail.
+
+## Casos de uso para negocios
+
+- **Exportadores españoles al mercado británico:** Creación de envíos internacionales con la documentación aduanera correcta para los mercados post-Brexit, evitando retenciones por formularios incorrectos o incompletos.
+- **Tiendas online con clientes en el Reino Unido:** Generación automática de etiquetas Royal Mail Tracked para pedidos dirigidos a clientes británicos, con selección del servicio más adecuado según el peso, valor del pedido y urgencia.
+- **Empresas de importación desde UK:** Coordinación de recogidas con Parcelforce para recoger mercancía en proveedores o socios británicos, con seguimiento hasta la recepción en almacén en España.
+- **Agencias de fulfillment con clientes en el mercado anglosajón:** Gestión centralizada de todos los envíos Royal Mail de múltiples clientes, con informes de costes y rendimiento de entrega diferenciados por cliente.
+- **Distribuidores de productos artesanales o especializados:** Gestión de envíos de alto valor con servicio Tracked & Signed para garantizar la trazabilidad completa y la firma en destino de artículos valiosos o delicados.
+- **Empresas de comercio B2B con socios en UK:** Envío regular de muestras, catálogos y materiales comerciales a distribuidores y representantes en el Reino Unido con el servicio más económico según la urgencia.
+
+## Configuración básica
+
+Registra una cuenta en el portal de negocio de Royal Mail Click & Drop y solicita acceso a la API para obtener las credenciales:
+
+```bash
+npx @catrinmdonnelly/royalmail-mcp
+```
+
+Configura las credenciales en tu cliente MCP:
+
+```json
+{
+  "mcpServers": {
+    "royal-mail": {
+      "command": "npx",
+      "args": ["@catrinmdonnelly/royalmail-mcp"],
+      "env": {
+        "ROYAL_MAIL_CLIENT_ID": "tu-client-id",
+        "ROYAL_MAIL_CLIENT_SECRET": "tu-client-secret",
+        "ROYAL_MAIL_ACCOUNT_NUMBER": "tu-account-number",
+        "PARCELFORCE_USERNAME": "tu-usuario-parcelforce",
+        "PARCELFORCE_PASSWORD": "tu-contrasena-parcelforce",
+        "PARCELFORCE_CONTRACT_NUMBER": "tu-contrato"
+      }
+    }
+  }
+}
+```
+
+Las credenciales de Royal Mail se obtienen a través del portal de desarrolladores en developer.royalmail.net. Para Parcelforce, necesitas un contrato de cuenta corporativa que incluya acceso a la API, disponible para negocios con un volumen mínimo de envíos mensuales.

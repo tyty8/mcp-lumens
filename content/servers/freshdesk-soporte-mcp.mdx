@@ -1,0 +1,56 @@
+---
+name: Freshdesk Soporte MCP
+slug: freshdesk-soporte-mcp
+description: Integración completa con Freshdesk para que la IA pueda leer, responder, categorizar y resolver tickets de soporte al cliente en todos los módulos.
+category: communication
+tags: [freshdesk, soporte, tickets, atencion-cliente, helpdesk]
+official: false
+github: https://github.com/effytech/freshdesk_mcp
+---
+
+## Descripción general
+
+Freshdesk Soporte MCP conecta tu asistente de IA con Freshdesk, una de las plataformas de helpdesk más populares entre pequeñas y medianas empresas. La integración cubre todos los módulos principales de Freshdesk: tickets de soporte, contactos, empresas clientes, grupos de agentes y base de conocimiento, permitiendo al asistente de IA gestionar el soporte al cliente de forma autónoma o asistir al equipo humano con las tareas más repetitivas.
+
+Para negocios tradicionales que han implementado Freshdesk para gestionar las consultas y reclamaciones de clientes, este servidor representa un salto cualitativo: el asistente de IA puede leer los tickets entrantes, clasificarlos por tipo y urgencia, buscar en la base de conocimiento respuestas a las preguntas más frecuentes, redactar respuestas personalizadas y, en los casos más simples, resolver el ticket de forma completamente autónoma. Solo los casos complejos o que requieren intervención física llegan a los agentes humanos, que pueden así dedicar su tiempo a los problemas que realmente necesitan atención personalizada.
+
+La capacidad de analizar patrones en los tickets es especialmente valiosa a largo plazo: el asistente puede identificar cuáles son los problemas más frecuentes, qué productos o servicios generan más incidencias, cuáles son los momentos del año con mayor volumen de tickets y qué tipo de respuestas resultan más satisfactorias para los clientes. Esta inteligencia operativa permite a los negocios mejorar sus procesos y reducir el volumen de tickets en origen.
+
+## Casos de uso para negocios
+
+- **Tiendas de ecommerce:** Gestión automática de consultas sobre estado de pedidos, incidencias de entrega, solicitudes de cambio y reclamaciones, con resolución inmediata de los casos más habituales sin espera.
+- **Empresas de software y tecnología:** Soporte técnico de primer nivel con búsqueda automática en la base de conocimiento y escalado inteligente a los especialistas técnicos cuando el problema supera el nivel básico.
+- **Servicios de mantenimiento del hogar:** Gestión de solicitudes de presupuesto, seguimiento de trabajos en curso y atención de reclamaciones post-servicio con asignación automática al técnico responsable.
+- **Clínicas y centros de salud:** Atención de consultas administrativas (citas, facturación, documentación) desviando automáticamente las consultas médicas a los profesionales sanitarios correspondientes.
+- **Agencias de seguros:** Procesamiento de partes de siniestro, consultas de cobertura y solicitudes de documentación con respuesta inmediata y apertura automatizada de expedientes para los casos que requieren gestión.
+- **Academias y centros de formación:** Atención a consultas de matriculación, información sobre cursos, problemas de acceso a plataformas online y gestión de solicitudes de certificados, con resolución automática de las más frecuentes.
+
+## Configuración básica
+
+El servidor requiere una cuenta de Freshdesk y tu API key:
+
+```bash
+git clone https://github.com/effytech/freshdesk_mcp
+cd freshdesk_mcp
+npm install
+npm run build
+```
+
+Configura el acceso a tu cuenta de Freshdesk:
+
+```json
+{
+  "mcpServers": {
+    "freshdesk": {
+      "command": "node",
+      "args": ["dist/index.js"],
+      "env": {
+        "FRESHDESK_API_KEY": "tu-api-key-de-freshdesk",
+        "FRESHDESK_DOMAIN": "tuempresa.freshdesk.com"
+      }
+    }
+  }
+}
+```
+
+Tu API key de Freshdesk la encontrarás en Profile Settings > API Key dentro de tu cuenta de Freshdesk. Asegúrate de que el usuario cuya API key usas tiene permisos de agente con acceso a todos los tickets y módulos que quieras gestionar desde el asistente de IA.

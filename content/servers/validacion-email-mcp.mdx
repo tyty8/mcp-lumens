@@ -1,0 +1,46 @@
+---
+name: Validación de Email MCP
+slug: validacion-email-mcp
+description: Valida direcciones de email para reducir tasas de rebote antes de enviar campañas de marketing masivas y proteger la reputación del remitente.
+category: marketing
+tags: [email, validacion, deliverability, listas, marketing]
+official: false
+github: https://github.com/MailboxValidator/mcp-mailboxvalidator
+---
+
+## Descripción general
+
+La Validación de Email MCP integra el servicio MailboxValidator directamente en el flujo de trabajo de tu asistente de IA, permitiendo verificar la validez de direcciones de correo electrónico antes de incluirlas en campañas de marketing. Una lista de contactos sin depurar es uno de los problemas más costosos y menos visibles que afectan a los negocios: las tasas de rebote elevadas dañan la reputación del dominio remitente, reducen la entregabilidad de futuros envíos y pueden llevar a que los principales proveedores de email marquen tus mensajes como spam.
+
+Este servidor verifica múltiples aspectos de cada dirección de email: si el dominio existe y tiene servidores de correo activos, si el buzón específico acepta mensajes, si se trata de una dirección temporal o desechable, y si corresponde a un dominio de empresa legítimo o a un proveedor gratuito. Esta información permite tomar decisiones inteligentes sobre qué contactos incluir en una campaña masiva y cuáles requieren una verificación manual adicional antes del envío.
+
+Para negocios como tiendas con programa de fidelización, academias con listas de ex-alumnos o inmobiliarias con bases de datos acumuladas durante años, limpiar la lista de contactos puede marcar la diferencia entre que los correos lleguen a la bandeja de entrada o acaben en la carpeta de spam. El asistente de IA puede procesar cientos de validaciones de forma autónoma, generar un informe de estado y preparar automáticamente una lista depurada lista para el envío.
+
+## Casos de uso para negocios
+
+- **Tiendas y comercios con programa de puntos:** Valida toda la base de contactos antes del envío de la newsletter mensual para garantizar que las ofertas llegan únicamente a direcciones activas y reales.
+- **Academias y centros educativos:** Limpia la lista de ex-alumnos y prospectos antes de la campaña de inicio de curso, evitando rebotes que penalicen la reputación del dominio del centro.
+- **Agencias inmobiliarias:** Depura bases de datos de compradores y arrendatarios potenciales recopiladas en ferias y portales, separando contactos válidos de entradas erróneas o abandonadas.
+- **Clínicas y consultorios:** Verifica que las direcciones de pacientes estén activas antes de enviar campañas de salud preventiva o recordatorios de revisiones anuales.
+- **Hoteles y alojamientos:** Comprueba la validez de los emails de huéspedes anteriores antes de lanzar campañas de fidelización o promociones de temporada baja.
+- **Empresas de servicios B2B:** Valida los contactos de prospectos captados en ferias o por formularios web antes de incorporarlos al CRM y a las secuencias de email automatizadas.
+
+## Configuración básica
+
+Obtén tu API Key gratuita o de pago en mailboxvalidator.com y configura el servidor en tu cliente MCP:
+
+```json
+{
+  "mcpServers": {
+    "mailboxvalidator": {
+      "command": "npx",
+      "args": ["-y", "@mailboxvalidator/mcp-mailboxvalidator"],
+      "env": {
+        "MAILBOXVALIDATOR_API_KEY": "tu-api-key-aqui"
+      }
+    }
+  }
+}
+```
+
+Una vez configurado, puedes pedir al asistente que valide una dirección concreta o que procese una lista completa en formato CSV, generando un informe con el estado de cada contacto y una lista filtrada de emails válidos lista para importar en tu plataforma de email marketing.

@@ -1,0 +1,49 @@
+---
+name: Google Search Console SEO MCP
+slug: google-search-console-seo-mcp
+description: Consulta datos de rendimiento de Google Search Console, inspecciona URLs, verifica indexación y genera informes de auditoría SEO con hoja de ruta de 30/60/90 días.
+category: marketing
+tags: [seo, google, search-console, indexacion, posicionamiento]
+official: false
+github: https://github.com/acamolese/google-search-console-mcp
+---
+
+## Descripción general
+
+Google Search Console SEO MCP conecta tu asistente de IA con Google Search Console, la herramienta gratuita de Google que proporciona datos oficiales sobre cómo aparece un sitio web en los resultados de búsqueda. Este servidor va más allá de la simple consulta de datos: permite al asistente generar informes de auditoría SEO completos con una hoja de ruta priorizada a 30, 60 y 90 días, convirtiendo datos técnicos complejos en planes de acción concretos y accionables para cualquier tipo de negocio.
+
+Para un restaurante, una clínica, una tienda física o cualquier negocio local, aparecer en las primeras posiciones de Google cuando alguien busca sus servicios en la zona es fundamental para la captación de nuevos clientes. El SEO local, sin embargo, es una disciplina que combina aspectos técnicos del sitio web, optimización de contenido y señales de autoridad que requieren conocimiento especializado y seguimiento constante. Este servidor democratiza ese acceso, permitiendo que el asistente de IA actúe como un consultor SEO disponible en cualquier momento.
+
+El servidor proporciona acceso a los datos de rendimiento en búsqueda orgánica: impresiones, clics, posición media y tasa de clics (CTR) para cada consulta y página. También permite inspeccionar URLs individuales para verificar si están correctamente indexadas por Google, identificar errores de cobertura y detectar oportunidades de mejora en páginas que aparecen en posiciones entre 5 y 20, donde pequeñas mejoras de contenido pueden traducirse en saltos significativos de posición y tráfico.
+
+## Casos de uso para negocios
+
+- **Restaurantes y negocios de hostelería:** Identifica qué búsquedas locales están generando visitas a la web del restaurante, qué páginas tienen mayor potencial de mejora y cómo optimizar la ficha para aparecer en más búsquedas de intención gastronómica en la zona.
+- **Clínicas y consultorios médicos:** Analiza las consultas de búsqueda que llevan tráfico al sitio web de la clínica, detecta páginas de especialidades que no están indexadas correctamente y genera un plan de contenido SEO basado en búsquedas reales de pacientes potenciales.
+- **Tiendas minoristas con web de ventas:** Revisa el rendimiento de las páginas de categoría y producto en búsqueda orgánica, identifica las que están en posiciones 5-15 con alto potencial de mejora y prioriza las optimizaciones de mayor impacto en tráfico y ventas.
+- **Despachos de abogados y consultoras:** Monitoriza el posicionamiento de páginas de servicios legales o de consultoría para búsquedas clave en su área geográfica de actuación, identificando oportunidades de contenido para captar clientes con intención de búsqueda específica.
+- **Academias y centros de formación:** Analiza qué términos relacionados con los cursos y especializaciones ofertadas generan impresiones sin clics (baja CTR), indicando oportunidades de mejorar los títulos y meta descripciones para aumentar las visitas orgánicas.
+- **Hoteles y alojamientos:** Inspecciona el rendimiento SEO de las páginas de habitaciones, servicios y destino para búsquedas de viajeros que planifican su estancia, detectando errores técnicos que puedan estar limitando la visibilidad en Google.
+
+## Configuración básica
+
+Configura las credenciales de OAuth 2.0 de Google con acceso a la API de Search Console:
+
+```json
+{
+  "mcpServers": {
+    "search-console": {
+      "command": "npx",
+      "args": ["-y", "google-search-console-mcp"],
+      "env": {
+        "GOOGLE_CLIENT_ID": "tu-client-id",
+        "GOOGLE_CLIENT_SECRET": "tu-client-secret",
+        "GOOGLE_REFRESH_TOKEN": "tu-refresh-token",
+        "SITE_URL": "https://tu-sitio-web.com"
+      }
+    }
+  }
+}
+```
+
+Obtén las credenciales OAuth en Google Cloud Console habilitando la API de Search Console. Asegúrate de que la cuenta de Google utilizada tenga acceso de propietario o administrador a la propiedad en Google Search Console. Una vez configurado, el asistente puede generar informes de rendimiento, identificar páginas prioritarias para optimización y crear una hoja de ruta SEO personalizada para los próximos 90 días.

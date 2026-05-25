@@ -1,0 +1,46 @@
+---
+name: Rutas de Senderismo MCP
+slug: rutas-senderismo-mcp
+description: Busca datos de senderos de senderismo en AllTrails con información detallada sobre dificultad, longitud, elevación y condiciones de cada ruta para planificación de excursiones.
+category: travel
+tags: [senderismo, rutas, naturaleza, alltrails, montana]
+official: false
+github: https://github.com/srinath1510/alltrails-mcp-server
+---
+
+## Descripción general
+
+Rutas de Senderismo MCP conecta tu asistente de IA con AllTrails, la plataforma de referencia mundial para senderistas y amantes de la naturaleza con más de 400,000 rutas catalogadas en todos los continentes. A través de este servidor MCP, empresas de turismo de naturaleza, tiendas de montaña, guías de senderismo y operadores de turismo activo pueden acceder a información detallada y actualizada sobre rutas de senderismo, incluyendo nivel de dificultad, distancia, desnivel acumulado, tiempo estimado y condiciones recientes reportadas por otros senderistas.
+
+AllTrails es especialmente valioso porque sus datos no son solo estadísticos sino también cualitativos: la plataforma incluye reseñas y fotos recientes de los propios senderistas, lo que permite saber si una ruta está en buen estado, si hay nieve en el camino o si las fuentes de agua están activas. Este tipo de información práctica y actualizada es exactamente lo que necesitan los guías y operadores para planificar excursiones seguras y satisfactorias para sus clientes.
+
+La integración con IA permite crear recomendaciones de rutas altamente personalizadas según el perfil físico del cliente, sus preferencias paisajísticas, el tiempo disponible y el nivel de experiencia en montaña. Esto transforma la manera en que las empresas de turismo activo asesoran a sus clientes, pasando de recomendaciones genéricas a propuestas verdaderamente adaptadas a cada persona.
+
+## Casos de uso para negocios
+
+- **Empresas de turismo de aventura y naturaleza:** Seleccionar rutas de senderismo adaptadas al nivel físico y experiencia de cada grupo de clientes, con información verificada sobre dificultad real y condiciones del terreno.
+- **Guías de montaña y senderismo:** Preparar la documentación de las rutas que guiarán — perfil de elevación, puntos de interés, lugares para descanso — con datos precisos directamente de AllTrails.
+- **Tiendas de material de montaña:** Recomendar rutas a los clientes que compran equipamiento para iniciarse en el senderismo, ajustando la recomendación a su nivel inicial y zona geográfica.
+- **Hoteles rurales y casas de turismo rural:** Ofrecer a los huéspedes una selección curada de rutas en la zona accesibles desde el alojamiento, con descripción de dificultad y puntos de interés en el recorrido.
+- **Centros de interpretación de la naturaleza:** Proporcionar información detallada sobre los senderos del entorno a los visitantes, incluyendo flora, fauna y puntos de interés natural presentes en cada ruta.
+- **Organizadores de eventos de senderismo:** Planificar rutas para grupos numerosos considerando el nivel de los participantes menos experimentados y asegurando que la logística sea viable para todo el grupo.
+
+## Configuración básica
+
+Para utilizar Rutas de Senderismo MCP necesitas acceso a la API de AllTrails. Contacta con AllTrails en `alltrails.com/api` para conocer las opciones de acceso para socios y desarrolladores, ya que la API no es de acceso público abierto.
+
+```json
+{
+  "mcpServers": {
+    "alltrails": {
+      "command": "npx",
+      "args": ["-y", "alltrails-mcp-server"],
+      "env": {
+        "ALLTRAILS_API_KEY": "tu_api_key"
+      }
+    }
+  }
+}
+```
+
+Con el servidor en funcionamiento, puedes buscar rutas por ubicación, nivel de dificultad y distancia, consultar las condiciones reportadas recientemente por otros senderistas y obtener información detallada del perfil de elevación de cada sendero.

@@ -1,0 +1,47 @@
+---
+name: TikTok Ads MCP
+slug: tiktok-ads-mcp
+description: Gestiona campañas publicitarias en TikTok, métricas de rendimiento, audiencias y creatividades mediante OAuth con la API de TikTok Ads.
+category: marketing
+tags: [tiktok, publicidad, video, redes-sociales, generacion-z]
+official: false
+github: https://github.com/AdsMCP/tiktok-ads-mcp-server
+---
+
+## Descripción general
+
+TikTok Ads MCP conecta tu asistente de IA con la plataforma publicitaria de TikTok, permitiendo gestionar campañas de vídeo, analizar métricas de rendimiento y administrar audiencias y creatividades directamente desde el lenguaje natural. TikTok se ha convertido en los últimos años en una plataforma publicitaria de primer nivel, especialmente para negocios que buscan llegar a audiencias jóvenes de entre 18 y 35 años con formatos de vídeo corto altamente inmersivos y de bajo coste por vista comparado con otras plataformas.
+
+Lo que diferencia a TikTok como plataforma publicitaria es su algoritmo de distribución de contenido, que permite que un anuncio bien ejecutado alcance a audiencias masivas incluso con presupuestos moderados. Para negocios como tiendas de moda, restaurantes con propuestas originales, academias de baile, gimnasios o cualquier negocio con una historia visual atractiva que contar, TikTok ofrece una oportunidad de visibilidad que hace pocos años era impensable para pequeñas empresas locales. Este servidor hace accesible la gestión profesional de esa publicidad.
+
+El servidor permite acceder a las métricas clave de las campañas en TikTok Ads Manager: impresiones, reproducciones de vídeo (25%, 50%, 75%, 100%), clics, conversiones y coste por resultado. También facilita la gestión de audiencias personalizadas basadas en interacciones con el perfil de TikTok o en listas de clientes, y la creación de audiencias similares para escalar las campañas de mayor rendimiento hacia nuevos usuarios con perfiles similares a los mejores clientes actuales.
+
+## Casos de uso para negocios
+
+- **Tiendas de moda y accesorios juveniles:** Lanza campañas de vídeo mostrando looks y combinaciones de prendas, con análisis de qué productos generan mayor interés entre audiencias de 18 a 30 años para orientar las decisiones de compra de stock.
+- **Restaurantes con propuesta gastronómica diferenciada:** Promociona platos fotogénicos o elaboraciones espectaculares mediante vídeos cortos de alta viralidad, midiendo el impacto en reservas y visitas al local con píxel de conversión.
+- **Academias de baile, música y artes escénicas:** Utiliza el formato nativo de TikTok para mostrar fragmentos de clases y resultados de alumnos, captando nuevas matrículas entre un público joven altamente receptivo al contenido educativo en vídeo.
+- **Gimnasios y centros de fitness:** Crea campañas de captación en enero y septiembre mostrando el ambiente del centro y testimonios de socios, con segmentación por edad, ubicación e intereses deportivos.
+- **Tiendas de videojuegos, coleccionismo y cultura pop:** Conecta con comunidades de nicho mediante campañas basadas en intereses específicos, midiendo el coste por visita a tienda o por compra online atribuida.
+- **Centros de estética y belleza:** Publica antes y después de tratamientos en formato de vídeo, aprovechando el alto engagement que este tipo de contenido genera en TikTok para captar nuevas clientas con presupuestos publicitarios reducidos.
+
+## Configuración básica
+
+Necesitas credenciales de la API de TikTok Ads obtenidas a través del portal de desarrolladores de TikTok for Business:
+
+```json
+{
+  "mcpServers": {
+    "tiktok-ads": {
+      "command": "npx",
+      "args": ["-y", "@adsmcp/tiktok-ads-mcp-server"],
+      "env": {
+        "TIKTOK_ACCESS_TOKEN": "tu-access-token-oauth",
+        "TIKTOK_ADVERTISER_ID": "tu-advertiser-id"
+      }
+    }
+  }
+}
+```
+
+El flujo de autenticación utiliza OAuth 2.0. Registra tu aplicación en developers.tiktok.com, solicita acceso a la API de Ads, completa el flujo de autorización y obtén el Access Token y el Advertiser ID desde el panel de TikTok Ads Manager. Una vez configurado, el asistente puede auditar campañas activas, identificar los vídeos con mejor tasa de reproducción completa y recomendar ajustes de segmentación basados en datos reales.

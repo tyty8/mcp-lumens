@@ -1,7 +1,7 @@
 ---
-name: SQLite MCP Server
+name: Servidor MCP de SQLite
 slug: sqlite-mcp
-description: Provides AI clients with full read and write access to a local SQLite database file, including schema inspection and arbitrary SQL execution.
+description: Proporciona a los clientes de IA acceso completo de lectura y escritura a un archivo de base de datos SQLite local, incluyendo inspección de esquemas y ejecución arbitraria de SQL.
 category: databases
 tags: [sqlite, sql, database, local]
 official: true
@@ -10,15 +10,15 @@ github: https://github.com/modelcontextprotocol/servers/tree/main/src/sqlite
 featured: false
 ---
 
-## Overview
+## Descripción general
 
-The SQLite MCP Server makes it trivial to give an AI client access to a local SQLite database. No server process, no connection string management — just point the server at a `.sqlite` file and your AI can immediately query, insert, update, and inspect the data inside.
+El Servidor MCP de SQLite hace que sea muy sencillo dar a un cliente de IA acceso a una base de datos SQLite local. Sin procesos de servidor, sin gestión de cadenas de conexión: simplemente apunte el servidor a un archivo `.sqlite` y su IA podrá inmediatamente consultar, insertar, actualizar e inspeccionar los datos que contiene.
 
-This server is well-suited for local development databases, prototype applications, and offline data analysis workflows. Because SQLite is embedded and file-based, the setup is minimal and the database travels with your project. The AI can help you explore the schema, write queries, seed test data, and debug data issues all in one conversation.
+Este servidor es muy adecuado para bases de datos de desarrollo local, aplicaciones prototipo y flujos de trabajo de análisis de datos sin conexión. Dado que SQLite está integrado y basado en archivos, la configuración es mínima y la base de datos viaja con su proyecto. La IA puede ayudarle a explorar el esquema, escribir consultas, inicializar datos de prueba y depurar problemas de datos, todo en una sola conversación.
 
-## Configuration
+## Configuración
 
-Pass the path to your SQLite file as the first argument. The path can be relative or absolute. If the file does not exist, SQLite will create it.
+Pase la ruta a su archivo SQLite como primer argumento. La ruta puede ser relativa o absoluta. Si el archivo no existe, SQLite lo creará.
 
 ```json
 {
@@ -35,11 +35,11 @@ Pass the path to your SQLite file as the first argument. The path can be relativ
 }
 ```
 
-## Key Capabilities
+## Capacidades principales
 
-- Execute arbitrary SQL queries (SELECT, INSERT, UPDATE, DELETE)
-- List all tables and views in the database
-- Inspect column definitions, types, and constraints for any table
-- Create and modify tables via DDL statements
-- No external database server or network connection required
-- Reads and writes persist to the file between sessions
+- Ejecutar consultas SQL arbitrarias (SELECT, INSERT, UPDATE, DELETE)
+- Listar todas las tablas y vistas de la base de datos
+- Inspeccionar definiciones de columnas, tipos y restricciones de cualquier tabla
+- Crear y modificar tablas mediante instrucciones DDL
+- No se requiere servidor de base de datos externo ni conexión de red
+- Las lecturas y escrituras persisten en el archivo entre sesiones

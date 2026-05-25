@@ -1,0 +1,58 @@
+---
+name: Xero Contabilidad MCP
+slug: xero-contabilidad-mcp
+description: Integración oficial con la API de Xero para acceder a funcionalidades contables y empresariales estándar, incluyendo facturas, conciliación y reportes financieros.
+category: finance
+tags: [xero, contabilidad, facturas, finanzas, pyme]
+official: false
+github: https://github.com/XeroAPI/xero-mcp-server
+---
+
+## Descripción general
+
+Xero Contabilidad MCP es el servidor oficial desarrollado por XeroAPI que conecta tu asistente de IA con la plataforma de contabilidad en la nube Xero, una de las más utilizadas por pequeñas y medianas empresas en todo el mundo. A través de esta integración, el asistente puede acceder a todas las funcionalidades contables de Xero: crear y enviar facturas, registrar gastos, conciliar movimientos bancarios, gestionar proveedores y clientes, y generar informes financieros, todo mediante instrucciones en lenguaje natural sin necesidad de navegar por los menús de la aplicación.
+
+Para negocios tradicionales que usan Xero como sistema contable pero no tienen personal técnico dedicado, este servidor transforma la experiencia: en lugar de aprender a usar las funcionalidades avanzadas de Xero, el propietario o gestor puede simplemente pedirle al asistente que "cree una factura para el cliente García por los trabajos del mes pasado" o "muéstrame qué facturas llevan más de 30 días sin cobrar", y el sistema realiza la operación sin necesidad de conocer la interfaz de Xero en detalle.
+
+La conciliación bancaria automática es una de las tareas más tediosas de la gestión financiera, y este servidor la simplifica enormemente. El asistente puede revisar los movimientos bancarios importados en Xero y proponer las conciliaciones correspondientes basándose en el historial de transacciones y los patrones de la empresa, reduciendo el tiempo dedicado a esta tarea de horas a minutos.
+
+## Casos de uso para negocios
+
+- **Restaurantes y bares:** Registro automático de ventas diarias, control de gastos de materias primas y generación de informes de rentabilidad por semana o mes para tomar decisiones sobre el menú y los precios.
+- **Talleres mecánicos y servicios técnicos:** Creación de facturas por los trabajos realizados con detalle de mano de obra y materiales, seguimiento de cobros pendientes y gestión de cuentas con proveedores de repuestos.
+- **Clínicas y consultorios privados:** Facturación a aseguradoras y pacientes particulares, control de honorarios pendientes de cobro y conciliación de los pagos recibidos por diferentes métodos.
+- **Tiendas minoristas:** Gestión de las cuentas a pagar a proveedores, control del flujo de caja semanal y alertas automáticas cuando el saldo disponible cae por debajo de un umbral definido.
+- **Agencias y freelancers:** Generación y envío de facturas mensuales a clientes recurrentes, seguimiento de pagos y generación del informe de ingresos necesario para las declaraciones fiscales.
+- **Empresas de construcción y reformas:** Control de costes por proyecto con registro de todos los gastos asociados a cada obra, comparativa con el presupuesto inicial y facturación por hitos de avance.
+
+## Configuración básica
+
+El servidor oficial de XeroAPI requiere autenticación OAuth2 con tu cuenta de Xero:
+
+```bash
+git clone https://github.com/XeroAPI/xero-mcp-server
+cd xero-mcp-server
+npm install
+npm run build
+```
+
+Configura el acceso OAuth2 en tu cliente MCP:
+
+```json
+{
+  "mcpServers": {
+    "xero": {
+      "command": "node",
+      "args": ["dist/index.js"],
+      "env": {
+        "XERO_CLIENT_ID": "tu-client-id-de-xero",
+        "XERO_CLIENT_SECRET": "tu-client-secret-de-xero",
+        "XERO_REDIRECT_URI": "http://localhost:3000/callback",
+        "XERO_TENANT_ID": "tu-tenant-id-de-xero"
+      }
+    }
+  }
+}
+```
+
+Accede al portal de desarrolladores de Xero (developer.xero.com), crea una nueva aplicación OAuth2, obtén el Client ID y Client Secret, y completa el flujo de autorización para conectar el servidor con tu cuenta de Xero. El Tenant ID es el identificador de tu organización dentro de Xero, que puedes obtener durante el proceso de autorización.

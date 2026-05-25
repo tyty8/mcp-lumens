@@ -1,0 +1,46 @@
+---
+name: Transporte Multimodal MCP
+slug: transporte-multimodal-mcp
+description: Planificación de viajes multimodal, ubicaciones de transporte y salidas de transporte público con información en tiempo real mediante la API TripGo.
+category: travel
+tags: [transporte, multimodal, bus, tren, planificacion]
+official: false
+github: https://github.com/skedgo/tripgo-mcp-server
+---
+
+## Descripción general
+
+Transporte Multimodal MCP conecta tu asistente de IA con la API TripGo, una plataforma de planificación de viajes que integra múltiples modos de transporte en una sola consulta. A diferencia de las aplicaciones que solo muestran un tipo de transporte, TripGo combina trenes, metros, autobuses, ferries, bicicletas compartidas, scooters eléctricos, taxis y vehículos compartidos para ofrecer la ruta óptima entre dos puntos considerando tiempo, coste y sostenibilidad medioambiental.
+
+Esta capacidad multimodal resulta especialmente valiosa para empresas que gestionan desplazamientos de empleados en entornos urbanos complejos o que necesitan orientar a clientes y visitantes sobre cómo llegar a sus instalaciones utilizando el transporte público de la ciudad. La planificación multimodal también contribuye a los objetivos de sostenibilidad corporativa al identificar alternativas al vehículo privado que reducen las emisiones de carbono.
+
+TripGo opera en cientos de ciudades de todo el mundo, integrando los datos de transporte público local de cada área metropolitana con servicios de movilidad compartida disponibles en la zona. Esto hace que el servidor sea igualmente útil para negocios que operan en una sola ciudad que para empresas con presencia en múltiples países que necesitan gestionar la movilidad de equipos en diferentes entornos urbanos.
+
+## Casos de uso para negocios
+
+- **Hoteles y establecimientos turísticos:** Proporcionar a los huéspedes instrucciones detalladas sobre cómo llegar al establecimiento desde el aeropuerto o la estación de tren combinando múltiples medios de transporte público.
+- **Empresas con políticas de movilidad sostenible:** Calcular rutas en transporte público para los desplazamientos de trabajo de los empleados como alternativa al coche de empresa, apoyando los objetivos de reducción de emisiones.
+- **Organizadores de eventos:** Informar a los asistentes sobre las opciones de transporte público para llegar al recinto del evento desde diferentes puntos de la ciudad, incluyendo tiempos de desplazamiento realistas.
+- **Centros comerciales y grandes superficies:** Orientar a los clientes sobre cómo llegar en transporte público desde distintos barrios de la ciudad, mejorando la accesibilidad y reduciendo la necesidad de aparcamiento.
+- **Clínicas y centros de salud:** Ayudar a los pacientes a planificar su desplazamiento al centro médico en transporte público, especialmente útil para personas mayores o con movilidad reducida que no conducen.
+- **Agencias de viajes urbanas:** Construir itinerarios de city breaks que integren el uso eficiente del transporte público local para que los turistas se muevan de forma autónoma y económica por la ciudad.
+
+## Configuración básica
+
+Para utilizar Transporte Multimodal MCP, necesitas una clave de API de TripGo. Solicita acceso a la API en `skedgo.com/tripgo-api` para obtener tu `TRIPGO_API_KEY`. TripGo ofrece planes de acceso para diferentes escalas de uso empresarial.
+
+```json
+{
+  "mcpServers": {
+    "tripgo": {
+      "command": "npx",
+      "args": ["-y", "@skedgo/tripgo-mcp-server"],
+      "env": {
+        "TRIPGO_API_KEY": "tu_api_key"
+      }
+    }
+  }
+}
+```
+
+Una vez configurado, puedes planificar rutas multimodales entre cualquier par de ubicaciones, consultar los próximos servicios de transporte público en una parada específica y comparar diferentes combinaciones de transporte según tiempo, coste o huella de carbono.

@@ -1,0 +1,55 @@
+---
+name: Microsoft Dataverse MCP
+slug: microsoft-dataverse-mcp
+description: Servidor MCP para Microsoft Dataverse con 63 herramientas para CRUD de entidades, consultas FetchXML/OData, metadatos, ejecución de flujos de trabajo, registros de auditoría e integración con Power Platform.
+category: databases
+tags: [dataverse, dynamics-365, microsoft, crm, power-platform]
+official: false
+github: https://github.com/codeurali/mcp-dataverse
+---
+
+## Descripción general
+
+El servidor Microsoft Dataverse MCP proporciona una integración completa con Microsoft Dataverse, la plataforma de datos en la nube que sustenta Dynamics 365 CRM, Dynamics 365 ERP y todas las aplicaciones de Power Platform (Power Apps, Power Automate, Power BI). Con 63 herramientas disponibles, este es uno de los servidores más exhaustivos del ecosistema MCP, diseñado para cubrir el espectro completo de operaciones sobre Dataverse que los equipos de negocio y TI necesitan en su día a día.
+
+Dynamics 365 es el CRM y ERP de referencia en grandes empresas y organizaciones medianas de prácticamente todos los sectores, desde la banca y los seguros hasta la industria manufacturera y la sanidad. Sin embargo, extraer valor de los datos almacenados en Dynamics siempre ha requerido conocimientos técnicos avanzados: dominar FetchXML para consultas complejas, entender el modelo de datos de Dataverse, saber cómo ejecutar workflows mediante la API o cómo interpretar los registros de auditoría. Este servidor elimina esa barrera técnica, haciendo que los datos de Dynamics sean accesibles conversacionalmente para los usuarios de negocio.
+
+La integración con Power Platform añade una dimensión especialmente poderosa. Los flujos de trabajo de Power Automate que automatizan procesos de negocio pueden ser activados desde el asistente de IA, combinando la automatización pre-programada de Power Automate con la inteligencia conversacional del asistente. Un responsable de ventas puede pedirle al asistente que ejecute el flujo de envío de propuesta comercial para un oportunidad específica, o que active el proceso de aprobación de un pedido que supera cierto umbral, sin necesidad de acceder a la interfaz de Dynamics.
+
+## Casos de uso para negocios
+
+- **Equipos de ventas con Dynamics 365 Sales:** Consulta y actualización del estado de oportunidades, registro de actividades de seguimiento y acceso al historial completo de interacciones con una cuenta directamente desde el asistente, sin navegar por la interfaz de Dynamics.
+- **Atención al cliente con Dynamics 365 Customer Service:** Consulta de casos de soporte abiertos, registro de nuevas interacciones y actualización de la resolución de incidencias mientras el agente está en conversación con el cliente.
+- **Departamentos de compras con Dynamics 365 Supply Chain:** Consulta de órdenes de compra pendientes, verificación del estado de recepción de materiales y actualización de datos de proveedores en el catálogo de Dataverse.
+- **Administración y TI:** Consulta de los registros de auditoría para rastrear quién modificó un registro crítico, cuándo y qué cambios realizó, sin necesidad de configurar informes de auditoría específicos en Dynamics.
+- **Power Platform CoE (Centro de Excelencia):** Inspección de los metadatos de Dataverse —tablas, columnas, relaciones, formularios— para documentar el modelo de datos, identificar campos en desuso o auditar la configuración del entorno.
+- **Directivos con Dynamics 365:** Consultas conversacionales sobre el pipeline de ventas, las oportunidades en riesgo de perderse, el rendimiento del equipo de ventas o los KPIs de servicio al cliente sin necesidad de configurar informes en Power BI.
+
+## Configuración básica
+
+Registra una aplicación en Azure Active Directory con los permisos necesarios sobre Dataverse:
+
+```bash
+npx @codeurali/mcp-dataverse
+```
+
+Configura las credenciales en tu cliente MCP:
+
+```json
+{
+  "mcpServers": {
+    "dataverse": {
+      "command": "npx",
+      "args": ["@codeurali/mcp-dataverse"],
+      "env": {
+        "DATAVERSE_URL": "https://tu-org.crm4.dynamics.com",
+        "AZURE_TENANT_ID": "tu-tenant-id",
+        "AZURE_CLIENT_ID": "tu-client-id",
+        "AZURE_CLIENT_SECRET": "tu-client-secret"
+      }
+    }
+  }
+}
+```
+
+La URL de Dataverse tiene el formato `https://[nombre-org].crm[n].dynamics.com`. La región de Europa occidental suele ser crm4. Las credenciales de Azure AD se obtienen registrando una nueva aplicación en el portal de Azure en Azure Active Directory > Registros de aplicaciones, otorgándole el permiso de API `Dynamics CRM user_impersonation`.

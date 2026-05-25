@@ -1,0 +1,55 @@
+---
+name: Envíos Multioperador MCP
+slug: envios-multioperador-mcp
+description: Crea envíos, rastrea paquetes y compara tarifas entre operadores con 18 herramientas para seleccionar automáticamente el transportista más económico para cada envío.
+category: logistics
+tags: [envios, paquetes, tarifas, transportistas, tracking]
+official: false
+github: https://github.com/aarsiv-groups/shipi-mcp-server
+---
+
+## Descripción general
+
+El servidor Envíos Multioperador MCP, desarrollado sobre la plataforma Shipi, centraliza la gestión de envíos con múltiples transportistas en una única interfaz conversacional. Las 18 herramientas disponibles cubren el ciclo completo de gestión de envíos: desde la comparación de tarifas y la creación del envío con generación de etiqueta, hasta el seguimiento en tiempo real del paquete y la gestión de incidencias con el transportista, pasando por la programación de recogidas en tu domicilio o almacén.
+
+La comparación automática de tarifas es el núcleo del servidor. En lugar de acceder manualmente a las webs de cada transportista o usar varios contratos independientes con distintas tarifas, el asistente consulta simultáneamente los precios de todos los operadores conectados para un envío concreto —con sus dimensiones, peso, origen y destino específicos— y presenta las opciones ordenadas por precio, plazo de entrega o relación calidad-precio. Esto garantiza que cada paquete viaja con el transportista que mejor se adapta a las necesidades de ese envío en particular.
+
+Para los ecommerce y negocios de venta online, donde los costes de envío son uno de los principales factores que afectan al margen, este ahorro en cada pedido se multiplica por cientos o miles de envíos al mes. El servidor también aprende qué combinaciones de transportista y servicio funcionan mejor para distintos tipos de destino —por ejemplo, envíos rurales que mejor gestiona un operador específico, o envíos internacionales donde un servicio concreto tiene mejores tasas de éxito en la entrega— y puede incorporar estas preferencias en las recomendaciones futuras.
+
+## Casos de uso para negocios
+
+- **Tiendas online de tamaño medio:** Creación automática de envíos para todos los pedidos del día con selección del transportista más económico por defecto, reduciendo el coste logístico sin que el equipo tenga que comparar tarifas manualmente.
+- **Empresas industriales y B2B:** Gestión de envíos de muestras y materiales entre sedes, clientes y proveedores, con seguimiento centralizado de todos los paquetes en tránsito desde un único punto de consulta.
+- **Artesanos y productores locales:** Simplificación de la logística de envío para pequeños negocios que venden online pero no tienen experiencia con las plataformas de los transportistas, usando lenguaje natural para crear envíos.
+- **Agencias de fulfillment:** Gestión multicliente de envíos con informes de costes por cliente, transportista y periodo, facilitando la facturación y la justificación de los gastos logísticos.
+- **Negocios con picos de volumen:** Gestión eficiente de campañas de alta rotación (Black Friday, Navidad) cuando el volumen de envíos se multiplica y la selección manual de transportista sería inviable.
+- **Empresas con devoluciones frecuentes:** Generación automatizada de etiquetas de devolución prepagadas y gestión del flujo de logística inversa, incluyendo seguimiento de los artículos devueltos hasta la recepción en almacén.
+
+## Configuración básica
+
+Crea una cuenta en Shipi y configura los contratos con tus transportistas habituales en el panel de control:
+
+```bash
+npx @aarsiv/shipi-mcp-server
+```
+
+Configura las credenciales en tu cliente MCP:
+
+```json
+{
+  "mcpServers": {
+    "shipi-shipping": {
+      "command": "npx",
+      "args": ["@aarsiv/shipi-mcp-server"],
+      "env": {
+        "SHIPI_API_KEY": "tu-api-key-de-shipi",
+        "SHIPI_ACCOUNT_ID": "tu-account-id",
+        "DEFAULT_ORIGIN_ADDRESS": "Calle Principal 1, 28001 Madrid, ES",
+        "PREFERRED_CURRENCY": "EUR"
+      }
+    }
+  }
+}
+```
+
+Una vez configurado, conecta en el panel de Shipi los contratos que tengas con transportistas como SEUR, MRW, DHL, GLS, Correos Express o UPS. El servidor utilizará automáticamente las tarifas negociadas de cada contrato para las comparaciones de precio.

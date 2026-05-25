@@ -1,0 +1,58 @@
+---
+name: Asistente Outlook MCP
+slug: asistente-outlook-mcp
+description: Permite a tu asistente de IA buscar el buzón, enviar emails, programar reuniones, gestionar contactos y configurar ajustes de correo en Outlook.
+category: communication
+tags: [outlook, email, calendar, microsoft, contactos]
+official: false
+github: https://github.com/littlebearapps/outlook-assistant
+---
+
+## Descripción general
+
+El Asistente Outlook MCP convierte Microsoft Outlook en una herramienta completamente manejable por inteligencia artificial, cubriendo no solo el correo electrónico sino también el calendario, los contactos y las tareas que forman parte del ecosistema Outlook. Para las miles de empresas que dependen de Outlook como su sistema central de comunicaciones — desde despachos profesionales hasta cadenas de retail — este servidor abre la puerta a una automatización profunda sin necesidad de abandonar la plataforma que ya conocen y en la que confían.
+
+Una de las capacidades más valoradas por los negocios tradicionales es la gestión integrada de reuniones: el asistente puede revisar la disponibilidad en el calendario, proponer horarios, enviar invitaciones, incluir salas de reuniones o enlaces de Teams, y gestionar las confirmaciones de asistencia, todo ello de forma conversacional. Para un gerente que organiza decenas de reuniones semanales con clientes, proveedores y equipo interno, esto supone un ahorro significativo de tiempo administrativo.
+
+La gestión de contactos es otro punto fuerte: el servidor puede crear, actualizar y consultar el directorio de contactos de Outlook, lo que permite al asistente de IA personalizar las comunicaciones con clientes habituales, recordar detalles importantes de cada relación comercial y mantener la información de contacto siempre actualizada.
+
+## Casos de uso para negocios
+
+- **Asesorías y gestorías:** Programación automática de reuniones con clientes para revisiones anuales de impuestos, con gestión de confirmaciones, recordatorios y documentación adjunta enviada previamente.
+- **Empresas de instalaciones y mantenimiento:** Coordinación de visitas técnicas mediante la sincronización del calendario de varios técnicos, asignando cada cita al profesional disponible más cercano geográficamente.
+- **Clínicas dentales y de salud:** Recordatorios automáticos de revisiones periódicas enviados por Outlook a los contactos de pacientes con citas programadas, reduciendo las ausencias sin avisar.
+- **Agencias de seguros:** Gestión del ciclo completo de comunicación con clientes — desde el primer contacto hasta la renovación de pólizas — con recordatorios programados en el calendario y emails de seguimiento automáticos.
+- **Despachos de arquitectura e ingeniería:** Coordinación de reuniones de revisión de proyecto con clientes, constructores y autoridades, con envío automático de actas y documentación técnica adjunta.
+- **Centros de formación y academias:** Programación de tutorías, reuniones con padres y sesiones de evaluación, con recordatorios enviados automáticamente a todos los participantes con la antelación adecuada.
+
+## Configuración básica
+
+El servidor requiere acceso a Microsoft Graph API a través de una cuenta de Microsoft 365:
+
+```bash
+git clone https://github.com/littlebearapps/outlook-assistant
+cd outlook-assistant
+npm install
+npm run build
+```
+
+Registra una aplicación en el portal de Azure y obtén las credenciales necesarias:
+
+```json
+{
+  "mcpServers": {
+    "outlook": {
+      "command": "node",
+      "args": ["dist/index.js"],
+      "env": {
+        "AZURE_CLIENT_ID": "tu-application-client-id",
+        "AZURE_CLIENT_SECRET": "tu-client-secret",
+        "AZURE_TENANT_ID": "tu-tenant-id",
+        "USER_EMAIL": "usuario@tuempresa.com"
+      }
+    }
+  }
+}
+```
+
+Accede al portal de Azure (portal.azure.com), crea un registro de aplicación nuevo, concede permisos para Mail.ReadWrite, Calendars.ReadWrite y Contacts.ReadWrite, y genera un secreto de cliente. Con esas credenciales configuradas, tu asistente de IA tendrá acceso completo al buzón de Outlook.

@@ -1,0 +1,54 @@
+---
+name: Datos de Productos Estructurados MCP
+slug: datos-productos-estructurados-mcp
+description: Extrae datos estructurados de productos de la web abierta mediante Schema.org y extracción con IA para enriquecer catálogos de productos de comercios online y tiendas físicas.
+category: retail
+tags: [productos, catalogo, scraping, schema, ecommerce]
+official: false
+github: https://github.com/laundromatic/shopgraph
+---
+
+## Descripción general
+
+El servidor Datos de Productos Estructurados MCP aprovecha el estándar Schema.org y la extracción inteligente con IA para recopilar información detallada y estructurada de productos desde cualquier sitio web comercial. Esta capacidad de extracción de datos de la web abierta es tremendamente valiosa para los negocios que necesitan mantener su catálogo actualizado, monitorear la competencia o importar información de producto desde múltiples fuentes sin procesos manuales de copia y pegado.
+
+El estándar Schema.org es el vocabulario de datos estructurados más utilizado en la web: la mayoría de las grandes tiendas online, comparadores de precio y catálogos de producto lo implementan para mejorar su visibilidad en buscadores. Esto significa que el servidor puede extraer de forma fiable atributos como nombre, precio, descripción, imágenes, disponibilidad, valoraciones, EAN/GTIN y especificaciones técnicas de millones de páginas de producto en distintos formatos, sin necesidad de configurar scrapers a medida para cada sitio.
+
+Cuando los datos estructurados no están disponibles o son incompletos, el servidor recurre a la extracción mediante IA, que analiza el contenido visible de la página e identifica los atributos de producto más relevantes con una precisión notable. Para los comercios con catálogos extensos, esto supone poder enriquecer automáticamente las fichas de producto con información adicional, corregir inconsistencias en los datos existentes o crear nuevas fichas a partir de las URLs de los proveedores, ahorrando semanas de trabajo al equipo de contenidos.
+
+## Casos de uso para negocios
+
+- **Tiendas multimarca:** Importación automática de fichas de producto desde los catálogos online de proveedores, manteniendo sincronizados precios, disponibilidad y especificaciones sin intervención manual.
+- **Comparadores de precio locales:** Construcción y actualización de bases de datos de productos de múltiples tiendas de la competencia para ofrecer comparaciones precisas a los compradores.
+- **Franquicias y cadenas:** Estandarización del catálogo central extrayendo y normalizando información de producto desde múltiples fuentes, asegurando coherencia en todos los canales de venta.
+- **Marketplaces B2B:** Enriquecimiento de listados de productos industriales o técnicos con especificaciones detalladas extraídas de los sitios de los fabricantes.
+- **Agencias de contenidos para ecommerce:** Aceleración del proceso de creación de fichas de producto para nuevos clientes, usando las URLs de la competencia como punto de partida estructurado.
+- **Tiendas físicas con catálogo digital:** Digitalización del catálogo físico apoyándose en la información estructurada disponible en web, reduciendo el esfuerzo de creación de contenido desde cero.
+
+## Configuración básica
+
+Instala el servidor mediante npm y configúralo con tu clave de API si es necesario:
+
+```bash
+npx @laundromatic/shopgraph
+```
+
+Añade la configuración en tu cliente MCP:
+
+```json
+{
+  "mcpServers": {
+    "shopgraph": {
+      "command": "npx",
+      "args": ["@laundromatic/shopgraph"],
+      "env": {
+        "SHOPGRAPH_API_KEY": "tu-api-key",
+        "OUTPUT_FORMAT": "json",
+        "DEFAULT_LANGUAGE": "es"
+      }
+    }
+  }
+}
+```
+
+Una vez configurado, puedes pedirle al asistente que extraiga datos de producto simplemente proporcionando la URL de la página. El servidor intentará primero los datos Schema.org y recurrirá a la extracción con IA si no encuentra datos estructurados suficientes. Los resultados se devuelven en formato JSON normalizado, listo para importar en cualquier plataforma de ecommerce o base de datos de catálogo.

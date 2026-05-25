@@ -1,24 +1,24 @@
 ---
-title: MCP Security Best Practices
+title: Mejores prácticas de seguridad en MCP
 slug: mcp-security-best-practices
-description: "Essential security considerations when deploying MCP servers in production environments."
+description: "Consideraciones de seguridad esenciales al desplegar servidores MCP en entornos de producción."
 date: 2026-05-15
 tags: [security, production, best-practices, intermediate]
 ---
 
-## Why Security Matters for MCP Servers
+## Por qué la seguridad importa en los servidores MCP
 
-MCP servers are not passive APIs — they are agents that can read files, execute database queries, post to communication tools, and browse the web on behalf of an AI. A misconfigured server can expose sensitive data, allow unintended mutations, or become an attack vector if inputs are not validated.
+Los servidores MCP no son APIs pasivas: son agentes que pueden leer archivos, ejecutar consultas de base de datos, publicar en herramientas de comunicación y navegar por la web en nombre de una IA. Un servidor mal configurado puede exponer datos sensibles, permitir mutaciones no deseadas o convertirse en un vector de ataque si las entradas no se validan correctamente.
 
-Before deploying any MCP server beyond your local machine, work through the five practices below.
+Antes de desplegar cualquier servidor MCP más allá de su máquina local, revise las cinco prácticas a continuación.
 
 ---
 
-## 1. Principle of Least Privilege
+## 1. Principio de mínimo privilegio
 
-Grant each server only the permissions it needs to do its job. Do not give a server access to resources it does not use.
+Otorgue a cada servidor únicamente los permisos que necesita para realizar su trabajo. No le dé a un servidor acceso a recursos que no utiliza.
 
-**Filesystem:** Restrict the allowed root paths to the specific directories the AI should touch. Never point the filesystem server at `/` or `C:\`.
+**Sistema de archivos:** Restrinja las rutas raíz permitidas a los directorios específicos que la IA debe manejar. Nunca apunte el servidor de sistema de archivos a `/` o `C:\`.
 
 ```json
 {
@@ -30,7 +30,7 @@ Grant each server only the permissions it needs to do its job. Do not give a ser
 }
 ```
 
-**Databases:** Create a dedicated database user with the minimum required privileges. For read-only analysis, use a `SELECT`-only role:
+**Bases de datos:** Cree un usuario de base de datos dedicado con los privilegios mínimos necesarios. Para análisis de solo lectura, use un rol exclusivo de `SELECT`:
 
 ```sql
 CREATE USER mcp_readonly WITH PASSWORD 'strongpassword';
@@ -39,20 +39,20 @@ GRANT USAGE ON SCHEMA public TO mcp_readonly;
 GRANT SELECT ON ALL TABLES IN SCHEMA public TO mcp_readonly;
 ```
 
-Then connect with that user instead of your application's write credentials.
+Luego conéctese con ese usuario en lugar de las credenciales de escritura de su aplicación.
 
 ---
 
-## 2. Authentication and API Keys
+## 2. Autenticación y claves de API
 
-MCP servers often require API keys or tokens to access external services. Mishandling these credentials is the most common security mistake.
+Los servidores MCP a menudo requieren claves de API o tokens para acceder a servicios externos. El manejo inadecuado de estas credenciales es el error de seguridad más común.
 
-- **Never hardcode credentials** in config files committed to source control.
-- **Use environment variables** and load them from a secrets manager or `.env` file that is excluded from git.
-- **Rotate keys regularly.** Treat any key stored in a config file as potentially leaked.
-- **Use scoped tokens.** GitHub Personal Access Tokens support fine-grained permissions — create one per server with only the scopes that server needs.
+- **Nunca incluya credenciales en duro** en archivos de configuración que se suban al control de versiones.
+- **Use variables de entorno** y cárguelas desde un gestor de secretos o un archivo `.env` excluido de git.
+- **Rote las claves regularmente.** Trate cualquier clave almacenada en un archivo de configuración como potencialmente comprometida.
+- **Use tokens con alcance limitado.** Los Tokens de Acceso Personal de GitHub admiten permisos detallados: cree uno por servidor con solo los alcances que ese servidor necesita.
 
-In Claude Desktop config, pass secrets through `env`:
+En la configuración de Claude Desktop, pase los secretos a través de `env`:
 
 ```json
 {
@@ -70,13 +70,13 @@ In Claude Desktop config, pass secrets through `env`:
 
 ---
 
-## 3. Input Validation
+## 3. Validación de entradas
 
-AI-generated inputs flow directly into your servers as tool arguments. Treat them with the same skepticism you would apply to user-supplied input in a web application.
+Las entradas generadas por IA fluyen directamente hacia sus servidores como argumentos de herramientas. Trátelas con el mismo escepticismo que aplicaría a las entradas suministradas por usuarios en una aplicación web.
 
-- **Sanitize file paths.** Check that resolved paths stay within the allowed root before performing any file operation. Reject paths containing `..` traversal sequences.
-- **Parameterize SQL queries.** Never interpolate AI-provided strings directly into SQL. Use parameterized queries or prepared statements to prevent injection.
-- **Validate against a schema.** The MCP TypeScript SDK's Zod integration enforces input types at the boundary. Define strict schemas for every tool argument.
+- **Sanee las rutas de archivos.** Verifique que las rutas resueltas permanezcan dentro de la raíz permitida antes de realizar cualquier operación de archivo. Rechace rutas que contengan secuencias de traversal `..`.
+- **Parametrice las consultas SQL.** Nunca interpole cadenas proporcionadas por la IA directamente en SQL. Use consultas parametrizadas o sentencias preparadas para prevenir inyecciones.
+- **Valide contra un esquema.** La integración de Zod en el SDK de TypeScript para MCP aplica tipos de entrada en el límite. Defina esquemas estrictos para cada argumento de herramienta.
 
 ```ts
 server.tool(
@@ -88,7 +88,7 @@ server.tool(
       .regex(/^[a-zA-Z0-9_-]+\.csv$/, "Invalid filename format"),
   },
   async ({ filename }) => {
-    // filename is guaranteed to match the safe pattern
+    // filename tiene garantizado coincidir con el patrón seguro
     const fullPath = path.join(REPORTS_DIR, filename);
     // ...
   }
@@ -97,27 +97,27 @@ server.tool(
 
 ---
 
-## 4. Network Security
+## 4. Seguridad de red
 
-By default, MCP servers communicate over stdio with the local client. If you expose a server over a network (for remote agents or multi-user setups), additional controls are required.
+De forma predeterminada, los servidores MCP se comunican mediante stdio con el cliente local. Si expone un servidor a través de una red (para agentes remotos o configuraciones multiusuario), se requieren controles adicionales.
 
-- **Localhost by default.** Keep servers bound to `127.0.0.1` unless you explicitly need remote access.
-- **Use TLS for remote transport.** Never send MCP traffic over plain HTTP on a network you do not fully control.
-- **Firewall rules.** If running on a server, restrict inbound connections to trusted IP ranges.
-- **Avoid exposing admin interfaces.** Do not run MCP servers with database superuser credentials or filesystem access to system directories on internet-facing machines.
+- **Localhost por defecto.** Mantenga los servidores enlazados a `127.0.0.1` a menos que necesite explícitamente acceso remoto.
+- **Use TLS para el transporte remoto.** Nunca envíe tráfico MCP a través de HTTP sin cifrar en una red que no controle completamente.
+- **Reglas de firewall.** Si ejecuta en un servidor, restrinja las conexiones entrantes a rangos de IP de confianza.
+- **Evite exponer interfaces de administración.** No ejecute servidores MCP con credenciales de superusuario de base de datos o acceso al sistema de archivos en directorios del sistema en máquinas expuestas a Internet.
 
 ---
 
-## 5. Audit Logging
+## 5. Registro de auditoría
 
-You should be able to answer: what did the AI do, when, and with what inputs? Without logging, anomalies are invisible until damage is done.
+Debe poder responder: ¿qué hizo la IA, cuándo y con qué entradas? Sin registros, las anomalías son invisibles hasta que el daño está hecho.
 
-- **Log every tool invocation.** Record the tool name, input arguments, and outcome with a timestamp.
-- **Centralize logs.** Ship logs to a central store (Datadog, CloudWatch, Loki) rather than writing only to local disk.
-- **Alert on anomalies.** Set alerts for unusual patterns — bulk file reads, large SQL result sets, messages sent to unexpected Slack channels.
-- **Retain logs.** Keep at minimum 30 days of audit logs for incident investigation.
+- **Registre cada invocación de herramienta.** Anote el nombre de la herramienta, los argumentos de entrada y el resultado con una marca de tiempo.
+- **Centralice los registros.** Envíe los registros a un almacén central (Datadog, CloudWatch, Loki) en lugar de escribir solo en disco local.
+- **Configure alertas sobre anomalías.** Establezca alertas para patrones inusuales: lecturas masivas de archivos, grandes conjuntos de resultados SQL, mensajes enviados a canales de Slack inesperados.
+- **Retenga los registros.** Conserve un mínimo de 30 días de registros de auditoría para la investigación de incidentes.
 
-A simple logging wrapper in a custom server:
+Un envoltorio de registro simple en un servidor personalizado:
 
 ```ts
 server.tool("query_db", "Run a SQL query", { sql: z.string() }, async ({ sql }) => {
@@ -143,9 +143,9 @@ server.tool("query_db", "Run a SQL query", { sql: z.string() }, async ({ sql }) 
 
 ---
 
-## Example: Secure PostgreSQL Configuration
+## Ejemplo: Configuración segura de PostgreSQL
 
-Combining the practices above into a production-ready Postgres server setup:
+Combinando las prácticas anteriores en una configuración de servidor Postgres lista para producción:
 
 ```json
 {
@@ -165,15 +165,15 @@ Combining the practices above into a production-ready Postgres server setup:
 }
 ```
 
-- Uses a `mcp_readonly` role with `SELECT`-only grants
-- Password loaded from an environment variable, not hardcoded
-- Connects to an internal hostname, not a public endpoint
-- Pair with audit logging in your database (pg_audit extension) for full observability
+- Utiliza un rol `mcp_readonly` con permisos exclusivos de `SELECT`
+- Contraseña cargada desde una variable de entorno, no incluida en duro
+- Se conecta a un nombre de host interno, no a un endpoint público
+- Combínelo con el registro de auditoría en su base de datos (extensión pg_audit) para una observabilidad completa
 
 ---
 
-## Resources
+## Recursos
 
-- [MCP Specification](https://spec.modelcontextprotocol.io) — official protocol documentation
-- [OWASP API Security Top 10](https://owasp.org/www-project-api-security/) — general API security principles that apply to MCP servers
-- [GitHub Fine-Grained Tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token) — scope your GitHub token correctly
+- [Especificación de MCP](https://spec.modelcontextprotocol.io) — documentación oficial del protocolo
+- [OWASP API Security Top 10](https://owasp.org/www-project-api-security/) — principios generales de seguridad de API aplicables a los servidores MCP
+- [Tokens detallados de GitHub](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token) — configure correctamente el alcance de su token de GitHub

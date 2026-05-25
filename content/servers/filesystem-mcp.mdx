@@ -1,7 +1,7 @@
 ---
-name: Filesystem MCP Server
+name: Servidor MCP de Sistema de Archivos
 slug: filesystem-mcp
-description: Gives AI clients secure, configurable read and write access to your local filesystem, scoped to directories you explicitly allow.
+description: Proporciona a los clientes de IA acceso seguro y configurable de lectura y escritura al sistema de archivos local, limitado a los directorios que usted autoriza explícitamente.
 category: developer-tools
 tags: [filesystem, files, local, read-write]
 official: true
@@ -10,15 +10,15 @@ github: https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem
 featured: true
 ---
 
-## Overview
+## Descripción general
 
-The Filesystem MCP Server exposes your local file system to AI clients in a controlled, auditable way. You specify one or more root directories at startup, and the server restricts all operations to those paths — the AI cannot read or write outside the boundaries you define. This makes it practical for project-level AI assistance without exposing your entire disk.
+El Servidor MCP de Sistema de Archivos expone su sistema de archivos local a los clientes de IA de forma controlada y auditable. Usted especifica uno o más directorios raíz al iniciar el servidor, y este restringe todas las operaciones a esas rutas: la IA no puede leer ni escribir fuera de los límites que usted defina. Esto lo hace práctico para asistencia de IA a nivel de proyecto sin exponer todo el disco.
 
-Common use cases include letting an AI read your codebase to answer questions, write new files, refactor existing code across multiple files, or generate configuration files in the right locations. Combined with a capable AI client, this server effectively gives you an AI pair programmer with direct file access.
+Entre los casos de uso más comunes se incluyen permitir que una IA lea su código base para responder preguntas, escribir nuevos archivos, refactorizar código existente en múltiples archivos o generar archivos de configuración en las ubicaciones correctas. Combinado con un cliente de IA capaz, este servidor le proporciona efectivamente un programador en pareja con IA y acceso directo a los archivos.
 
-## Configuration
+## Configuración
 
-Pass one or more allowed directory paths as arguments when launching the server. All paths must be absolute.
+Pase una o más rutas de directorio permitidas como argumentos al lanzar el servidor. Todas las rutas deben ser absolutas.
 
 ```json
 {
@@ -36,12 +36,12 @@ Pass one or more allowed directory paths as arguments when launching the server.
 }
 ```
 
-## Key Capabilities
+## Capacidades principales
 
-- Read file contents (text and binary)
-- Write and overwrite files
-- List directory contents recursively
-- Create and delete directories
-- Move and rename files
-- Search file contents with pattern matching
-- All operations are sandboxed to the configured root paths
+- Leer contenido de archivos (texto y binario)
+- Escribir y sobrescribir archivos
+- Listar contenido de directorios de forma recursiva
+- Crear y eliminar directorios
+- Mover y renombrar archivos
+- Buscar contenido de archivos con coincidencia de patrones
+- Todas las operaciones están aisladas en las rutas raíz configuradas

@@ -1,0 +1,55 @@
+---
+name: Gasolineras y Recarga Eléctrica MCP
+slug: gasolineras-recarga-mcp
+description: Consulta precios de gasolineras, planifica rutas eficientes en combustible y localiza estaciones de carga para vehículos eléctricos en cualquier punto del recorrido.
+category: logistics
+tags: [combustible, gasolineras, electrico, flotas, rutas]
+official: false
+github: https://github.com/GeiserX/pumperly-mcp
+---
+
+## Descripción general
+
+El servidor Gasolineras y Recarga Eléctrica MCP, basado en la plataforma Pumperly, ofrece datos en tiempo real sobre precios de combustible y disponibilidad de puntos de recarga para vehículos eléctricos en toda la geografía española y europea. Para las empresas con flotas de vehículos, ya sean distribuidoras con furgonetas propias, empresas de transporte o negocios de servicios que envían técnicos a domicilio, el coste del combustible representa uno de los gastos variables más importantes, y optimizarlo puede suponer ahorros significativos a lo largo del año.
+
+La consulta de precios en tiempo real permite a los conductores y gestores de flota identificar las gasolineras más económicas en la ruta planificada o en el área donde se encuentran, evitando pagar de más por la inercia de repostar siempre en la misma estación o en las más visibles junto a la autovía, que habitualmente tienen precios superiores. Para una flota de 10 vehículos que recorren 50.000 km anuales cada uno, incluso una diferencia de 3-4 céntimos por litro puede suponer un ahorro de varios miles de euros al año.
+
+La integración con puntos de recarga eléctrica es especialmente relevante dado el ritmo de electrificación de las flotas empresariales. Las empresas que están incorporando vehículos eléctricos a su flota necesitan conocer no solo dónde cargar, sino también la potencia disponible (carga rápida vs. lenta), la compatibilidad con el tipo de conector de su vehículo y la disponibilidad en tiempo real para planificar las recargas sin impactar en los tiempos de reparto. El asistente puede integrar esta planificación de recarga directamente en la optimización de rutas del día.
+
+## Casos de uso para negocios
+
+- **Gestores de flota de distribución:** Planificación diaria de las reposiciones de combustible para los vehículos de reparto, identificando las estaciones más económicas en las rutas del día para minimizar el coste por kilómetro recorrido.
+- **Empresas de transporte de larga distancia:** Selección de gasolineras estratégicas en rutas interurbanas o internacionales que ofrezcan el mejor precio por litro, considerando si tienen tarjeta de flota con descuento adicional.
+- **Negocios que incorporan vehículos eléctricos:** Planificación de rutas con puntos de recarga incluidos para vehículos eléctricos de la flota, asegurando que no se queden sin batería durante el servicio y optimizando los tiempos de recarga.
+- **Técnicos y servicios a domicilio:** Consulta rápida de la gasolinera más barata en la zona donde el técnico está trabajando antes de repostar, reduciendo el gasto de combustible acumulado del día.
+- **Empresas de alquiler de vehículos:** Información sobre puntos de recarga para ofrecer a los clientes que alquilan vehículos eléctricos, mejorando el servicio y reduciendo la ansiedad de rango.
+- **Control de gastos de combustible:** Análisis mensual del gasto en combustible por vehículo y conductor, cruzando la distancia recorrida con el combustible consumido para detectar posibles ineficiencias o irregularidades.
+
+## Configuración básica
+
+Instala el servidor Pumperly y configúralo con tu país de operación predeterminado:
+
+```bash
+npx @geiserx/pumperly-mcp
+```
+
+Configura el servidor en tu cliente MCP:
+
+```json
+{
+  "mcpServers": {
+    "pumperly": {
+      "command": "npx",
+      "args": ["@geiserx/pumperly-mcp"],
+      "env": {
+        "PUMPERLY_API_KEY": "tu-api-key",
+        "DEFAULT_COUNTRY": "ES",
+        "DEFAULT_FUEL_TYPE": "diesel",
+        "SEARCH_RADIUS_KM": "10"
+      }
+    }
+  }
+}
+```
+
+Cambia `DEFAULT_FUEL_TYPE` a `gasolina_95`, `gasolina_98`, `diesel_plus` o `electrico` según el combustible principal de tu flota. El radio de búsqueda por defecto es de 10 km, ajústalo según las necesidades de tu operación. Para empresas con flota mixta (gasolina y eléctrico), puedes usar las herramientas de cada tipo en la misma consulta al asistente.

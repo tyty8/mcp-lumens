@@ -1,0 +1,46 @@
+---
+name: Directorio de Trabajadores MCP
+slug: directorio-trabajadores-mcp
+description: Accede a personas reales que se han registrado para ser contratadas por agentes de IA, con búsqueda por habilidad, ubicación y equipo disponible para contratación rápida.
+category: hr
+tags: [trabajadores, freelance, contratacion, habilidades, empleo]
+official: false
+github: https://github.com/human-pages-ai/humanpages
+---
+
+## Descripción general
+
+Directorio de Trabajadores MCP conecta tu asistente de IA con Human Pages, un directorio innovador de profesionales y trabajadores que se han registrado específicamente para ser descubiertos y contratados por agentes de inteligencia artificial. Este concepto de directorio de talento orientado a la contratación asistida por IA representa un nuevo modelo de conexión entre empleadores y trabajadores, donde los perfiles están estructurados y optimizados para ser interpretados y buscados por sistemas de IA en lugar de por reclutadores humanos que navegan manualmente por plataformas tradicionales.
+
+Los perfiles en Human Pages están diseñados para proporcionar información estructurada y verificable: habilidades técnicas y blandas catalogadas de forma estandarizada, ubicación y disponibilidad geográfica, modalidad de trabajo (presencial, remoto o híbrido), disponibilidad horaria y tipo de contratación preferida (empleado a jornada completa, freelance por proyecto, contrato temporal). Esta estructuración facilita que el asistente de IA realice búsquedas precisas y entregue resultados altamente relevantes sin necesidad de revisar manualmente cada perfil.
+
+Para negocios que necesitan cubrir posiciones de forma rápida, acceder a talento freelance para proyectos específicos o encontrar profesionales disponibles para trabajo temporal en temporadas de alta demanda, este directorio proporciona una fuente de candidatos autoseleccionados: personas que han decidido activamente hacer visible su disponibilidad para ser contratadas a través de sistemas de IA, lo que sugiere un perfil de trabajador moderno, adaptable y orientado hacia las nuevas formas de trabajo y colaboración.
+
+## Casos de uso para negocios
+
+- **Restaurantes y hoteles en temporada alta:** Accede rápidamente a camareros, recepcionistas, cocineros y personal de limpieza disponibles para trabajo temporal en el área geográfica del establecimiento, cubriendo picos de demanda estacional sin los tiempos de un proceso de selección convencional.
+- **Agencias de eventos y producción:** Encuentra técnicos de sonido, iluminadores, fotógrafos, coordinadores de eventos y personal de apoyo disponibles para proyectos específicos con fechas concretas, buscando por habilidad y disponibilidad en la ubicación del evento.
+- **Empresas de construcción y obras:** Localiza albañiles, electricistas, fontaneros y otros oficios de la construcción disponibles para incorporación inmediata a proyectos en curso, filtrando por especialización técnica, certificaciones y disponibilidad geográfica.
+- **Startups y empresas tecnológicas:** Encuentra desarrolladores, diseñadores UX/UI, redactores de contenido y especialistas en marketing digital disponibles para proyectos freelance de duración determinada, con la flexibilidad de escalar el equipo según las necesidades de cada fase del proyecto.
+- **Clínicas y centros de salud:** Localiza médicos, enfermeros o fisioterapeutas disponibles para cubrir bajas o turnos extraordinarios en períodos de alta demanda o vacaciones del personal fijo, con verificación de especialidad y disponibilidad inmediata.
+- **Academias y centros formativos:** Encuentra profesores y formadores especializados en disciplinas concretas disponibles para dar clases como colaboradores externos, cubriendo la demanda de especialidades que no tienen docentes a jornada completa en la plantilla.
+
+## Configuración básica
+
+Configura el servidor con las credenciales de la API de Human Pages:
+
+```json
+{
+  "mcpServers": {
+    "humanpages": {
+      "command": "npx",
+      "args": ["-y", "@humanpages/mcp"],
+      "env": {
+        "HUMANPAGES_API_KEY": "tu-api-key-de-humanpages"
+      }
+    }
+  }
+}
+```
+
+Una vez configurado, puedes describir al asistente el tipo de trabajador que necesitas — puesto, habilidades específicas, ubicación, disponibilidad y modalidad de contratación — y el servidor devolverá una lista de candidatos disponibles de la base de datos de Human Pages. Los perfiles incluyen la información de contacto y preferencias de los trabajadores registrados, facilitando el primer contacto directo para iniciar el proceso de incorporación.

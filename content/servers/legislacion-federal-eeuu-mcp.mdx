@@ -1,0 +1,43 @@
+---
+name: Legislación Federal EE.UU. MCP
+slug: legislacion-federal-eeuu-mcp
+description: Acceso completo a la legislación federal de Estados Unidos para investigación jurídica, preparación de escritos y análisis de cumplimiento normativo.
+category: legal
+tags: [legal, legislacion, eeuu, cumplimiento, investigacion]
+official: false
+github: https://github.com/JamesANZ/us-legal-mcp
+---
+
+## Descripción general
+
+Legislación Federal EE.UU. MCP proporciona acceso directo a la legislación federal de los Estados Unidos, permitiendo a tu asistente de IA realizar investigaciones jurídicas exhaustivas, localizar estatutos relevantes, analizar el texto completo de leyes federales y generar análisis de cumplimiento normativo. Este servidor es especialmente valioso para despachos de abogados, equipos de cumplimiento corporativo, empresas con operaciones en el mercado estadounidense y asesores que necesiten acceder a la normativa federal americana de forma eficiente y precisa.
+
+La investigación jurídica tradicional en el sistema legal de los Estados Unidos es un proceso que puede consumir decenas de horas: navegar entre el Código de los Estados Unidos (U.S. Code), el Registro Federal, las regulaciones del CFR (Code of Federal Regulations) y la jurisprudencia relevante requiere acceso a múltiples bases de datos especializadas y un conocimiento profundo de la estructura del sistema legal americano. Este servidor simplifica ese proceso al centralizar el acceso a la legislación federal y permitir búsquedas en lenguaje natural que el asistente traduce en consultas precisas a las fuentes legales.
+
+Para negocios con presencia o planes de expansión en el mercado estadounidense — como importadores, exportadores, empresas tecnológicas, franquicias internacionales o inversores inmobiliarios en EE.UU. —, el cumplimiento de la normativa federal es una necesidad crítica. Este servidor permite al asistente de IA analizar si las operaciones del negocio cumplen con regulaciones federales sectoriales, identificar cambios legislativos recientes que puedan afectar al negocio y preparar resúmenes ejecutivos de cumplimiento para la dirección de la empresa.
+
+## Casos de uso para negocios
+
+- **Despachos de abogados con práctica de derecho americano:** Realiza investigaciones de legislación federal de forma más eficiente, localizando los estatutos relevantes para cada caso, analizando el texto íntegro de las normas aplicables y preparando la base legal de escritos y memorandos de asesoramiento.
+- **Empresas importadoras y exportadoras:** Verifica el cumplimiento de regulaciones federales de comercio exterior, aduanas, control de exportaciones (ITAR, EAR) y normativas sectoriales aplicables a los productos importados o exportados.
+- **Empresas de tecnología con expansión a EE.UU.:** Analiza los requisitos legales federales aplicables al modelo de negocio —privacidad de datos, regulación financiera, normativas de telecomunicaciones— antes de iniciar operaciones en el mercado americano.
+- **Inversores inmobiliarios en el mercado americano:** Investiga la normativa federal aplicable a las transacciones inmobiliarias, incluyendo las regulaciones FIRPTA para inversores extranjeros, requisitos de reporte de FinCEN y normativas de vivienda justa (Fair Housing Act).
+- **Consultoras de cumplimiento normativo:** Utiliza el acceso a la legislación federal para elaborar informes de gap analysis entre las prácticas actuales del cliente y los requisitos legales federales aplicables a su sector de actividad.
+- **Franquicias internacionales en EE.UU.:** Verifica el cumplimiento de la normativa federal de franquicias (FTC Franchise Rule), las regulaciones de la FTC sobre publicidad y marketing, y los requisitos de divulgación del documento de divulgación de franquicia (FDD).
+
+## Configuración básica
+
+Este servidor no requiere credenciales externas ya que accede a fuentes de legislación federal de acceso público. Instala y configura directamente en tu cliente MCP:
+
+```json
+{
+  "mcpServers": {
+    "us-legal": {
+      "command": "npx",
+      "args": ["-y", "us-legal-mcp"]
+    }
+  }
+}
+```
+
+Una vez configurado, el asistente puede buscar legislación federal por número de ley, título del U.S. Code, área temática o palabras clave. Las búsquedas en lenguaje natural son posibles: puedes pedir que encuentre "las regulaciones federales aplicables a la venta de productos alimenticios importados" y el servidor localizará las secciones relevantes del U.S. Code y el CFR. Este servidor es una herramienta de investigación y referencia; consulta siempre con un abogado licenciado en EE.UU. para asesoramiento legal vinculante.

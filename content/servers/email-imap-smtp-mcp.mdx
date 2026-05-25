@@ -1,0 +1,57 @@
+---
+name: Servidor MCP de Email IMAP/SMTP
+slug: email-imap-smtp-mcp
+description: Gestión completa de email con 42 herramientas para leer, buscar, enviar, programar y gestionar correos en múltiples cuentas con soporte para Gmail, Outlook e iCloud.
+category: communication
+tags: [email, imap, smtp, gmail, outlook]
+official: false
+github: https://github.com/codefuturist/email-mcp
+---
+
+## Descripción general
+
+El Servidor MCP de Email IMAP/SMTP es una solución integral que conecta tu asistente de IA directamente con cualquier cuenta de correo electrónico a través de los protocolos estándar IMAP y SMTP. Con más de 42 herramientas disponibles, permite a las empresas tradicionales automatizar prácticamente cualquier tarea relacionada con el correo: desde leer y clasificar mensajes entrantes hasta redactar, programar y enviar respuestas de forma autónoma, todo ello sin cambiar de aplicación ni interrumpir el flujo de trabajo.
+
+Lo que distingue a este servidor es su compatibilidad universal: funciona con los principales proveedores de correo del mercado, incluyendo Gmail, Microsoft Outlook e iCloud, pero también con cualquier servidor IMAP/SMTP corporativo o de alojamiento web. Esto significa que una clínica médica con su propio servidor de correo, un despacho de abogados que usa Outlook corporativo o un restaurante con Gmail pueden aprovechar exactamente las mismas capacidades de automatización inteligente.
+
+Para los negocios que gestionan altos volúmenes de correo, este servidor supone un cambio radical en la productividad. El asistente de IA puede revisar cientos de mensajes, identificar los urgentes, redactar respuestas personalizadas basadas en el historial de comunicación con cada cliente y gestionar múltiples cuentas simultáneamente, todo ello con el mismo nivel de atención y consistencia.
+
+## Casos de uso para negocios
+
+- **Restaurantes y hostelería:** Gestión automática de reservas por email — el asistente lee las solicitudes entrantes, confirma disponibilidad, envía respuestas de confirmación y añade las reservas al calendario sin intervención humana.
+- **Despachos de abogados:** Clasificación y priorización de emails de clientes según urgencia, tipo de caso y cliente, garantizando que ninguna consulta importante quede sin atención en la bandeja de entrada.
+- **Tiendas minoristas y ecommerce:** Atención automática a consultas sobre estado de pedidos, disponibilidad de productos y políticas de devolución, reduciendo la carga del servicio al cliente.
+- **Clínicas y consultorios médicos:** Gestión de solicitudes de citas por correo, envío de recordatorios y seguimiento de pacientes que no han respondido a comunicaciones previas.
+- **Agencias inmobiliarias:** Respuesta inmediata a consultas de compradores y arrendatarios interesados, con información personalizada sobre propiedades basada en sus requisitos indicados en el email.
+- **Empresas de servicios:** Programación y envío automático de emails de seguimiento post-servicio para solicitar valoraciones, tramitar garantías o recordar revisiones periódicas.
+
+## Configuración básica
+
+Instala el servidor a través de npm y configura las credenciales de tu cuenta de correo:
+
+```bash
+npm install -g @codefuturist/email-mcp
+```
+
+Añade la configuración en tu cliente MCP (por ejemplo, Claude Desktop):
+
+```json
+{
+  "mcpServers": {
+    "email": {
+      "command": "npx",
+      "args": ["@codefuturist/email-mcp"],
+      "env": {
+        "IMAP_HOST": "imap.gmail.com",
+        "IMAP_PORT": "993",
+        "SMTP_HOST": "smtp.gmail.com",
+        "SMTP_PORT": "587",
+        "EMAIL_USER": "tu-correo@gmail.com",
+        "EMAIL_PASSWORD": "tu-contrasena-de-aplicacion"
+      }
+    }
+  }
+}
+```
+
+Para Gmail, genera una "Contraseña de aplicación" en la configuración de seguridad de tu cuenta de Google. Para Outlook, activa el acceso IMAP en la configuración de la cuenta y usa tus credenciales normales o una contraseña de aplicación si tienes la verificación en dos pasos activada.

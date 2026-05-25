@@ -1,0 +1,43 @@
+---
+name: Plantillas Jurídicas MCP
+slug: plantillas-juridicas-mcp
+description: Completa plantillas estándar de acuerdos legales como NDAs, SAFEs, documentos NVCA, contratos laborales y términos cloud, y genera archivos DOCX listos para firmar.
+category: legal
+tags: [contratos, nda, plantillas, documentos-legales, acuerdos]
+official: false
+github: https://github.com/open-agreements/open-agreements
+---
+
+## Descripción general
+
+Plantillas Jurídicas MCP integra la biblioteca Open Agreements con tu asistente de IA, permitiendo completar y generar documentos legales estándar ampliamente utilizados en el mundo empresarial, incluyendo acuerdos de confidencialidad (NDAs), instrumentos SAFE para inversión en startups, documentos NVCA para rondas de capital riesgo, contratos laborales y términos de servicio para productos cloud. El servidor genera los documentos finales en formato DOCX, listos para ser revisados por un abogado y firmados por las partes.
+
+Para negocios que necesitan formalizar relaciones contractuales de forma recurrente — proveedores, empleados, colaboradores, inversores o clientes — el acceso a plantillas legales de alta calidad pre-negociadas y ampliamente aceptadas en el mercado puede suponer un ahorro significativo en honorarios legales sin sacrificar la calidad jurídica de los documentos. Las plantillas de Open Agreements están basadas en los estándares más utilizados por firmas legales de referencia y han sido adoptadas masivamente por el ecosistema emprendedor anglosajón.
+
+La capacidad de completar automáticamente los campos variables de cada plantilla (partes, fechas, importes, plazos, cláusulas opcionales) con la información específica del acuerdo que se quiere formalizar reduce drásticamente el tiempo de preparación de cada documento. El asistente puede generar en minutos el borrador de un NDA bilateral, un contrato de servicios profesionales o un acuerdo de colaboración comercial que normalmente requeriría horas de trabajo de un abogado o asistente legal para su preparación.
+
+## Casos de uso para negocios
+
+- **Startups y empresas en fase inicial:** Genera instrumentos SAFE para formalizar inversiones de business angels con los términos estándar de Y Combinator u otras variantes habituales, y documenta acuerdos de accionistas, opciones sobre acciones y pactos de socios con plantillas de calidad institucional.
+- **Empresas que contratan proveedores y freelancers:** Produce acuerdos de confidencialidad (NDAs) y contratos de servicios profesionales con los términos y condiciones habituales para cada tipo de relación contractual, personalizados con los datos específicos de cada acuerdo.
+- **Empresas de software y SaaS:** Genera los términos y condiciones de servicio (ToS) y la política de privacidad estándar para productos cloud, adaptados al tipo de producto y a los datos que se procesan.
+- **Agencias y consultoras en fase de crecimiento:** Formaliza acuerdos con nuevos clientes mediante contratos de prestación de servicios profesionales con cláusulas de confidencialidad, propiedad intelectual y condiciones de pago estándar del sector.
+- **Negocios en proceso de captación de inversión:** Prepara la documentación de due diligence y los borradores de term sheets y documentos de inversión NVCA para facilitar y agilizar el proceso de cierre de una ronda de financiación.
+- **Empresas con equipos remotos internacionales:** Genera contratos de empleo o de colaboración adaptados a las necesidades de trabajadores remotos, incluyendo cláusulas de confidencialidad, no competencia y propiedad intelectual apropiadas para relaciones de trabajo a distancia.
+
+## Configuración básica
+
+Este servidor no requiere credenciales de API externas ya que trabaja con plantillas de la biblioteca Open Agreements de acceso abierto:
+
+```json
+{
+  "mcpServers": {
+    "open-agreements": {
+      "command": "npx",
+      "args": ["-y", "open-agreements-mcp"]
+    }
+  }
+}
+```
+
+Una vez configurado, describe al asistente el documento que necesitas — el tipo de acuerdo, las partes involucradas, los términos principales — y el servidor seleccionará la plantilla más apropiada, completará automáticamente los campos con la información proporcionada y generará el archivo DOCX listo para revisión. Recuerda siempre revisar el documento con un abogado colegiado antes de la firma, especialmente para acuerdos de alto impacto económico o en jurisdicciones fuera de EE.UU.

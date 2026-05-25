@@ -1,0 +1,59 @@
+---
+name: WhatsApp Business MCP
+slug: whatsapp-business-mcp
+description: 244 herramientas para WhatsApp Business que permiten enviar mensajes, automatizar flujos de trabajo, ejecutar campañas y gestionar el CRM desde un asistente de IA.
+category: communication
+tags: [whatsapp, whatsapp-business, mensajeria, campanas, crm]
+official: false
+github: https://github.com/wazionapps/mcp-server
+---
+
+## Descripción general
+
+WhatsApp Business MCP es probablemente la integración más impactante disponible para negocios tradicionales que operan en mercados donde WhatsApp es el canal de comunicación dominante — que incluye prácticamente toda América Latina, España, India, Brasil y muchos países del sur de Europa. Con 244 herramientas disponibles, este servidor convierte WhatsApp Business en una plataforma de atención al cliente, marketing y CRM completamente gestionada por inteligencia artificial.
+
+El alcance de las capacidades es extraordinario: desde el envío de mensajes individuales hasta la gestión de campañas masivas, pasando por la automatización de flujos de conversación, la gestión del catálogo de productos, el procesamiento de pedidos recibidos por WhatsApp y el seguimiento de cada contacto en el CRM integrado. Para una ferretería, una clínica dental o un restaurante cuya principal fuente de contacto con los clientes ya es WhatsApp, este servidor transforma esa comunicación informal en un sistema profesional y escalable.
+
+La capacidad de ejecutar campañas de marketing por WhatsApp desde el asistente de IA abre posibilidades que antes requerían plataformas especializadas costosas. El asistente puede segmentar contactos, diseñar mensajes personalizados, programar envíos en los momentos de mayor tasa de apertura y hacer seguimiento de las respuestas, todo ello cumpliendo con las políticas de WhatsApp Business y las plantillas previamente aprobadas por Meta.
+
+## Casos de uso para negocios
+
+- **Restaurantes y comida a domicilio:** Recepción y confirmación automática de pedidos por WhatsApp, actualización del estado del pedido en tiempo real y gestión de reclamaciones o cambios de última hora sin intervención humana.
+- **Clínicas y consultorios médicos:** Confirmación de citas, envío de recordatorios 24 horas antes, instrucciones de preparación para pruebas o cirugías y seguimiento post-consulta mediante mensajes automatizados pero personalizados.
+- **Tiendas de retail y comercio local:** Atención a consultas sobre disponibilidad de productos, envío de catálogos personalizados según el interés del cliente y seguimiento de pedidos o reservas de artículos.
+- **Agencias inmobiliarias:** Primer contacto automático con leads que consultan por propiedades, envío de fotos y documentación, programación de visitas y seguimiento hasta el cierre de operación.
+- **Talleres mecánicos y servicios técnicos:** Notificación automática al cliente cuando su vehículo o aparato está listo, con foto del trabajo realizado, presupuesto final y enlace de pago.
+- **Centros de belleza y peluquerías:** Gestión de reservas, recordatorios de citas, promociones personalizadas para clientes frecuentes y solicitud de reseñas después de cada visita.
+
+## Configuración básica
+
+El servidor requiere una cuenta de WhatsApp Business API activa (a través de Meta Business Manager):
+
+```bash
+git clone https://github.com/wazionapps/mcp-server
+cd mcp-server
+npm install
+npm run build
+```
+
+Configura el acceso a la API de WhatsApp Business:
+
+```json
+{
+  "mcpServers": {
+    "whatsapp-business": {
+      "command": "node",
+      "args": ["dist/index.js"],
+      "env": {
+        "WHATSAPP_ACCESS_TOKEN": "tu-token-de-acceso-permanente",
+        "WHATSAPP_PHONE_NUMBER_ID": "tu-phone-number-id",
+        "WHATSAPP_BUSINESS_ACCOUNT_ID": "tu-business-account-id",
+        "META_APP_ID": "tu-app-id",
+        "META_APP_SECRET": "tu-app-secret"
+      }
+    }
+  }
+}
+```
+
+Para obtener estas credenciales, accede al portal de desarrolladores de Meta (developers.facebook.com), crea una aplicación de tipo Business, añade el producto WhatsApp y configura tu número de teléfono de empresa. Necesitarás verificar tu negocio en Meta Business Manager para acceder a la API de producción.

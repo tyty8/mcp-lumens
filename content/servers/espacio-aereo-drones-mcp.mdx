@@ -1,0 +1,46 @@
+---
+name: Espacio Aéreo para Drones MCP
+slug: espacio-aereo-drones-mcp
+description: Inteligencia de espacio aéreo de drones en EE.UU. con verificación de restricciones de espacio aéreo en 11 capas de datos FAA y validación de cumplimiento Part 107 para fotografía aérea inmobiliaria.
+category: real-estate
+tags: [drones, faa, espacio-aereo, inmobiliaria, fotografia-aerea]
+official: false
+github: https://github.com/markpdxt/dronelytics-mcp
+---
+
+## Descripción general
+
+Espacio Aéreo para Drones MCP proporciona inteligencia completa sobre el espacio aéreo de Estados Unidos para operadores de drones, con especial aplicación en el sector inmobiliario donde la fotografía y el vídeo aéreo con drones se han convertido en una herramienta comercial estándar. A través de 11 capas de datos actualizados de la FAA (Administración Federal de Aviación), el servidor verifica en tiempo real si es legal volar un dron en una ubicación específica y bajo qué condiciones.
+
+La regulación del espacio aéreo para drones en EE.UU. es compleja y varía significativamente según la proximidad a aeropuertos, zonas militares, parques nacionales, áreas urbanas densas y corredores de vuelo especiales. No verificar estas restricciones antes de operar un dron puede resultar en multas de hasta 27,500 dólares por infracción civil o incluso cargos penales por infracciones graves. Este servidor MCP elimina la incertidumbre y garantiza que cada vuelo se planifique dentro del marco legal aplicable.
+
+Para agencias inmobiliarias y fotógrafos especializados en inmobiliaria que utilizan drones para capturar imágenes aéreas de propiedades, este servidor es una herramienta de cumplimiento normativo esencial. La validación automática del cumplimiento Part 107 — el reglamento de la FAA para operaciones comerciales de drones — asegura que todas las operaciones estén dentro de la normativa vigente, protegiendo tanto al operador como a la agencia contratante.
+
+## Casos de uso para negocios
+
+- **Fotógrafos inmobiliarios con drones:** Verificar antes de cada sesión fotográfica si la ubicación de la propiedad permite el vuelo de drones y bajo qué condiciones específicas de altitud y distancia.
+- **Agencias inmobiliarias de lujo:** Planificar con antelación los reportajes fotográficos aéreos de propiedades de alto valor, asegurando que la zona esté libre de restricciones antes de contratar al equipo de fotografía.
+- **Promotoras inmobiliarias:** Verificar la viabilidad de obtener imágenes aéreas de sus nuevas promociones en fase de construcción para el material de marketing, identificando posibles restricciones con suficiente antelación.
+- **Empresas de gestión de propiedades:** Planificar inspecciones aéreas periódicas de edificios y urbanizaciones con drones, asegurando el cumplimiento normativo de cada vuelo de inspección.
+- **Tasadores y peritos:** Verificar la legalidad de usar drones para la inspección aérea de propiedades de difícil acceso como tejados, fachadas de edificios altos o instalaciones industriales.
+- **Estudios de arquitectura y diseño:** Comprobar si es posible documentar con drones los proyectos ejecutados para los portafolios de sus clientes y el material de marketing del estudio.
+
+## Configuración básica
+
+Para usar Espacio Aéreo para Drones MCP necesitas una clave de API de Dronelytics. Regístrate en la plataforma para obtener acceso a las 11 capas de datos de espacio aéreo FAA y la validación Part 107.
+
+```json
+{
+  "mcpServers": {
+    "dronelytics": {
+      "command": "npx",
+      "args": ["-y", "dronelytics-mcp"],
+      "env": {
+        "DRONELYTICS_API_KEY": "tu_api_key"
+      }
+    }
+  }
+}
+```
+
+Una vez configurado, puedes verificar la viabilidad legal de volar un dron en cualquier coordenada de EE.UU., conocer las restricciones específicas aplicables y validar el cumplimiento de la normativa Part 107 para operaciones comerciales.

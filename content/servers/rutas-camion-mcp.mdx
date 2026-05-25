@@ -1,0 +1,56 @@
+---
+name: Rutas de Camión MCP
+slug: rutas-camion-mcp
+description: Inteligencia de localización y enrutamiento para camiones con restricciones de peso, dimensiones y mercancías peligrosas, más tráfico, clima e isócronas con cobertura mundial.
+category: logistics
+tags: [camiones, rutas, logistica, mercancia-peligrosa, optimizacion]
+official: false
+github: https://github.com/ThinAirTelematics/thinair-geo
+---
+
+## Descripción general
+
+El servidor Rutas de Camión MCP, desarrollado por ThinAir Telematics, ofrece un sistema especializado de planificación de rutas diseñado específicamente para vehículos pesados, que tienen unas restricciones de circulación completamente diferentes a las de los vehículos particulares. Un GPS convencional puede llevar a un camión por un puente con limitación de peso insuficiente, por un túnel con restricción de mercancías peligrosas o por una carretera de montaña con curvas impracticables para semirremolques. Este servidor evita estos errores costosos calculando rutas que respetan las características específicas de cada vehículo.
+
+El motor de enrutamiento tiene en cuenta parámetros como el peso total del vehículo cargado, la altura y anchura del conjunto, la longitud del vehículo, el tipo de mercancía (especialmente si es ADR/peligrosa), las restricciones horarias de circulación en zonas urbanas y las prohibiciones de circulación por tipo de vehículo vigentes en cada país. Esta información se cruza con la red viaria actualizada para generar la ruta más eficiente que un camión puede seguir legalmente, evitando sorpresas desagradables en ruta que generan costes y retrasos.
+
+Las isócronas —áreas geográficas que se pueden alcanzar desde un punto en un tiempo determinado— son una funcionalidad especialmente útil para planificar zonas de servicio, ubicar nuevos depósitos o analizar la cobertura de distribución. Un operador logístico puede preguntarle al asistente "¿Qué municipios puedo servir desde mi almacén de Zaragoza en menos de 4 horas de conducción con un camión de 26 toneladas?" y obtener un mapa de isócrona que facilita la planificación estratégica de la red de distribución.
+
+## Casos de uso para negocios
+
+- **Empresas de transporte de mercancías peligrosas:** Planificación de rutas ADR que eviten túneles prohibidos para mercancías peligrosas de cada clase, reduciendo el riesgo de multas y rechazos en los controles de carretera.
+- **Distribuidores con flota de camiones pesados:** Optimización de rutas de reparto respetando las restricciones de circulación en centros urbanos y las ventanas horarias de entrega acordadas con cada cliente.
+- **Empresas de transporte especial:** Planificación de rutas para transportes de carga excepcional (oversize) considerando gálibos de puentes, curvas mínimas y autorizaciones de itinerario obligatorias.
+- **Operadores de logística refrigerada:** Cálculo de tiempos de ruta precisos para garantizar que la cadena de frío no se rompe y que los productos llegan dentro de los límites de temperatura, ajustando la ruta si el tráfico previsto alarga el viaje.
+- **Planificadores de red logística:** Análisis de isócronas para evaluar la viabilidad de un nuevo depósito o hub logístico, calculando cuántos clientes quedarían dentro de distintos radios de tiempo de servicio con camiones de diferentes características.
+- **Empresas con flota mixta:** Gestión diferenciada de rutas para distintos tipos de vehículo de la flota (furgonetas, rígidos de 7,5 toneladas, articulados de 40 toneladas) desde un único servidor, con parámetros específicos para cada clase de vehículo.
+
+## Configuración básica
+
+Obtén las credenciales de la API de ThinAir Telematics contactando con el equipo comercial y regístrate en el portal de desarrolladores:
+
+```bash
+npm install -g @thinairtelematics/thinair-geo-mcp
+```
+
+Configura el servidor en tu cliente MCP con los parámetros de tu flota:
+
+```json
+{
+  "mcpServers": {
+    "truck-routing": {
+      "command": "thinair-geo-mcp",
+      "env": {
+        "THINAIR_API_KEY": "tu-api-key",
+        "DEFAULT_VEHICLE_TYPE": "truck",
+        "DEFAULT_MAX_WEIGHT": "26000",
+        "DEFAULT_HEIGHT": "4.0",
+        "DEFAULT_WIDTH": "2.55",
+        "DEFAULT_LENGTH": "18.75"
+      }
+    }
+  }
+}
+```
+
+Los parámetros predeterminados del vehículo pueden sobreescribirse en cada consulta al asistente. Si tu empresa tiene varios tipos de vehículo, puedes crear perfiles predefinidos en la configuración del servidor con las características de cada uno para agilizar las consultas.

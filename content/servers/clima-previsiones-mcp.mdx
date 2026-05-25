@@ -1,0 +1,55 @@
+---
+name: Clima y Previsiones MCP
+slug: clima-previsiones-mcp
+description: Datos meteorológicos en tiempo real y previsiones detalladas para cualquier ubicación del mundo mediante WeatherAPI.com, esencial para negocios que dependen del tiempo.
+category: productivity
+tags: [clima, tiempo, meteorologia, previsiones, temperatura]
+official: false
+github: https://github.com/devilcoder01/weather-mcp-server
+---
+
+## Descripción general
+
+El servidor Clima y Previsiones MCP integra WeatherAPI.com en el asistente de IA, proporcionando acceso a datos meteorológicos en tiempo real y previsiones detalladas para cualquier ubicación del mundo. La meteorología tiene un impacto directo y significativo en la operativa de múltiples tipos de negocios: desde la hostelería y el turismo hasta la agricultura, la construcción, la logística y el comercio minorista. Tener la información meteorológica integrada en el flujo de trabajo del asistente permite que las decisiones operativas tengan en cuenta las condiciones climatológicas sin necesidad de consultar aplicaciones adicionales.
+
+WeatherAPI.com ofrece datos de alta resolución que van más allá de la simple temperatura: visibilidad, humedad, viento, precipitación, índice UV, fase lunar, calidad del aire y alertas meteorológicas activas. Las previsiones detalladas cubren hasta 14 días con datos hora a hora, lo que permite una planificación operativa precisa. Para una empresa de construcción que necesita saber si hay condiciones aptas para trabajar con hormigón en los próximos 7 días, o para una bodega que necesita planificar la vendimia según las lluvias previstas, esta precisión en los datos meteorológicos es fundamental.
+
+La integración de los datos meteorológicos en los flujos de trabajo del asistente permite correlaciones especialmente valiosas. El asistente puede combinar la previsión del tiempo con otros datos del negocio para anticipar impactos: "Si el fin de semana hay lluvia en Madrid y el año pasado en condiciones similares las ventas de impermeables aumentaron un 40%, deberíamos asegurarnos de tener stock suficiente" es el tipo de razonamiento que este servidor hace posible cuando el asistente tiene acceso tanto a los datos históricos de ventas como a la previsión meteorológica.
+
+## Casos de uso para negocios
+
+- **Hostelería con terraza o espacios exteriores:** Planificación semanal del personal y el servicio de cocina considerando las previsiones de temperatura y lluvia, para ajustar las reservas de terraza y evitar el sobredimensionamiento del equipo en días de mal tiempo.
+- **Empresas de construcción y obra civil:** Consulta diaria de las condiciones meteorológicas para determinar si se puede trabajar con seguridad en altura, realizar trabajos de pavimentación o verter hormigón, evitando paros no planificados.
+- **Agricultura y viticultura:** Seguimiento de temperaturas mínimas, riesgo de heladas, precipitación acumulada y alertas de granizo para tomar decisiones de protección de cultivos, tratamientos fitosanitarios o adelanto de la recolección.
+- **Empresas de logística y transporte:** Consulta de condiciones adversas (nieve, hielo, niebla densa, lluvias intensas) en las rutas planificadas para el día siguiente, ajustando itinerarios o comunicando posibles retrasos preventivamente.
+- **Organizadores de eventos al aire libre:** Monitoreo de la previsión durante los 14 días previos al evento para activar planes de contingencia (carpas, ropa de lluvia, cambio de fecha) con la máxima antelación posible.
+- **Sector turístico y agencias de viaje:** Información meteorológica precisa para los destinos de los clientes en las fechas de su viaje, para anticipar qué tipo de actividades o equipamiento van a necesitar.
+
+## Configuración básica
+
+Regístrate en WeatherAPI.com para obtener una clave de API gratuita (hasta 1 millón de llamadas mensuales en el plan gratuito):
+
+```bash
+npx @devilcoder01/weather-mcp-server
+```
+
+Configura las credenciales en tu cliente MCP:
+
+```json
+{
+  "mcpServers": {
+    "weather": {
+      "command": "npx",
+      "args": ["@devilcoder01/weather-mcp-server"],
+      "env": {
+        "WEATHER_API_KEY": "tu-api-key-de-weatherapi",
+        "DEFAULT_LOCATION": "Madrid, Spain",
+        "DEFAULT_LANGUAGE": "es",
+        "DEFAULT_UNITS": "metric"
+      }
+    }
+  }
+}
+```
+
+El plan gratuito de WeatherAPI.com incluye datos en tiempo real, previsión de 3 días y algunas funcionalidades adicionales. Para previsiones de hasta 14 días y datos históricos, es necesario uno de los planes de pago. La localización puede especificarse por nombre de ciudad, código postal, coordenadas GPS o IP del usuario para máxima flexibilidad.

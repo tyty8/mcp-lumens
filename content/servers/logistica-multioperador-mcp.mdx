@@ -1,0 +1,54 @@
+---
+name: Logística Multioperador MCP
+slug: logistica-multioperador-mcp
+description: Inteligencia de cadena de suministro con comparación de tarifas en más de 85 operadores, gestión de inventario, seguimiento de pedidos, logística de flotas y previsión de demanda con IA.
+category: retail
+tags: [logistica, operadores, inventario, pedidos, supply-chain]
+official: false
+github: https://github.com/OFODevelopment/cerebrochain-mcp-server
+---
+
+## Descripción general
+
+El servidor Logística Multioperador MCP, desarrollado sobre la plataforma CerebroChain, ofrece una visión unificada e inteligente de toda la cadena de suministro de un negocio minorista o industrial. La capacidad de comparar tarifas y condiciones entre más de 85 operadores logísticos en tiempo real —tanto nacionales como internacionales— permite a las empresas tomar decisiones de envío óptimas en cada pedido, en lugar de trabajar siempre con el mismo proveedor por inercia o desconocimiento de las alternativas disponibles.
+
+La gestión de inventario integrada va más allá de un simple contador de stock. El sistema aplica algoritmos de previsión de demanda basados en inteligencia artificial que analizan el histórico de ventas, la estacionalidad, los eventos especiales y las tendencias del mercado para anticipar cuándo y cuánto hay que reponer de cada referencia. Esta capacidad preventiva es especialmente valiosa para negocios con alta rotación de producto, donde una rotura de stock puede traducirse directamente en ventas perdidas y clientes que se van a la competencia.
+
+La integración de logística de flotas propias permite a las empresas que tienen vehículos de reparto propios optimizar las rutas de entrega, monitorear el estado de cada vehículo y coordinar las entregas del día con la máxima eficiencia. Para un distribuidor con flota de 10 o 15 vehículos, la optimización de rutas puede suponer un ahorro significativo en combustible y horas de conductor, al tiempo que mejora la puntualidad de las entregas y la satisfacción del cliente final.
+
+## Casos de uso para negocios
+
+- **Distribuidoras regionales:** Comparación automática de tarifas entre operadores para cada envío según peso, volumen, destino y urgencia, seleccionando siempre la opción más económica que cumpla con el plazo acordado con el cliente.
+- **Tiendas online con envío propio:** Previsión semanal de demanda por referencia para planificar las reposiciones con proveedores con la antelación suficiente y evitar roturas de stock en productos estrella.
+- **Empresas de alimentación y bebidas:** Gestión de logística con control de temperatura y trazabilidad de lotes para garantizar la cadena de frío en productos perecederos de alto valor.
+- **Empresas industriales con flota propia:** Optimización de rutas de entrega diarias para 5-20 vehículos, minimizando kilómetros recorridos y asegurando las ventanas horarias acordadas con cada cliente.
+- **Importadores y mayoristas:** Seguimiento centralizado de pedidos a proveedores internacionales, con alertas automáticas sobre retrasos en origen o problemas aduaneros que puedan afectar al stock disponible.
+- **Negocios con almacenes múltiples:** Gestión de inventario distribuido entre varios almacenes o puntos de venta, con recomendaciones de transferencia entre ubicaciones para equilibrar el stock.
+
+## Configuración básica
+
+Registra tu empresa en la plataforma CerebroChain y obtén las credenciales de la API:
+
+```bash
+npm install -g @ofo/cerebrochain-mcp-server
+```
+
+Configura las credenciales y parámetros de tu operación en el cliente MCP:
+
+```json
+{
+  "mcpServers": {
+    "cerebrochain-logistics": {
+      "command": "cerebrochain-mcp-server",
+      "env": {
+        "CEREBROCHAIN_API_KEY": "tu-api-key",
+        "CEREBROCHAIN_COMPANY_ID": "tu-company-id",
+        "DEFAULT_WAREHOUSE_ID": "almacen-principal",
+        "CURRENCY": "EUR"
+      }
+    }
+  }
+}
+```
+
+Tras la configuración inicial, accede al portal de CerebroChain para integrar tus operadores logísticos habituales, configurar las reglas de selección automática de transportista y conectar tu sistema de gestión de almacén o ERP existente mediante los conectores prediseñados.

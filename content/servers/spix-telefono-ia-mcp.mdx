@@ -1,0 +1,58 @@
+---
+name: Spix Teléfono IA MCP
+slug: spix-telefono-ia-mcp
+description: Da a tu asistente de IA un número de teléfono real y voz — realiza llamadas salientes, gestiona llamadas entrantes, envía emails y administra contactos con latencia de voz de ~500ms.
+category: communication
+tags: [telefono, voz, llamadas, ia, contactos]
+official: false
+github: https://github.com/Spix-HQ/spix-mcp
+---
+
+## Descripción general
+
+Spix Teléfono IA MCP lleva la automatización inteligente a uno de los canales más tradicionales y fundamentales del negocio: el teléfono. Al proporcionar a tu asistente de IA un número de teléfono real y una voz natural con latencia de solo ~500 milisegundos, este servidor hace posible que la IA realice y reciba llamadas telefónicas reales como lo haría cualquier miembro del equipo. Para muchos negocios tradicionales, el teléfono sigue siendo el canal principal de contacto con clientes, y este servidor lo automatiza sin perder la calidez de la comunicación vocal.
+
+La latencia de 500 milisegundos es clave para conseguir conversaciones naturales y fluidas. Con tiempos de respuesta superiores, las conversaciones se vuelven artificiales e incómodas; con 500ms, la IA puede participar en diálogos telefónicos que resultan prácticamente indistinguibles de los de un operador humano. El sistema puede gestionar llamadas de confirmación de citas, atender consultas de horarios y precios, recoger pedidos o encauzar llamadas complejas hacia el personal humano correspondiente.
+
+La gestión integrada de contactos permite que el asistente identifique a los clientes habituales por su número, acceda a su historial y personalice la conversación desde el primer segundo. Un cliente que llama para cambiar una cita no necesita identificarse ni repetir su información: la IA ya sabe quién es y puede acceder directamente a los datos relevantes, ofreciendo una experiencia de atención al cliente de primer nivel sin el coste de un equipo telefónico dedicado.
+
+## Casos de uso para negocios
+
+- **Clínicas y consultorios:** Confirmación automática de citas mediante llamada saliente el día anterior, con posibilidad de confirmar, cancelar o reprogramar durante la misma llamada sin intervención humana.
+- **Restaurantes y bares:** Atención de reservas telefónicas fuera de horario comercial — la IA recoge los datos de la reserva, verifica disponibilidad y confirma la mesa incluso a las 11 de la noche.
+- **Talleres mecánicos y servicios técnicos:** Notificación telefónica cuando el vehículo está listo, presupuesto verbal de reparaciones imprevistas y coordinación de la hora de recogida con el cliente.
+- **Inmobiliarias y gestorías:** Primera atención a llamadas de clientes potenciales, recopilación de información básica sobre sus necesidades y transferencia cualificada al agente más adecuado.
+- **Farmacias y herbolarios:** Atención de consultas sobre disponibilidad de productos, horarios y precios en las horas de mayor carga de trabajo, reduciendo la interrupción del personal en mostrador.
+- **Centros de atención al cliente:** Gestión de primer nivel para consultas frecuentes y reclamaciones simples, con escalado a agente humano solo cuando la situación lo requiere.
+
+## Configuración básica
+
+Regístrate en la plataforma Spix para obtener un número de teléfono y las credenciales de API:
+
+```bash
+git clone https://github.com/Spix-HQ/spix-mcp
+cd spix-mcp
+npm install
+npm run build
+```
+
+Configura el servidor con tus credenciales de Spix:
+
+```json
+{
+  "mcpServers": {
+    "spix-telefono": {
+      "command": "node",
+      "args": ["dist/index.js"],
+      "env": {
+        "SPIX_API_KEY": "tu-api-key-de-spix",
+        "SPIX_PHONE_NUMBER": "+34XXXXXXXXX",
+        "SPIX_VOICE_ID": "es-ES-Standard-A",
+        "OPENAI_API_KEY": "tu-api-key-de-openai"
+      }
+    }
+  }
+}
+```
+
+El servidor utiliza la API de voz en tiempo real de OpenAI para generar las respuestas de voz natural, por lo que también necesitas una API key de OpenAI. Accede a spix.ai para crear tu cuenta, obtener un número de teléfono real y configurar las preferencias de voz en el idioma y acento que prefieras para tu negocio.

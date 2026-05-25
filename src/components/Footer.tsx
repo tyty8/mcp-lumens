@@ -31,7 +31,7 @@ export function Footer() {
 
         {/* Subtext */}
         <p className="mt-4 text-xs text-muted-foreground/60 font-mono">
-          MCP (Model Context Protocol) is an open standard by Anthropic.
+          MCP (Model Context Protocol) es un estándar abierto de Anthropic.
         </p>
       </div>
     </footer>

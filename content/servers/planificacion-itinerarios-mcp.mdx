@@ -1,0 +1,47 @@
+---
+name: Planificación de Itinerarios MCP
+slug: planificacion-itinerarios-mcp
+description: Planifica y gestiona itinerarios de viaje con mapas interactivos — administra lugares de interés, notas y vuelos en Triplyfy para crear experiencias completas para clientes.
+category: travel
+tags: [itinerarios, viajes, planificacion, mapas, agencia]
+official: false
+github: https://github.com/helpful-AIs/triplyfy-mcp
+---
+
+## Descripción general
+
+Planificación de Itinerarios MCP integra la plataforma Triplyfy con tu asistente de IA para construir itinerarios de viaje completos, detallados y visualmente atractivos. A través de este servidor MCP, los agentes de viajes pueden organizar todos los elementos de un viaje — lugares de interés, restaurantes, actividades, vuelos y alojamientos — en un itinerario coherente con mapas interactivos que el cliente puede consultar desde su dispositivo móvil.
+
+La herramienta permite gestionar múltiples itinerarios simultáneamente, añadir notas personalizadas para cada punto del viaje, incorporar información práctica como horarios de apertura, precios de entrada y recomendaciones específicas, y ajustar el orden de las actividades de forma dinámica según las preferencias del cliente. Esta flexibilidad resulta fundamental para agencias que trabajan con clientes de alto nivel que requieren itinerarios muy personalizados y detallados.
+
+La integración de mapas interactivos facilita la visualización geográfica del itinerario, ayudando tanto al agente como al cliente a comprender la lógica del recorrido y optimizar los desplazamientos. Los mapas muestran la ubicación de cada punto de interés, la ruta entre ellos y pueden incluir información adicional como tiempos de desplazamiento y opciones de transporte local.
+
+## Casos de uso para negocios
+
+- **Agencias de viajes a medida:** Construir itinerarios personalizados día a día para viajeros independientes con todos los detalles de actividades, restaurantes y alojamientos en un documento visual y fácil de seguir.
+- **Operadores de viajes de lujo:** Crear propuestas de viaje premium con presentación profesional y mapas detallados para impresionar a clientes de alto poder adquisitivo durante la fase de venta.
+- **Tour leaders y guías:** Preparar con antelación los itinerarios de grupos, asegurando que todos los tiempos y desplazamientos estén correctamente calculados y que no haya solapamientos de actividades.
+- **Agencias especializadas en viajes de novios:** Diseñar lunamielesi únicos con itinerarios románticos que incluyan experiencias especiales, cenas con reserva previa y actividades exclusivas en cada destino.
+- **Organizadores de viajes de incentivo:** Planificar programas completos para grupos corporativos combinando actividades de team building, visitas culturales y eventos sociales en itinerarios coordinados al minuto.
+- **Receptivos y DMC:** Preparar propuestas de itinerarios locales para agencias internacionales con toda la información logística necesaria para que los viajeros disfruten del destino sin contratiempos.
+
+## Configuración básica
+
+Para configurar Planificación de Itinerarios MCP necesitas una cuenta en Triplyfy y tu clave de API. Accede a la configuración de tu cuenta en Triplyfy para obtener las credenciales necesarias.
+
+```json
+{
+  "mcpServers": {
+    "triplyfy": {
+      "command": "npx",
+      "args": ["-y", "@helpful-ais/triplyfy-mcp"],
+      "env": {
+        "TRIPLYFY_API_KEY": "tu_api_key",
+        "TRIPLYFY_USER_ID": "tu_user_id"
+      }
+    }
+  }
+}
+```
+
+Una vez configurado, puedes crear y gestionar itinerarios completos con comandos en lenguaje natural, añadir puntos de interés con sus coordenadas y organizar vuelos y alojamientos en un único documento coherente.

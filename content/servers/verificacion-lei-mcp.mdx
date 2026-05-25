@@ -1,0 +1,56 @@
+---
+name: Verificación LEI MCP
+slug: verificacion-lei-mcp
+description: Acceso a la base de datos global de Identificadores de Entidad Legal (LEI) para verificación de empresas, KYC y due diligence de titularidad corporativa mediante la API pública de GLEIF.
+category: finance
+tags: [lei, kyc, due-diligence, empresas, cumplimiento]
+official: false
+github: https://github.com/olgasafonova/gleif-mcp-server
+---
+
+## Descripción general
+
+Verificación LEI MCP conecta tu asistente de IA con la base de datos global GLEIF (Global Legal Entity Identifier Foundation), el registro internacional que asigna y mantiene los Identificadores de Entidad Legal (LEI) de empresas y organizaciones en todo el mundo. El LEI es un código alfanumérico de 20 caracteres que identifica de forma única a cualquier entidad que participa en transacciones financieras a nivel internacional, y este servidor permite consultarlo de forma instantánea para verificar la identidad y legitimidad de empresas con las que vayas a establecer relaciones comerciales.
+
+Para negocios que trabajan con clientes o proveedores internacionales, la verificación LEI es una herramienta de due diligence fundamental. Antes de firmar un contrato importante, abrir una línea de crédito comercial o iniciar una relación de proveedor con una empresa extranjera, poder verificar en segundos su identidad legal, el país de registro, la estructura de propiedad y el estado actual de su LEI (activo, vencido o no renovado) proporciona una seguridad que antes requería contratar servicios de investigación especializados o esperar días a que los departamentos de cumplimiento completaran sus comprobaciones.
+
+La información de titularidad corporativa es especialmente valiosa en el contexto de la normativa KYC/AML (Know Your Customer / Anti-Money Laundering): el registro GLEIF incluye información sobre la estructura de propiedad y control de las entidades, permitiendo identificar quién está detrás de una empresa y detectar potenciales señales de alerta en la cadena de propiedad antes de establecer la relación comercial.
+
+## Casos de uso para negocios
+
+- **Empresas de importación y exportación:** Verificación rápida de la legitimidad de nuevos compradores o proveedores internacionales antes de procesar pedidos o aceptar condiciones de pago favorables al cliente.
+- **Entidades financieras y aseguradoras:** Due diligence automatizado de clientes corporativos como parte del proceso de onboarding, con verificación del LEI y la estructura de propiedad integrada en el flujo de alta de cliente.
+- **Despachos de abogados y notarías:** Verificación de la identidad legal de las partes en transacciones mercantiles, fusiones, adquisiciones y contratos internacionales de forma rápida y documentada.
+- **Empresas de logística y transporte internacional:** Verificación de la validez legal de los clientes que contratan servicios de transporte de mercancías, especialmente en operaciones de comercio exterior con nuevos clientes.
+- **Plataformas de marketplace B2B:** Validación automática de los vendedores y compradores empresariales que se registran en la plataforma, como parte del proceso de verificación de identidad corporativa.
+- **Fondos de inversión y family offices:** Verificación de la identidad legal de las empresas en las que se estudia invertir, accediendo a la información de estructura corporativa disponible en GLEIF antes de la due diligence completa.
+
+## Configuración básica
+
+Este servidor utiliza la API pública de GLEIF, que no requiere clave API ni registro previo:
+
+```bash
+git clone https://github.com/olgasafonova/gleif-mcp-server
+cd gleif-mcp-server
+npm install
+npm run build
+```
+
+Configura el servidor en tu cliente MCP:
+
+```json
+{
+  "mcpServers": {
+    "verificacion-lei": {
+      "command": "node",
+      "args": ["dist/index.js"],
+      "env": {
+        "GLEIF_API_BASE_URL": "https://api.gleif.org/api/v1",
+        "GLEIF_RATE_LIMIT_PER_MINUTE": "60"
+      }
+    }
+  }
+}
+```
+
+Al usar la API pública de GLEIF no necesitas ninguna clave de acceso. La API permite buscar entidades por nombre, código LEI, país de registro o número de registro nacional, y devuelve información completa incluyendo nombre legal, dirección, país, estado del LEI y estructura de propiedad cuando está disponible. Para volúmenes muy altos de consultas, GLEIF ofrece planes de acceso premium con límites ampliados.

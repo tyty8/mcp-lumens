@@ -16,16 +16,16 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: 'MCP Servers',
-    template: '%s | MCP Servers',
+    default: 'Servidores MCP',
+    template: '%s | Servidores MCP',
   },
   description:
-    'Discover and learn about Model Context Protocol (MCP) servers — the open standard for connecting AI to your tools and data.',
+    'Descubre y aprende sobre los servidores MCP (Model Context Protocol) — el estándar abierto para conectar IA a tus herramientas y datos.',
   metadataBase: new URL('https://mcp.lumenssur.com'),
   openGraph: {
-    siteName: 'MCP Servers',
+    siteName: 'Servidores MCP',
     type: 'website',
-    locale: 'en_US',
+    locale: 'es_ES',
   },
   twitter: {
     card: 'summary_large_image',
@@ -39,7 +39,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="es"
       className={`${geistSans.variable} ${geistMono.variable} dark h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">

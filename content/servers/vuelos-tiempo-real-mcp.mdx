@@ -1,0 +1,46 @@
+---
+name: Vuelos en Tiempo Real MCP
+slug: vuelos-tiempo-real-mcp
+description: Obtén datos de vuelos en tiempo real incluyendo vuelos de aerolíneas, horarios de aeropuertos, vuelos futuros y tipos de aeronaves mediante la API de Aviationstack.
+category: travel
+tags: [vuelos, aviacion, aeropuertos, horarios, tiempo-real]
+official: false
+github: https://github.com/Pradumnasaraf/aviationstack-mcp
+---
+
+## Descripción general
+
+Vuelos en Tiempo Real MCP proporciona acceso directo a la API de Aviationstack, una de las fuentes de datos de aviación más completas y fiables del mercado. A través de este servidor MCP, agencias de viajes, hoteles, empresas de transporte y cualquier negocio relacionado con el turismo puede consultar en tiempo real el estado de vuelos, horarios de aeropuertos, información de aerolíneas y detalles sobre tipos de aeronaves utilizadas en cada ruta.
+
+La consulta de vuelos en tiempo real es especialmente valiosa para los negocios que necesitan coordinar llegadas y salidas de clientes. Saber si un vuelo llega con retraso permite ajustar los servicios de recogida en aeropuerto, reorganizar reservas de restaurante o modificar el check-in de un hotel sin que el cliente tenga que llamar para comunicar la demora, mejorando significativamente la experiencia del huésped y reduciendo la carga de trabajo del personal.
+
+Además de la información en tiempo real, la API de Aviationstack permite consultar vuelos futuros y rutas programadas, lo que resulta útil para planificar traslados y coordinar la logística de viajes con antelación. La información sobre tipos de aeronaves también es relevante para viajeros frecuentes o clientes corporativos que tienen preferencias específicas sobre el tipo de avión en vuelos de larga distancia.
+
+## Casos de uso para negocios
+
+- **Empresas de transfer y traslados:** Monitorizar en tiempo real los vuelos de llegada de los clientes para ajustar el horario de recogida en el aeropuerto cuando hay retrasos o adelantos en el vuelo.
+- **Hoteles y alojamientos:** Consultar automáticamente el estado de los vuelos de los huéspedes que esperan para ajustar el horario de check-in y preparar la habitación a tiempo.
+- **Agencias de viajes:** Verificar la disponibilidad de conexiones y el estado de los vuelos de sus clientes para gestionar proactivamente cualquier incidencia o modificación de itinerario.
+- **Restaurantes cerca de aeropuertos:** Gestionar reservas de clientes en tránsito consultando los tiempos de escala disponibles según los horarios de vuelos de salida.
+- **Empresas de logística:** Coordinar la recepción de carga aérea consultando los vuelos de carga y sus horarios estimados de llegada a los distintos aeropuertos de destino.
+- **Organizadores de eventos y conferencias:** Verificar los vuelos de ponentes o asistentes VIP para planificar los servicios de bienvenida y transporte con total precisión.
+
+## Configuración básica
+
+Para utilizar Vuelos en Tiempo Real MCP, necesitas una clave de API de Aviationstack. Regístrate en `aviationstack.com` para obtener tu clave de acceso. El plan gratuito incluye 500 consultas mensuales, suficientes para comenzar a probar la integración.
+
+```json
+{
+  "mcpServers": {
+    "aviationstack": {
+      "command": "npx",
+      "args": ["-y", "aviationstack-mcp"],
+      "env": {
+        "AVIATIONSTACK_API_KEY": "tu_api_key"
+      }
+    }
+  }
+}
+```
+
+Con el servidor en funcionamiento, puedes consultar el estado de cualquier vuelo por número de vuelo, buscar salidas y llegadas en un aeropuerto específico o explorar rutas futuras con preguntas directas en lenguaje natural.

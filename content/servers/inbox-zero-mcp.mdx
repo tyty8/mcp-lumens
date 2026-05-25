@@ -1,0 +1,65 @@
+---
+name: Inbox Zero MCP
+slug: inbox-zero-mcp
+description: Gestión inteligente de la bandeja de entrada de Gmail que identifica automáticamente los emails que necesitan respuesta o seguimiento.
+category: communication
+tags: [gmail, email, productividad, bandeja-entrada]
+official: false
+github: https://github.com/elie222/inbox-zero
+---
+
+## Descripción general
+
+Inbox Zero MCP transforma la manera en que los negocios tradicionales gestionan su correo electrónico al aplicar inteligencia artificial directamente sobre la bandeja de entrada de Gmail. El servidor analiza automáticamente cada mensaje recibido y determina si requiere respuesta inmediata, seguimiento posterior, archivo o puede ser ignorado, eliminando la tarea diaria de revisar cientos de correos para encontrar los que realmente importan.
+
+El concepto de "inbox zero" — llegar al final del día con la bandeja de entrada vacía o bajo control — es un objetivo que muchas empresas persiguen pero pocas logran mantener. Este servidor hace posible ese objetivo de forma sostenible: el asistente de IA aprende los patrones de comunicación del negocio, identifica los remitentes importantes, detecta correos que llevan demasiado tiempo sin respuesta y sugiere o ejecuta acciones para mantener el orden. Para un propietario de pequeño negocio que recibe 150 correos al día, esto puede suponer un ahorro de dos horas diarias.
+
+La integración directa con Gmail a través de la API oficial garantiza que todas las operaciones son seguras y reversibles. El sistema puede etiquetear, archivar, marcar como importantes o redactar borradores de respuesta que el usuario solo necesita revisar y aprobar, manteniendo siempre el control humano sobre las comunicaciones más sensibles.
+
+## Casos de uso para negocios
+
+- **Clínicas veterinarias y médicas:** Identificación automática de emails urgentes de pacientes con síntomas preocupantes frente a consultas rutinarias de citas, asegurando que ningún mensaje crítico se pierda entre el volumen de correo diario.
+- **Despachos de abogados y notarías:** Seguimiento inteligente de correos sin respuesta de clientes con plazos legales próximos, evitando que se pierdan fechas críticas por un email que quedó enterrado en la bandeja de entrada.
+- **Tiendas de comercio electrónico:** Clasificación automática de reclamaciones, consultas de pedidos, solicitudes de devolución y correos de proveedores, cada categoría con su prioridad y flujo de respuesta correspondiente.
+- **Agencias inmobiliarias:** Seguimiento de leads — el sistema detecta qué clientes potenciales no han recibido respuesta en más de 24 horas y genera recordatorios o borradores de seguimiento automáticamente.
+- **Restaurantes y catering:** Gestión de solicitudes de reservas grupales, presupuestos para eventos y consultas de disponibilidad que llegan por email, con respuesta automatizada para las consultas más frecuentes.
+- **Consultores y freelancers:** Priorización de comunicaciones con clientes activos sobre correos informativos y newsletters, con alertas específicas para correos que contienen referencias a contratos o facturas.
+
+## Configuración básica
+
+Inbox Zero tiene tanto una interfaz web propia como soporte MCP. Para la integración MCP con tu asistente de IA:
+
+```bash
+git clone https://github.com/elie222/inbox-zero
+cd inbox-zero
+npm install
+npm run build
+```
+
+Configura las credenciales de Google en tu archivo de entorno:
+
+```bash
+# Archivo .env
+GOOGLE_CLIENT_ID=tu-client-id
+GOOGLE_CLIENT_SECRET=tu-client-secret
+DATABASE_URL=postgresql://usuario:contrasena@localhost:5432/inbox_zero
+```
+
+Añade el servidor MCP a tu configuración:
+
+```json
+{
+  "mcpServers": {
+    "inbox-zero": {
+      "command": "node",
+      "args": ["apps/web/dist/mcp.js"],
+      "env": {
+        "GOOGLE_CLIENT_ID": "tu-client-id",
+        "GOOGLE_CLIENT_SECRET": "tu-client-secret"
+      }
+    }
+  }
+}
+```
+
+El primer uso requiere autorizar el acceso a tu cuenta de Gmail mediante el flujo OAuth2 estándar de Google.

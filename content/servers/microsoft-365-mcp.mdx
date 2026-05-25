@@ -1,0 +1,58 @@
+---
+name: Microsoft 365 MCP
+slug: microsoft-365-mcp
+description: Conecta con todo el ecosistema Microsoft 365 mediante Graph API, incluyendo Outlook, correo, archivos, Excel y calendario.
+category: communication
+tags: [microsoft-365, outlook, excel, sharepoint, teams]
+official: false
+github: https://github.com/softeria/ms-365-mcp-server
+---
+
+## Descripción general
+
+Microsoft 365 MCP es la puerta de entrada definitiva para empresas que operan en el ecosistema Microsoft, ofreciendo acceso unificado a toda la suite de productividad a través de la API Graph de Microsoft. En lugar de integrar cada aplicación de forma independiente, este servidor proporciona un punto de conexión único que cubre Outlook (correo y calendario), OneDrive y SharePoint (gestión de archivos), Excel (hojas de cálculo), Teams y más, permitiendo que el asistente de IA coordine tareas que abarcan múltiples herramientas simultáneamente.
+
+Para las empresas tradicionales, el valor de esta integración radica en la automatización de flujos de trabajo que antes requerían saltar entre varias aplicaciones. Por ejemplo, un asistente de IA puede recibir un email con una solicitud de presupuesto, buscar los precios actualizados en una hoja de Excel de OneDrive, generar el documento de presupuesto en Word, enviarlo por Outlook al cliente y crear una entrada en el calendario para el seguimiento, todo en una sola interacción conversacional.
+
+El acceso a través de Microsoft Graph API garantiza que todos los permisos son gestionados de forma centralizada por el departamento de TI de la empresa, con control granular sobre qué datos puede acceder el asistente de IA. Esto es especialmente importante para sectores regulados como el financiero o el legal, donde el cumplimiento normativo exige un registro y control precisos de quién accede a qué información.
+
+## Casos de uso para negocios
+
+- **Empresas de contabilidad y auditoría:** Acceso simultáneo a hojas de cálculo Excel con datos financieros, correos con clientes y calendario para organizar la temporada fiscal de forma coordinada y automatizada.
+- **Cadenas de distribución y logística:** Gestión de pedidos almacenados en SharePoint, comunicaciones con proveedores por Outlook y actualización de hojas de seguimiento en Excel, todo desde una sola interfaz conversacional.
+- **Agencias de publicidad y comunicación:** Coordinación de proyectos con archivos en OneDrive, revisiones por email y reuniones en Teams, con seguimiento automático del estado de cada campaña.
+- **Escuelas y centros educativos:** Gestión de horarios en Excel, comunicaciones con padres por Outlook, y documentación académica en SharePoint, integrada en un flujo automatizado de administración escolar.
+- **Hoteles y establecimientos turísticos:** Gestión de reservas grupales que involucran contratos en SharePoint, confirmaciones por Outlook y actualización de disponibilidad en hojas de cálculo compartidas.
+- **Clínicas y consultorios con equipos:** Coordinación de guardias y turnos en Excel, comunicaciones internas por Teams y gestión de citas por Outlook calendar desde un sistema unificado.
+
+## Configuración básica
+
+El servidor se conecta a Microsoft 365 mediante la API Graph con autenticación OAuth2:
+
+```bash
+git clone https://github.com/softeria/ms-365-mcp-server
+cd ms-365-mcp-server
+npm install
+npm run build
+```
+
+Configura el servidor con tus credenciales de Azure:
+
+```json
+{
+  "mcpServers": {
+    "microsoft-365": {
+      "command": "node",
+      "args": ["dist/index.js"],
+      "env": {
+        "MICROSOFT_CLIENT_ID": "tu-application-id",
+        "MICROSOFT_CLIENT_SECRET": "tu-client-secret",
+        "MICROSOFT_TENANT_ID": "tu-tenant-id",
+        "MICROSOFT_REDIRECT_URI": "http://localhost:3000/auth/callback"
+      }
+    }
+  }
+}
+```
+
+En el portal de Azure (portal.azure.com), registra una aplicación nueva y concede los permisos de Microsoft Graph que necesites: Mail.ReadWrite, Calendars.ReadWrite, Files.ReadWrite, Sites.ReadWrite.All. Tu administrador de Microsoft 365 debe aprobar estos permisos antes de poder usar el servidor.

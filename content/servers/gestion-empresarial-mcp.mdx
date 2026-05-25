@@ -1,0 +1,58 @@
+---
+name: Gestión Empresarial MCP
+slug: gestion-empresarial-mcp
+description: Sistema de gestión empresarial con 31 herramientas de IA que cubren facturas, gastos, clientes, productos y presupuestos para pequeñas y medianas empresas.
+category: finance
+tags: [gestion, facturas, gastos, clientes, pyme]
+official: false
+github: https://github.com/Frihet-io/frihet-mcp
+---
+
+## Descripción general
+
+Gestión Empresarial MCP, desarrollado sobre la plataforma Frihet, proporciona 31 herramientas de gestión empresarial integradas específicamente diseñadas para las necesidades de las pequeñas y medianas empresas. A diferencia de los grandes ERP empresariales que requieren meses de implementación y formación extensa, este servidor ofrece una solución ágil que cubre las funciones esenciales de gestión — facturación, gastos, clientes, catálogo de productos y presupuestos — desde el primer día de uso.
+
+La cobertura completa del ciclo comercial es lo que hace especialmente valioso a este servidor para negocios tradicionales: desde la creación del presupuesto inicial hasta el cobro de la factura final, pasando por la gestión del pedido y el registro del gasto, todo el flujo puede ser gestionado por el asistente de IA sin necesidad de alternar entre diferentes herramientas o sistemas. Un fontanero, un electricista o cualquier profesional autónomo que trabaje con clientes puede gestionar toda su administración empresarial en conversación con el asistente.
+
+La gestión del catálogo de productos y servicios es una herramienta especialmente práctica: una vez configurado el catálogo con los precios y descripciones de cada servicio o producto, el asistente puede generar presupuestos y facturas de forma automática seleccionando los artículos correctos y aplicando los precios actualizados, eliminando los errores de cálculo y las inconsistencias entre documentos que son frecuentes cuando todo se hace manualmente en hojas de cálculo.
+
+## Casos de uso para negocios
+
+- **Profesionales autónomos y freelancers:** Gestión completa de la relación con cada cliente — presupuestos, pedidos, facturas y cobros — desde el asistente de IA, eliminando la carga administrativa que consume tiempo de trabajo productivo.
+- **Pequeños comercios y tiendas:** Control del catálogo de productos con precios actualizados, generación de facturas para clientes empresariales que necesitan justificante y seguimiento de los pagos pendientes.
+- **Empresas de servicios del hogar:** Gestión de presupuestos de obras y reparaciones, seguimiento de trabajos en curso con sus gastos asociados y facturación al cliente cuando el trabajo está completo.
+- **Clínicas y gabinetes de terapia:** Registro de honorarios por sesión, gestión de paquetes de sesiones prepagadas, facturación a aseguradoras y control de pagos pendientes de pacientes.
+- **Agencias de diseño y comunicación:** Presupuestación de proyectos creativos con desglose de horas y materiales, seguimiento de hitos y facturación progresiva según el avance del trabajo.
+- **Empresas de catering y eventos:** Presupuestos detallados por evento con desglose de menú, personal y servicio, control de anticipos recibidos y facturación final con todos los suplementos del evento.
+
+## Configuración básica
+
+El servidor se conecta a la plataforma Frihet para acceder a las herramientas de gestión empresarial:
+
+```bash
+git clone https://github.com/Frihet-io/frihet-mcp
+cd frihet-mcp
+npm install
+npm run build
+```
+
+Configura el servidor con tu API key de Frihet:
+
+```json
+{
+  "mcpServers": {
+    "gestion-empresarial": {
+      "command": "node",
+      "args": ["dist/index.js"],
+      "env": {
+        "FRIHET_API_KEY": "tu-api-key-de-frihet",
+        "FRIHET_WORKSPACE_ID": "tu-workspace-id",
+        "FRIHET_CURRENCY": "EUR",
+        "FRIHET_LANGUAGE": "es"
+      }
+    }
+  }
+}
+```
+
+Crea una cuenta en frihet.io para obtener tu API key y el identificador de espacio de trabajo. La configuración inicial incluye definir tu catálogo de productos y servicios, los datos fiscales de tu empresa y las plantillas de factura y presupuesto. Con estos datos configurados, el asistente puede comenzar a gestionar toda la operación administrativa de tu negocio de inmediato.

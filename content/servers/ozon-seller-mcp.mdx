@@ -1,0 +1,55 @@
+---
+name: Ozon Seller MCP
+slug: ozon-seller-mcp
+description: API completa de Ozon Seller y Performance con 466 métodos y 15 herramientas MCP, incluyendo gestión de riesgo de rotura de stock, auditoría de contenido, precios y distribución de almacén.
+category: retail
+tags: [ozon, marketplace, rusia, seller, inventario]
+official: false
+github: https://github.com/PCDCK/ozon-mcp
+---
+
+## Descripción general
+
+Ozon Seller MCP es el servidor más completo disponible para gestionar una cuenta de vendedor en Ozon, el principal marketplace de Rusia y uno de los más grandes de Europa del Este. Con acceso a 466 métodos de la API oficial de Ozon —tanto Seller API como Performance API— a través de 15 herramientas MCP especializadas, este servidor cubre prácticamente todas las operaciones posibles en la plataforma, desde la gestión básica de catálogo hasta las funcionalidades más avanzadas de publicidad y logística de almacén.
+
+Una de las funcionalidades más valoradas por los vendedores es la gestión inteligente del riesgo de rotura de stock. El servidor analiza el ritmo de ventas de cada SKU, el tiempo de reposición desde proveedor y la estacionalidad histórica para calcular cuántos días de stock quedan y cuándo hay que hacer el siguiente pedido de aprovisionamiento. Para los vendedores que usan los almacenes de Ozon (modelo FBO), esto es especialmente crítico porque una rotura de stock penaliza directamente el posicionamiento del producto en el marketplace y puede tardar semanas en recuperarse.
+
+La auditoría de contenido es otra pieza fundamental del servidor. Ozon tiene criterios específicos y a veces estrictos para la calidad del contenido de los listados: imágenes con fondo blanco, títulos con estructura determinada, atributos obligatorios por categoría y políticas de moderación que pueden resultar en la supresión del listado. El asistente con este servidor puede auditar periódicamente todos los SKUs del catálogo, identificar los que no cumplen los estándares actuales de Ozon y priorizar las correcciones según el impacto en ventas.
+
+## Casos de uso para negocios
+
+- **Exportadores europeos a Rusia:** Gestión completa del catálogo en Ozon desde Europa, con traducción y adaptación de contenidos, gestión de inventario en almacenes de Ozon y seguimiento de las métricas de vendedor requeridas para mantener el estatus de vendedor confiable.
+- **Marcas con presencia en múltiples marketplaces:** Sincronización de precios y disponibilidad entre Ozon y otros canales, asegurando coherencia de precio mínimo anunciado (MAP) en todos los mercados.
+- **Vendedores de alta rotación:** Alertas automáticas diarias sobre SKUs con menos de 7 días de stock disponible en los almacenes de Ozon, con recomendaciones de cantidad a reponer basadas en la previsión de ventas.
+- **Gestores de publicidad en Ozon:** Análisis de rendimiento de campañas de Ozon Performance —impresiones, clics, conversiones y ROAS por producto— para optimizar el presupuesto de publicidad entre los artículos con mejor retorno.
+- **Equipos de contenidos:** Auditoría semanal del catálogo completo para identificar listados con puntuación de contenido baja, sin A+ content o con atributos obligatorios incompletos que afectan al posicionamiento en búsqueda.
+- **Operaciones de almacén FBO:** Análisis de la distribución de stock entre los diferentes almacenes regionales de Ozon para optimizar la cobertura geográfica y los tiempos de entrega prometidos a los compradores.
+
+## Configuración básica
+
+Accede al panel de Ozon Seller y genera las credenciales de API necesarias desde Configuración > API:
+
+```bash
+npx @pcdck/ozon-mcp
+```
+
+Configura las credenciales en tu cliente MCP:
+
+```json
+{
+  "mcpServers": {
+    "ozon-seller": {
+      "command": "npx",
+      "args": ["@pcdck/ozon-mcp"],
+      "env": {
+        "OZON_CLIENT_ID": "tu-client-id",
+        "OZON_API_KEY": "tu-api-key",
+        "OZON_PERFORMANCE_CLIENT_ID": "tu-performance-client-id",
+        "OZON_PERFORMANCE_CLIENT_SECRET": "tu-performance-secret"
+      }
+    }
+  }
+}
+```
+
+Las credenciales de Seller API (Client ID y API Key) se generan en seller.ozon.ru en el apartado de configuración de API. Para acceder a la Performance API de publicidad, necesitas credenciales separadas que se generan en el portal de Ozon Performance. Asegúrate de otorgar todos los permisos necesarios al generar las claves.

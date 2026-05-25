@@ -1,0 +1,46 @@
+---
+name: TripAdvisor MCP
+slug: tripadvisor-mcp
+description: Interactúa con la API de Tripadvisor para obtener datos de ubicación, reseñas de clientes y fotos de hoteles, restaurantes y atracciones turísticas.
+category: travel
+tags: [tripadvisor, resenas, hoteles, restaurantes, turismo]
+official: false
+github: https://github.com/pab1it0/tripadvisor-mcp
+---
+
+## Descripción general
+
+TripAdvisor MCP permite acceder a la vasta base de datos de Tripadvisor directamente desde tu asistente de IA. Con más de mil millones de reseñas y opiniones de viajeros de todo el mundo, Tripadvisor es la referencia más consultada en la industria turística, y esta integración pone toda esa información al alcance de hoteles, restaurantes, agencias de viajes y operadores turísticos sin necesidad de consultar la plataforma manualmente.
+
+El servidor MCP permite buscar establecimientos por ubicación y categoría, obtener fichas detalladas con valoraciones, reseñas recientes, fotografías y datos de contacto, así como comparar diferentes opciones según criterios específicos. Esta capacidad transforma la manera en que los negocios turísticos responden a las consultas de sus clientes, permitiendo ofrecer recomendaciones basadas en datos reales y actualizados de miles de viajeros.
+
+Para hoteles y restaurantes, la posibilidad de monitorizar las propias reseñas y compararlas con las de la competencia resulta de gran valor estratégico. Analizar sistemáticamente el feedback de los clientes permite identificar patrones, detectar áreas de mejora y tomar decisiones basadas en evidencias para elevar la calidad del servicio y mejorar el posicionamiento en Tripadvisor.
+
+## Casos de uso para negocios
+
+- **Hoteles y alojamientos:** Monitorizar automáticamente las propias reseñas en Tripadvisor y recibir análisis del sentimiento general de los huéspedes para identificar problemas recurrentes y tendencias de satisfacción.
+- **Restaurantes y bares:** Comparar valoraciones y comentarios con los principales competidores del área para identificar puntos de diferenciación y oportunidades de mejora en el servicio o la oferta gastronómica.
+- **Agencias de viajes:** Obtener información detallada y actualizada sobre hoteles y atracciones en destinos específicos para asesorar a los clientes con datos fiables de la comunidad viajera.
+- **Operadores turísticos:** Investigar la reputación online de proveedores de alojamiento y actividades antes de incluirlos en los paquetes de viaje ofertados a los clientes.
+- **Guías de turismo:** Enriquecer las visitas con datos actualizados sobre atracciones, museos y restaurantes recomendados por otros viajeros en tiempo real.
+- **Responsables de marketing turístico:** Analizar la percepción de un destino turístico a través de las reseñas para desarrollar estrategias de comunicación y promoción más efectivas.
+
+## Configuración básica
+
+Para utilizar TripAdvisor MCP necesitas una clave de API de Tripadvisor Content API. Regístrate en el programa de desarrolladores de Tripadvisor en `tripadvisor.com/developers` para obtener tu `TRIPADVISOR_API_KEY`.
+
+```json
+{
+  "mcpServers": {
+    "tripadvisor": {
+      "command": "npx",
+      "args": ["-y", "tripadvisor-mcp"],
+      "env": {
+        "TRIPADVISOR_API_KEY": "tu_api_key"
+      }
+    }
+  }
+}
+```
+
+Con el servidor configurado, puedes buscar establecimientos, consultar reseñas recientes y obtener datos detallados de cualquier hotel, restaurante o atracción turística con preguntas en lenguaje natural.

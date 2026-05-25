@@ -5,8 +5,8 @@ import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 
 const NAV_LINKS = [
-  { href: '/servers', label: 'Servers' },
-  { href: '/guides', label: 'Guides' },
+  { href: '/servers', label: 'Servidores' },
+  { href: '/guides', label: 'Guías' },
 ]
 
 export function Nav() {

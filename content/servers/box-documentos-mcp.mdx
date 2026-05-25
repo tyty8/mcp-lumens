@@ -1,0 +1,54 @@
+---
+name: Box Gestión de Documentos MCP
+slug: box-documentos-mcp
+description: Acceso seguro al contenido de Box para agentes de IA — busca, formula preguntas sobre archivos y carpetas, y extrae datos de la biblioteca de documentos de tu empresa.
+category: productivity
+tags: [box, documentos, almacenamiento, busqueda, archivos]
+official: false
+github: https://github.com/box/mcp-server-box-remote
+---
+
+## Descripción general
+
+El servidor Box Gestión de Documentos MCP es el servidor oficial desarrollado por Box para integrar su plataforma de gestión de contenido empresarial con asistentes de IA. Box es ampliamente utilizado en empresas medianas y grandes como repositorio centralizado de documentación corporativa —contratos, políticas, informes, presentaciones, manuales técnicos— y este servidor permite que esos documentos sean accesibles y consultables por el asistente de IA de forma segura y controlada.
+
+La capacidad de hacer preguntas sobre el contenido de los archivos es lo que diferencia fundamentalmente a este servidor de un simple explorador de archivos. El asistente no solo puede listar los archivos de una carpeta o buscar por nombre, sino que puede leer el contenido de los documentos y responder preguntas sobre ellos en lenguaje natural. Un empleado puede preguntar "¿Cuáles son las condiciones de rescisión del contrato con el proveedor X?" y el asistente buscará en la carpeta de contratos de Box el documento correspondiente y extraerá la información específica solicitada, sin que el usuario tenga que abrir y leer el contrato completo.
+
+La seguridad es un aspecto crítico en cualquier integración de IA con documentos empresariales, y Box y este servidor lo abordan con rigor. El acceso respeta los permisos configurados en Box: el asistente solo puede acceder a los archivos y carpetas para los que el usuario autenticado tiene permisos, y las operaciones de modificación están controladas por los mismos permisos de Box que se aplicarían si el usuario accediera directamente desde la interfaz web. Esto garantiza que la integración con IA no crea nuevas vulnerabilidades en el control de acceso a la información sensible de la empresa.
+
+## Casos de uso para negocios
+
+- **Departamentos jurídicos y de contratos:** Búsqueda y consulta de contratos con clientes, proveedores y socios almacenados en Box, extrayendo información clave como fechas de vencimiento, penalizaciones por incumplimiento o condiciones de renovación automática.
+- **Equipos de ventas y preventa:** Acceso rápido a los materiales de presentación, casos de éxito, listas de precios y fichas técnicas de producto almacenados en Box durante una propuesta o reunión con un cliente potencial.
+- **Recursos humanos:** Consulta de las políticas de empresa, convenios colectivos, procedimientos de RRHH y documentos de onboarding almacenados en Box para responder preguntas frecuentes de empleados sin tener que buscar manualmente entre carpetas.
+- **Equipos técnicos y de soporte:** Acceso a manuales técnicos, guías de instalación y documentación de producto para responder consultas de clientes o resolver incidencias sin necesidad de buscar el documento correcto en una estructura de carpetas compleja.
+- **Auditorías y cumplimiento normativo:** Búsqueda de documentos de política, registros y evidencias almacenadas en Box para preparar auditorías internas o externas, identificando rápidamente qué documentación existe y cuál está pendiente.
+- **Dirección y gerencia:** Consulta de informes de gestión, actas de reuniones y presentaciones de directivos almacenadas en Box para repasar información antes de reuniones o recuperar decisiones tomadas en periodos anteriores.
+
+## Configuración básica
+
+Este servidor MCP oficial de Box se conecta directamente a tu cuenta empresarial de Box usando OAuth 2.0:
+
+```bash
+npx @box/mcp-server-box
+```
+
+Configura las credenciales en tu cliente MCP:
+
+```json
+{
+  "mcpServers": {
+    "box": {
+      "command": "npx",
+      "args": ["@box/mcp-server-box"],
+      "env": {
+        "BOX_CLIENT_ID": "tu-client-id",
+        "BOX_CLIENT_SECRET": "tu-client-secret",
+        "BOX_ENTERPRISE_ID": "tu-enterprise-id"
+      }
+    }
+  }
+}
+```
+
+Las credenciales de OAuth se crean registrando una aplicación en el portal de desarrolladores de Box en developer.box.com. Selecciona el tipo de aplicación "Custom App" con autenticación OAuth 2.0. El administrador de Box de tu empresa deberá aprobar la aplicación antes de que pueda acceder al contenido corporativo.

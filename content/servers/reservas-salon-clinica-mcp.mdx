@@ -1,0 +1,48 @@
+---
+name: Reservas Salón y Clínica MCP
+slug: reservas-salon-clinica-mcp
+description: Servidor MCP para la API de Altegio con 18 herramientas para gestión de citas, clientes, servicios y horarios del personal de salones, spas, clínicas y centros de bienestar.
+category: healthcare
+tags: [citas, salon, clinica, spa, reservas]
+official: false
+github: https://github.com/moro3k/mcp-altegio
+---
+
+## Descripción general
+
+Reservas Salón y Clínica MCP integra la plataforma Altegio — uno de los sistemas de gestión de citas más populares en Europa para salones de belleza, spas, clínicas estéticas y centros de bienestar — directamente con tu asistente de IA. Con 18 herramientas disponibles, el servidor cubre todas las necesidades operativas de la gestión de citas: desde la consulta de disponibilidad de cada especialista hasta la confirmación de reservas, pasando por la gestión de la ficha de cliente, los servicios ofrecidos y los horarios del personal.
+
+La gestión de citas es la actividad central y más crítica en los negocios de salud y belleza. Una agenda bien gestionada maximiza la ocupación de los especialistas, reduce las ausencias y cancelaciones de última hora y mejora la experiencia del cliente desde el primer contacto. Con este servidor MCP, el recepcionista o el asistente de IA puede gestionar toda la agenda del centro en tiempo real sin necesidad de acceder manualmente al sistema de reservas en cada interacción.
+
+La integración también permite mantener actualizados los perfiles de clientes con su historial de visitas, preferencias de servicio y datos de contacto, facilitando un servicio más personalizado y la comunicación proactiva para recordatorios de citas, seguimientos post-tratamiento o campañas de fidelización dirigidas a clientes específicos según su historial.
+
+## Casos de uso para negocios
+
+- **Salones de peluquería y estética:** Gestionar la agenda de todos los estilistas y esteticistas del salón desde el asistente de IA, confirmando, modificando o cancelando citas sin acceder al software de gestión.
+- **Clínicas de medicina estética:** Coordinar las citas de los diferentes médicos y especialistas del centro, gestionando los tiempos necesarios para cada tipo de tratamiento y evitando solapamientos en el uso del equipamiento.
+- **Centros de spa y bienestar:** Administrar las reservas de salas de tratamiento y los horarios de los terapeutas, optimizando la ocupación de las instalaciones durante todo el horario de apertura.
+- **Fisioterapeutas y osteopatas:** Gestionar la agenda de consulta y las fichas de pacientes, con acceso rápido al historial de tratamientos de cada paciente antes de cada sesión.
+- **Centros de depilación y microblading:** Programar con precisión los tiempos de cada tratamiento según el tipo de servicio y la especialista asignada, maximizando la productividad del equipo.
+- **Cadenas de centros de bienestar:** Supervisar la ocupación y rendimiento de múltiples centros desde un punto centralizado, identificando los horarios de mayor demanda y los especialistas con mayor productividad.
+
+## Configuración básica
+
+Para integrar Reservas Salón y Clínica MCP necesitas una cuenta activa en Altegio y tus credenciales de API. Accede a la sección de integraciones de tu cuenta Altegio para obtener el `ALTEGIO_PARTNER_TOKEN` y el `ALTEGIO_USER_TOKEN`.
+
+```json
+{
+  "mcpServers": {
+    "altegio": {
+      "command": "npx",
+      "args": ["-y", "mcp-altegio"],
+      "env": {
+        "ALTEGIO_PARTNER_TOKEN": "tu_partner_token",
+        "ALTEGIO_USER_TOKEN": "tu_user_token",
+        "ALTEGIO_COMPANY_ID": "tu_company_id"
+      }
+    }
+  }
+}
+```
+
+Una vez configurado, puedes consultar la disponibilidad de cualquier especialista, programar nuevas citas, modificar reservas existentes y acceder a la ficha completa de cualquier cliente directamente desde tu asistente de IA.

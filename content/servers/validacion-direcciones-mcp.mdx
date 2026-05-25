@@ -1,0 +1,55 @@
+---
+name: Validación de Direcciones Globales MCP
+slug: validacion-direcciones-mcp
+description: Búsquedas y validación de códigos postales en más de 240 países con metadatos de zona horaria, región administrativa y elevación para garantizar la exactitud de las entregas.
+category: logistics
+tags: [direcciones, codigos-postales, validacion, envios, global]
+official: false
+github: https://github.com/PostalDataPI/postaldatapi-mcp
+---
+
+## Descripción general
+
+El servidor Validación de Direcciones Globales MCP se conecta con la base de datos de PostalDataAPI, que cubre los sistemas de códigos postales de más de 240 países y territorios. La validación de direcciones es un proceso crítico para cualquier negocio que envíe productos o preste servicios en distintas ubicaciones: una dirección incorrecta o incompleta en un pedido no solo genera el coste de un reenvío, sino que también impacta en la experiencia del cliente y puede afectar negativamente a las métricas de entrega con el transportista.
+
+Lo que distingue a este servidor de un simple validador de formato de dirección es la riqueza de metadatos que proporciona junto con la validación. Además de confirmar si un código postal es válido para la ciudad indicada, el servidor devuelve la zona horaria oficial de esa ubicación (esencial para programar llamadas o comunicaciones con clientes internacionales), la región administrativa (provincia, estado, comunidad autónoma) con sus denominaciones oficiales en el idioma del país, las coordenadas geográficas aproximadas del código postal y la elevación media de la zona.
+
+Para los negocios con operaciones internacionales, la validación de códigos postales en el punto de entrada del pedido —ya sea en el checkout de la tienda online o en la recepción de un pedido por teléfono— evita que los errores se propaguen a lo largo de todo el proceso: de la generación de la etiqueta de envío a la entrega fallida, pasando por la facturación incorrecta y la comunicación al cliente sobre el estado de su pedido. Un error de dirección detectado antes del envío cuesta segundos de corrección; el mismo error detectado después de la entrega fallida puede costar varios días de gestión y la fidelidad del cliente.
+
+## Casos de uso para negocios
+
+- **Tiendas online con envíos internacionales:** Validación del código postal en el checkout antes de que el cliente finalice la compra, con autocompletado de ciudad y provincia para reducir errores de tipeo y acelerar el proceso de compra.
+- **Call centers y atención al cliente:** Verificación instantánea de la dirección que el cliente dicta por teléfono, confirmando que el código postal corresponde a la ciudad indicada antes de registrar el pedido o actualizar los datos de envío.
+- **Empresas de servicios a domicilio:** Validación de la dirección del cliente al registrar una solicitud de servicio, incluyendo la zona horaria para programar correctamente las citas cuando se trabaja con clientes en distintas regiones o países.
+- **Importadores y exportadores:** Verificación de las direcciones de proveedores y clientes internacionales para asegurar que los documentos aduaneros y las etiquetas de envío contienen la información correcta y en el formato requerido por el país de destino.
+- **Bases de datos de clientes:** Limpieza y enriquecimiento de bases de datos de clientes existentes, validando y corrigiendo las direcciones almacenadas y añadiendo metadatos como coordenadas y zona horaria para mejorar la segmentación geográfica.
+- **Empresas de mensajería y logística:** Preprocesamiento de manifiestos de envío para identificar y corregir direcciones incorrectas antes de la recogida, reduciendo el número de envíos fallidos que requieren gestión manual.
+
+## Configuración básica
+
+Regístrate en PostalDataAPI para obtener tu clave de API gratuita o de pago según el volumen de consultas necesario:
+
+```bash
+npx @postaldatapi/postaldatapi-mcp
+```
+
+Configura las credenciales en tu cliente MCP:
+
+```json
+{
+  "mcpServers": {
+    "postal-validation": {
+      "command": "npx",
+      "args": ["@postaldatapi/postaldatapi-mcp"],
+      "env": {
+        "POSTALDATAPI_KEY": "tu-api-key",
+        "DEFAULT_COUNTRY": "ES",
+        "INCLUDE_TIMEZONE": "true",
+        "INCLUDE_COORDINATES": "true"
+      }
+    }
+  }
+}
+```
+
+El plan gratuito de PostalDataAPI incluye un número limitado de consultas mensuales, suficiente para empezar y evaluar la herramienta. Para volúmenes de validación altos propios de un ecommerce activo, los planes de pago ofrecen respuestas más rápidas y mayor número de consultas incluidas. La API responde en milisegundos, lo que la hace perfectamente viable para su uso en tiempo real durante el checkout.

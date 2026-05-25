@@ -1,0 +1,47 @@
+---
+name: Traducción Médica y Multilingüe MCP
+slug: traduccion-medica-mcp
+description: Servidor MCP para la API de Lara Translate con detección de idioma y traducciones contextuales de alta calidad para comunicaciones médicas y documentos clínicos multilingües.
+category: healthcare
+tags: [traduccion, multilingue, medico, pacientes, idiomas]
+official: false
+github: https://github.com/translated/lara-mcp
+---
+
+## Descripción general
+
+Traducción Médica y Multilingüe MCP integra la API de Lara Translate, una plataforma de traducción automática neuronal especializada en traducciones contextuales de alta calidad con memoria de traducción y capacidad de adaptación al dominio específico de cada cliente. En el ámbito sanitario, donde la precisión terminológica puede tener consecuencias clínicas directas, contar con una herramienta de traducción que va más allá de la traducción literal y comprende el contexto médico es fundamental para garantizar la seguridad de los pacientes.
+
+La diversidad de pacientes extranjeros en las clínicas y hospitales de los principales destinos turísticos y ciudades con alta población inmigrante hace que la comunicación multilingüe sea una necesidad operativa cotidiana. Desde el formulario de anamnesis hasta las instrucciones de medicación, pasando por los consentimientos informados o los informes de alta, existe una cantidad considerable de documentación médica que necesita estar disponible en el idioma del paciente para garantizar una atención de calidad y legalmente segura.
+
+Lara Translate se diferencia de otros servicios de traducción por su capacidad de aprendizaje adaptativo: la plataforma puede ser entrenada con la terminología específica de cada institución médica, asegurando que los términos propios de cada especialidad o los nombres comerciales de los medicamentos se traduzcan siempre de la forma correcta y consistente establecida por cada centro sanitario.
+
+## Casos de uso para negocios
+
+- **Urgencias hospitalarias con pacientes extranjeros:** Traducir en tiempo real la información que proporcionan los pacientes sobre sus síntomas, alergias y medicación habitual para facilitar el diagnóstico y el tratamiento de emergencia.
+- **Clínicas de turismo médico:** Comunicarse efectivamente con pacientes internacionales que viajan para recibir tratamientos médicos, traduciendo toda la documentación del proceso desde el presupuesto inicial hasta el informe de alta.
+- **Consultas de medicina general en zonas turísticas:** Atender a pacientes de múltiples nationalidades durante la temporada turística, traduciendo síntomas, instrucciones de tratamiento y recetas al idioma del paciente.
+- **Servicios de telemedicina internacional:** Ofrecer consultas médicas online a pacientes de diferentes países con traducción en tiempo real de las comunicaciones para garantizar la comprensión mutua.
+- **Farmacias con clientes internacionales:** Traducir las instrucciones de uso de los medicamentos y las advertencias de seguridad al idioma del cliente para garantizar la administración correcta del tratamiento.
+- **Gestores de historiales clínicos multilingües:** Traducir informes médicos recibidos de centros extranjeros para incorporar el historial clínico de pacientes internacionales al sistema de información del centro.
+
+## Configuración básica
+
+Para usar Traducción Médica y Multilingüe MCP necesitas una clave de API de Lara Translate. Regístrate en `laratranslate.com` para obtener tu `LARA_ACCESS_KEY_ID` y `LARA_ACCESS_KEY_SECRET`.
+
+```json
+{
+  "mcpServers": {
+    "lara-translate": {
+      "command": "npx",
+      "args": ["-y", "@translated/lara-mcp"],
+      "env": {
+        "LARA_ACCESS_KEY_ID": "tu_access_key_id",
+        "LARA_ACCESS_KEY_SECRET": "tu_access_key_secret"
+      }
+    }
+  }
+}
+```
+
+Una vez configurado, puedes traducir textos médicos entre más de 200 pares de idiomas, con detección automática del idioma de origen y opciones de personalización terminológica para adaptar las traducciones al vocabulario específico de tu centro sanitario.

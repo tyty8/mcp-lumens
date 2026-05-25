@@ -1,0 +1,50 @@
+---
+name: Amazon Advertising MCP
+slug: amazon-advertising-mcp
+description: Interactúa con Amazon Advertising para analizar métricas de campaña, configuraciones y optimizar anuncios de productos patrocinados en el marketplace.
+category: marketing
+tags: [amazon, advertising, acos, marketplace, ecommerce]
+official: false
+github: https://github.com/MarketplaceAdPros/amazon-ads-mcp-server
+---
+
+## Descripción general
+
+Amazon Advertising MCP conecta tu asistente de IA directamente con la plataforma publicitaria de Amazon, permitiendo analizar el rendimiento de campañas de Sponsored Products, Sponsored Brands y Sponsored Display, así como gestionar configuraciones y optimizar la inversión publicitaria en el marketplace más grande del mundo. Para cualquier negocio que venda productos en Amazon — desde artesanos locales hasta distribuidores y marcas propias —, la publicidad dentro del marketplace es con frecuencia el factor decisivo entre aparecer en las primeras posiciones o quedar enterrado en los resultados de búsqueda.
+
+La métrica central de Amazon Advertising es el ACoS (Advertising Cost of Sales), que indica qué porcentaje de los ingresos de ventas atribuidas a publicidad se ha gastado en los anuncios. Mantener el ACoS bajo control mientras se maximizan las ventas y la visibilidad requiere un análisis constante de palabras clave, pujas y rendimiento por producto, una tarea que puede consumir horas semanales de gestión manual. Este servidor permite al asistente de IA encargarse de ese análisis y proponer o ejecutar ajustes de optimización de forma autónoma.
+
+El servidor proporciona acceso a los datos de campaña a nivel granular: rendimiento por término de búsqueda, análisis de palabras clave de baja eficiencia que consumen presupuesto sin generar ventas, identificación de oportunidades de puja basadas en el historial de conversión y comparativas de rendimiento entre períodos. Para vendedores con catálogos amplios, la capacidad de analizar el rendimiento por categoría de producto o por ASIN individual es especialmente valiosa para priorizar la inversión publicitaria donde genera mayor retorno.
+
+## Casos de uso para negocios
+
+- **Artesanos y productores locales que venden en Amazon:** Analiza qué palabras clave están generando ventas reales y cuáles solo consumen presupuesto, ajustando las pujas para concentrar la inversión en los términos más rentables del catálogo.
+- **Distribuidores y mayoristas con presencia en el marketplace:** Compara el rendimiento publicitario de diferentes marcas o categorías de producto para distribuir el presupuesto mensual de publicidad de forma estratégica y basada en datos.
+- **Marcas de producto propio (private label):** Monitoriza el ACoS por producto y ajusta las pujas automáticamente para mantener la rentabilidad mientras se maximiza la visibilidad en las búsquedas de alta intención de compra.
+- **Vendedores de temporada (Navidad, verano, vuelta al cole):** Planifica e implementa estrategias de puja agresiva durante los picos de demanda y reduce el gasto en períodos de baja actividad, optimizando el presupuesto anual de publicidad.
+- **Tiendas físicas que están digitalizando su negocio:** Utiliza Amazon como canal de ventas adicional con una estrategia publicitaria inteligente que maximice la visibilidad de los productos sin comprometer la rentabilidad desde el primer día.
+- **Importadores y distribuidores de marcas internacionales:** Gestiona múltiples campañas de productos de diferentes marcas con análisis cruzado de rendimiento para identificar cuáles requieren mayor soporte publicitario para ganar cuota de mercado.
+
+## Configuración básica
+
+Necesitas credenciales de la API de Amazon Advertising obtenidas a través de Amazon Developer Central:
+
+```json
+{
+  "mcpServers": {
+    "amazon-advertising": {
+      "command": "npx",
+      "args": ["-y", "@marketplaceadpros/amazon-ads-mcp-server"],
+      "env": {
+        "AMAZON_ADS_CLIENT_ID": "tu-client-id",
+        "AMAZON_ADS_CLIENT_SECRET": "tu-client-secret",
+        "AMAZON_ADS_REFRESH_TOKEN": "tu-refresh-token",
+        "AMAZON_ADS_PROFILE_ID": "tu-profile-id",
+        "AMAZON_ADS_REGION": "EU"
+      }
+    }
+  }
+}
+```
+
+El Profile ID corresponde a tu cuenta de vendedor en Amazon Advertising y lo encontrarás en la API de perfiles de Amazon Advertising tras completar el flujo OAuth. Ajusta la región (`NA` para América del Norte, `EU` para Europa, `FE` para Extremo Oriente) según el marketplace donde operes. Una vez configurado, el asistente puede generar informes de rendimiento, identificar términos de búsqueda no rentables y proponer nuevas palabras clave basadas en el historial de conversión.

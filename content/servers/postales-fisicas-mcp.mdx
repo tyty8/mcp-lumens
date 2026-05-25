@@ -1,0 +1,57 @@
+---
+name: Postales Físicas MCP
+slug: postales-fisicas-mcp
+description: Envía postales físicas reales a cualquier parte del mundo mediante agentes de IA, con envío masivo de hasta 500 destinatarios desde $0.72 por tarjeta.
+category: communication
+tags: [correo-postal, marketing-directo, postales, envio-masivo]
+official: false
+github: https://github.com/PostcardBot/mcp-server
+---
+
+## Descripción general
+
+Postales Físicas MCP permite a tu asistente de IA enviar tarjetas postales y cartas físicas reales a cualquier dirección del mundo, sin que nadie tenga que ir a una imprenta ni a Correos. La integración con PostcardBot automatiza todo el proceso: diseño de la postal, impresión, franqueo y envío postal, todo orquestado digitalmente desde el asistente de IA por tan solo $0.72 por tarjeta en envíos masivos de hasta 500 destinatarios.
+
+En un mundo saturado de comunicaciones digitales, el correo físico ha recuperado un poder de atención que el email perdió hace años. Una tarjeta postal que llega al buzón de un cliente destaca de forma memorable en un momento en que el buzón físico prácticamente solo recibe facturas y publicidad de supermercados. Para negocios que quieren diferenciarse en su comunicación con clientes o que trabajan con segmentos demográficos con menor uso del digital — personas mayores, propietarios de negocios tradicionales, clientes en zonas rurales — el correo físico es insustituible.
+
+El envío masivo de hasta 500 postales en una sola operación hace viable campañas de marketing directo que antes requerían una agencia especializada. Una clínica puede enviar tarjetas de felicitación de cumpleaños a todos sus pacientes; una tienda puede avisar a sus mejores clientes del comienzo de las rebajas con una postal exclusiva; una inmobiliaria puede enviar cartas de valoración de vivienda a todos los propietarios de un barrio concreto. El coste unitario es competitivo con el correo publicitario tradicional pero con el valor añadido de la personalización individual.
+
+## Casos de uso para negocios
+
+- **Clínicas y consultorios médicos:** Felicitaciones de cumpleaños personalizadas para cada paciente, con un mensaje de recordatorio amable sobre la próxima revisión recomendada según su historial.
+- **Agencias inmobiliarias:** Cartas de prospección a propietarios de viviendas en zonas de alta demanda, con valoración estimada del inmueble y propuesta de tasación gratuita.
+- **Tiendas y comercios locales:** Postales de agradecimiento a clientes frecuentes con código de descuento exclusivo impreso, con mayor impacto y tasa de canje que el mismo descuento enviado por email.
+- **Hoteles y establecimientos turísticos:** Tarjeta de agradecimiento enviada a los huéspedes después de su estancia, con foto del establecimiento e invitación a volver con oferta especial para reserva directa.
+- **Academias y centros de formación:** Diplomas físicos y cartas de felicitación enviados automáticamente a los alumnos que completan sus cursos, con mayor valor percibido que un certificado digital.
+- **Despachos profesionales:** Felicitaciones navideñas físicas y personalizadas para clientes de valor, diferenciándose del email masivo de felicitación que reciben de todas partes.
+
+## Configuración básica
+
+El servidor requiere una cuenta de PostcardBot y tu API key:
+
+```bash
+git clone https://github.com/PostcardBot/mcp-server
+cd mcp-server
+npm install
+npm run build
+```
+
+Configura el servidor con tus credenciales de PostcardBot:
+
+```json
+{
+  "mcpServers": {
+    "postales-fisicas": {
+      "command": "node",
+      "args": ["dist/index.js"],
+      "env": {
+        "POSTCARDBOT_API_KEY": "tu-api-key-de-postcardbot",
+        "POSTCARDBOT_RETURN_ADDRESS": "Tu Empresa, Calle Ejemplo 1, 28001 Madrid",
+        "POSTCARDBOT_DEFAULT_MESSAGE": "Gracias por confiar en nosotros."
+      }
+    }
+  }
+}
+```
+
+Regístrate en postcardbot.com para crear tu cuenta, obtener la API key y configurar tu dirección de remitente. Puedes subir tus propios diseños de postal o usar las plantillas disponibles en la plataforma. El sistema acepta CSV con listas de destinatarios para los envíos masivos, y el asistente de IA puede personalizar el mensaje de cada tarjeta con datos del cliente.

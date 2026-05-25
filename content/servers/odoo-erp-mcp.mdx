@@ -1,0 +1,56 @@
+---
+name: Odoo ERP MCP
+slug: odoo-erp-mcp
+description: Servidor MCP para Odoo ERP mediante JSON-RPC API, con soporte para operaciones CRUD, inspección de modelos y contexto de usuario y empresa para gestión empresarial completa.
+category: productivity
+tags: [odoo, erp, inventario, ventas, contabilidad]
+official: false
+github: https://github.com/twtrubiks/odoo19-mcp-server
+---
+
+## Descripción general
+
+El servidor Odoo ERP MCP abre una interfaz conversacional a Odoo, el sistema ERP de código abierto más utilizado por pequeñas y medianas empresas en todo el mundo. Odoo cubre de forma integrada todas las áreas de gestión empresarial —ventas, compras, inventario, contabilidad, fabricación, proyectos y recursos humanos— pero su curva de aprendizaje puede ser pronunciada para usuarios que no son expertos en el sistema. Este servidor reduce significativamente esa barrera al permitir que cualquier empleado interactúe con Odoo en lenguaje natural sin necesidad de conocer la navegación de la interfaz.
+
+La integración mediante JSON-RPC permite acceder a cualquier modelo de datos de Odoo con operaciones completas de creación, lectura, actualización y eliminación (CRUD). Esto significa que el servidor no está limitado a unos módulos predefinidos, sino que puede interactuar con cualquier módulo de Odoo instalado en tu instancia, incluidos los módulos personalizados desarrollados específicamente para tu empresa. La inspección de modelos en tiempo real permite además que el asistente entienda la estructura de datos de tu Odoo particular y formule las consultas correctamente.
+
+El contexto de usuario y empresa es fundamental para que el servidor funcione correctamente en entornos multiempresa. En Odoo es frecuente que una misma instancia gestione varias empresas de un mismo grupo empresarial, cada una con su contabilidad, inventario y configuraciones independientes. El servidor respeta estos contextos, asegurando que las consultas y operaciones afectan siempre a la empresa correcta y que los datos contables de cada entidad permanecen perfectamente separados.
+
+## Casos de uso para negocios
+
+- **Gestores de almacén:** Consulta del stock disponible de cualquier producto, registro de entradas y salidas de almacén, confirmación de albaranes de recepción y creación de órdenes de transferencia entre ubicaciones, todo desde el asistente.
+- **Equipos de ventas:** Creación de presupuestos y pedidos de venta para clientes existentes o nuevos, consulta del historial de pedidos de un cliente y seguimiento del estado de las órdenes pendientes de facturar.
+- **Departamentos de compras:** Emisión de órdenes de compra a proveedores habituales, consulta de los pedidos pendientes de recepción y comparativa de precios de compra históricos por proveedor.
+- **Administración y contabilidad:** Consulta de facturas pendientes de cobro, creación de asientos contables, verificación del balance de cuentas y generación de informes de saldos de clientes y proveedores.
+- **Dirección general:** Resúmenes ejecutivos del estado del negocio en lenguaje natural — ventas del mes, margen bruto, stock valorado, saldo de tesorería — sin necesidad de abrir Odoo y buscar los informes manualmente.
+- **Atención al cliente:** Consulta rápida del historial de pedidos y facturas de un cliente durante una llamada, verificación de si un pedido ha sido enviado y acceso al número de seguimiento del transportista.
+
+## Configuración básica
+
+Necesitas acceso a la API JSON-RPC de tu instancia de Odoo y credenciales de un usuario con los permisos adecuados:
+
+```bash
+npx @twtrubiks/odoo19-mcp-server
+```
+
+Configura las credenciales en tu cliente MCP:
+
+```json
+{
+  "mcpServers": {
+    "odoo-erp": {
+      "command": "npx",
+      "args": ["@twtrubiks/odoo19-mcp-server"],
+      "env": {
+        "ODOO_URL": "https://tu-empresa.odoo.com",
+        "ODOO_DATABASE": "nombre-de-tu-base-de-datos",
+        "ODOO_USERNAME": "usuario@tu-empresa.es",
+        "ODOO_PASSWORD": "tu-contrasena-o-api-key",
+        "ODOO_COMPANY_ID": "1"
+      }
+    }
+  }
+}
+```
+
+Se recomienda crear un usuario de API específico en Odoo con los permisos mínimos necesarios para las funciones que quieres habilitar, en lugar de usar las credenciales de un usuario administrador. El company ID es el identificador numérico de tu empresa en Odoo, que puedes ver en Configuración > Empresas. Este servidor es compatible con Odoo 16, 17 y 18 además de la versión 19.

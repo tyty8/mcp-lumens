@@ -1,0 +1,46 @@
+---
+name: QR Codes con Analytics MCP
+slug: qr-codes-marketing-mcp
+description: Genera códigos QR con estilo, gestiona enlaces cortos dinámicos con análisis de clics y publica micro-landing pages para campañas de marketing físico-digital.
+category: marketing
+tags: [qr-codes, links, analytics, marketing, digital]
+official: false
+github: https://github.com/qr-maker-io/mcp-server
+---
+
+## Descripción general
+
+QR Codes con Analytics MCP conecta tu asistente de IA con la plataforma QR Maker para generar, gestionar y analizar códigos QR con capacidades avanzadas que van mucho más allá del simple escaneo. Este servidor permite crear códigos QR estilizados y personalizados con la identidad visual del negocio, administrar enlaces cortos dinámicos (que pueden actualizarse sin necesidad de reimprimir el código) y publicar micro-landing pages diseñadas específicamente para cada campaña o punto de contacto físico.
+
+El puente entre el mundo físico y el digital es uno de los mayores desafíos para los negocios tradicionales. Un restaurante que imprime menús, una tienda que etiqueta sus productos, un hotel que coloca información en las habitaciones o una empresa de servicios que entrega tarjetas de visita tienen innumerables puntos de contacto físico con sus clientes. Los códigos QR dinámicos convierten cada uno de esos puntos en una oportunidad de marketing medible y actualizable, sin coste de reimpresión cuando cambia el contenido al que apuntan.
+
+La capacidad de análisis de clics es especialmente valiosa para entender cómo los clientes interactúan con los materiales físicos del negocio. El asistente de IA puede consultar qué códigos QR generan más escaneos, en qué horarios y desde qué dispositivos, con qué frecuencia se visita la landing page asociada y cuántos usuarios completan la acción deseada. Estos datos permiten tomar decisiones informadas sobre dónde colocar los códigos, qué contenido vinculado genera más engagement y cómo optimizar las campañas de marketing físico-digital.
+
+## Casos de uso para negocios
+
+- **Restaurantes y bares:** Imprime menús QR en las mesas que apunten al menú digital del día, actualizable sin reimpresión, con análisis de cuántos clientes escanean el código y en qué momentos del servicio.
+- **Tiendas minoristas:** Coloca códigos QR en el escaparate y en las etiquetas de producto para dirigir a los clientes a fichas detalladas, vídeos de uso o reseñas en Google, con seguimiento de cuántas visitas genera cada punto de contacto.
+- **Hoteles y alojamientos:** Instala códigos QR en las habitaciones que dirijan a guías de bienvenida, carta de room service, información turística local o formularios de solicitud de servicio, actualizables en tiempo real desde el servidor.
+- **Empresas de servicios (fontanería, electricidad, limpieza):** Incluye un código QR en los presupuestos y facturas que lleve a la página de valoraciones de Google o a un formulario de satisfacción, facilitando la captación de reseñas positivas.
+- **Eventos y ferias comerciales:** Genera códigos QR únicos por stand o zona del evento con micro-landing pages de captación de leads, y analiza el tráfico generado por cada punto de contacto para evaluar la efectividad de la participación.
+- **Academias y centros educativos:** Crea códigos QR en los materiales impresos que apunten a vídeos de presentación de cursos, testimonios de alumnos o formularios de inscripción, con análisis de conversión para optimizar los materiales de captación.
+
+## Configuración básica
+
+Obtén tu API Key en el panel de tu cuenta en qr-maker.io y configura el servidor:
+
+```json
+{
+  "mcpServers": {
+    "qr-maker": {
+      "command": "npx",
+      "args": ["-y", "@qr-maker/mcp-server"],
+      "env": {
+        "QR_MAKER_API_KEY": "tu-api-key-aqui"
+      }
+    }
+  }
+}
+```
+
+Una vez configurado, puedes pedir al asistente que cree un código QR personalizado para una campaña específica, que genere una landing page de captura de leads o que produzca un informe de análisis de clics de los códigos QR activos. Los códigos QR dinámicos permiten cambiar la URL de destino en cualquier momento sin necesidad de regenerar ni reimprimir el código físico.

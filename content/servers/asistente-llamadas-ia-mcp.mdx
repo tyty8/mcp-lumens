@@ -1,0 +1,58 @@
+---
+name: Asistente de Llamadas IA MCP
+slug: asistente-llamadas-ia-mcp
+description: Realiza llamadas telefónicas con IA en tu nombre para reservar en restaurantes, programar citas y consultar disponibilidad, con transcripción de cada llamada.
+category: communication
+tags: [llamadas, reservas, citas, telefono, transcripcion]
+official: false
+github: https://github.com/Leximo-AI/leximo-ai-call-assistant-mcp-server
+---
+
+## Descripción general
+
+El Asistente de Llamadas IA MCP invierte el paradigma habitual de la automatización telefónica: en lugar de atender llamadas entrantes, este servidor realiza llamadas salientes en nombre del usuario para completar tareas que normalmente requieren una conversación telefónica. Desde reservar una mesa en un restaurante hasta programar una cita en la peluquería, concertar una reunión con un proveedor o confirmar la disponibilidad de un producto, la IA llama en tu nombre, negocia los detalles y te entrega la transcripción completa de la conversación.
+
+Para propietarios de negocios que pasan horas al día al teléfono coordinando con proveedores, confirmando entregas o concertando reuniones, este servidor supone una liberación enorme. La IA puede realizar múltiples llamadas en paralelo — algo imposible para un humano — y gestionar todas las tareas telefónicas pendientes en el tiempo que llevaría hacer una sola llamada manual. El resultado son más tareas completadas, menos tiempo perdido esperando que descuelguen y más energía disponible para las tareas que realmente requieren presencia humana.
+
+La transcripción automática de cada llamada es una característica de gran valor para los negocios: todas las conversaciones quedan documentadas automáticamente, con lo que nunca se pierde un acuerdo verbal, se puede verificar lo que se confirmó telefónicamente y se dispone de un registro de todas las gestiones realizadas, algo especialmente valioso en sectores donde la trazabilidad de las comunicaciones es importante.
+
+## Casos de uso para negocios
+
+- **Agencias de viajes:** El asistente llama directamente a hoteles, restaurantes o servicios locales para confirmar disponibilidad, negociar tarifas grupales y hacer reservas sin necesidad de que el agente realice cada llamada individualmente.
+- **Gestores de comunidades de vecinos:** Llamadas a fontaneros, electricistas y otros servicios de mantenimiento para solicitar presupuestos, confirmar visitas y coordinar el acceso al edificio.
+- **Restaurantes y catering para eventos:** Llamadas a proveedores de alimentos, flores, equipamiento o personal eventual para confirmar pedidos, horarios de entrega y condiciones de servicio.
+- **Clínicas con múltiples proveedores:** Coordinación con laboratorios, centros de diagnóstico y especialistas para solicitar citas de derivación, recoger resultados y confirmar disponibilidad de pruebas.
+- **Empresas constructoras y reformistas:** Gestión de llamadas con subcontratistas, proveedores de materiales y organismos oficiales para coordinar permisos, entregas y visitas de inspección.
+- **Comercios con gestión de stock:** Llamadas a mayoristas y proveedores para verificar disponibilidad de productos, solicitar presupuestos de volumen y confirmar fechas de entrega de pedidos.
+
+## Configuración básica
+
+El servidor requiere credenciales de Leximo AI para realizar las llamadas:
+
+```bash
+git clone https://github.com/Leximo-AI/leximo-ai-call-assistant-mcp-server
+cd leximo-ai-call-assistant-mcp-server
+npm install
+npm run build
+```
+
+Configura el servidor con tu cuenta de Leximo:
+
+```json
+{
+  "mcpServers": {
+    "asistente-llamadas": {
+      "command": "node",
+      "args": ["dist/index.js"],
+      "env": {
+        "LEXIMO_API_KEY": "tu-api-key-de-leximo",
+        "LEXIMO_CALLER_ID": "+34XXXXXXXXX",
+        "LEXIMO_LANGUAGE": "es-ES",
+        "LEXIMO_VOICE": "natural-female-es"
+      }
+    }
+  }
+}
+```
+
+Regístrate en leximo.ai para crear tu cuenta y obtener la API key. Puedes configurar el idioma, el acento y el tipo de voz (masculina/femenina) que utilizará la IA en las llamadas. Cada llamada completada genera una transcripción que queda disponible en el panel de Leximo y se devuelve como resultado al asistente de IA.

@@ -1,0 +1,47 @@
+---
+name: Trenes Reino Unido MCP
+slug: trenes-reino-unido-mcp
+description: Horarios y información de viaje en tiempo real de National Rail del Reino Unido mediante la API de Realtime Trains para consultas de salidas, llegadas y retrasos.
+category: travel
+tags: [trenes, uk, national-rail, horarios, transporte]
+official: false
+github: https://github.com/lucygoodchild/mcp-national-rail
+---
+
+## Descripción general
+
+Trenes Reino Unido MCP conecta tu asistente de IA con la red ferroviaria de National Rail del Reino Unido a través de la API de Realtime Trains, proporcionando información precisa y actualizada al minuto sobre salidas, llegadas, retrasos y cancelaciones en todas las estaciones de la red ferroviaria británica. Esta integración resulta imprescindible para empresas que operan en el Reino Unido y necesitan coordinar desplazamientos de empleados, clientes o mercancías por ferrocarril.
+
+La API de Realtime Trains es reconocida por su fiabilidad y granularidad de datos, ofreciendo no solo los horarios programados sino también las predicciones en tiempo real basadas en la posición actual de cada tren en la red. Esto permite anticipar retrasos con mayor precisión que los sistemas de información oficiales de las estaciones, dando tiempo suficiente para reorganizar reuniones, servicios de recogida o conexiones intermodales.
+
+Para agencias de viajes especializadas en el turismo británico, este servidor MCP permite construir itinerarios detallados que incluyan desplazamientos en tren entre ciudades como Londres, Edimburgo, Manchester o Cardiff, asegurando que los tiempos de conexión sean realistas y que los clientes dispongan de información actualizada sobre su trayecto en todo momento.
+
+## Casos de uso para negocios
+
+- **Agencias de viajes especializadas en el Reino Unido:** Planificar itinerarios con desplazamientos en tren entre ciudades británicas con horarios reales y tiempos de conexión fiables para turistas españoles y latinoamericanos.
+- **Empresas de relocation:** Ayudar a empleados que se trasladan al Reino Unido a entender los horarios de los trenes de cercanías para planificar sus desplazamientos al trabajo desde el primer día.
+- **Hoteles en ciudades con estaciones ferroviarias:** Proporcionar a los huéspedes información actualizada sobre trenes de llegada para ofrecer el servicio de traslado en el momento exacto de la llegada.
+- **Organizadores de viajes de grupo al Reino Unido:** Coordinar los desplazamientos en tren de grupos de viajeros entre distintas ciudades, gestionando posibles retrasos y buscando alternativas en tiempo real.
+- **Empresas con empleados desplazados:** Gestionar los desplazamientos en tren de trabajadores en misiones en el Reino Unido, monitorizando retrasos y reorganizando agendas cuando sea necesario.
+- **Tour operators especializados en Gran Bretaña:** Verificar la disponibilidad y puntualidad de los servicios ferroviarios que forman parte de los paquetes turísticos vendidos a clientes internacionales.
+
+## Configuración básica
+
+Para usar Trenes Reino Unido MCP necesitas credenciales de acceso a la API de Realtime Trains. Regístrate en `realtimetrains.co.uk/open-data` para obtener tu `USERNAME` y `PASSWORD` de acceso a la API pública.
+
+```json
+{
+  "mcpServers": {
+    "national-rail": {
+      "command": "npx",
+      "args": ["-y", "mcp-national-rail"],
+      "env": {
+        "RTT_API_USERNAME": "tu_username",
+        "RTT_API_PASSWORD": "tu_password"
+      }
+    }
+  }
+}
+```
+
+Una vez configurado, puedes consultar salidas y llegadas en cualquier estación de la red ferroviaria británica, verificar el estado de un tren específico o explorar conexiones entre ciudades con preguntas en lenguaje natural.

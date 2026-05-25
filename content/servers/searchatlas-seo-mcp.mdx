@@ -1,0 +1,46 @@
+---
+name: SearchAtlas SEO MCP
+slug: searchatlas-seo-mcp
+description: Toolkit SEO completo con 16 herramientas para investigación de palabras clave, auditoría de sitio, construcción de autoridad y monitoreo de visibilidad de marca en IA.
+category: marketing
+tags: [seo, palabras-clave, auditoria, contenido, posicionamiento]
+official: false
+github: https://github.com/Search-Atlas-Group/searchatlas-mcp-server
+---
+
+## Descripción general
+
+SearchAtlas SEO MCP integra el conjunto completo de herramientas de la plataforma SearchAtlas directamente en tu asistente de IA, proporcionando 16 herramientas especializadas para investigación de palabras clave, auditoría técnica de sitios web, construcción de autoridad de dominio y monitoreo de visibilidad de marca en plataformas de inteligencia artificial. SearchAtlas es reconocido como uno de los toolkits SEO más completos del mercado, y este servidor hace accesibles todas sus capacidades desde una conversación en lenguaje natural.
+
+Lo que diferencia a SearchAtlas de otras herramientas SEO es su enfoque integrado que cubre no solo el SEO tradicional en Google, sino también la nueva dimensión de visibilidad en plataformas de IA generativa como ChatGPT, Perplexity y otros modelos de lenguaje. En un entorno donde cada vez más usuarios realizan búsquedas directamente en asistentes de IA en lugar de motores de búsqueda convencionales, monitorizar si tu negocio aparece como referencia en estas plataformas se convierte en una ventaja competitiva relevante.
+
+Para negocios que buscan crecer orgánicamente sin depender exclusivamente de la publicidad de pago, SearchAtlas SEO MCP proporciona los datos y el análisis necesarios para tomar decisiones informadas sobre contenido, optimización técnica y estrategia de enlaces. La investigación de palabras clave identifica términos con alto potencial de tráfico y baja competencia, mientras que la auditoría de sitio detecta problemas técnicos que puedan estar limitando el posicionamiento en los resultados de búsqueda.
+
+## Casos de uso para negocios
+
+- **Tiendas online y e-commerce:** Identifica palabras clave de producto con alto volumen de búsqueda y baja dificultad, optimiza las páginas de categoría para búsquedas comerciales de alto valor y monitoriza el posicionamiento frente a competidores directos.
+- **Despachos de abogados y asesores:** Investiga las consultas legales más buscadas en su área de especialización y región geográfica para crear contenido que posicione el despacho como referente en búsquedas de alta intención de contratar servicios legales.
+- **Clínicas y profesionales de la salud:** Realiza auditorías técnicas del sitio web para identificar problemas de velocidad, indexación o estructura que afecten al posicionamiento, y diseña una estrategia de contenido basada en búsquedas reales de pacientes.
+- **Hoteles y alojamientos:** Monitoriza la visibilidad del establecimiento cuando los usuarios preguntan a ChatGPT o Perplexity sobre los mejores hoteles en el destino, y aplica estrategias de contenido para mejorar esa presencia en las respuestas de los modelos de IA.
+- **Academias y formadores online:** Investiga las preguntas más comunes que los estudiantes potenciales hacen sobre los temas de los cursos para crear contenido que capte tráfico orgánico cualificado antes de que lleguen a la fase de búsqueda de escuelas.
+- **Franquicias y cadenas con múltiples localizaciones:** Audita el rendimiento SEO de cada franquicia de forma individual para identificar cuáles tienen peor visibilidad local y necesitan más atención en su estrategia de posicionamiento geográfico.
+
+## Configuración básica
+
+Obtén tu API Key en el panel de configuración de tu cuenta SearchAtlas y configura el servidor:
+
+```json
+{
+  "mcpServers": {
+    "searchatlas": {
+      "command": "npx",
+      "args": ["-y", "@searchatlas/mcp-server"],
+      "env": {
+        "SEARCHATLAS_API_KEY": "tu-api-key-de-searchatlas"
+      }
+    }
+  }
+}
+```
+
+Con la API Key configurada, el asistente tendrá acceso a todas las herramientas de SearchAtlas: investigación de palabras clave, análisis de competidores, auditoría de backlinks, revisión técnica del sitio y monitoreo de visibilidad en IA. El plan de SearchAtlas que contrates determinará los límites de consultas disponibles mensualmente.

@@ -1,0 +1,47 @@
+---
+name: Mailchimp Email Marketing MCP
+slug: mailchimp-email-marketing-mcp
+description: Gestiona campañas de email marketing en Mailchimp con 53 herramientas para audiencias, automatizaciones, páginas de aterrizaje y datos de e-commerce.
+category: marketing
+tags: [mailchimp, email-marketing, campanas, newsletter, automatizacion]
+official: false
+github: https://github.com/damientilman/mailchimp-mcp-server
+---
+
+## Descripción general
+
+Mailchimp Email Marketing MCP conecta tu asistente de IA directamente con Mailchimp, la plataforma de email marketing más utilizada por pequeñas y medianas empresas en todo el mundo. Con 53 herramientas disponibles, este servidor permite gestionar desde la creación de audiencias segmentadas hasta el lanzamiento de campañas completas, sin necesidad de acceder manualmente al panel de control de Mailchimp. El asistente de IA puede analizar el historial de campañas anteriores, identificar los segmentos de clientes más receptivos y sugerir el momento óptimo para el envío.
+
+Para un negocio tradicional como una tienda minorista, una clínica o un restaurante, el email marketing sigue siendo uno de los canales con mayor retorno de inversión. Sin embargo, muchos propietarios carecen del tiempo o conocimientos técnicos para aprovechar todo el potencial de Mailchimp. Este servidor resuelve ese problema al permitir que el asistente de IA se encargue de tareas como segmentar la lista de contactos según comportamiento de compra, crear secuencias de bienvenida automatizadas o generar informes de rendimiento con recomendaciones claras.
+
+Las 53 herramientas cubren el ciclo completo de email marketing: gestión de listas y etiquetas, creación y programación de campañas, configuración de automatizaciones basadas en eventos, publicación de páginas de aterrizaje y análisis de datos de e-commerce como ingresos atribuidos a cada campaña. Esta cobertura integral convierte al asistente de IA en un especialista de marketing digital capaz de ejecutar estrategias sofisticadas con instrucciones simples en lenguaje natural.
+
+## Casos de uso para negocios
+
+- **Restaurantes y cafeterías:** Envía newsletters semanales con el menú del día, promociones especiales y eventos temáticos a la base de clientes fidelizados, segmentando por frecuencia de visita o tipo de reserva.
+- **Tiendas minoristas y boutiques:** Crea secuencias de recuperación de carritos abandonados en e-commerce y campañas de reactivación para clientes que no han comprado en los últimos 90 días.
+- **Clínicas y consultorios médicos:** Programa recordatorios de revisiones periódicas, campañas de vacunación estacional o boletines informativos sobre salud adaptados a diferentes segmentos de pacientes.
+- **Academias y centros de formación:** Automatiza la comunicación con estudiantes — emails de bienvenida, recordatorios de plazos de matrícula, anuncios de nuevos cursos y encuestas de satisfacción al finalizar.
+- **Hoteles y alojamientos:** Diseña flujos de comunicación pre-estancia, durante la estancia y post-estancia para maximizar la satisfacción del huésped y fomentar la repetición de reservas.
+- **Agencias inmobiliarias:** Segmenta contactos por tipo de propiedad de interés y presupuesto, enviando automáticamente nuevas propiedades que se ajusten al perfil de cada cliente potencial.
+
+## Configuración básica
+
+Obtén tu API Key en el panel de Mailchimp bajo "Account > Extras > API Keys" y añade la configuración en tu cliente MCP:
+
+```json
+{
+  "mcpServers": {
+    "mailchimp": {
+      "command": "npx",
+      "args": ["-y", "mailchimp-mcp-server"],
+      "env": {
+        "MAILCHIMP_API_KEY": "tu-api-key-aqui",
+        "MAILCHIMP_SERVER_PREFIX": "us1"
+      }
+    }
+  }
+}
+```
+
+El prefijo del servidor (`us1`, `us2`, etc.) aparece al final de la URL cuando accedes a tu cuenta de Mailchimp. Una vez configurado, puedes pedir al asistente que cree una campaña, segmente una lista o revise el rendimiento de envíos anteriores directamente en lenguaje natural.

@@ -1,0 +1,59 @@
+---
+name: SQL en Lenguaje Natural MCP
+slug: sql-lenguaje-natural-xiyansql-mcp
+description: Servidor MCP que convierte consultas en lenguaje natural a SQL mediante XiyanSQL text-to-SQL para que propietarios de negocios sin conocimientos técnicos puedan consultar sus bases de datos.
+category: databases
+tags: [sql, lenguaje-natural, text-to-sql, base-datos, consultas]
+official: false
+github: https://github.com/XGenerationLab/xiyan_mcp_server
+---
+
+## Descripción general
+
+El servidor SQL en Lenguaje Natural MCP implementa XiyanSQL, uno de los modelos de conversión texto-a-SQL más avanzados disponibles, desarrollado por XGenerationLab. A diferencia de otros servidores de base de datos que simplemente ejecutan consultas predefinidas, XiyanSQL está diseñado específicamente para entender preguntas en lenguaje natural y convertirlas en consultas SQL precisas y optimizadas, incluso cuando la pregunta implica múltiples tablas, agregaciones complejas o condiciones anidadas.
+
+La calidad de la conversión texto-a-SQL es el factor crítico que diferencia a los servidores de base de datos conversacionales útiles de los que generan respuestas incorrectas o incompletas. XiyanSQL ha sido entrenado y evaluado en los benchmarks de referencia del sector (Spider, BIRD) con resultados entre los mejores de su categoría, lo que significa que en la práctica puede responder correctamente a la gran mayoría de las preguntas de negocio habituales sin requerir que el usuario tenga ningún conocimiento de SQL para formularlas o verificarlas.
+
+La arquitectura del servidor es compatible con cualquier base de datos que soporte SQL estándar: MySQL, PostgreSQL, SQL Server, SQLite y MariaDB entre otros. Al iniciarse, el servidor inspecciona el esquema de la base de datos conectada —tablas, columnas, tipos de datos y relaciones de clave foránea— y usa esa información como contexto para generar consultas SQL correctas específicamente adaptadas a la estructura de datos del negocio. Esta fase de "comprensión del esquema" es lo que permite que el servidor entienda que cuando el usuario pregunta por "clientes" se refiere a la tabla `tbl_clientes` con su estructura específica.
+
+## Casos de uso para negocios
+
+- **Propietarios de pequeños negocios:** Consultas directas sobre la base de datos de su sistema de gestión sin depender del proveedor del software para generar nuevos informes — "¿Cuánto he facturado este mes?", "¿Qué cliente compra más?" o "¿Qué producto no ha tenido movimiento en 30 días?".
+- **Directivos sin perfil técnico:** Acceso a los datos operativos de la empresa en tiempo real para tomar decisiones informadas, sin necesidad de solicitar informes al departamento de TI y esperar días a que estén disponibles.
+- **Analistas de negocio:** Exploración rápida de bases de datos desconocidas o nuevos conjuntos de datos para identificar patrones e hipótesis antes de invertir tiempo en análisis más profundos con herramientas especializadas.
+- **Negocios con sistemas ERP a medida:** Acceso a los datos del ERP interno sin necesidad de solicitar nuevas funcionalidades de reporting al desarrollador, consultando directamente la base de datos subyacente con preguntas de negocio.
+- **Equipos de operaciones:** Verificaciones rápidas durante el día sobre el estado del negocio —pedidos pendientes de procesar, stock por debajo del mínimo, facturas vencidas sin cobrar— sin abrir informes completos.
+- **Auditorías y controles internos:** Verificación de datos específicos para auditorías internas o externas, consultando registros concretos, comparando periodos o validando la coherencia de datos en distintas tablas del sistema.
+
+## Configuración básica
+
+El servidor requiere Python 3.10 o superior. Instala las dependencias y configura la conexión a tu base de datos:
+
+```bash
+pip install xiyan-mcp-server
+```
+
+Configura el servidor en tu cliente MCP:
+
+```json
+{
+  "mcpServers": {
+    "xiyan-sql": {
+      "command": "python",
+      "args": ["-m", "xiyan_mcp_server"],
+      "env": {
+        "DB_TYPE": "mysql",
+        "DB_HOST": "localhost",
+        "DB_PORT": "3306",
+        "DB_USER": "tu-usuario",
+        "DB_PASSWORD": "tu-contrasena",
+        "DB_NAME": "tu-base-de-datos",
+        "XIYAN_MODEL": "XGenerationLab/XiyanSQL-Qwen2.5-Coder-7B-Instruct",
+        "MAX_ROWS_RETURN": "100"
+      }
+    }
+  }
+}
+```
+
+El modelo de XiyanSQL puede ejecutarse localmente si dispones de GPU suficiente (mínimo 8GB VRAM para el modelo de 7B parámetros), o usar la API en la nube de XGenerationLab. Para uso en producción en negocios sin infraestructura propia, la opción en la nube es más práctica.

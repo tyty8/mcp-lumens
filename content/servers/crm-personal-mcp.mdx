@@ -1,0 +1,55 @@
+---
+name: CRM Personal MCP
+slug: crm-personal-mcp
+description: CRM personal con contactos, interacciones, tareas, notas, diario diario y etiquetas a través de 42 herramientas MCP para gestionar relaciones con clientes de forma conversacional.
+category: productivity
+tags: [crm, contactos, relaciones, clientes, seguimiento]
+official: false
+github: https://github.com/nicolascroce/keepsake-mcp
+---
+
+## Descripción general
+
+El servidor CRM Personal MCP, basado en la aplicación Keepsake, ofrece un sistema de gestión de relaciones con clientes ligero y totalmente conversacional. A diferencia de los CRM empresariales complejos que requieren formación específica y generan resistencia en los equipos de ventas, este servidor se integra directamente en el flujo de trabajo del asistente de IA, permitiendo gestionar contactos, registrar interacciones y hacer seguimiento de oportunidades de venta con comandos en lenguaje natural.
+
+Las 42 herramientas disponibles cubren todos los aspectos de la gestión de relaciones comerciales: creación y edición de contactos con información completa de empresa y datos personales, registro de cada interacción con un cliente (llamada telefónica, reunión presencial, email, mensaje de WhatsApp), creación de tareas de seguimiento con fecha límite, adición de notas detalladas sobre los intereses y necesidades del cliente, y organización mediante etiquetas personalizables. El diario diario permite además registrar reflexiones y observaciones sobre la actividad comercial del día, creando un historial valioso para revisar en el futuro.
+
+Para los autónomos, representantes comerciales, consultores y pequeñas empresas de servicios que dependen intensamente de las relaciones personales con sus clientes, este CRM conversacional puede ser la herramienta que finalmente haga que el equipo de ventas registre las interacciones de manera consistente. La barrera de uso de los CRM tradicionales es habitualmente alta: hay que abrir el sistema, navegar al contacto correcto, rellenar campos y guardar. Con este servidor, registrar una conversación o programar un seguimiento es tan sencillo como decírselo al asistente de IA.
+
+## Casos de uso para negocios
+
+- **Autónomos y freelancers:** Gestión de la relación con 20-50 clientes activos y potenciales desde un único asistente conversacional, con recordatorios de seguimiento para no dejar que ningún contacto se enfríe por olvido.
+- **Agentes de seguros y banca:** Registro inmediato de los puntos clave tras cada reunión o llamada con un cliente — productos comentados, objeciones planteadas, próximos pasos acordados — mientras el recuerdo está fresco.
+- **Asesores inmobiliarios:** Seguimiento detallado de las necesidades de cada comprador potencial (zona, superficie, presupuesto, preferencias) para poder identificar rápidamente qué clientes encajan con cada nueva propiedad que entra en cartera.
+- **Consultores y asesores de empresa:** Historial completo de todas las interacciones con cada cliente — propuestas presentadas, proyectos en curso, incidencias resueltas — para mantener la continuidad en la relación aunque pasen semanas entre contactos.
+- **Equipos comerciales de pequeña empresa:** Coordinación básica del equipo de ventas con visibilidad compartida sobre el estado de cada cuenta, evitando que dos personas contacten al mismo cliente sin saberlo o que una oportunidad quede sin seguimiento al cambiar de comercial responsable.
+- **Emprendedores en fase de crecimiento:** Gestión de la red de contactos de negocio —clientes, inversores, socios potenciales, proveedores clave— con etiquetas que permiten segmentar y filtrar rápidamente según el tipo de relación.
+
+## Configuración básica
+
+Instala el servidor de Keepsake y configura tu cuenta de usuario:
+
+```bash
+npx @nicolascroce/keepsake-mcp
+```
+
+Configura el servidor en tu cliente MCP:
+
+```json
+{
+  "mcpServers": {
+    "keepsake-crm": {
+      "command": "npx",
+      "args": ["@nicolascroce/keepsake-mcp"],
+      "env": {
+        "KEEPSAKE_API_KEY": "tu-api-key",
+        "KEEPSAKE_USER_ID": "tu-user-id",
+        "DEFAULT_LANGUAGE": "es",
+        "TIMEZONE": "Europe/Madrid"
+      }
+    }
+  }
+}
+```
+
+La clave de API y el ID de usuario se generan al crear tu cuenta en la plataforma Keepsake. El servidor funciona completamente offline una vez descargados los datos, lo que garantiza la privacidad de la información comercial sensible. Puedes exportar toda tu base de datos de contactos en formato CSV en cualquier momento desde el panel de administración.

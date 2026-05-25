@@ -1,0 +1,55 @@
+---
+name: Noticias en Tiempo Real MCP
+slug: noticias-tiempo-real-mcp
+description: Integración con Google News con categorización automática de temas, soporte multilingüe y capacidades de búsqueda completas para monitorear noticias relevantes para el negocio.
+category: productivity
+tags: [noticias, google-news, medios, seguimiento, alertas]
+official: false
+github: https://github.com/ChanMeng666/server-google-news
+---
+
+## Descripción general
+
+El servidor Noticias en Tiempo Real MCP conecta con Google News para proporcionar al asistente de IA acceso a las últimas noticias de cualquier tema, sector o empresa desde miles de medios de comunicación de todo el mundo. La integración incluye categorización automática de noticias por tema, soporte multilingüe que incluye español de forma nativa, y capacidades de búsqueda avanzada para filtrar por tipo de noticia, región geográfica o rango de fechas.
+
+Para los negocios tradicionales que operan en entornos donde las noticias pueden afectar directamente a sus decisiones —fluctuaciones de precios de materias primas, cambios en la regulación del sector, noticias sobre competidores o proveedores clave, eventos geopolíticos que afectan a cadenas de suministro— tener esta monitorización integrada en el asistente diario convierte la gestión de la información en algo mucho más eficiente. En lugar de revisar manualmente varios portales de noticias cada mañana, el asistente puede hacer ese trabajo en segundos y presentar un resumen de las noticias más relevantes para el negocio.
+
+La categorización automática de noticias es especialmente útil para directivos con poco tiempo que necesitan mantenerse informados en múltiples áreas: economía general, noticias sectoriales, actualizaciones regulatorias y tecnología. El asistente puede presentar un briefing matutino personalizado con las noticias más importantes de cada categoría relevante para el negocio, ordenadas por importancia y con un resumen de los puntos clave de cada artículo, ahorrando el tiempo que normalmente se dedica a leer noticias durante la primera hora de la jornada.
+
+## Casos de uso para negocios
+
+- **Briefing matutino personalizado:** Resumen diario de las noticias más relevantes del sector, los mercados de materias primas relacionadas con el negocio y las novedades regulatorias, presentado en formato ejecutivo de 5-10 puntos clave al comenzar la jornada.
+- **Monitoreo de la competencia:** Seguimiento de las noticias relacionadas con los principales competidores —nuevos productos, aperturas, cambios directivos, problemas o reconocimientos— para estar al día sin dedicar tiempo a búsquedas manuales.
+- **Seguimiento de precios de materias primas:** Alerta sobre noticias que afecten a los precios del petróleo, metales, cereales, madera o cualquier otra materia prima relevante para el negocio, permitiendo anticipar cambios de coste en la cadena de suministro.
+- **Preparación de reuniones con clientes:** Consulta rápida de las últimas noticias sobre un cliente o sector de cliente antes de una reunión, para poder mencionar temas de actualidad relevantes y demostrar interés y conocimiento del negocio del cliente.
+- **Gestión de crisis de reputación:** Monitoreo de las menciones del nombre de la empresa en medios digitales para detectar rápidamente cualquier noticia negativa que requiera una respuesta o comunicación oficial.
+- **Selección de proveedores internacionales:** Seguimiento de noticias sobre la situación económica, política o logística de los países donde el negocio tiene o considera tener proveedores, para anticipar riesgos en la cadena de suministro.
+
+## Configuración básica
+
+Este servidor no requiere clave de API de pago y puede comenzar a usarse inmediatamente:
+
+```bash
+npx @chanmeng666/server-google-news
+```
+
+Configura el servidor en tu cliente MCP:
+
+```json
+{
+  "mcpServers": {
+    "google-news": {
+      "command": "npx",
+      "args": ["@chanmeng666/server-google-news"],
+      "env": {
+        "DEFAULT_LANGUAGE": "es",
+        "DEFAULT_COUNTRY": "ES",
+        "DEFAULT_MAX_RESULTS": "20",
+        "NEWS_CATEGORIES": "business,technology,science"
+      }
+    }
+  }
+}
+```
+
+El parámetro `DEFAULT_LANGUAGE` acepta cualquier código de idioma ISO 639-1 (es, en, fr, de, pt, etc.). El parámetro `DEFAULT_COUNTRY` usa códigos ISO 3166-1 alpha-2 para filtrar noticias por país de publicación. Las categorías disponibles son: business, entertainment, health, science, sports, technology y world.

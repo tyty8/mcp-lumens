@@ -1,0 +1,47 @@
+---
+name: Reservas de Tours en Tiempo Real MCP
+slug: reservas-tours-lastminute-mcp
+description: Reserva de tours y actividades en tiempo real con más de 8,000 plazas disponibles de 29 proveedores en 16 países mediante el estándar OCTO, con pago por Stripe.
+category: travel
+tags: [tours, actividades, reservas, octo, experiencias]
+official: false
+github: https://github.com/johnanleitner1-Coder/lastminutedeals-api
+---
+
+## Descripción general
+
+Reservas de Tours en Tiempo Real MCP es una potente herramienta para agencias de viajes y operadores turísticos que necesitan acceder a un amplio catálogo de tours y actividades con disponibilidad instantánea. Con más de 8,000 plazas disponibles de 29 proveedores en 16 países, este servidor MCP permite consultar, seleccionar y reservar experiencias turísticas directamente desde el asistente de IA, eliminando la necesidad de visitar múltiples portales de reserva.
+
+La integración utiliza el estándar OCTO (Open Connectivity for Tours and Activities), que es el protocolo de interoperabilidad más extendido en la industria del turismo de experiencias. Esto garantiza que la información de disponibilidad, precios y detalles de cada actividad sea precisa y esté actualizada en tiempo real, evitando problemas de sobreventa o discrepancias de precios que pueden dañar la reputación de una agencia.
+
+El procesamiento de pagos se realiza a través de Stripe, lo que ofrece máxima seguridad y facilidad de uso tanto para el operador como para el cliente final. Las agencias pueden completar reservas last-minute con confirmación inmediata, lo que resulta especialmente valioso para turistas que llegan a un destino sin actividades programadas y necesitan recomendaciones y reservas al instante.
+
+## Casos de uso para negocios
+
+- **Agencias de viajes receptivas:** Reservar tours y actividades para grupos de turistas que acaban de llegar al destino y solicitan experiencias de último minuto con disponibilidad inmediata.
+- **Hoteles con servicio de concierge:** Ofrecer a los huéspedes un catálogo completo de actividades locales y gestionar las reservas directamente desde la recepción sin complicados procesos manuales.
+- **Operadores turísticos:** Gestionar la distribución de sus propios tours a través del estándar OCTO para aparecer en múltiples canales de venta simultáneamente.
+- **Agencias online de viajes (OTA):** Integrar un amplio catálogo de experiencias en su oferta sin necesidad de negociar contratos individuales con cada proveedor de actividades.
+- **Guías turísticos independientes:** Consultar la disponibilidad de actividades complementarias para enriquecer los itinerarios que ofrecen a sus clientes durante las visitas.
+- **Centros de información turística:** Proporcionar recomendaciones y reservas de actividades locales a los visitantes que acuden al punto de información del destino.
+
+## Configuración básica
+
+Para utilizar este servidor MCP, necesitas credenciales de acceso a la API de LastMinuteDeals y una cuenta de Stripe configurada para el procesamiento de pagos. Contacta con el proveedor de la API para obtener tu `API_KEY` y `STRIPE_KEY`.
+
+```json
+{
+  "mcpServers": {
+    "lastminute-tours": {
+      "command": "npx",
+      "args": ["-y", "lastminutedeals-mcp"],
+      "env": {
+        "API_KEY": "tu_api_key",
+        "STRIPE_SECRET_KEY": "tu_stripe_key"
+      }
+    }
+  }
+}
+```
+
+Una vez configurado, el asistente de IA puede consultar disponibilidad y completar reservas de tours con confirmación inmediata y procesamiento de pago integrado.

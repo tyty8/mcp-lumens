@@ -1,0 +1,53 @@
+---
+name: Base de Conocimiento Offline MCP
+slug: base-conocimiento-offline-mcp
+description: Servidor MCP seguro para acceder a bases de conocimiento en formato ZIM sin conexión, incluyendo Wikipedia y contenido educativo para instituciones con conectividad limitada.
+category: education
+tags: [wikipedia, offline, conocimiento, educacion, sin-internet]
+official: false
+github: https://github.com/cameronrye/openzim-mcp
+---
+
+## Descripción general
+
+Base de Conocimiento Offline MCP permite acceder a extensas bases de conocimiento enciclopédico sin necesidad de conexión a Internet, utilizando el formato ZIM de OpenZIM, el estándar de compresión y distribución de contenidos de Wikipedia y otros proyectos educativos de Wikimedia. Este servidor MCP es especialmente relevante para instituciones educativas, organizaciones de cooperación internacional y empresas que operan en entornos con conectividad limitada, inestable o costosa.
+
+El formato ZIM permite descargar copias completas de Wikipedia en diferentes idiomas, así como otros recursos educativos de Wikimedia como Wiktionary, Wikivoyage o Wikibooks, y almacenarlos localmente para su consulta sin conexión. Una copia completa de Wikipedia en español ocupa aproximadamente 80 GB y contiene millones de artículos accesibles al instante desde el servidor MCP, lo que lo convierte en la enciclopedia más completa disponible sin coste y sin necesidad de conexión.
+
+Para negocios y organizaciones que priorizan la privacidad y la seguridad de los datos, la operación completamente offline de este servidor MCP es también una ventaja significativa: las consultas no salen de la red interna de la organización, las búsquedas no quedan registradas en servidores externos y no hay riesgo de exposición de información sensible a través de las consultas realizadas.
+
+## Casos de uso para negocios
+
+- **Escuelas en zonas rurales o con conectividad limitada:** Proporcionar a los alumnos acceso a toda la enciclopedia Wikipedia sin necesidad de conexión a Internet, garantizando el acceso al conocimiento independientemente de la infraestructura disponible.
+- **Organizaciones de cooperación internacional:** Instalar bases de conocimiento educativo en escuelas y centros de formación de países en desarrollo donde la conectividad es irregular o costosa.
+- **Barcos, buques y plataformas offshore:** Acceder a enciclopedias y material de referencia técnica de forma offline en embarcaciones y plataformas donde el ancho de banda es muy limitado y caro.
+- **Empresas con política de seguridad estricta:** Proporcionar acceso a bases de conocimiento enciclopédico a los empleados sin que las consultas salgan de la red corporativa interna, cumpliendo con las políticas de seguridad más exigentes.
+- **Centros penitenciarios con programas educativos:** Ofrecer acceso a material educativo y enciclopédico a los internos que participan en programas de formación, sin necesidad de conexión a internet exterior.
+- **Expediciones científicas y geográficas:** Disponer de acceso completo a Wikipedia y otras referencias enciclopédicas durante expediciones a zonas remotas sin cobertura de datos móviles.
+
+## Configuración básica
+
+Para usar Base de Conocimiento Offline MCP necesitas descargar los archivos ZIM de los contenidos que quieras tener disponibles. Descarga los archivos desde `download.kiwix.org` y almacénalos en un directorio local.
+
+```bash
+# Descargar Wikipedia en español (archivo grande, ~80GB)
+wget https://download.kiwix.org/zim/wikipedia/wikipedia_es_all_maxi_2024-01.zim
+```
+
+Configura el servidor en Claude Desktop apuntando al directorio donde almacenas los archivos ZIM:
+
+```json
+{
+  "mcpServers": {
+    "openzim": {
+      "command": "npx",
+      "args": ["-y", "openzim-mcp"],
+      "env": {
+        "ZIM_DIR": "/ruta/a/tus/archivos/zim"
+      }
+    }
+  }
+}
+```
+
+Una vez configurado, puedes buscar y consultar artículos de Wikipedia y otros recursos ZIM completamente sin conexión, con respuesta instantánea desde el almacenamiento local.

@@ -1,0 +1,56 @@
+---
+name: Cal.com Scheduling MCP
+slug: calcom-scheduling-mcp
+description: Gestiona tipos de eventos, crea reservas y accede a los datos de programación de Cal.com directamente desde tu asistente de IA.
+category: communication
+tags: [calendar, reservas, programacion, citas, cal.com]
+official: false
+github: https://github.com/Danielpeter-99/calcom-mcp
+---
+
+## Descripción general
+
+Cal.com Scheduling MCP integra la popular plataforma de programación de citas Cal.com con tu asistente de IA, permitiendo gestionar todo el flujo de reservas de forma conversacional. Cal.com se ha convertido en una alternativa de código abierto muy apreciada frente a Calendly, especialmente para empresas que necesitan personalización avanzada o prefieren una solución auto-hospedada que no dependa de servicios de terceros.
+
+Este servidor permite al asistente de IA no solo consultar la agenda y ver las citas programadas, sino también crear nuevos tipos de eventos, gestionar disponibilidades, confirmar o cancelar reservas y acceder a los datos analíticos de programación. Para un consultor independiente, un psicólogo con consulta privada o un estudio de diseño que atiende a múltiples clientes, esta capacidad de gestión automatizada puede suponer la diferencia entre dedicar horas a la administración o centrarse en el trabajo que realmente aporta valor.
+
+La integración bidireccional garantiza que cualquier cambio realizado por el asistente de IA se refleje inmediatamente en el sistema de reservas público que ven los clientes. Cuando se cancela una cita, el hueco se libera automáticamente para nuevas reservas. Cuando se crea un nuevo tipo de evento, aparece de inmediato en la página de reservas del negocio, sin necesidad de acceder al panel de control de Cal.com.
+
+## Casos de uso para negocios
+
+- **Psicólogos y terapeutas:** Gestión automática de la agenda de consultas, incluyendo sesiones de seguimiento, primeras visitas con duración diferente y grupos terapéuticos con aforo limitado.
+- **Asesores financieros y contables:** Programación de reuniones de revisión anual con todos los clientes de forma automatizada, con tipos de cita diferenciados según el servicio (declaración de la renta, planificación patrimonial, auditoría).
+- **Estudios de fotografía y videografía:** Gestión de sesiones fotográficas, reuniones previas con novios o empresas, y entregas de material con recordatorios automáticos en cada fase del proceso.
+- **Clínicas de fisioterapia y rehabilitación:** Programación de ciclos de tratamiento completos con sesiones múltiples semanales, gestionando la disponibilidad de varios fisioterapeutas y las salas de tratamiento.
+- **Talleres de formación y coaching:** Creación y gestión de diferentes tipos de sesión — talleres grupales, coaching individual, sesiones de seguimiento — con sus respectivas duraciones, precios y disponibilidades.
+- **Servicios de asesoría legal:** Reuniones iniciales de consulta gratuita diferenciadas de las sesiones de trabajo facturables, con gestión separada de la agenda de cada abogado del despacho.
+
+## Configuración básica
+
+Necesitas una cuenta en Cal.com (gratuita o de pago) y tu API key:
+
+```bash
+git clone https://github.com/Danielpeter-99/calcom-mcp
+cd calcom-mcp
+npm install
+npm run build
+```
+
+Configura el servidor con tu API key de Cal.com:
+
+```json
+{
+  "mcpServers": {
+    "calcom": {
+      "command": "node",
+      "args": ["dist/index.js"],
+      "env": {
+        "CALCOM_API_KEY": "cal_live_xxxxxxxxxxxxxxxxxxxxxxxx",
+        "CALCOM_BASE_URL": "https://api.cal.com/v1"
+      }
+    }
+  }
+}
+```
+
+Obtén tu API key en cal.com/settings/developer/api-keys. Si usas la versión auto-hospedada de Cal.com, cambia `CALCOM_BASE_URL` a la URL de tu instancia propia. Una vez configurado, tu asistente podrá gestionar reservas, tipos de evento y disponibilidad sin necesidad de acceder al panel web.

@@ -1,0 +1,56 @@
+---
+name: Seguimiento de Tiempo Harvest MCP
+slug: seguimiento-tiempo-harvest-mcp
+description: Integración con Harvest para gestionar registros de tiempo, proyectos, clientes, tareas y generar informes de facturación con más de 40 herramientas.
+category: finance
+tags: [tiempo, facturacion, proyectos, harvest, horas-billables]
+official: false
+github: https://github.com/ianaleck/harvest-mcp-server
+---
+
+## Descripción general
+
+Seguimiento de Tiempo Harvest MCP conecta tu asistente de IA con Harvest, la plataforma de seguimiento de tiempo y facturación más apreciada por empresas de servicios profesionales. Con más de 40 herramientas disponibles, el servidor cubre todo el ciclo del tiempo facturable: desde el registro de horas trabajadas en proyectos hasta la generación de informes de facturación y la creación de facturas basadas en el tiempo registrado.
+
+Para negocios que facturan por horas — consultoras, agencias de comunicación, despachos de abogados, estudios de diseño, empresas de ingeniería — el control preciso del tiempo dedicado a cada cliente y proyecto es la base del negocio. Este servidor permite al asistente de IA gestionar todo este proceso: el profesional puede decirle "empiezo a trabajar en el proyecto de Constructora García" y el asistente activa el temporizador en Harvest; cuando termina, dice "terminé" y el asistente detiene el cronómetro y registra la entrada de tiempo con el proyecto y tarea correctos.
+
+La generación de informes de facturación es donde este servidor aporta mayor valor económico: al final del mes, el asistente puede generar un resumen detallado del tiempo dedicado a cada cliente, compararlo con el presupuestado, identificar proyectos que están consumiendo más horas de las previstas y generar automáticamente las facturas correspondientes con el desglose de horas y tareas. Esto transforma un proceso que normalmente lleva horas en una tarea de minutos.
+
+## Casos de uso para negocios
+
+- **Despachos de abogados y asesorías:** Registro preciso del tiempo dedicado a cada expediente y cliente, con generación automática de minutas de honorarios al cierre del mes o del asunto.
+- **Agencias de publicidad y marketing:** Control de horas por campaña y cliente, con alertas automáticas cuando un proyecto se acerca al límite de horas presupuestado para avisar al cliente antes de superar el budget.
+- **Consultoras de gestión e ingeniería:** Seguimiento del tiempo por fase de proyecto, generación de informes de progreso para clientes y facturación por hitos basada en el tiempo real registrado.
+- **Estudios de arquitectura y diseño:** Registro del tiempo de cada profesional por proyecto, con visibilidad clara de la rentabilidad real de cada trabajo y la productividad de cada miembro del equipo.
+- **Empresas de desarrollo web y tecnología:** Seguimiento del tiempo de desarrollo, testing y mantenimiento por cliente, con informes transparentes que justifican la facturación ante el cliente.
+- **Traducciones y servicios lingüísticos:** Registro de tiempo por documento y par de idiomas, con tarifas por hora configurables según el tipo de trabajo y la combinación de idiomas.
+
+## Configuración básica
+
+El servidor requiere una cuenta de Harvest y tu API key:
+
+```bash
+git clone https://github.com/ianaleck/harvest-mcp-server
+cd harvest-mcp-server
+npm install
+npm run build
+```
+
+Configura el acceso a Harvest con tus credenciales:
+
+```json
+{
+  "mcpServers": {
+    "harvest": {
+      "command": "node",
+      "args": ["dist/index.js"],
+      "env": {
+        "HARVEST_ACCESS_TOKEN": "tu-token-personal-de-harvest",
+        "HARVEST_ACCOUNT_ID": "tu-account-id-de-harvest"
+      }
+    }
+  }
+}
+```
+
+Obtén tu token de acceso personal en Harvest accediendo a tu perfil > Developers > Personal Access Tokens. El Account ID lo encontrarás en la URL de tu cuenta de Harvest o en la sección de configuración. Una vez configurado, el asistente puede gestionar proyectos, clientes, tareas y entradas de tiempo con total autonomía.

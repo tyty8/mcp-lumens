@@ -1,7 +1,7 @@
 ---
-name: Memory MCP Server
+name: Servidor MCP de Memoria
 slug: memory-mcp
-description: Provides AI clients with a persistent knowledge graph for storing entities, relationships, and observations across multiple conversations.
+description: Proporciona a los clientes de IA un grafo de conocimiento persistente para almacenar entidades, relaciones y observaciones a través de múltiples conversaciones.
 category: ai
 tags: [memory, knowledge-graph, persistence, entities]
 official: true
@@ -10,15 +10,15 @@ github: https://github.com/modelcontextprotocol/servers/tree/main/src/memory
 featured: false
 ---
 
-## Overview
+## Descripción general
 
-The Memory MCP Server solves one of the fundamental limitations of language models: the context window resets between conversations. By maintaining a persistent knowledge graph stored on disk, this server lets an AI client remember facts, relationships, and observations across sessions. Entities (people, projects, concepts) and the relations between them are stored as a structured graph and retrieved on demand.
+El Servidor MCP de Memoria resuelve una de las limitaciones fundamentales de los modelos de lenguaje: la ventana de contexto se restablece entre conversaciones. Al mantener un grafo de conocimiento persistente almacenado en disco, este servidor permite que un cliente de IA recuerde hechos, relaciones y observaciones entre sesiones. Las entidades (personas, proyectos, conceptos) y las relaciones entre ellas se almacenan como un grafo estructurado y se recuperan bajo demanda.
 
-This server is especially valuable for building AI assistants that accumulate knowledge over time — remembering your preferences, tracking the state of long-running projects, or maintaining a shared knowledge base for a team. The knowledge graph is stored as a JSON file on disk, making it easy to inspect, backup, and version control.
+Este servidor es especialmente valioso para construir asistentes de IA que acumulan conocimiento con el tiempo: recordar sus preferencias, rastrear el estado de proyectos de larga duración o mantener una base de conocimiento compartida para un equipo. El grafo de conocimiento se almacena como un archivo JSON en disco, lo que facilita su inspección, copia de seguridad y control de versiones.
 
-## Configuration
+## Configuración
 
-By default the knowledge graph is stored in a `memory.json` file in the server's working directory. You can customize the storage path with the `MEMORY_FILE_PATH` environment variable.
+De forma predeterminada, el grafo de conocimiento se almacena en un archivo `memory.json` en el directorio de trabajo del servidor. Puede personalizar la ruta de almacenamiento con la variable de entorno `MEMORY_FILE_PATH`.
 
 ```json
 {
@@ -34,11 +34,11 @@ By default the knowledge graph is stored in a `memory.json` file in the server's
 }
 ```
 
-## Key Capabilities
+## Capacidades principales
 
-- Create, update, and delete named entities with typed attributes
-- Store relations between entities (e.g. "Alice works-at Acme Corp")
-- Add and remove observations (timestamped facts) on any entity
-- Search entities by name or type
-- Retrieve the full graph or subgraphs around a specific entity
-- Persistent storage survives process restarts and new conversation sessions
+- Crear, actualizar y eliminar entidades nombradas con atributos tipados
+- Almacenar relaciones entre entidades (p. ej., "Alice trabaja-en Acme Corp")
+- Agregar y eliminar observaciones (hechos con marca de tiempo) en cualquier entidad
+- Buscar entidades por nombre o tipo
+- Recuperar el grafo completo o subgrafos alrededor de una entidad específica
+- El almacenamiento persistente sobrevive a reinicios del proceso y nuevas sesiones de conversación

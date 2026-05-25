@@ -1,0 +1,57 @@
+---
+name: Chargebee Suscripciones MCP
+slug: chargebee-suscripciones-mcp
+description: Conecta agentes de IA con la plataforma de facturación por suscripción de Chargebee para gestionar suscripciones, invoices y operaciones de ingresos recurrentes.
+category: finance
+tags: [chargebee, suscripciones, facturacion, saas, pagos-recurrentes]
+official: false
+github: https://github.com/chargebee/agentkit
+---
+
+## Descripción general
+
+Chargebee Suscripciones MCP conecta tu asistente de IA con Chargebee, la plataforma líder de gestión de suscripciones y facturación recurrente. Mientras que pasarelas como Stripe o Braintree gestionan el procesamiento de pagos, Chargebee se especializa en la lógica compleja de los modelos de negocio por suscripción: planes con diferentes niveles y precios, pruebas gratuitas, cambios de plan (upgrades y downgrades), pausas de suscripción, cobros prorrateados, gestión de fallos de cobro y toda la contabilidad de ingresos recurrentes que un modelo de suscripción requiere.
+
+Para negocios que han adoptado o están pensando en adoptar un modelo de ingresos recurrentes — una academia con cuotas mensuales, un servicio de mantenimiento con contrato anual, una clínica con bonos de sesiones, una empresa de seguridad con contratos de mantenimiento — Chargebee proporciona la infraestructura financiera y este servidor MCP la hace manejable por el asistente de IA de forma conversacional.
+
+La gestión de dunning (los intentos de recuperación de cobros fallidos) es una de las funcionalidades más valiosas que Chargebee aporta y que este servidor hace accesible: cuando la tarjeta de un cliente falla, Chargebee gestiona automáticamente los reintentos en los momentos estadísticamente más efectivos, envía comunicaciones al cliente y notifica al equipo cuando es necesaria la intervención manual. El asistente de IA puede monitorizar este proceso y tomar decisiones sobre suspensiones o excepciones.
+
+## Casos de uso para negocios
+
+- **Academias de idiomas y formación continua:** Gestión de alumnos con suscripción mensual, con cambios de plan cuando el alumno quiere más o menos horas, pausas durante vacaciones y activación de promociones de renovación anticipada.
+- **Empresas de seguridad y alarmas:** Contratos de mantenimiento anual con facturación mensual o anual, gestión de renovaciones automáticas, actualizaciones de servicio y cobros adicionales por intervenciones fuera del contrato.
+- **Gimnasios y centros de fitness:** Gestión de diferentes tipos de membresía (mensual, trimestral, anual), tarifas familiares, pausas por lesión o viaje y reactivaciones con o sin cargo de matrícula.
+- **Clínicas con bonos de tratamiento:** Venta de paquetes de sesiones prepagadas con seguimiento del saldo disponible, renovación automática cuando se agotan y alertas cuando quedan pocas sesiones.
+- **Servicios de mantenimiento y limpieza:** Contratos de servicio mensual con diferentes frecuencias de visita y precios, gestión de cambios de plan y facturación de servicios adicionales puntuales.
+- **Software y herramientas digitales para pymes:** Gestión de licencias de software con facturación mensual o anual, pruebas gratuitas de 14 o 30 días y conversión automática a planes de pago al vencer el periodo de prueba.
+
+## Configuración básica
+
+El servidor oficial de Chargebee requiere una cuenta y API key de Chargebee:
+
+```bash
+git clone https://github.com/chargebee/agentkit
+cd agentkit
+npm install
+npm run build
+```
+
+Configura el servidor con tus credenciales de Chargebee:
+
+```json
+{
+  "mcpServers": {
+    "chargebee": {
+      "command": "node",
+      "args": ["mcp/dist/index.js"],
+      "env": {
+        "CHARGEBEE_API_KEY": "tu-api-key-de-chargebee",
+        "CHARGEBEE_SITE": "tu-nombre-de-sitio",
+        "CHARGEBEE_CURRENCY": "EUR"
+      }
+    }
+  }
+}
+```
+
+Accede al panel de Chargebee, ve a Settings > Configure Chargebee > API Keys y genera una nueva clave de API. El nombre del sitio es el subdominio de tu cuenta de Chargebee (por ejemplo, si tu panel está en tuempresa.chargebee.com, el nombre del sitio es "tuempresa"). Chargebee ofrece un entorno de pruebas completo para validar la integración antes de activarla en producción.

@@ -1,0 +1,53 @@
+---
+name: Google Sheets Automatización MCP
+slug: google-sheets-automatizacion-mcp
+description: Servidor MCP para la API de Google Sheets con lectura, escritura, formato y gestión de hojas — permite a la IA consultar y actualizar hojas de cálculo en lenguaje natural.
+category: databases
+tags: [google-sheets, hojas-calculo, datos, automatizacion, google]
+official: false
+github: https://github.com/freema/mcp-gsheets
+---
+
+## Descripción general
+
+El servidor Google Sheets Automatización MCP convierte las hojas de cálculo de Google en bases de datos conversacionales accesibles para el asistente de IA. Google Sheets es la herramienta de gestión de datos más utilizada por las pequeñas y medianas empresas que no tienen sistemas ERP o CRM formales: en una hoja de cálculo de Google se lleva el inventario, se registran los pedidos, se gestiona el CRM de clientes, se calculan las nóminas y se controla el presupuesto mensual. Con este servidor, toda esa información puede ser consultada y actualizada mediante conversación natural.
+
+Las capacidades del servidor van más allá de la simple lectura de datos. El asistente puede escribir nuevos datos en las hojas, actualizar celdas o rangos específicos, aplicar formatos condicionales, crear nuevas hojas dentro de un spreadsheet, ordenar y filtrar datos según criterios complejos y realizar operaciones de búsqueda y reemplazo. Esto significa que no solo se puede preguntar "¿Cuántas unidades de producto X tenemos en stock?" sino también "Reduce el stock de producto X en 5 unidades porque acabamos de vender ese pedido", integrando el asistente directamente en el flujo de actualización de los datos.
+
+La integración con el ecosistema de Google es una ventaja adicional. Los Sheets conectados con este servidor pueden ser los mismos que ya se usan como fuente de datos para Google Data Studio, que están vinculados con formularios de Google Forms para recoger pedidos o registros, o que alimentan reports automáticos en Google Slides. El asistente pasa a ser un participante más en este ecosistema de datos de Google, con capacidad de leer y escribir en las mismas hojas que el resto de las herramientas del negocio.
+
+## Casos de uso para negocios
+
+- **Control de inventario en Sheets:** Actualización del stock disponible tras cada venta o entrada de mercancía sin necesidad de abrir la hoja de cálculo, simplemente diciendo al asistente los movimientos del día al final de la jornada.
+- **CRM básico en Google Sheets:** Registro de nuevos contactos y leads tras una feria o evento, actualización del estado de cada oportunidad en el pipeline de ventas y consulta del historial de interacciones con un cliente concreto.
+- **Control de gastos y presupuesto:** Registro de nuevos gastos en la hoja de presupuesto mensual, consulta del gasto acumulado por categoría y alerta cuando el gasto en una categoría supera el umbral presupuestado.
+- **Gestión de pedidos a proveedor:** Actualización del estado de los pedidos pendientes de recepción, registro de las fechas de entrega reales vs. prometidas y cálculo del rendimiento de puntualidad de cada proveedor.
+- **Seguimiento de proyectos:** Actualización del avance en porcentaje de las tareas de un proyecto, registro de las horas invertidas por tarea y cálculo automático de las horas restantes estimadas hasta la finalización.
+- **Agenda y reservas:** Consulta de disponibilidad en una hoja de reservas, registro de nuevas citas con los datos del cliente y actualización de los estados de las citas (confirmada, cancelada, realizada).
+
+## Configuración básica
+
+Crea una cuenta de servicio de Google Cloud con acceso a la API de Google Sheets y comparte tus hojas de cálculo con ella:
+
+```bash
+npx @freema/mcp-gsheets
+```
+
+Configura las credenciales en tu cliente MCP:
+
+```json
+{
+  "mcpServers": {
+    "google-sheets": {
+      "command": "npx",
+      "args": ["@freema/mcp-gsheets"],
+      "env": {
+        "GOOGLE_SERVICE_ACCOUNT_KEY": "/ruta/a/service-account-key.json",
+        "DEFAULT_SPREADSHEET_ID": "1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgVE2upms"
+      }
+    }
+  }
+}
+```
+
+La cuenta de servicio se crea en Google Cloud Console en IAM & Admin > Service Accounts. Descarga la clave JSON de la cuenta de servicio y guárdala de forma segura. Para dar acceso a una hoja de cálculo específica, compártela con el email de la cuenta de servicio (del formato `nombre@proyecto.iam.gserviceaccount.com`) con los permisos de editor si necesitas escritura, o de lector si solo necesitas consultas.

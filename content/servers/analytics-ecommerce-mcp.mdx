@@ -1,0 +1,56 @@
+---
+name: Analytics E-commerce MCP
+slug: analytics-ecommerce-mcp
+description: Análisis estadístico, previsión y machine learning para datos de Shopify, Stripe, WooCommerce, eBay, GA4 y Search Console, generando informes HTML interactivos.
+category: retail
+tags: [analytics, shopify, stripe, previsiones, ecommerce]
+official: false
+github: https://github.com/embeddedlayers/mcp-analytics
+---
+
+## Descripción general
+
+El servidor Analytics E-commerce MCP unifica los datos de las principales plataformas de comercio electrónico y análisis web en un único punto de consulta conversacional. Al integrar simultáneamente Shopify, Stripe, WooCommerce, eBay, Google Analytics 4 y Search Console, elimina la necesidad de saltar entre múltiples paneles de control para obtener una visión completa del negocio online, una de las principales fuentes de pérdida de tiempo para los gestores de tiendas digitales.
+
+Lo que diferencia a este servidor de un simple conector de datos es su capacidad de análisis estadístico avanzado y machine learning aplicado directamente sobre los datos de ventas. No solo devuelve cifras brutas, sino que calcula tendencias, detecta anomalías, segmenta clientes por comportamiento de compra, calcula el valor de vida del cliente (LTV) y genera previsiones de ventas para los próximos periodos con intervalos de confianza. Todo esto de forma conversacional, sin necesidad de exportar datos a Excel ni contratar a un analista de datos.
+
+La generación de informes HTML interactivos es una funcionalidad especialmente útil para los negocios que necesitan compartir el estado del negocio con socios, inversores o equipos internos. Los informes incluyen gráficas interactivas, tablas de datos descargables y resúmenes ejecutivos en lenguaje natural que cualquier persona puede entender, independientemente de su conocimiento técnico. Para una reunión semanal de equipo o una presentación mensual a inversores, este servidor puede generar en minutos un informe que antes requería horas de trabajo manual.
+
+## Casos de uso para negocios
+
+- **Tiendas Shopify en crecimiento:** Análisis mensual automático de las métricas clave — tasa de conversión, valor medio del pedido, productos más rentables y fuentes de tráfico que generan más ventas — con comparativa respecto al mismo periodo del año anterior.
+- **Negocios con ventas multicanal:** Consolidación de ventas de Shopify, eBay y marketplace propio en un cuadro de mando unificado, identificando qué canal aporta mayor rentabilidad neta.
+- **Tiendas WooCommerce en WordPress:** Segmentación automática de clientes por frecuencia de compra y valor, para diseñar campañas de email marketing diferenciadas según el segmento.
+- **Gestores de tráfico y SEO:** Cruce de datos de GA4 y Search Console con las ventas de Shopify para identificar qué palabras clave y páginas de aterrizaje generan más ingresos reales, más allá de simples visitas.
+- **Emprendedores que gestionan sus finanzas con Stripe:** Previsión de ingresos mensuales basada en el análisis de la curva histórica de ventas, para planificar la tesorería y los pagos a proveedores.
+- **Directivos y propietarios de negocio:** Generación de informes ejecutivos mensuales en HTML que resumen el rendimiento del ecommerce en 5-10 gráficas clave, listos para compartir por email con el equipo directivo.
+
+## Configuración básica
+
+Instala el servidor y conéctalo con las plataformas que uses. Cada integración requiere sus propias credenciales:
+
+```bash
+npm install -g @embeddedlayers/mcp-analytics
+```
+
+Configura las conexiones en tu cliente MCP:
+
+```json
+{
+  "mcpServers": {
+    "ecommerce-analytics": {
+      "command": "mcp-analytics",
+      "env": {
+        "SHOPIFY_SHOP_NAME": "tu-tienda",
+        "SHOPIFY_ACCESS_TOKEN": "shpat_xxxxx",
+        "STRIPE_SECRET_KEY": "sk_live_xxxxx",
+        "GA4_PROPERTY_ID": "123456789",
+        "GA4_CREDENTIALS_PATH": "/ruta/a/credenciales.json",
+        "SEARCH_CONSOLE_SITE_URL": "https://tu-tienda.com"
+      }
+    }
+  }
+}
+```
+
+No es necesario conectar todas las plataformas a la vez. Puedes empezar solo con Shopify y añadir Stripe y GA4 progresivamente. Las credenciales de GA4 y Search Console se obtienen desde Google Cloud Console creando una cuenta de servicio con los permisos apropiados para cada propiedad.

@@ -1,7 +1,7 @@
 ---
-name: Brave Search MCP Server
+name: Servidor MCP de Brave Search
 slug: brave-search-mcp
-description: Gives AI clients real-time web search capability through the Brave Search API, including general web results and local business search.
+description: Proporciona a los clientes de IA capacidad de búsqueda web en tiempo real a través de la API de Brave Search, incluyendo resultados web generales y búsqueda de negocios locales.
 category: ai
 tags: [search, web, brave, api]
 official: true
@@ -10,15 +10,15 @@ github: https://github.com/modelcontextprotocol/servers/tree/main/src/brave-sear
 featured: false
 ---
 
-## Overview
+## Descripción general
 
-The Brave Search MCP Server connects your AI client to Brave's independent search index, giving it access to up-to-date web content without relying on training data alone. This is particularly useful for questions about recent events, current documentation, pricing, or any information that changes frequently.
+El Servidor MCP de Brave Search conecta su cliente de IA al índice de búsqueda independiente de Brave, dándole acceso a contenido web actualizado sin depender únicamente de los datos de entrenamiento. Esto es particularmente útil para preguntas sobre eventos recientes, documentación actual, precios o cualquier información que cambie con frecuencia.
 
-Brave Search is privacy-focused and operates its own web crawler, meaning results are not filtered through the same lens as other major search engines. The server supports both general web search and local business/place search, making it useful for location-aware queries as well.
+Brave Search está orientado a la privacidad y opera su propio rastreador web, lo que significa que los resultados no están filtrados a través del mismo prisma que otros motores de búsqueda principales. El servidor admite tanto búsqueda web general como búsqueda de negocios y lugares locales, lo que lo hace útil también para consultas con conciencia de ubicación.
 
-## Configuration
+## Configuración
 
-A Brave Search API key is required. Sign up at [brave.com/search/api](https://brave.com/search/api) to obtain one. Set the key as the `BRAVE_API_KEY` environment variable.
+Se requiere una clave de API de Brave Search. Regístrese en [brave.com/search/api](https://brave.com/search/api) para obtener una. Establezca la clave como la variable de entorno `BRAVE_API_KEY`.
 
 ```json
 {
@@ -34,12 +34,12 @@ A Brave Search API key is required. Sign up at [brave.com/search/api](https://br
 }
 ```
 
-The free tier of the Brave Search API includes a generous number of monthly queries, which is sufficient for personal and light development use.
+El nivel gratuito de la API de Brave Search incluye un número generoso de consultas mensuales, lo que es suficiente para uso personal y desarrollo ligero.
 
-## Key Capabilities
+## Capacidades principales
 
-- General web search returning titles, URLs, and result snippets
-- Local business and place search with addresses and ratings
-- Configurable result count per query
-- Privacy-respecting index independent from major search providers
-- No user tracking or profiling by Brave
+- Búsqueda web general que devuelve títulos, URLs y fragmentos de resultados
+- Búsqueda de negocios y lugares locales con direcciones y valoraciones
+- Número de resultados configurable por consulta
+- Índice respetuoso con la privacidad, independiente de los principales proveedores de búsqueda
+- Sin seguimiento de usuarios ni elaboración de perfiles por parte de Brave

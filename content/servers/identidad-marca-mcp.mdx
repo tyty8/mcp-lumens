@@ -1,0 +1,46 @@
+---
+name: Identidad de Marca MCP
+slug: identidad-marca-mcp
+description: Extrae la identidad de marca (colores, fuentes, logo, voz, reglas visuales) de cualquier sitio web y compila tokens de marca y puntuación de cumplimiento.
+category: marketing
+tags: [marca, identidad, colores, fuentes, branding]
+official: false
+github: https://github.com/Brand-System/brandsystem-mcp
+---
+
+## Descripción general
+
+Identidad de Marca MCP conecta tu asistente de IA con la plataforma BrandSystem para extraer, analizar y gestionar la identidad visual y comunicativa de cualquier marca a partir de su sitio web. El servidor analiza automáticamente la paleta de colores corporativos, la tipografía utilizada, el logotipo y sus variantes, las reglas visuales de composición y el tono de comunicación, compilando toda esa información en un sistema de tokens de marca estructurados y calculando una puntuación de cumplimiento de la identidad en los materiales existentes.
+
+Para un negocio tradicional que está creciendo y necesita mantener la coherencia de su imagen de marca a medida que multiplica los puntos de contacto con sus clientes —desde el sitio web hasta las redes sociales, los materiales impresos, la señalización del local o los correos electrónicos—, tener una referencia clara y accesible de la identidad de marca es fundamental. Sin esa referencia, es habitual que diferentes personas o agencias creen materiales con ligeras variaciones de color, tipografía o tono que van erosionando la coherencia visual de la marca con el tiempo.
+
+El servidor genera tokens de marca estructurados que pueden ser utilizados directamente por diseñadores, desarrolladores web y agencias de comunicación para garantizar que todos los materiales nuevos cumplan con las especificaciones de la identidad corporativa. La puntuación de cumplimiento permite identificar materiales existentes que se han alejado del estándar de marca y priorizar cuáles actualizar primero para recuperar la coherencia visual en todos los canales de comunicación del negocio.
+
+## Casos de uso para negocios
+
+- **Cadenas de restaurantes y franquicias de hostelería:** Extrae la identidad de marca central y genera un documento de referencia para que todas las franquicias creen sus materiales locales (cartas, carteles, redes sociales) con los colores, tipografía y tono de comunicación correctos.
+- **Tiendas y cadenas de retail en expansión:** Analiza la coherencia de la imagen de marca en el sitio web, las redes sociales y los materiales de la tienda, identificando inconsistencias visuales que estén debilitando el reconocimiento de marca entre los clientes.
+- **Despachos profesionales y consultoras:** Extrae la identidad visual para utilizarla como referencia al crear presentaciones de propuesta, informes de cliente y materiales de comunicación que reflejen de forma coherente la imagen profesional del despacho.
+- **Hoteles y establecimientos de hospitalidad:** Gestiona la identidad de marca para garantizar que la comunicación del hotel —desde el sitio web hasta las tarjetas de habitación, los uniformes y la señalización— transmita una experiencia visual coherente y de calidad.
+- **Academias y centros educativos:** Genera tokens de marca para que profesores, coordinadores y colaboradores externos puedan crear materiales pedagógicos, presentaciones y contenido digital que cumplan con las directrices visuales de la institución.
+- **Startups y nuevos negocios:** Analiza la identidad de marca de los principales competidores del sector para identificar oportunidades de diferenciación visual y definir una paleta de color y tipografía que destaque en el contexto competitivo.
+
+## Configuración básica
+
+Obtén tu API Key en el panel de BrandSystem y configura el servidor para comenzar a analizar sitios web:
+
+```json
+{
+  "mcpServers": {
+    "brandsystem": {
+      "command": "npx",
+      "args": ["-y", "@brandsystem/mcp"],
+      "env": {
+        "BRANDSYSTEM_API_KEY": "tu-api-key-de-brandsystem"
+      }
+    }
+  }
+}
+```
+
+Una vez configurado, puedes pedir al asistente que analice el sitio web de tu negocio proporcionando la URL, y el servidor extraerá automáticamente todos los tokens de marca (colores hexadecimales, familias tipográficas, tamaños de texto, espaciados) junto con las reglas visuales detectadas. También puedes solicitar el análisis de sitios de la competencia para obtener inteligencia de marca comparativa.

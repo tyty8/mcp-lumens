@@ -1,0 +1,52 @@
+---
+name: Courier Notificaciones MCP
+slug: courier-notificaciones-mcp
+description: Plataforma multicanal para construir y enviar notificaciones por email, SMS, push e in-app sin salir de tu asistente de IA.
+category: communication
+tags: [notificaciones, email, sms, push, multicanal]
+official: false
+github: https://github.com/trycourier/courier-mcp
+---
+
+## Descripción general
+
+Courier Notificaciones MCP conecta tu asistente de IA con Courier, una plataforma de notificaciones diseñada para simplificar el envío de comunicaciones multicanal desde una única interfaz. El concepto central de Courier es separar el diseño de las notificaciones (plantillas, formatos, contenido) de la lógica de envío, lo que permite a los equipos no técnicos crear y gestionar notificaciones profesionales mientras el asistente de IA se encarga de disparar el envío en el momento correcto y al canal adecuado.
+
+Para negocios tradicionales, la ventaja más clara es la posibilidad de llegar al cliente por el canal que prefiere sin necesidad de gestionar múltiples proveedores de mensajería. Courier actúa como capa de abstracción: la empresa configura una vez las integraciones con los diferentes canales (email mediante Sendgrid o Mailchimp, SMS mediante Twilio o Vonage, notificaciones push para su app móvil) y luego Courier —instrtuido por el asistente de IA— decide qué canal usar para cada mensaje según las preferencias del cliente y el tipo de comunicación.
+
+La gestión de preferencias del usuario es otro punto diferenciador: Courier mantiene un registro de las preferencias de notificación de cada cliente (qué tipo de mensajes quiere recibir, por qué canal y con qué frecuencia), y el asistente puede actualizar y consultar estas preferencias de forma dinámica. Esto garantiza el cumplimiento normativo en materia de comunicaciones comerciales y reduce las bajas en listas de correo al enviar solo lo que cada cliente ha solicitado recibir.
+
+## Casos de uso para negocios
+
+- **Tiendas online y ecommerce:** Ciclo completo de notificaciones de pedido — confirmación por email, actualización de envío por SMS y notificación push cuando el paquete está a punto de llegar.
+- **Clínicas y centros de salud:** Recordatorios de cita por el canal preferido de cada paciente (email para unos, SMS para otros), con lógica de seguimiento si el recordatorio inicial no ha sido confirmado.
+- **Academias y centros de formación:** Notificaciones de nuevos materiales, calificaciones disponibles y próximas fechas de examen enviadas por email a los alumnos adultos y push a los jóvenes con la app.
+- **Plataformas de reservas y servicios:** Confirmaciones de reserva instantáneas, recordatorios 24 horas antes y solicitudes de valoración al finalizar el servicio, todo orquestado automáticamente.
+- **Empresas de seguros y finanzas:** Alertas de renovación de póliza, confirmaciones de pago y avisos de documentación pendiente por el canal más efectivo para cada tipo de cliente y comunicación.
+- **Agencias de alquiler de vehículos:** Confirmación de reserva, instrucciones de recogida, recordatorio de devolución y encuesta de satisfacción post-servicio en el canal apropiado para cada momento.
+
+## Configuración básica
+
+El servidor requiere una cuenta de Courier y una API key:
+
+```bash
+npm install -g @trycourier/mcp
+```
+
+Configura el servidor en tu cliente MCP:
+
+```json
+{
+  "mcpServers": {
+    "courier": {
+      "command": "npx",
+      "args": ["-y", "@trycourier/mcp"],
+      "env": {
+        "COURIER_API_KEY": "pk_prod_xxxxxxxxxxxxxxxxxxxxxxxx"
+      }
+    }
+  }
+}
+```
+
+Crea una cuenta gratuita en courier.com, donde encontrarás tu API key en la sección Settings > API Keys. Desde el panel de Courier, configura los canales que quieres usar (Email, SMS, Push) y diseña las plantillas de notificación usando su editor visual. Una vez configuradas las plantillas, tu asistente de IA puede invocarlas con los datos personalizados de cada destinatario.

@@ -1,0 +1,58 @@
+---
+name: Registros Empresariales Internacionales MCP
+slug: registros-empresariales-mcp
+description: Datos oficiales en tiempo real de 27 registros nacionales de empresas incluyendo UK Companies House, Francia RNE, Alemania Handelsregister y 10 estados de EE.UU. para flujos de trabajo KYC/AML.
+category: finance
+tags: [registros, kyc, aml, empresas, due-diligence]
+official: false
+github: https://github.com/sophymarine/openregistry
+---
+
+## Descripción general
+
+Registros Empresariales Internacionales MCP agrega datos oficiales de 27 registros mercantiles nacionales en una única interfaz de consulta, permitiendo a tu asistente de IA verificar la situación legal de cualquier empresa en los principales mercados del mundo de forma instantánea. Los registros cubiertos incluyen los más relevantes para el comercio internacional: UK Companies House, el RNE francés, el Handelsregister alemán, los registros mercantiles de 10 estados americanos y muchos otros registros europeos y asiáticos.
+
+A diferencia de las bases de datos comerciales de información empresarial que agregan y revenden datos con posibles desactualizaciones, este servidor consulta directamente los registros oficiales de cada país, garantizando que la información obtenida es la versión más actualizada disponible. Cuando una empresa cambia de sede, modifica su objeto social, nombra nuevos administradores o cae en situación de insolvencia, esta información queda reflejada en el registro oficial en días, y este servidor la hace accesible en segundos.
+
+La cobertura de 27 registros en una sola herramienta es especialmente valiosa para los procesos KYC y AML que deben manejar empresas del sector financiero, grandes distribuidores o cualquier negocio que tenga clientes o proveedores en múltiples países. En lugar de acceder manualmente a cada registro nacional con sus propios formularios, idiomas e interfaces, el asistente de IA centraliza todas estas consultas en una experiencia conversacional unificada.
+
+## Casos de uso para negocios
+
+- **Gestorías y asesorías con clientes internacionales:** Verificación rápida de la situación registral de empresas extranjeras con las que trabajan sus clientes, sin necesidad de acceder a cada registro nacional de forma separada.
+- **Empresas exportadoras:** Comprobación del estado legal y la dirección oficial de los distribuidores y representantes internacionales antes de firmar acuerdos de distribución o exclusividad.
+- **Entidades de crédito y factoring:** Verificación del objeto social, la fecha de constitución y la situación registral de empresas que solicitan financiación, como paso previo al análisis de riesgo crediticio.
+- **Empresas de seguros:** Comprobación de la existencia legal y datos registrales de empresas que contratan seguros de responsabilidad civil, de crédito o de caución con importes significativos.
+- **Plataformas de comercio electrónico B2B:** Validación automática de los compradores y vendedores empresariales que se registran, verificando que la empresa existe legalmente en su país de origen.
+- **Despachos de M&A y due diligence corporativa:** Acceso ágil a la información registral de las empresas objeto de adquisición en diferentes jurisdicciones, acelerando la fase inicial de revisión documental.
+
+## Configuración básica
+
+El servidor agrega múltiples fuentes de datos registrales a través de APIs públicas y privadas:
+
+```bash
+git clone https://github.com/sophymarine/openregistry
+cd openregistry
+npm install
+npm run build
+```
+
+Configura el servidor en tu cliente MCP:
+
+```json
+{
+  "mcpServers": {
+    "registros-empresariales": {
+      "command": "node",
+      "args": ["dist/index.js"],
+      "env": {
+        "COMPANIES_HOUSE_API_KEY": "tu-api-key-de-companies-house",
+        "OPEN_CORPORATES_API_KEY": "tu-api-key-opcional",
+        "DEFAULT_COUNTRY": "ES",
+        "DEFAULT_LANGUAGE": "es"
+      }
+    }
+  }
+}
+```
+
+Algunos registros son de acceso completamente gratuito (UK Companies House ofrece API gratuita), mientras que otros requieren suscripción o pago por consulta. Obtén tu API key gratuita de UK Companies House en developer.companieshouse.gov.uk. El servidor está diseñado para funcionar con los accesos gratuitos de la mayoría de registros, usando fuentes de pago solo cuando el registro nacional lo requiera.

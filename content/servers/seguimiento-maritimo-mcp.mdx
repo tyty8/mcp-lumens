@@ -1,0 +1,46 @@
+---
+name: Seguimiento Marítimo de Buques MCP
+slug: seguimiento-maritimo-mcp
+description: Seguimiento de buques en tiempo real — posiciones, ETAs, eventos portuarios, emisiones y mensajes de seguridad NAVTEX para logística marítima y turismo de cruceros.
+category: travel
+tags: [maritimo, buques, tracking, puertos, cruceros]
+official: false
+github: https://github.com/vessel-api/vesselapi-mcp
+---
+
+## Descripción general
+
+Seguimiento Marítimo de Buques MCP proporciona acceso en tiempo real a datos de posicionamiento y tráfico marítimo a través de la API de VesselAPI. El servidor ofrece información actualizada sobre la posición de buques de todo tipo — cruceros, ferries, cargueros, yates y buques tanque — incluyendo velocidad actual, rumbo, destino declarado, tiempo estimado de llegada (ETA) a puerto y historial de escala en puertos anteriores.
+
+Para el sector del turismo de cruceros, este servidor es especialmente valioso. Las agencias especializadas en viajes en crucero pueden monitorizar en tiempo real la posición de los barcos, verificar los horarios de escalas en los diferentes puertos del itinerario y anticipar posibles cambios de programa debidos a condiciones meteorológicas o decisiones operativas de la naviera. Esta información permite ofrecer un servicio proactivo a los clientes que ya están a bordo o que se preparan para embarcar.
+
+Además del posicionamiento, el servidor incluye datos sobre emisiones de los buques, información relevante para empresas con compromisos de sostenibilidad, y mensajes NAVTEX de seguridad marítima, que son las comunicaciones oficiales de las autoridades navales sobre condiciones meteorológicas, zonas de peligro y otras alertas relevantes para la navegación.
+
+## Casos de uso para negocios
+
+- **Agencias de viajes en crucero:** Monitorizar en tiempo real la posición y los itinerarios de los cruceros en los que tienen clientes embarcados, anticipando cambios de escala o modificaciones de programa para informar proactivamente a los familiares.
+- **Puertos y marinas:** Gestionar la planificación de atraques y servicios portuarios con información precisa sobre los tiempos de llegada estimados de los buques esperados en el día.
+- **Empresas de excursiones en puertos de crucero:** Conocer con precisión los horarios de llegada y salida de los cruceros para optimizar la oferta de excursiones y tours durante la escala de cada barco.
+- **Transitarios y agentes de aduanas:** Seguir en tiempo real el desplazamiento de la carga que llega en barco para preparar la documentación de importación y los servicios de despacho aduanero con antelación suficiente.
+- **Empresas de logística portuaria:** Planificar los recursos de descarga, almacenaje y transporte en función del ETA real de los buques cargueros que operan en sus puertos.
+- **Compañías aseguradoras marítimas:** Acceder al historial de posiciones y rutas de un buque para verificar reclamaciones o evaluar incidentes de navegación con datos objetivos de posicionamiento.
+
+## Configuración básica
+
+Para usar Seguimiento Marítimo de Buques MCP necesitas una clave de API de VesselAPI. Regístrate en `vesselapi.com` para obtener tu `VESSEL_API_KEY`. La plataforma ofrece diferentes planes según el volumen de consultas necesario.
+
+```json
+{
+  "mcpServers": {
+    "vessel-tracking": {
+      "command": "npx",
+      "args": ["-y", "vesselapi-mcp"],
+      "env": {
+        "VESSEL_API_KEY": "tu_api_key"
+      }
+    }
+  }
+}
+```
+
+Una vez activo, puedes buscar buques por nombre, número IMO o bandera, consultar su posición actual en el mapa, verificar su ETA en el puerto de destino y revisar el historial de escalas recientes.

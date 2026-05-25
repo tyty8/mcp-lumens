@@ -1,0 +1,43 @@
+---
+name: Tours en Hawái MCP
+slug: tours-hawaii-mcp
+description: Directorio de turismo hawaiano con 2,583 tours reservables de Viator, GetYourGuide, Klook y Groupon, más 579 eventos en más de 70 venues en cuatro islas con links de reserva con comisión.
+category: travel
+tags: [hawaii, tours, actividades, viator, reservas]
+official: false
+github: https://github.com/baphometnxg/aloha-fyi-mcp
+---
+
+## Descripción general
+
+Tours en Hawái MCP es la herramienta definitiva para agencias de viajes y operadores turísticos especializados en el archipiélago hawaiano. Con un catálogo de 2,583 tours reservables agregados de las principales plataformas de actividades turísticas — Viator, GetYourGuide, Klook y Groupon — más 579 eventos en más de 70 venues distribuidos en las cuatro islas principales (Oahu, Maui, Hawái Big Island y Kauai), este servidor MCP ofrece la cobertura más completa disponible para el turismo en Hawái.
+
+El modelo de negocio incluye links de reserva con comisión, lo que permite a las agencias que integren este servidor generar ingresos adicionales por cada reserva que sus clientes completen a través de las recomendaciones del asistente de IA. Esta capacidad de monetización convierte la herramienta no solo en un servicio de valor para el cliente sino también en una fuente de ingresos complementaria para la agencia, sin necesidad de gestionar las reservas directamente.
+
+El servidor MCP permite buscar tours y actividades por isla, tipo de experiencia (aventura, cultural, gastronómico, náutico, aéreo, relajación), nivel de dificultad y rango de precios. Hawái ofrece desde excursiones al volcán activo en el Big Island hasta tours de snorkel en Molokini, vuelos en helicóptero sobre los acantilados de Napali o luaus tradicionales con show de danza hula, y toda esta oferta está disponible con precios y disponibilidad actualizados.
+
+## Casos de uso para negocios
+
+- **Agencias especializadas en Hawái:** Crear propuestas de actividades personalizadas para cada isla del itinerario hawaiano de sus clientes, con precios reales y links de reserva directa incluidos.
+- **Agencias con programa de afiliación:** Generar comisiones por las reservas de tours que los clientes realizan a través de las recomendaciones del asistente de IA, sin necesidad de gestionar el cobro ni la operativa.
+- **Hoteles en Hawái con servicio de actividades:** Ofrecer a los huéspedes un catálogo completo de tours disponibles durante su estancia con reserva inmediata y confirmación instantánea.
+- **Tour leaders en viajes a Hawái:** Identificar y reservar actividades grupales en cada isla para enriquecer el programa del viaje con experiencias auténticas y bien valoradas.
+- **Receptivos hawaianos:** Complementar su propia oferta de tours con el catálogo agregado de otros operadores para satisfacer la demanda de actividades específicas que no están dentro de su propia cartera.
+- **Influencers y bloggers de viajes:** Acceder a información detallada y actualizada sobre tours en Hawái para crear contenido de calidad con precios y disponibilidad reales para su audiencia.
+
+## Configuración básica
+
+Tours en Hawái MCP accede a datos públicos de las principales plataformas de actividades. Para instalarlo en Claude Desktop sin necesidad de credenciales propias:
+
+```json
+{
+  "mcpServers": {
+    "hawaii-tours": {
+      "command": "npx",
+      "args": ["-y", "aloha-fyi-mcp"]
+    }
+  }
+}
+```
+
+Una vez configurado, puedes buscar tours en cualquiera de las cuatro islas hawaianas, filtrar por tipo de actividad, precio y plataforma de reserva, y obtener el link directo con comisión para completar la reserva en la plataforma correspondiente.

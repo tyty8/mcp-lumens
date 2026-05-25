@@ -1,0 +1,58 @@
+---
+name: Reuniones Online Bot MCP
+slug: reuniones-online-bot-mcp
+description: Envía bots de IA a reuniones de Zoom, Teams y Google Meet para recopilar transcripciones en tiempo real, dictar texto y enviar mensajes en el chat de la reunión.
+category: communication
+tags: [zoom, teams, meet, transcripcion, reuniones]
+official: false
+github: https://github.com/joinly-ai/joinly
+---
+
+## Descripción general
+
+Reuniones Online Bot MCP, basado en la plataforma Joinly, permite enviar bots de inteligencia artificial a reuniones de Zoom, Microsoft Teams y Google Meet para que actúen como participantes invisibles que capturan todo lo que se dice. El bot se une a la reunión de forma automática, transcribe la conversación en tiempo real con identificación de los diferentes participantes, y puede participar activamente enviando mensajes al chat de la reunión o dictando texto cuando el asistente necesita comunicar algo.
+
+Para negocios que celebran muchas reuniones online — con clientes, proveedores, socios o el propio equipo — la transcripción automática resuelve uno de los problemas más persistentes de la cultura de reuniones moderna: nadie quiere tomar notas mientras participa activamente en la conversación, pero sin notas los acuerdos alcanzados se olvidan o se recuerdan de forma diferente según el participante. El bot de IA resuelve este problema sin interferir en la dinámica de la reunión.
+
+La identificación de hablantes hace que las transcripciones sean verdaderamente útiles: en lugar de un bloque de texto sin atribuir, la transcripción indica quién dijo qué, facilitando el seguimiento de los compromisos adquiridos por cada persona y la revisión de puntos específicos sin tener que leer la transcripción completa. El asistente de IA puede procesar estas transcripciones para generar automáticamente resúmenes ejecutivos, listas de tareas pendientes y actas formales de reunión.
+
+## Casos de uso para negocios
+
+- **Despachos de abogados y notarías:** Transcripción automática de reuniones con clientes para documentar instrucciones y acuerdos, con el acta enviada automáticamente a todas las partes al finalizar la reunión.
+- **Agencias de publicidad y marketing:** Captura de todos los briefings de cliente, revisiones de campaña y presentaciones de resultados, con extracción automática de los cambios solicitados y los próximos pasos acordados.
+- **Empresas de consultoría:** Documentación completa de reuniones de diagnóstico y seguimiento de proyectos, con transcripciones estructuradas que se incorporan automáticamente al expediente de cada cliente.
+- **Empresas con equipos remotos:** Registro de reuniones de equipo diarias y semanales para que los miembros que no pudieron asistir puedan ponerse al día rápidamente con el resumen generado por la IA.
+- **Centros de formación y academias online:** Transcripción de clases y tutorías para que los alumnos tengan acceso al contenido completo por escrito, mejorando la accesibilidad y el repaso posterior.
+- **Empresas con negociaciones frecuentes:** Documentación de reuniones de negociación con proveedores o socios comerciales, con registro claro de los términos discutidos y los compromisos adquiridos por cada parte.
+
+## Configuración básica
+
+Joinly ofrece una plataforma en la nube con integración MCP. Regístrate en joinly.ai y obtén tu API key:
+
+```bash
+git clone https://github.com/joinly-ai/joinly
+cd joinly
+npm install
+npm run build
+```
+
+Configura el servidor en tu cliente MCP:
+
+```json
+{
+  "mcpServers": {
+    "joinly-meetings": {
+      "command": "node",
+      "args": ["dist/mcp-server.js"],
+      "env": {
+        "JOINLY_API_KEY": "tu-api-key-de-joinly",
+        "JOINLY_BOT_NAME": "Asistente de Reunión",
+        "JOINLY_LANGUAGE": "es",
+        "JOINLY_WEBHOOK_URL": "https://tu-webhook.tuempresa.com/meetings"
+      }
+    }
+  }
+}
+```
+
+El bot se integra con Zoom, Teams y Meet mediante sus respectivas APIs de bots. Para Zoom necesitarás una aplicación de tipo "Meeting SDK" en el Marketplace de Zoom. Para Teams, una aplicación registrada en Azure. Para Meet, acceso a la Google Meet REST API. Joinly gestiona todos estos detalles técnicos desde su plataforma una vez que enlazas las cuentas correspondientes.

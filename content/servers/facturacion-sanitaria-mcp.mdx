@@ -1,0 +1,46 @@
+---
+name: Facturación Sanitaria MCP
+slug: facturacion-sanitaria-mcp
+description: IA de facturación sanitaria para agentes con búsqueda de códigos ICD-10, CPT y HCPCS — 81,769 códigos con precios RVU y OPPS para centros médicos y aseguradoras.
+category: healthcare
+tags: [icd-10, cpt, facturacion, salud, seguros]
+official: false
+github: https://github.com/MyMedi-AI/mymedi-ai-mcp-server
+---
+
+## Descripción general
+
+Facturación Sanitaria MCP pone a disposición de los profesionales de la administración sanitaria una base de datos completa de 81,769 códigos de facturación médica — ICD-10 (diagnósticos), CPT (procedimientos médicos) y HCPCS (suministros y equipos) — junto con los valores de referencia de precio RVU (Relative Value Units) y las tarifas OPPS (Outpatient Prospective Payment System) del sistema sanitario estadounidense. Todo ello accesible mediante búsquedas en lenguaje natural desde el asistente de IA.
+
+La codificación médica correcta es fundamental para que los centros sanitarios obtengan el reembolso adecuado de los seguros médicos. Un error de codificación puede resultar en el rechazo de la reclamación, en pagos insuficientes o, en el peor caso, en auditorías por parte de las aseguradoras o de los organismos reguladores. Este servidor MCP ayuda a los codificadores médicos y al personal administrativo a identificar rápidamente el código correcto para cada diagnóstico y procedimiento, reduciendo los errores y acelerando el ciclo de facturación.
+
+Para consultorios médicos, clínicas especializadas y hospitales que facturan a seguros médicos privados o a programas públicos como Medicare y Medicaid, la eficiencia en la codificación médica tiene un impacto directo en los ingresos. La posibilidad de buscar y verificar códigos con una simple pregunta en lenguaje natural, en lugar de consultar manuales de codificación impresos o sistemas especializados complejos, puede ahorrar horas de trabajo al personal administrativo cada semana.
+
+## Casos de uso para negocios
+
+- **Codificadores médicos certificados:** Verificar y validar códigos ICD-10 y CPT para diagnósticos y procedimientos complejos con una búsqueda rápida en lenguaje natural sin necesidad de consultar manuales de codificación.
+- **Administradores de consultorios médicos:** Resolver dudas de codificación en el momento de preparar las reclamaciones para las aseguradoras, reduciendo los rechazos por errores de código y acelerando el cobro.
+- **Clínicas especializadas:** Identificar los códigos CPT correctos para los procedimientos específicos de su especialidad y verificar los valores RVU asociados para negociar contratos con aseguradoras en condiciones favorables.
+- **Empresas de billing médico:** Proporcionar a su equipo de codificadores una herramienta de búsqueda rápida de códigos que acelere la revisión de reclamaciones y mejore la productividad del departamento.
+- **Aseguradoras de salud:** Verificar la coherencia entre los diagnósticos (ICD-10) y los procedimientos (CPT) declarados en las reclamaciones recibidas para detectar posibles errores o irregularidades.
+- **Consultores de gestión sanitaria:** Analizar la estructura de facturación de un centro médico para identificar oportunidades de mejora en la codificación y aumentar los ingresos sin incrementar el volumen de pacientes.
+
+## Configuración básica
+
+Para utilizar Facturación Sanitaria MCP necesitas una clave de API de MyMedi-AI. Regístrate en la plataforma para obtener acceso a la base de datos completa de códigos de facturación médica.
+
+```json
+{
+  "mcpServers": {
+    "medical-billing": {
+      "command": "npx",
+      "args": ["-y", "@mymedi-ai/mcp-server"],
+      "env": {
+        "MYMEDI_API_KEY": "tu_api_key"
+      }
+    }
+  }
+}
+```
+
+Una vez configurado, puedes buscar cualquier código ICD-10 por diagnóstico, encontrar los códigos CPT aplicables a un procedimiento específico, consultar los valores RVU de cada código y verificar las tarifas OPPS de referencia para la facturación ambulatoria.

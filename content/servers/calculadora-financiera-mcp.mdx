@@ -1,0 +1,52 @@
+---
+name: Calculadora Financiera MCP
+slug: calculadora-financiera-mcp
+description: Calculadora con 501 herramientas que cubre 22 categorías incluyendo sistemas fiscales de 8 países, finanzas personales, construcción y ciencias — sin clave API.
+category: finance
+tags: [calculadora, impuestos, finanzas, iva, multidivisa]
+official: false
+github: https://github.com/tresor4k/macalc-mcp
+---
+
+## Descripción general
+
+Calculadora Financiera MCP es una herramienta extraordinariamente completa que pone a disposición del asistente de IA 501 calculadoras especializadas organizadas en 22 categorías temáticas. A diferencia de la mayoría de los servidores MCP que requieren cuentas en plataformas externas y claves API, este servidor funciona de forma completamente autónoma sin necesidad de ningún registro ni suscripción, lo que lo convierte en una herramienta de adopción inmediata para cualquier negocio.
+
+La cobertura de sistemas fiscales de 8 países hace que este servidor sea especialmente útil para empresas que operan en entornos internacionales o simplemente necesitan calcular correctamente el IVA, los impuestos de importación o las retenciones fiscales en sus operaciones cotidianas. Para un negocio de importación-exportación, un despacho contable con clientes en varios países o una empresa con empleados en diferentes jurisdicciones, tener estas herramientas de cálculo fiscal siempre disponibles en el asistente de IA supone una ventaja operativa significativa.
+
+Las calculadoras de construcción son especialmente valiosas para sectores como la arquitectura, la ingeniería o las reformas del hogar: cálculo de materiales, estimación de costes de obra, volúmenes de hormigón, superficies de revestimiento y muchos otros cálculos que requieren precisión y que normalmente consumen tiempo valioso de los profesionales. Tener estas herramientas disponibles de forma conversacional acelera enormemente la elaboración de presupuestos y estimaciones.
+
+## Casos de uso para negocios
+
+- **Empresas importadoras y exportadoras:** Cálculo preciso de aranceles, IVA a la importación y tipos de cambio para determinar el coste real de mercancías procedentes de diferentes países antes de cerrar operaciones.
+- **Despachos de asesoría fiscal:** Verificación rápida de cálculos de IVA, retenciones e impuestos en diferentes escenarios, con acceso a los sistemas fiscales de los países donde operan los clientes.
+- **Constructoras y empresas de reformas:** Cálculo automático de materiales necesarios, estimación de costes y presupuestación de obras usando las calculadoras especializadas de construcción integradas.
+- **Negocios con precios en múltiples divisas:** Conversión de precios, cálculo de márgenes en diferentes monedas y estimación del impacto de las fluctuaciones cambiarias en la rentabilidad.
+- **Agentes inmobiliarios:** Cálculo de hipotecas, rentabilidad de inversiones inmobiliarias, plusvalías y retención del IRPF en compraventas para asesorar con precisión a compradores e inversores.
+- **Talleres de fabricación y artesanía:** Cálculo del coste real de producción incluyendo materiales, tiempo de trabajo y gastos indirectos, para establecer precios de venta con el margen correcto.
+
+## Configuración básica
+
+Este servidor no requiere ninguna API key externa, lo que simplifica enormemente su instalación:
+
+```bash
+git clone https://github.com/tresor4k/macalc-mcp
+cd macalc-mcp
+npm install
+npm run build
+```
+
+Configura el servidor en tu cliente MCP sin necesidad de variables de entorno adicionales:
+
+```json
+{
+  "mcpServers": {
+    "calculadora-financiera": {
+      "command": "node",
+      "args": ["dist/index.js"]
+    }
+  }
+}
+```
+
+Una vez instalado, el asistente de IA tiene acceso inmediato a las 501 herramientas de cálculo. Puedes pedirle que calcule el IVA de una factura, estime la hipoteca para una propiedad, convierta entre divisas, calcule la amortización de un activo o determine el punto de equilibrio de un negocio, todo sin necesidad de salir de la conversación ni abrir una calculadora externa.

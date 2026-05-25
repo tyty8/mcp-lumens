@@ -1,7 +1,7 @@
 ---
-name: Slack MCP Server
+name: Servidor MCP de Slack
 slug: slack-mcp
-description: Lets AI clients read channels, post messages, list workspace members, and search message history in Slack using a Bot Token.
+description: Permite a los clientes de IA leer canales, publicar mensajes, listar miembros del espacio de trabajo y buscar en el historial de mensajes de Slack mediante un Bot Token.
 category: productivity
 tags: [slack, messaging, channels, notifications]
 official: true
@@ -10,15 +10,15 @@ github: https://github.com/modelcontextprotocol/servers/tree/main/src/slack
 featured: false
 ---
 
-## Overview
+## Descripción general
 
-The Slack MCP Server integrates your AI client with Slack workspaces, enabling it to participate in team communication workflows directly. Rather than copying and pasting messages in and out of an AI chat window, the server lets the AI read conversation context, draft and send messages, and search across your workspace history without leaving the conversation.
+El Servidor MCP de Slack integra su cliente de IA con espacios de trabajo de Slack, permitiéndole participar directamente en flujos de trabajo de comunicación del equipo. En lugar de copiar y pegar mensajes hacia y desde una ventana de chat de IA, el servidor permite que la IA lea el contexto de la conversación, redacte y envíe mensajes, y busque en el historial de su espacio de trabajo sin salir de la conversación.
 
-Typical use cases include summarizing a long Slack thread, drafting an announcement message for review before posting, monitoring a channel for specific keywords, or automating routine notifications from scripts and CI pipelines.
+Los casos de uso típicos incluyen resumir un hilo largo de Slack, redactar un mensaje de anuncio para revisión antes de publicarlo, monitorear un canal en busca de palabras clave específicas, o automatizar notificaciones rutinarias desde scripts y pipelines de CI.
 
-## Configuration
+## Configuración
 
-You need a Slack Bot Token (`xoxb-...`) from a Slack App configured with the appropriate OAuth scopes. At minimum, the bot requires `channels:read`, `channels:history`, `chat:write`, and `users:read`. Set the token as the `SLACK_BOT_TOKEN` environment variable.
+Necesita un Bot Token de Slack (`xoxb-...`) de una aplicación de Slack configurada con los alcances OAuth apropiados. Como mínimo, el bot requiere `channels:read`, `channels:history`, `chat:write` y `users:read`. Establezca el token como la variable de entorno `SLACK_BOT_TOKEN`.
 
 ```json
 {
@@ -34,13 +34,13 @@ You need a Slack Bot Token (`xoxb-...`) from a Slack App configured with the app
 }
 ```
 
-The bot must be invited to any private channels it needs to access with `/invite @your-bot-name`.
+El bot debe ser invitado a cualquier canal privado al que necesite acceder con `/invite @nombre-de-su-bot`.
 
-## Key Capabilities
+## Capacidades principales
 
-- List public channels and their metadata
-- Read message history from channels the bot has joined
-- Post messages to channels or as threaded replies
-- List workspace members and their profile information
-- Search messages across the workspace
-- React to messages with emoji
+- Listar canales públicos y sus metadatos
+- Leer el historial de mensajes de los canales a los que el bot se ha unido
+- Publicar mensajes en canales o como respuestas en hilos
+- Listar miembros del espacio de trabajo y su información de perfil
+- Buscar mensajes en todo el espacio de trabajo
+- Reaccionar a mensajes con emoji

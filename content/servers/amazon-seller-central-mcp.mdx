@@ -1,0 +1,56 @@
+---
+name: Amazon Seller Central MCP
+slug: amazon-seller-central-mcp
+description: Gestión de Amazon Seller Central mediante la SP-API — administra inventario, rastrea pedidos, analiza ventas y optimiza listados de productos directamente desde tu asistente de IA.
+category: retail
+tags: [amazon, seller, inventario, pedidos, marketplace]
+official: false
+github: https://github.com/MarceauSolutions/amazon-seller-mcp
+---
+
+## Descripción general
+
+Amazon Seller Central MCP conecta tu asistente de IA directamente con la SP-API de Amazon, la interfaz oficial que Amazon proporciona a los vendedores profesionales para automatizar la gestión de su cuenta. Esto permite a cualquier negocio minorista que venda en Amazon —desde una tienda familiar de artesanías hasta una empresa de distribución mediana— gestionar su operación diaria en el marketplace sin tener que navegar constantemente por el panel de control de Seller Central, que puede resultar abrumador y consumir horas de trabajo.
+
+La conexión a la SP-API ofrece acceso en tiempo real a todos los datos críticos del negocio en Amazon: el estado del inventario en los almacenes de FBA, el flujo de pedidos entrantes y su estado de tramitación, las métricas de rendimiento como el índice de defectos de pedido o la tasa de entrega a tiempo, y el estado de las campañas publicitarias de Sponsored Products. Con toda esta información disponible conversacionalmente, el vendedor puede tomar decisiones más rápidas y basadas en datos sin necesidad de conocimientos técnicos avanzados.
+
+El servidor también facilita la optimización continua de los listados. El asistente puede analizar las métricas de cada ASIN, identificar los productos con peor rendimiento en términos de conversión o visibilidad, sugerir mejoras en los títulos, bullets y descripciones según las mejores prácticas de Amazon SEO, y ayudar a detectar cuándo un producto está en riesgo de perder la Buy Box por precio o métricas de vendedor. Para un negocio que gestiona cientos de referencias en Amazon, este nivel de monitoreo constante resulta prácticamente imposible de manera manual.
+
+## Casos de uso para negocios
+
+- **Tiendas minoristas con canal Amazon:** Monitoreo automático de niveles de inventario en FBA con alertas cuando el stock baja por debajo del umbral mínimo, evitando roturas que penalizan el ranking orgánico.
+- **Distribuidores y mayoristas:** Análisis comparativo de rendimiento por ASIN — identificar qué productos generan más margen neto después de las tarifas de Amazon y cuáles lastran la rentabilidad del canal.
+- **Marcas propias (private label):** Seguimiento de reseñas y valoraciones con alertas sobre nuevas críticas negativas para poder responder rápidamente y proteger la reputación del listado.
+- **Vendedores de temporada:** Previsión de demanda basada en histórico de ventas para preparar el inventario antes de picos estacionales como Navidad, Black Friday o campañas de verano.
+- **Empresas con múltiples cuentas de vendedor:** Consolidación de métricas de rendimiento de varias cuentas en una sola vista conversacional para comparar y priorizar esfuerzos.
+- **Gestores de catálogos grandes:** Auditoría masiva de listados para detectar productos sin imagen principal, con contenido A+ incompleto o con supresión de Buy Box por motivos técnicos.
+
+## Configuración básica
+
+Regístrate en el Programa de Desarrolladores de Amazon para obtener las credenciales de la SP-API y configura la aplicación con los permisos necesarios:
+
+```bash
+npx @marceausolutions/amazon-seller-mcp
+```
+
+Configura las credenciales en tu cliente MCP:
+
+```json
+{
+  "mcpServers": {
+    "amazon-seller": {
+      "command": "npx",
+      "args": ["@marceausolutions/amazon-seller-mcp"],
+      "env": {
+        "SP_API_CLIENT_ID": "tu-client-id",
+        "SP_API_CLIENT_SECRET": "tu-client-secret",
+        "SP_API_REFRESH_TOKEN": "tu-refresh-token",
+        "SP_API_MARKETPLACE_ID": "A1RKKUPIHCS9HS",
+        "SP_API_SELLER_ID": "tu-seller-id"
+      }
+    }
+  }
+}
+```
+
+El marketplace ID para España es `A1RKKUPIHCS9HS`. Para obtener el refresh token, sigue el flujo de autorización OAuth de la SP-API desde la consola de desarrolladores de Amazon Seller Central.
