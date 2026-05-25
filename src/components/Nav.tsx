@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils'
 
 const NAV_LINKS = [
   { href: '/servers', label: 'Servidores' },
+  { href: '/tabla', label: 'Tabla' },
   { href: '/soluciones', label: 'Soluciones' },
   { href: '/guides', label: 'Guías' },
 ]
