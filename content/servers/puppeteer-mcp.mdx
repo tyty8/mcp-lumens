@@ -1,0 +1,45 @@
+---
+name: Puppeteer MCP Server
+slug: puppeteer-mcp
+description: Enables AI clients to control a headless Chromium browser via Puppeteer — navigate pages, take screenshots, fill forms, click elements, and extract content.
+category: developer-tools
+tags: [browser, automation, puppeteer, web-scraping, screenshots]
+official: true
+install: "npx -y @modelcontextprotocol/server-puppeteer"
+github: https://github.com/modelcontextprotocol/servers/tree/main/src/puppeteer
+featured: false
+---
+
+## Overview
+
+The Puppeteer MCP Server gives AI clients full browser automation capabilities through Google's Puppeteer library. The AI can navigate to any URL, interact with page elements, extract structured content, take screenshots, and execute JavaScript — all through natural language instructions. Puppeteer runs a real Chromium instance, so JavaScript-heavy pages and single-page applications work correctly.
+
+Common use cases include automated UI testing (describe what to test in plain English and let the AI drive the browser), web scraping of sites that require interaction, screenshot generation for visual regression checks, and automating repetitive browser-based workflows.
+
+## Configuration
+
+Puppeteer downloads Chromium on first run. On headless servers, you may need additional system dependencies for Chromium. No API keys are required.
+
+```json
+{
+  "mcpServers": {
+    "puppeteer": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-puppeteer"]
+    }
+  }
+}
+```
+
+For CI environments or Docker containers, set `PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true` and provide the path to an existing Chrome/Chromium binary via `PUPPETEER_EXECUTABLE_PATH`.
+
+## Key Capabilities
+
+- Navigate to URLs and wait for page load
+- Take full-page or element-specific screenshots
+- Click elements by CSS selector or visible text
+- Fill and submit forms
+- Extract text content and HTML from the page
+- Execute arbitrary JavaScript in the page context
+- Handle navigation, redirects, and page transitions
+- Access browser cookies and local storage

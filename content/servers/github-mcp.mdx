@@ -1,0 +1,44 @@
+---
+name: GitHub MCP Server
+slug: github-mcp
+description: Connect AI clients directly to GitHub repositories to read code, manage issues and pull requests, create branches, and push files — all through natural language.
+category: developer-tools
+tags: [github, git, pull-requests, issues, code-review]
+official: true
+install: "npx -y @modelcontextprotocol/server-github"
+github: https://github.com/modelcontextprotocol/servers/tree/main/src/github
+featured: true
+---
+
+## Overview
+
+The GitHub MCP Server gives AI clients full programmatic access to GitHub through the Model Context Protocol. With it, your AI assistant can read repository contents, inspect commit history, list and create issues, review and open pull requests, create branches, and push file changes — all without leaving your conversation.
+
+This server is ideal for code review workflows where you want an AI to examine a pull request, summarize changes, suggest improvements, and post review comments directly on GitHub. It is also useful for project management tasks: triaging issues, labeling bugs, or drafting release notes from recent commits.
+
+## Configuration
+
+The server requires a GitHub Personal Access Token with appropriate scopes. Set the `GITHUB_PERSONAL_ACCESS_TOKEN` environment variable before starting the server. For read-only use, the `repo:read` scope is sufficient; for creating PRs, pushing files, and commenting, you need the full `repo` scope.
+
+```json
+{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "ghp_yourTokenHere"
+      }
+    }
+  }
+}
+```
+
+## Key Capabilities
+
+- Read file contents and directory trees from any accessible repository
+- List, create, update, and close issues with labels and assignees
+- List, review, merge, and create pull requests
+- Create and delete branches
+- Push single or multiple file changes with commit messages
+- Search code across repositories using GitHub's search API

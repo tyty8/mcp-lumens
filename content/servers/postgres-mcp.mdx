@@ -1,0 +1,47 @@
+---
+name: PostgreSQL MCP Server
+slug: postgres-mcp
+description: Connect AI clients to a PostgreSQL database to run SQL queries, inspect schemas, and analyze data — safely and without custom tooling.
+category: databases
+tags: [postgresql, sql, database, queries]
+official: true
+install: "npx -y @modelcontextprotocol/server-postgres postgresql://localhost/mydb"
+github: https://github.com/modelcontextprotocol/servers/tree/main/src/postgres
+featured: true
+---
+
+## Overview
+
+The PostgreSQL MCP Server connects your AI client to a live Postgres database, enabling natural-language queries, schema exploration, and data analysis without writing raw SQL by hand. Pass your connection string as a command-line argument and the server handles the rest.
+
+By default the server operates in read-only mode, preventing any mutations to your data. This makes it safe to point at a production replica for analysis work. When you need write access — for seeding data or running migrations in development — you can connect with a user that has the required permissions.
+
+## Configuration
+
+Provide the PostgreSQL connection string as the first argument. Standard `postgresql://` URI format is supported, including user, password, host, port, and database name.
+
+```json
+{
+  "mcpServers": {
+    "postgres": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-postgres",
+        "postgresql://readonly_user:password@localhost:5432/mydb"
+      ]
+    }
+  }
+}
+```
+
+For production use, prefer a dedicated read-only database role rather than your application's write credentials. This limits the blast radius if the AI ever generates an unexpected query.
+
+## Key Capabilities
+
+- Execute SELECT queries and return structured results
+- Inspect table schemas, column types, and constraints
+- List all tables, views, and indexes in the database
+- Describe foreign key relationships
+- Run EXPLAIN on queries to diagnose performance
+- Read-only by default; write access depends on the database role used

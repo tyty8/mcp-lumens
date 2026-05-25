@@ -1,0 +1,45 @@
+---
+name: SQLite MCP Server
+slug: sqlite-mcp
+description: Provides AI clients with full read and write access to a local SQLite database file, including schema inspection and arbitrary SQL execution.
+category: databases
+tags: [sqlite, sql, database, local]
+official: true
+install: "npx -y @modelcontextprotocol/server-sqlite path/to/db.sqlite"
+github: https://github.com/modelcontextprotocol/servers/tree/main/src/sqlite
+featured: false
+---
+
+## Overview
+
+The SQLite MCP Server makes it trivial to give an AI client access to a local SQLite database. No server process, no connection string management — just point the server at a `.sqlite` file and your AI can immediately query, insert, update, and inspect the data inside.
+
+This server is well-suited for local development databases, prototype applications, and offline data analysis workflows. Because SQLite is embedded and file-based, the setup is minimal and the database travels with your project. The AI can help you explore the schema, write queries, seed test data, and debug data issues all in one conversation.
+
+## Configuration
+
+Pass the path to your SQLite file as the first argument. The path can be relative or absolute. If the file does not exist, SQLite will create it.
+
+```json
+{
+  "mcpServers": {
+    "sqlite": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sqlite",
+        "/Users/yourname/projects/app/local.db"
+      ]
+    }
+  }
+}
+```
+
+## Key Capabilities
+
+- Execute arbitrary SQL queries (SELECT, INSERT, UPDATE, DELETE)
+- List all tables and views in the database
+- Inspect column definitions, types, and constraints for any table
+- Create and modify tables via DDL statements
+- No external database server or network connection required
+- Reads and writes persist to the file between sessions

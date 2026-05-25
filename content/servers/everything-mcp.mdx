@@ -1,0 +1,41 @@
+---
+name: Everything MCP Server
+slug: everything-mcp
+description: A reference implementation that demonstrates every MCP feature — tools, resources, prompts, and sampling — making it the ideal server for testing clients and learning the protocol.
+category: developer-tools
+tags: [testing, demo, reference, all-features]
+official: true
+install: "npx -y @modelcontextprotocol/server-everything"
+github: https://github.com/modelcontextprotocol/servers/tree/main/src/everything
+featured: false
+---
+
+## Overview
+
+The Everything MCP Server is not a production tool — it is a comprehensive reference implementation designed to exercise every capability in the MCP specification. If you are building an MCP client or evaluating a host application, this server lets you verify that tools, resources, prompts, and sampling all work correctly without needing to set up real external services.
+
+The server ships with a wide variety of example tools (echo, arithmetic, file-like resources, slow operations for testing timeouts), diverse resource types (text, binary, URIs with templates), and pre-built prompts. Running this server against your client gives you immediate visibility into which MCP features are supported and how edge cases are handled.
+
+## Configuration
+
+No API keys or external dependencies are required. Start the server and point your MCP client at it.
+
+```json
+{
+  "mcpServers": {
+    "everything": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-everything"]
+    }
+  }
+}
+```
+
+## Key Capabilities
+
+- Example tools covering synchronous, asynchronous, and long-running operations
+- Multiple resource types: static text, binary data, and URI-templated resources
+- Pre-built prompt templates demonstrating the prompts MCP feature
+- Sampling support for testing client-side LLM invocation
+- Intentional error cases for testing client error handling
+- Useful as a smoke test when upgrading MCP client libraries

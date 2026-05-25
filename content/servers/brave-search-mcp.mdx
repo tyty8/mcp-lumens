@@ -1,0 +1,45 @@
+---
+name: Brave Search MCP Server
+slug: brave-search-mcp
+description: Gives AI clients real-time web search capability through the Brave Search API, including general web results and local business search.
+category: ai
+tags: [search, web, brave, api]
+official: true
+install: "npx -y @modelcontextprotocol/server-brave-search"
+github: https://github.com/modelcontextprotocol/servers/tree/main/src/brave-search
+featured: false
+---
+
+## Overview
+
+The Brave Search MCP Server connects your AI client to Brave's independent search index, giving it access to up-to-date web content without relying on training data alone. This is particularly useful for questions about recent events, current documentation, pricing, or any information that changes frequently.
+
+Brave Search is privacy-focused and operates its own web crawler, meaning results are not filtered through the same lens as other major search engines. The server supports both general web search and local business/place search, making it useful for location-aware queries as well.
+
+## Configuration
+
+A Brave Search API key is required. Sign up at [brave.com/search/api](https://brave.com/search/api) to obtain one. Set the key as the `BRAVE_API_KEY` environment variable.
+
+```json
+{
+  "mcpServers": {
+    "brave-search": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+      "env": {
+        "BRAVE_API_KEY": "BSAyourKeyHere"
+      }
+    }
+  }
+}
+```
+
+The free tier of the Brave Search API includes a generous number of monthly queries, which is sufficient for personal and light development use.
+
+## Key Capabilities
+
+- General web search returning titles, URLs, and result snippets
+- Local business and place search with addresses and ratings
+- Configurable result count per query
+- Privacy-respecting index independent from major search providers
+- No user tracking or profiling by Brave

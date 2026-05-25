@@ -1,7 +1,7 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  /* config options here */
-};
+  // MDX content is server-rendered via next-mdx-remote, no special config needed
+}
 
-export default nextConfig;
+export default nextConfig

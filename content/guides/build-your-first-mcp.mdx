@@ -1,0 +1,167 @@
+---
+title: Build Your First MCP Server
+slug: build-your-first-mcp
+description: "A hands-on guide to building a custom MCP server with the TypeScript SDK from scratch."
+date: 2026-05-10
+tags: [development, typescript, sdk, intermediate]
+---
+
+## Why Build a Custom Server?
+
+The official MCP servers cover common use cases, but your workflows are unique. A custom server lets you expose any API, internal tool, or data source to your AI client with exactly the interface you need. Once written, the server works with any MCP-compatible client — Claude Desktop, Cursor, or your own agent.
+
+## Prerequisites
+
+- Node.js 18+
+- TypeScript familiarity (basic types, async/await)
+- A terminal and a code editor
+
+## Initialize the Project
+
+Create a new directory and initialize a Node project:
+
+```bash
+mkdir my-mcp-server
+cd my-mcp-server
+npm init -y
+```
+
+Install the MCP TypeScript SDK and supporting packages:
+
+```bash
+npm install @modelcontextprotocol/sdk zod
+npm install -D typescript @types/node ts-node
+```
+
+Add a `tsconfig.json`:
+
+```json
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "Node16",
+    "moduleResolution": "Node16",
+    "outDir": "dist",
+    "strict": true,
+    "esModuleInterop": true
+  },
+  "include": ["src/**/*"]
+}
+```
+
+Add a build script to `package.json`:
+
+```json
+{
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js"
+  }
+}
+```
+
+## Write the Server
+
+Create `src/index.ts`. This example implements a simple calculator server with two tools: `add` and `multiply`.
+
+```ts
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import { z } from "zod";
+
+// Create the server instance
+const server = new McpServer({
+  name: "calculator",
+  version: "1.0.0",
+});
+
+// Register the "add" tool
+server.tool(
+  "add",
+  "Add two numbers together",
+  {
+    a: z.number().describe("First number"),
+    b: z.number().describe("Second number"),
+  },
+  async ({ a, b }) => {
+    return {
+      content: [
+        {
+          type: "text",
+          text: String(a + b),
+        },
+      ],
+    };
+  }
+);
+
+// Register the "multiply" tool
+server.tool(
+  "multiply",
+  "Multiply two numbers",
+  {
+    a: z.number().describe("First number"),
+    b: z.number().describe("Second number"),
+  },
+  async ({ a, b }) => {
+    return {
+      content: [
+        {
+          type: "text",
+          text: String(a * b),
+        },
+      ],
+    };
+  }
+);
+
+// Start the server over stdio
+const transport = new StdioServerTransport();
+await server.connect(transport);
+```
+
+## Build and Run
+
+```bash
+npm run build
+node dist/index.js
+```
+
+The server will start and wait for input over stdin. It is ready to be connected to a client.
+
+## Test with the MCP Inspector
+
+The MCP Inspector is an interactive browser-based tool for testing servers without a full client setup.
+
+```bash
+npx @modelcontextprotocol/inspector node dist/index.js
+```
+
+This opens a browser window where you can browse your tools, provide inputs, and call them interactively. Verify that `add` and `multiply` both appear and return correct results before connecting to Claude Desktop.
+
+## Connect to Claude Desktop
+
+Add the server to your Claude Desktop config file:
+
+```json
+{
+  "mcpServers": {
+    "calculator": {
+      "command": "node",
+      "args": ["/absolute/path/to/my-mcp-server/dist/index.js"]
+    }
+  }
+}
+```
+
+Restart Claude Desktop, then test in a conversation: "What is 347 multiplied by 28?" — Claude should invoke the `multiply` tool and return the answer.
+
+## Deploy and Distribute
+
+To share your server with others:
+
+1. **Publish to npm.** Run `npm publish` after setting a package name (e.g. `mcp-server-calculator`). Users can then run it with `npx mcp-server-calculator`.
+2. **Add to PATH.** Build the binary, mark it executable (`chmod +x dist/index.js`), add a shebang (`#!/usr/bin/env node`), and link it globally with `npm link`.
+3. **Docker.** Package the server in a Docker image for consistent execution across environments, especially useful for servers with native dependencies.
+
+For more advanced patterns — resources, prompts, authentication, streaming — refer to the [MCP TypeScript SDK documentation](https://github.com/modelcontextprotocol/typescript-sdk).

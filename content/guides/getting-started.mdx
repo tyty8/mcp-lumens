@@ -1,0 +1,106 @@
+---
+title: Getting Started with MCP
+slug: getting-started
+description: "Learn what the Model Context Protocol is, why it matters, and how to connect your first MCP server to Claude Desktop."
+date: 2026-05-01
+tags: [beginner, setup, claude-desktop]
+---
+
+## What is MCP?
+
+The Model Context Protocol (MCP) is an open standard developed by Anthropic that defines how AI clients communicate with external tools and data sources. Think of it as the USB-C of AI integrations: a single, universal connector that works between any compliant client and any compliant server, regardless of who built them.
+
+Before MCP, every AI tool integration was a one-off implementation — custom code for each combination of AI model and external service. MCP replaces that fragmentation with a standardized protocol. Once a server implements MCP, any MCP-compatible client can use it immediately, without glue code or custom adapters.
+
+## Why MCP Matters
+
+- **Any client, any server.** A server written once works with Claude Desktop, Cursor, your custom agent, or any other MCP host.
+- **Vendor neutral.** The protocol is open and not locked to any single AI provider. Servers can be used with different models as the ecosystem grows.
+- **Open standard.** The specification is public. Anyone can build servers, clients, or tooling around it, creating a shared ecosystem rather than siloed integrations.
+
+## Prerequisites
+
+- [Claude Desktop](https://claude.ai/download) (or another MCP-compatible client)
+- Node.js 18 or higher (`node --version` to check)
+- A terminal / command prompt
+
+## Connecting Your First MCP Server
+
+### Step 1: Install Claude Desktop
+
+Download and install Claude Desktop from [claude.ai/download](https://claude.ai/download). Sign in with your Anthropic account.
+
+### Step 2: Open the Configuration File
+
+Claude Desktop reads MCP server configuration from a JSON file on disk.
+
+- **macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`
+- **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
+
+Open that file in a text editor. If it does not exist yet, create it.
+
+### Step 3: Add an MCP Server
+
+Here is a minimal configuration that adds the Filesystem MCP Server, scoped to your home directory:
+
+```json
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/Users/yourname"
+      ]
+    }
+  }
+}
+```
+
+Replace `/Users/yourname` with the directory you want the AI to have access to. On Windows use a path like `C:\\Users\\yourname`.
+
+To add multiple servers, add more entries under `mcpServers`:
+
+```json
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/Users/yourname"]
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "ghp_yourTokenHere"
+      }
+    }
+  }
+}
+```
+
+### Step 4: Restart Claude Desktop
+
+Fully quit and relaunch Claude Desktop. The app reads the config file at startup, so changes take effect only after a restart.
+
+### Step 5: Test the Connection
+
+Start a new conversation and ask Claude something that requires the server. For example, with the filesystem server:
+
+> "List the files in my Documents folder."
+
+If the server is connected correctly, Claude will invoke the tool and return real results. You will see a tool use indicator in the conversation.
+
+## Troubleshooting
+
+- **"No tools available"** — Check that the config file is valid JSON (no trailing commas, correct quotes). Use a JSON validator if unsure.
+- **Server not starting** — Run the install command manually in a terminal (`npx -y @modelcontextprotocol/server-filesystem /tmp`) to confirm Node.js and npx are working.
+- **Permission errors on macOS** — Claude Desktop may need Full Disk Access. Go to System Settings > Privacy & Security > Full Disk Access and add Claude.
+- **Environment variables not set** — Double-check that `env` keys in the config file match exactly what the server documentation specifies.
+
+## What's Next
+
+- Browse the [server directory](/servers) to find servers for databases, search, Slack, and more.
+- Follow the [Build Your First MCP Server](/guides/build-your-first-mcp) guide to create a custom server.
+- Read [MCP Security Best Practices](/guides/mcp-security-best-practices) before deploying servers to shared or production environments.

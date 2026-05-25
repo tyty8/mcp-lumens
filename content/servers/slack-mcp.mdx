@@ -1,0 +1,46 @@
+---
+name: Slack MCP Server
+slug: slack-mcp
+description: Lets AI clients read channels, post messages, list workspace members, and search message history in Slack using a Bot Token.
+category: productivity
+tags: [slack, messaging, channels, notifications]
+official: true
+install: "npx -y @modelcontextprotocol/server-slack"
+github: https://github.com/modelcontextprotocol/servers/tree/main/src/slack
+featured: false
+---
+
+## Overview
+
+The Slack MCP Server integrates your AI client with Slack workspaces, enabling it to participate in team communication workflows directly. Rather than copying and pasting messages in and out of an AI chat window, the server lets the AI read conversation context, draft and send messages, and search across your workspace history without leaving the conversation.
+
+Typical use cases include summarizing a long Slack thread, drafting an announcement message for review before posting, monitoring a channel for specific keywords, or automating routine notifications from scripts and CI pipelines.
+
+## Configuration
+
+You need a Slack Bot Token (`xoxb-...`) from a Slack App configured with the appropriate OAuth scopes. At minimum, the bot requires `channels:read`, `channels:history`, `chat:write`, and `users:read`. Set the token as the `SLACK_BOT_TOKEN` environment variable.
+
+```json
+{
+  "mcpServers": {
+    "slack": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-slack"],
+      "env": {
+        "SLACK_BOT_TOKEN": "xoxb-yourTokenHere"
+      }
+    }
+  }
+}
+```
+
+The bot must be invited to any private channels it needs to access with `/invite @your-bot-name`.
+
+## Key Capabilities
+
+- List public channels and their metadata
+- Read message history from channels the bot has joined
+- Post messages to channels or as threaded replies
+- List workspace members and their profile information
+- Search messages across the workspace
+- React to messages with emoji
