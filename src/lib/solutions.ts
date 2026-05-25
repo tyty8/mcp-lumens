@@ -74,7 +74,6 @@ export const SOLUTIONS: Solution[] = [
           { slug: 'seguimiento-tiempo-harvest-mcp', name: 'Harvest Tiempo' },
           { slug: 'toggl-tiempo-mcp', name: 'Toggl Track' },
           { slug: 'xero-contabilidad-mcp', name: 'Xero Contabilidad' },
-          { slug: 'chargebee-suscripciones-mcp', name: 'Retainers (Chargebee)' },
         ],
       },
       {
@@ -103,7 +102,6 @@ export const SOLUTIONS: Solution[] = [
         servers: [
           { slug: 'verificacion-lei-mcp', name: 'Verificación LEI' },
           { slug: 'registros-empresariales-mcp', name: 'Registros Empresariales' },
-          { slug: 'companies-house-uk-mcp', name: 'Companies House UK' },
         ],
       },
       {
@@ -115,7 +113,6 @@ export const SOLUTIONS: Solution[] = [
         description:
           'Reclutamiento de asociados y paralegales, contratos de empleo automatizados',
         servers: [
-          { slug: 'greenhouse-ats-mcp', name: 'Greenhouse ATS' },
           { slug: 'generacion-documentos-rrhh-mcp', name: 'Documentos RRHH' },
           { slug: 'encuestas-empleados-mcp', name: 'Encuestas Personal' },
         ],
@@ -157,7 +154,6 @@ export const SOLUTIONS: Solution[] = [
           { slug: 'herramientas-flete-mcp', name: 'Herramientas de Flete' },
           { slug: 'logistica-multioperador-mcp', name: 'Logística Multioperador' },
           { slug: 'rutas-camion-mcp', name: 'Rutas de Camión' },
-          { slug: 'envios-multioperador-mcp', name: 'Envíos Multioperador' },
           { slug: 'seguimiento-envios-mcp', name: 'Seguimiento de Envíos' },
           { slug: 'validacion-direcciones-mcp', name: 'Validación Direcciones' },
         ],
@@ -245,7 +241,6 @@ export const SOLUTIONS: Solution[] = [
           { slug: 'analytics-ecommerce-mcp', name: 'Analytics E-commerce' },
           { slug: 'datos-productos-estructurados-mcp', name: 'Datos de Productos' },
           { slug: 'comparacion-precios-mcp', name: 'Comparación de Precios' },
-          { slug: 'dropshipping-aliexpress-shopify-mcp', name: 'Dropshipping AliExpress' },
         ],
       },
       {
@@ -274,11 +269,9 @@ export const SOLUTIONS: Solution[] = [
         description:
           'Selección automática de transportista, seguimiento de envíos y validación de direcciones',
         servers: [
-          { slug: 'envios-multioperador-mcp', name: 'Envíos Multioperador' },
           { slug: 'seguimiento-envios-mcp', name: 'Seguimiento de Envíos' },
           { slug: 'validacion-direcciones-mcp', name: 'Validación Direcciones' },
           { slug: 'logistica-multioperador-mcp', name: 'Logística y Demanda' },
-          { slug: 'doordash-delivery-mcp', name: 'DoorDash Local' },
         ],
       },
       {
@@ -292,7 +285,6 @@ export const SOLUTIONS: Solution[] = [
         servers: [
           { slug: 'freshdesk-soporte-mcp', name: 'Freshdesk Soporte' },
           { slug: 'whatsapp-business-mcp', name: 'WhatsApp Business' },
-          { slug: 'asistente-llamadas-ia-mcp', name: 'Llamadas IA' },
           { slug: 'email-imap-smtp-mcp', name: 'Email IMAP/SMTP' },
         ],
       },
@@ -307,8 +299,6 @@ export const SOLUTIONS: Solution[] = [
         servers: [
           { slug: 'xero-contabilidad-mcp', name: 'Xero Contabilidad' },
           { slug: 'gestion-empresarial-mcp', name: 'Gestión Empresarial' },
-          { slug: 'braintree-pagos-mcp', name: 'Braintree Pagos' },
-          { slug: 'chargebee-suscripciones-mcp', name: 'Suscripciones' },
         ],
       },
       {
@@ -376,7 +366,6 @@ export const SOLUTIONS: Solution[] = [
         description:
           'Facturación recurrente por contrato, horas de campo y contabilidad',
         servers: [
-          { slug: 'chargebee-suscripciones-mcp', name: 'Contratos Recurrentes' },
           { slug: 'seguimiento-tiempo-harvest-mcp', name: 'Horas de Campo' },
           { slug: 'xero-contabilidad-mcp', name: 'Xero Contabilidad' },
           { slug: 'gestion-empresarial-mcp', name: 'Gestión Empresarial' },
@@ -411,7 +400,6 @@ export const SOLUTIONS: Solution[] = [
           { slug: 'plataforma-rag-conocimiento-mcp', name: 'Base de Conocimiento' },
           { slug: 'extraccion-documentos-pdf-mcp', name: 'Extracción Permisos PDF' },
           { slug: 'conversion-documentos-mcp', name: 'Conversión Manuales' },
-          { slug: 'box-documentos-mcp', name: 'Box Documentos' },
         ],
       },
       {
@@ -423,7 +411,6 @@ export const SOLUTIONS: Solution[] = [
         description:
           'Reclutamiento de técnicos y choferes, y prospección de nuevos clientes industriales',
         servers: [
-          { slug: 'greenhouse-ats-mcp', name: 'Greenhouse ATS' },
           { slug: 'encuestas-empleados-mcp', name: 'Encuestas Personal Campo' },
           { slug: 'generacion-documentos-rrhh-mcp', name: 'Documentos RRHH' },
           { slug: 'apollo-prospecting-mcp', name: 'Apollo Prospección B2B' },
