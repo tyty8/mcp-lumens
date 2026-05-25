@@ -132,6 +132,12 @@ export function ServersTable({ servers }: Props) {
     }))
   }
 
+  const allExpanded = rows.length > 0 && rows.every(s => expandedRows.has(s.slug))
+
+  function toggleAll() {
+    setExpandedRows(allExpanded ? new Set() : new Set(rows.map(s => s.slug)))
+  }
+
   function toggleRow(slug: string) {
     setExpandedRows(prev => {
       const next = new Set(prev)
@@ -236,12 +242,22 @@ export function ServersTable({ servers }: Props) {
           </button>
         </div>
 
-        {/* Count */}
-        <p className="text-xs text-muted-foreground font-mono">
-          {rows.length}{' '}
-          {rows.length === 1 ? 'servidor' : 'servidores'}
-          {category !== 'All' || query ? ' encontrados' : ''}
-        </p>
+        {/* Count + expand-all */}
+        <div className="flex items-center gap-3">
+          <p className="text-xs text-muted-foreground font-mono">
+            {rows.length}{' '}
+            {rows.length === 1 ? 'servidor' : 'servidores'}
+            {category !== 'All' || query ? ' encontrados' : ''}
+          </p>
+          {rows.length > 0 && (
+            <button
+              onClick={toggleAll}
+              className="text-xs font-mono px-3 py-1 rounded-full border border-border text-muted-foreground hover:border-primary/50 hover:text-foreground transition-colors"
+            >
+              {allExpanded ? '↑ Colapsar todo' : '↓ Expandir todo'}
+            </button>
+          )}
+        </div>
       </div>
 
       {/* Table */}
